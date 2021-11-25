@@ -1,0 +1,3 @@
+[submodule "packages/console/src/yargs"]
+	path = packages/console/src/yargs
+	url = github.com:yargs/yargs

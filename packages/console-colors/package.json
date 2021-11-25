@@ -1,0 +1,50 @@
+{
+    "name": "@radic/console-colors",
+    "version": "4.0.3",
+    "description": "Console Colors text parser. Apply colors to texts fast & easy. Use hex/rgb colors with auto (or custom) fallback for unsupported terminals.",
+    "main": "lib/index.js",
+    "module": "lib/index.js",
+    "jsnext:main": "lib/index.js",
+    "typings": "lib/index.d.ts",
+    "author": "Robin Radic <rradic@hotmail.com> (https://radic.dev/)",
+    "license": "MIT",
+    "scripts": {
+        "start": "npm-run-all clean:build build",
+        "test": "nyc mocha --opts test/mocha.opts",
+        "build": "yarn clean:build && tsc --project tsconfig.build.json",
+        "watch": "tsc --project tsconfig.build.json --watch",
+        "clean:build": "rm -rf lib",
+        "clean:yarn": "rm yarn.lock node_modules/",
+        "prepare": "npm-run-all clean:build build",
+        "prepublish": "npm-run-all clean:build build",
+        "login": "yarn login",
+        "release": "npm-run-all clean:build build login && np --yolo --no-yarn"
+    },
+    "engines": {
+        "node": ">=8",
+        "npm": ">=5"
+    },
+    "files": [
+        "dist"
+    ],
+    "nyc": {
+        "cache": false
+    },
+    "bugs": {
+        "email": "rradic@hotmail.com",
+        "url": "https://github.com/robinradic/npm-packages/issues"
+    },
+    "dependencies": {
+        "@radic/shared": "^1.0.0",
+        "color-convert": "^2.0.1",
+        "lodash": "^4.17.21",
+        "supports-color": "^8.1.1",
+        "term-ng": "^2.0.2",
+        "trucolor": "^2.0.4"
+    },
+    "devDependencies": {
+        "@types/ansi": "^0.3.2",
+        "@types/color-convert": "^2.0.0",
+        "@types/supports-color": "^7.2.1"
+    }
+}

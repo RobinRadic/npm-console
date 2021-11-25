@@ -1,0 +1,17 @@
+node_modules
+.tmp
+package-lock.json
+yarn-error.log
+yarn.lock
+/test.ts
+/packages/collections/lib/
+/packages/util/lib/
+/packages/slack-helper-app
+/dist
+/.env
+/.supermenu
+/lib/
+/sites
+/.idea/workspace.xml
+
+/.yarn/releases/

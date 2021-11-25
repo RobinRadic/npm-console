@@ -1,10 +1,26 @@
 {
     "name": "@radic/console-input",
-    "version": "1.8.0",
+    "version": "1.9.0",
     "description": "const filePath = await Ask.fileTree('A simple way to ask questions. Uses inquirer, integrates 10+ third party prompts.')",
-    "keywords": ["input","inquirer","console","cli","prompt","readline","confirm","select","terminal"],
-    "repository": {"url": "https://github.com/robinradic/npm-packages","directory": "packages/console-input","type": "git"},
-    "bugs": {"url": "https://github.com/robinradic/npm-packages/issues"},
+    "keywords": [
+        "input",
+        "inquirer",
+        "console",
+        "cli",
+        "prompt",
+        "readline",
+        "confirm",
+        "select",
+        "terminal"
+    ],
+    "repository": {
+        "url": "https://github.com/robinradic/npm-packages",
+        "directory": "packages/console-input",
+        "type": "git"
+    },
+    "bugs": {
+        "url": "https://github.com/robinradic/npm-packages/issues"
+    },
     "homepage": "https://github.com/robinradic/npm-packages/tree/master/packages/console-input",
     "author": {
         "name": "Robin Radic"
@@ -23,8 +39,9 @@
         "watch": "tsc --project tsconfig.build.json --watch",
         "clean:build": "rm -rf lib",
         "clean:yarn": "rm yarn.lock node_modules/",
-        "prepare": "npm-run-all clean:build test build",
-        "prepublish": "npm-run-all clean:build test build",
+        "clean:test": "rm -rf .nyc_output",
+        "prepare": "npm-run-all clean:build test clean:test build",
+        "prepublish": "npm-run-all clean:build test clean:test build",
         "login": "yarn login",
         "release": "yarn login && np --yolo --no-yarn"
     },

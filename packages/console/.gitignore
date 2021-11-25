@@ -8,3 +8,4 @@ test.ts
 dist
 lib
 .nyc_output
+src/yargs

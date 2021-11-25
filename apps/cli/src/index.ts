@@ -1,4 +1,5 @@
 import { Application, CacheServiceProvider, SystemServiceProvider } from '@radic/core';
+import { CliServiceProvider } from '@radic/console';
 
 export async function cli() {
     const app = Application.instance;
@@ -6,15 +7,24 @@ export async function cli() {
     await app.initialize({
         providers: [
             CacheServiceProvider,
-            SystemServiceProvider
+            SystemServiceProvider,
+            CliServiceProvider
         ],
         config   : {
             startFn: async (app, ...args) => {
-                return app as any;
+                app.cli
+                   .showHelpOnFail()
+                   .demandCommand();
+                await app.cliStart()
+                return app.cli as any;
             },
             system: {
                 processes: ['php-fpm8.0'],
                 services: ['php8.0-fpm']
+            },
+            cli: {
+                commandDir: __dirname + '/commands',
+
             }
         },
     });

@@ -1,6 +1,7 @@
-import { Arguments, BaseCommand, Cli, CommandHandlerDefinition, OptionDefinition } from '../modules/cli';
-import { app, getParamNames } from '../core';
-import { ICommand } from '../modules/cli';
+import { Arguments, BaseCommand, Cli, CommandHandlerDefinition, OptionDefinition } from '../cli';
+import { app } from '@radic/core';
+import {  getParamNames } from '@radic/shared';
+import { ICommand } from '../cli';
 
 
 export interface CommandDecoratorOptions {

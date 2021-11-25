@@ -14,7 +14,7 @@
         "strict": false,
         "noImplicitAny": false,
         "strictNullChecks": false,
-        "strictFunctionTypes": false,
+        "strictFunctionTypes": false,"resolveJsonModule": true,
         "strictBindCallApply": false,
         "strictPropertyInitialization": false,
         "noImplicitThis": false,

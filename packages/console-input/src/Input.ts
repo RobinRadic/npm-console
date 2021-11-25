@@ -4,36 +4,63 @@ import { editAsync, IFileOptions } from 'external-editor';
 import { AutocompleteQuestion, ColorQuestion, DatepickerQuestion, DirectoryQuestion, FilePathQuestion, FileTreePathSelectorQuestion, FuzzypathQuestion, MaxinputQuestion, MyQuestionMap, PathQuestion, SuggestQuestion, TableQuestion, TreeItem, TreeQuestion } from './types';
 import PromptConstructor = inquirer.prompts.PromptConstructor;
 
-inquirer.registerPrompt('path', require('inquirer-path'));
-inquirer.registerPrompt('tree', require('inquirer-tree-prompt'));
-inquirer.registerPrompt('fuzzypath', require('inquirer-fuzzy-path'));
-inquirer.registerPrompt('directory', require('inquirer-directory'));
-inquirer.registerPrompt('autocomplete', require('inquirer-autocomplete-prompt'));
-inquirer.registerPrompt('datetime', require('inquirer-datepicker'));
-inquirer.registerPrompt('maxlength-input', require('@matti-o7/inquirer-maxlength-input-prompt'));
-
-inquirer.registerPrompt('file-path', require('inquirer-file-path'));
-inquirer.registerPrompt('file-tree-selection', require('inquirer-file-tree-selection-prompt'));
-inquirer.registerPrompt('file-selector', require('inquirer-file-selector-prompt'));
-inquirer.registerPrompt('color', require('inquirer-chalk-pipe'));
-inquirer.registerPrompt('suggest', require('inquirer-prompt-suggest'));
-inquirer.registerPrompt('table', require('inquirer-table-prompt'));
-
+const isModuleInstalled = (name: string) => {
+    try {
+        let path = require.resolve(name);
+        return !!path;
+    } catch (e) {
+        return false;
+    }
+};
 type DistinctQuestion<T extends Answers = Answers> = MyQuestionMap<T>[keyof MyQuestionMap<T>];
-//
-//
-// export interface Input {
-//     Separator:typeof inquirer.Separator
-//     inquirer:typeof inquirer
-//     prompt: typeof inquirer.prompt
-// }
+
+const customPromptMap   = {
+    'path'               : 'inquirer-path',
+    'tree'               : 'inquirer-tree-prompt',
+    'fuzzypath'          : 'inquirer-fuzzy-path',
+    'directory'          : 'inquirer-directory',
+    'autocomplete'       : 'inquirer-autocomplete-prompt',
+    'datetime'           : 'inquirer-datepicker',
+    'maxlength-input'    : '@matti-o7/inquirer-maxlength-input-prompt',
+    'file-path'          : 'inquirer-file-path',
+    'file-tree-selection': 'inquirer-file-tree-selection-prompt',
+    'file-selector'      : 'inquirer-file-selector-prompt',
+    'color'              : 'inquirer-chalk-pipe',
+    'suggest'            : 'inquirer-prompt-suggest',
+    'table'              : 'inquirer-table-prompt',
+};
+const customPromptTypes = Object.keys(customPromptMap);
 
 export class Input {
+    public static get customPromptMap() {return customPromptMap;}
+
+    public static get customPromptTypes() {return customPromptTypes;}
+
     public static get inquirer() {return inquirer; }
 
     public static get Separator(): typeof inquirer.Separator {return this.inquirer.Separator; }
 
     public static get prompt() { return this.inquirer.prompt; };
+
+    public static set prompt(prompt) { this.inquirer.prompt = prompt; };
+
+    public static hasPrompt(name: string) {return this.inquirer.prompt.prompts[ name ] !== undefined;}
+
+    public static ensureCustomPromptRegistered(name: string, silent: boolean = false) {
+        if ( !this.customPromptTypes.includes(name) ) {
+            return;
+        }
+        const moduleName = this.customPromptMap[ name ];
+        if ( this.hasPrompt(name) ) return;
+        if ( !isModuleInstalled(moduleName) ) {
+            if ( silent ) {
+                return false;
+            }
+            throw new Error(`Could not find the [${name}] prompt type. \nInstall the required npm dependency "${moduleName}" to fix this.\n`);
+        }
+        this.register(name, require(moduleName));
+        return true;
+    };
 
     public static register(name: string, prompt: PromptConstructor) {
         this.inquirer.registerPrompt(name, prompt);
@@ -41,6 +68,7 @@ export class Input {
     }
 
     public static async question(question: DistinctQuestion) {
+        this.ensureCustomPromptRegistered(question.type);
         let answers = await this.prompt<any>({ name: 'question', ...question } as any);
         return answers.question;
     }
@@ -120,11 +148,6 @@ export class Input {
         return await this.question({ type: 'file-tree-selection', message, root, ...question });
     }
 
-    // inquirer.registerPrompt('path', require('inquirer-path'));
-    // inquirer.registerPrompt('file-path', require('inquirer-file-path'));
-    // inquirer.registerPrompt('file-selector-prompt', require('inquirer-file-selector-prompt'));
-    // inquirer.registerPrompt('filefolder-prompt', require('inquirer-filefolder-prompt'));
-
     public static editorChoices: Array<{ name: string, value: string }> = [
         { name: 'code', value: 'code --new-window --wait --file-uri' },
         { name: 'xed', value: 'xed  --new-window --wait' },
@@ -132,11 +155,17 @@ export class Input {
 
     public static editorDefaultChoice: string = 'xed';
 
+    public static async chooseEditor(message: string = 'Choose editor', editorChoices = this.editorChoices, defaultChoice = 'xed') {
+        return await this.list('Editor', editorChoices, defaultChoice);
+    }
+
     public static async editor(message: string, question: Partial<EditorQuestion>) {
         // process.env.EDITOR = 'code --new-window --wait --file-uri';
         // process.env.EDITOR = 'idea-php --wait';
         // process.env.EDITOR = process.env.VISUAL || process.env.EDITOR || 'xed';
-        process.env.EDITOR = await this.list('Editor', this.editorChoices, 'xed');
+        if ( !process.env.EDITOR ) {
+            process.env.EDITOR = await this.chooseEditor();
+        }
         return await this.question({ type: 'editor', message, ...question });
     }
 
@@ -151,3 +180,18 @@ export class Input {
     }
 
 }
+
+// inquirer.registerPrompt('path', require('inquirer-path'));
+// inquirer.registerPrompt('tree', require('inquirer-tree-prompt'));
+// inquirer.registerPrompt('fuzzypath', require('inquirer-fuzzy-path'));
+// inquirer.registerPrompt('directory', require('inquirer-directory'));
+// inquirer.registerPrompt('autocomplete', require('inquirer-autocomplete-prompt'));
+// inquirer.registerPrompt('datetime', require('inquirer-datepicker'));
+// inquirer.registerPrompt('maxlength-input', require('@matti-o7/inquirer-maxlength-input-prompt'));
+//
+// inquirer.registerPrompt('file-path', require('inquirer-file-path'));
+// inquirer.registerPrompt('file-tree-selection', require('inquirer-file-tree-selection-prompt'));
+// inquirer.registerPrompt('file-selector', require('inquirer-file-selector-prompt'));
+// inquirer.registerPrompt('color', require('inquirer-chalk-pipe'));
+// inquirer.registerPrompt('suggest', require('inquirer-prompt-suggest'));
+// inquirer.registerPrompt('table', require('inquirer-table-prompt'));

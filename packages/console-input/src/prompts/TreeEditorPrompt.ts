@@ -1,49 +1,50 @@
 'use strict';
 
-import lodash from 'lodash/cloneDeep';
 import chalk from 'chalk';
 import figures from 'figures';
 import cliCursor from 'cli-cursor';
 import { fromEvent } from 'rxjs';
-import { filter, flatMap, map, share, take, takeUntil } from 'rxjs/operators';
+import { filter, map, share, takeUntil } from 'rxjs/operators';
 
 import BasePrompt from 'inquirer/lib/prompts/base';
 import observe from 'inquirer/lib/utils/events';
 import Paginator from 'inquirer/lib/utils/paginator';
-import { Answers, ListQuestionOptions, Question } from 'inquirer';
+import { Answers, ListQuestionOptions } from 'inquirer';
 import { cloneDeep } from 'lodash';
 
 export interface TreeEditorItem {
-    name?:string
-    value?:any
-    short?:string
-    open?:boolean
-    children?:TreeEditorItem[]
-    isValid?:boolean
+    name?: string;
+    value?: any;
+    short?: string;
+    open?: boolean;
+    children?: TreeEditorItem[];
+    parent?: TreeEditorItem;
+    isValid?: boolean;
 }
 
 
 export interface TreeEditorQuestionOptions<T> extends ListQuestionOptions<T> {
-    onlyShowValid?:boolean
-    tree?:TreeEditorItem[]
-    hideChildrenOfValid?:boolean
-    transformer?:Function
-    multiple?:boolean
+    onlyShowValid?: boolean;
+    tree?: TreeEditorItem[];
+    hideChildrenOfValid?: boolean;
+    transformer?: Function;
+    multiple?: boolean;
 
 
 }
-export interface TreeQuestion<T extends Answers = Answers> extends TreeEditorQuestionOptions<T>{
+
+export interface TreeQuestion<T extends Answers = Answers> extends TreeEditorQuestionOptions<T> {
     type?: 'tree';
 }
 
-class TreeEditorPrompt extends BasePrompt<TreeQuestion> {
-    done = (...args) => {};
-    firstRender = true;
-    tree:TreeEditorItem
-    shownList:TreeEditorItem[]
-    paginator:Paginator
-    selectedList = []
-    active:TreeEditorItem
+export class TreeEditorPrompt extends BasePrompt<TreeQuestion> {
+    done         = (...args) => {};
+    firstRender  = true;
+    tree: TreeEditorItem;
+    shownList: TreeEditorItem[];
+    paginator: Paginator;
+    selectedList = [];
+    active: TreeEditorItem;
 
     constructor(questions, rl, answers) {
         super(questions, rl, answers);
@@ -58,8 +59,8 @@ class TreeEditorPrompt extends BasePrompt<TreeQuestion> {
         this.opt = {
             pageSize: 10,
             multiple: false,
-            ...this.opt
-        }
+            ...this.opt,
+        };
 
         // Make sure no default is set (so it won't be printed)
         this.opt.default = null;
@@ -92,7 +93,7 @@ class TreeEditorPrompt extends BasePrompt<TreeQuestion> {
 
         const validation = this.handleSubmitEvents(
             events.line.pipe(map(() => this.valueFor(
-                this.opt.multiple ? this.selectedList[0] : this.active))));
+                this.opt.multiple ? this.selectedList[ 0 ] : this.active))));
         validation.success.forEach(this.onSubmit.bind(this));
         validation.error.forEach(this.onError.bind(this));
 
@@ -106,14 +107,14 @@ class TreeEditorPrompt extends BasePrompt<TreeQuestion> {
 
         events.keypress.pipe(
             filter(({ key }) => key.name === 'right'),
-            share()
+            share(),
         )
               .pipe(takeUntil(validation.success))
               .forEach(this.onRightKey.bind(this));
 
         events.keypress.pipe(
             filter(({ key }) => key.name === 'left'),
-            share()
+            share(),
         )
               .pipe(takeUntil(validation.success))
               .forEach(this.onLeftKey.bind(this));
@@ -125,7 +126,8 @@ class TreeEditorPrompt extends BasePrompt<TreeQuestion> {
         function normalizeKeypressEvents(value, key) {
             return { value: value, key: key || {} };
         }
-        fromEvent(this.rl['input'], 'keypress', normalizeKeypressEvents)
+
+        fromEvent(this.rl[ 'input' ], 'keypress', normalizeKeypressEvents)
         .pipe(filter(({ key }) => key && key.name === 'tab'), share())
         .pipe(takeUntil(validation.success))
         .forEach(this.onTabKey.bind(this));
@@ -138,14 +140,14 @@ class TreeEditorPrompt extends BasePrompt<TreeQuestion> {
     }
 
     async prepareChildren(node) {
-        if (node.prepared) {
+        if ( node.prepared ) {
             return;
         }
         node.prepared = true;
 
         await this.runChildrenFunctionIfRequired(node);
 
-        if (!node.children) {
+        if ( !node.children ) {
             return;
         }
 
@@ -155,17 +157,17 @@ class TreeEditorPrompt extends BasePrompt<TreeQuestion> {
     }
 
     async runChildrenFunctionIfRequired(node) {
-        if (typeof node.children === 'function') {
+        if ( typeof node.children === 'function' ) {
             try {
                 const nodeOrChildren = await node.children();
-                if (nodeOrChildren) {
+                if ( nodeOrChildren ) {
                     let children;
-                    if (Array.isArray(nodeOrChildren)) {
+                    if ( Array.isArray(nodeOrChildren) ) {
                         children = nodeOrChildren;
                     } else {
                         children = nodeOrChildren.children;
-                        [ "name", "value", "short" ].forEach((property) => {
-                            node[property] = nodeOrChildren[property];
+                        [ 'name', 'value', 'short' ].forEach((property) => {
+                            node[ property ] = nodeOrChildren[ property ];
                         });
                         node.isValid = undefined;
 
@@ -194,9 +196,9 @@ class TreeEditorPrompt extends BasePrompt<TreeQuestion> {
 
     cloneAndNormaliseChildren(node) {
         node.children = node.children.map((item) => {
-            if (typeof item !== 'object') {
+            if ( typeof item !== 'object' ) {
                 return {
-                    value: item
+                    value: item,
                 };
             }
 
@@ -205,30 +207,30 @@ class TreeEditorPrompt extends BasePrompt<TreeQuestion> {
     }
 
     async validateAndFilterDescendants(node) {
-        for (let index = node.children.length - 1; index >= 0; index--) {
-            const child = node.children[index];
+        for ( let index = node.children.length - 1; index >= 0; index -- ) {
+            const child = node.children[ index ];
 
             child.parent = node;
 
             await this.addValidity(child);
 
-            if (this.opt.hideChildrenOfValid && child.isValid === true) {
+            if ( this.opt.hideChildrenOfValid && child.isValid === true ) {
                 child.children = null;
             }
 
-            if (this.opt.onlyShowValid && child.isValid !== true && !child.children) {
+            if ( this.opt.onlyShowValid && child.isValid !== true && !child.children ) {
                 node.children.splice(index, 1);
             }
 
-            if (child.open) {
+            if ( child.open ) {
                 await this.prepareChildren(child);
             }
         }
     }
 
     async addValidity(node) {
-        if (typeof node.isValid === 'undefined') {
-            if (this.opt.validate) {
+        if ( typeof node.isValid === 'undefined' ) {
+            if ( this.opt.validate ) {
                 node.isValid = await this.opt.validate(this.valueFor(node), this.answers);
             } else {
                 node.isValid = true;
@@ -239,19 +241,19 @@ class TreeEditorPrompt extends BasePrompt<TreeQuestion> {
     render(error?) {
         let message = this.getQuestion();
 
-        if (this.firstRender) {
-            let hint = "Use arrow keys,";
-            if (this.opt.multiple) {
-                hint += " space to select,";
+        if ( this.firstRender ) {
+            let hint = 'Use arrow keys,';
+            if ( this.opt.multiple ) {
+                hint += ' space to select,';
             }
-            hint += " enter to confirm.";
+            hint += ' enter to confirm.';
 
             message += chalk.dim(`(${hint})`);
         }
 
-        if (this.status === 'answered') {
+        if ( this.status === 'answered' ) {
             let answer;
-            if (this.opt.multiple) {
+            if ( this.opt.multiple ) {
                 answer = this.selectedList.map((item) => this.shortFor(item, true)).join(', ');
             } else {
                 answer = this.shortFor(this.active, true);
@@ -259,9 +261,9 @@ class TreeEditorPrompt extends BasePrompt<TreeQuestion> {
 
             message += chalk.cyan(answer);
         } else {
-            this.shownList = [];
+            this.shownList  = [];
             let treeContent = this.createTreeContent();
-            if (this.opt.loop !== false) {
+            if ( this.opt.loop !== false ) {
                 treeContent += '----------------';
             }
             message += '\n' + this.paginator.paginate(treeContent,
@@ -270,7 +272,7 @@ class TreeEditorPrompt extends BasePrompt<TreeQuestion> {
 
         let bottomContent;
 
-        if (error) {
+        if ( error ) {
             bottomContent = '\n' + chalk.red('>> ') + error;
         }
 
@@ -281,12 +283,12 @@ class TreeEditorPrompt extends BasePrompt<TreeQuestion> {
 
     createTreeContent(node = this.tree, indent = 2) {
         const children = node.children || [];
-        let output = '';
-        const isFinal = this.status === 'answered';
+        let output     = '';
+        const isFinal  = this.status === 'answered';
 
         children.forEach(child => {
-            this.shownList.push(child)
-            if (!this.active) {
+            this.shownList.push(child);
+            if ( !this.active ) {
                 this.active = child;
             }
 
@@ -296,44 +298,43 @@ class TreeEditorPrompt extends BasePrompt<TreeQuestion> {
                            : figures.arrowRight + ' '
                          : child === this.active
                            ? figures.pointer + ' '
-                           : '  '
+                           : '  ';
 
-            if (this.opt.multiple) {
+            if ( this.opt.multiple ) {
                 prefix += this.selectedList.includes(child) ? figures.radioOn : figures.radioOff;
                 prefix += ' ';
             }
 
             const showValue = ' '.repeat(indent) + prefix + this.nameFor(child, isFinal) + '\n';
 
-            if (child === this.active) {
-                if (child.isValid === true) {
-                    output += chalk.cyan(showValue)
+            if ( child === this.active ) {
+                if ( child.isValid === true ) {
+                    output += chalk.cyan(showValue);
                 } else {
-                    output += chalk.red(showValue)
+                    output += chalk.red(showValue);
                 }
-            }
-            else {
-                output += showValue
+            } else {
+                output += showValue;
             }
 
-            if (child.open) {
-                output += this.createTreeContent(child, indent + 2)
+            if ( child.open ) {
+                output += this.createTreeContent(child, indent + 2);
             }
-        })
+        });
 
-        return output
+        return output;
     }
 
     shortFor(node, isFinal = false) {
-        return typeof node.short !=='undefined' ? node.short : this.nameFor(node, isFinal);
+        return typeof node.short !== 'undefined' ? node.short : this.nameFor(node, isFinal);
     }
 
     nameFor(node, isFinal = false) {
-        if (typeof node.name !== 'undefined') {
+        if ( typeof node.name !== 'undefined' ) {
             return node.name;
         }
 
-        if (this.opt.transformer) {
+        if ( this.opt.transformer ) {
             return this.opt.transformer(node.value, this.answers, { isFinal });
         }
 
@@ -341,7 +342,7 @@ class TreeEditorPrompt extends BasePrompt<TreeQuestion> {
     }
 
     valueFor(node) {
-        return typeof node.value !=='undefined' ? node.value : node.name;
+        return typeof node.value !== 'undefined' ? node.value : node.name;
     }
 
     onError(state) {
@@ -361,7 +362,7 @@ class TreeEditorPrompt extends BasePrompt<TreeQuestion> {
     }
 
     onUpKey() {
-        this.moveActive(-1);
+        this.moveActive(- 1);
     }
 
     onDownKey() {
@@ -369,10 +370,10 @@ class TreeEditorPrompt extends BasePrompt<TreeQuestion> {
     }
 
     onLeftKey() {
-        if (this.active.children && this.active.open) {
+        if ( this.active.children && this.active.open ) {
             this.active.open = false;
         } else {
-            if (this.active.parent !== this.tree) {
+            if ( this.active.parent !== this.tree ) {
                 this.active = this.active.parent;
             }
         }
@@ -381,12 +382,12 @@ class TreeEditorPrompt extends BasePrompt<TreeQuestion> {
     }
 
     onRightKey() {
-        if (this.active.children) {
-            if (!this.active.open) {
-                this.active.open = true
+        if ( this.active.children ) {
+            if ( !this.active.open ) {
+                this.active.open = true;
 
                 this.prepareChildrenAndRender(this.active);
-            } else if (this.active.children.length) {
+            } else if ( this.active.children.length ) {
                 this.moveActive(1);
             }
         }
@@ -394,22 +395,21 @@ class TreeEditorPrompt extends BasePrompt<TreeQuestion> {
 
     moveActive(distance = 0) {
         const currentIndex = this.shownList.indexOf(this.active);
-        let index = currentIndex + distance;
+        let index          = currentIndex + distance;
 
-        if (index >= this.shownList.length) {
-            if (this.opt.loop === false) {
+        if ( index >= this.shownList.length ) {
+            if ( this.opt.loop === false ) {
                 return;
             }
             index = 0;
-        }
-        else if (index < 0) {
-            if (this.opt.loop === false) {
+        } else if ( index < 0 ) {
+            if ( this.opt.loop === false ) {
                 return;
             }
             index = this.shownList.length - 1;
         }
 
-        this.active = this.shownList[index];
+        this.active = this.shownList[ index ];
 
         this.render();
     }
@@ -419,7 +419,7 @@ class TreeEditorPrompt extends BasePrompt<TreeQuestion> {
     }
 
     onSpaceKey() {
-        if (this.opt.multiple) {
+        if ( this.opt.multiple ) {
             this.toggleSelection();
         } else {
             this.toggleOpen();
@@ -427,12 +427,12 @@ class TreeEditorPrompt extends BasePrompt<TreeQuestion> {
     }
 
     toggleSelection() {
-        if (this.active.isValid !== true) {
+        if ( this.active.isValid !== true ) {
             return;
         }
 
         const selectedIndex = this.selectedList.indexOf(this.active);
-        if (selectedIndex === -1) {
+        if ( selectedIndex === - 1 ) {
             this.selectedList.push(this.active);
         } else {
             this.selectedList.splice(selectedIndex, 1);
@@ -442,7 +442,7 @@ class TreeEditorPrompt extends BasePrompt<TreeQuestion> {
     }
 
     toggleOpen() {
-        if (!this.active.children) {
+        if ( !this.active.children ) {
             return;
         }
 
@@ -453,4 +453,3 @@ class TreeEditorPrompt extends BasePrompt<TreeQuestion> {
 
 }
 
-module.exports = TreePrompt;

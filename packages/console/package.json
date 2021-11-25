@@ -19,7 +19,6 @@
     "main": "lib/index.js",
     "types": "lib/index.d.ts",
     "typings": "lib/index.d.ts",
-    "bin": "./bin/console",
     "scripts": {
         "start": "npm-run-all clean:build build",
         "test": "nyc mocha --opts test/mocha.opts",

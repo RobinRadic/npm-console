@@ -21,7 +21,6 @@ var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 const console_1 = require("@radic/console");
 const core_1 = require("@radic/core");
-const console_input_1 = require("@radic/console-input");
 let TestCommand = class TestCommand extends console_1.BaseCommand {
     constructor() {
         super(...arguments);
@@ -32,7 +31,6 @@ let TestCommand = class TestCommand extends console_1.BaseCommand {
             console.dir(this.config);
             console.log({ name: this.name, suite });
             this.cli.showHelp('log');
-            yield console_input_1.Input.fuzzypath('Pick the date');
         });
     }
 };

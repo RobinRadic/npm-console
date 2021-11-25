@@ -11,16 +11,18 @@
     "main": "lib/index.js",
     "types": "lib/index.d.ts",
     "scripts": {
-        "start": "npm-run-all clean:build build",
+        "start": "npm-run-all clean:build test build",
         "test": "nyc mocha --opts test/mocha.opts",
+        "pretest": "yarn clean:test",
+        "posttest": "yarn clean:test",
+        "clean:test": "rm -rf .nyc-output/",
         "build": "yarn clean:build && tsc --project tsconfig.build.json",
         "watch": "tsc --project tsconfig.build.json --watch",
         "clean:build": "rm -rf lib && rimraf src/**/*.{js,d.ts}",
         "clean:yarn": "rm yarn.lock node_modules/",
-        "prepare": "npm-run-all clean:build build",
-        "prepublish": "npm-run-all clean:build build",
+        "prepublish": "npm-run-all clean:build test build",
         "login": "yarn login",
-        "release": "npm-run-all clean:build build login && np --yolo --no-yarn"
+        "release": "yarn login && np --yolo --no-yarn"
     },
     "dependencies": {
         "@radic/shared": "^1.0.0",

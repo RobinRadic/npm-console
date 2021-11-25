@@ -1,5 +1,6 @@
 import { Application, CacheServiceProvider, SystemServiceProvider } from '@radic/core';
 import { CliServiceProvider } from '@radic/console';
+import { InputServiceProvider } from '@radic/console-input/InputServiceProvider';
 
 export async function cli() {
     const app = Application.instance;
@@ -8,7 +9,8 @@ export async function cli() {
         providers: [
             CacheServiceProvider,
             SystemServiceProvider,
-            CliServiceProvider
+            CliServiceProvider,
+            InputServiceProvider
         ],
         config   : {
             startFn: async (app, ...args) => {

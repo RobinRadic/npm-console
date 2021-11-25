@@ -84,6 +84,8 @@
         "README.md",
         ".npmignore",
         "types/inquirer.d.ts",
-        "lib"
+        "lib",
+        "InputServiceProvider.js",
+        "InputServiceProvider.d.ts"
     ]
 }

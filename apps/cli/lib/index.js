@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.cli = void 0;
 const core_1 = require("@radic/core");
 const console_1 = require("@radic/console");
+const InputServiceProvider_1 = require("@radic/console-input/InputServiceProvider");
 function cli() {
     return __awaiter(this, void 0, void 0, function* () {
         const app = core_1.Application.instance;
@@ -20,7 +21,8 @@ function cli() {
             providers: [
                 core_1.CacheServiceProvider,
                 core_1.SystemServiceProvider,
-                console_1.CliServiceProvider
+                console_1.CliServiceProvider,
+                InputServiceProvider_1.InputServiceProvider
             ],
             config: {
                 startFn: (app, ...args) => __awaiter(this, void 0, void 0, function* () {

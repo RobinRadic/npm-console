@@ -1,13 +1,40 @@
 # Console Input
+- Based on inquirer.
+- Includes a lot of optional extra prompts, if the relevant peerDependency is installed
+- Main purpose is to fire 'one-off' questions like:
 
-Based on inquirer. Includes a lot of extra prompts. Main purpose is to fire 'one-off' questions like:
 ```ts
 const path = await Input.fileTree('Select the file to delete', '/')
 ```
 
+## Toc
+- [Installation](#installation)
+- [Third party prompts](#third-party-prompts)
+- [Full API](#full-api)
+- [Examples](#some-examples)
+
+
 ### Installation
 
 `yarn add @radic/console-input`
+
+### Third party prompts
+Third party prompts are `peerDependencies` so you'll have to install them yourself if you'd like to use em. Automatically integrated if installed.
+
+```
+- path:   inquirer-path
+- fuzzypath:   inquirer-fuzzy-path
+- directory:   inquirer-directory
+- autocomplete:   inquirer-autocomplete-prompt
+- datetime:   inquirer-datepicker
+- maxlength-input:   @matti-o7/inquirer-maxlength-input-prompt
+- file-path:   inquirer-file-path
+- file-tree-selection:   inquirer-file-tree-selection-prompt
+- file-selector:   inquirer-file-selector-prompt
+- color:   inquirer-chalk-pipe
+- suggest:   inquirer-prompt-suggest
+- table:   inquirer-table-prompt
+```
 
 ### Full API
 *Created and/or modified all type definitions for each package it's options as can be checked in [types/inquirer.d.ts](types/inquirer.d.ts)*
@@ -44,22 +71,6 @@ export declare class Input {
     static editor(message: string, question: Partial<EditorQuestion>): Promise<any>;
     static edit(content: string, options?: IFileOptions): Promise<unknown>;
 }
-```
-
-### Integrated third party prompts
-```
-inquirer.registerPrompt('path', require('inquirer-path'));
-inquirer.registerPrompt('fuzzypath', require('inquirer-fuzzy-path'));
-inquirer.registerPrompt('directory', require('inquirer-directory'));
-inquirer.registerPrompt('autocomplete', require('inquirer-autocomplete-prompt'));
-inquirer.registerPrompt('datetime', require('inquirer-datepicker'));
-inquirer.registerPrompt('maxlength-input', require('@matti-o7/inquirer-maxlength-input-prompt'));
-inquirer.registerPrompt('file-path', require('inquirer-file-path'));
-inquirer.registerPrompt('file-tree-selection', require('inquirer-file-tree-selection-prompt'));
-inquirer.registerPrompt('file-selector', require('inquirer-file-selector-prompt'));
-inquirer.registerPrompt('color', require('inquirer-chalk-pipe'));
-inquirer.registerPrompt('suggest', require('inquirer-prompt-suggest'));
-inquirer.registerPrompt('table', require('inquirer-table-prompt'));
 ```
 
 ### Some examples

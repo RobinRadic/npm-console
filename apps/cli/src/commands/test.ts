@@ -1,6 +1,5 @@
 import { BaseCommand, coerce, command, option } from '@radic/console';
 import { ConfigRepository, inject } from '@radic/core';
-import { Input } from '@radic/console-input';
 
 @command('test [suite]', 'Dev test stuff')
 export default class TestCommand extends BaseCommand {
@@ -14,6 +13,5 @@ export default class TestCommand extends BaseCommand {
         console.dir(this.config);
         console.log({ name: this.name, suite });
         this.cli.showHelp('log');
-        await Input.fuzzypath('Pick the date')
     }
 }

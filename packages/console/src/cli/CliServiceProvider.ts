@@ -36,6 +36,8 @@ declare module '@radic/core/lib/Foundation/Application' {
         cliStart: CliStart;
         cliCustomize: CliCustomize;
     }
+}
+declare module '@radic/core/lib/types/config' {
 
     export interface Configuration {
         cli?: CliOptions;
@@ -67,7 +69,7 @@ export type CliSetup = (cli: Cli) => Promise<Cli>
 export type CliStart = <T extends CliArguments = CliArguments>() => Promise<CliStartReturn<T>>
 export type CliStartReturn<T extends CliArguments = CliArguments> = { [key in keyof Args<T>]: Args<T>[key] }
 
-function getLocaleStrings(out: Application['out']) {
+function getLocaleStrings(out: any) {
     function transform(obj) {
         return Object.entries(obj).map(([ key, value ]) => {
             if ( isString(value) ) {
@@ -147,10 +149,10 @@ export class CliServiceProvider extends ServiceProvider {
                 })
                 .help('h', 'Show Help').alias('h', 'help')
                 // .group('h', this.app.out.parse('{bold}Global Options:{/bold}'))
-                .option('V', { type: 'boolean', alias: 'version', global: false })
+                .option('V', { type: 'boolean', alias: 'version', global: false });
                 // .showHelpOnFail(true)
 
-                if(this.app.isBound('out')) {
+                if ( this.app.isBound('out') ) {
                     cli.updateStrings(getLocaleStrings(this.app.get('out')));
                 }
 

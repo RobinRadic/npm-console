@@ -43,12 +43,6 @@ function cli() {
         });
         yield app.boot();
         yield app.start();
-        app.cache.put('a', 'n');
-        const services = yield app.services.refreshAll();
-        yield app.services.each((s) => __awaiter(this, void 0, void 0, function* () {
-            let status = yield s.exec('status');
-            console.log('status', s.name, s.pids, status);
-        }));
         return app;
     });
 }

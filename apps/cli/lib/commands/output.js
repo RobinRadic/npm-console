@@ -17,34 +17,35 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 const console_1 = require("@radic/console");
-const core_1 = require("@radic/core");
-let TestCommand = class TestCommand extends console_1.BaseCommand {
+const console_output_1 = require("@radic/console-output");
+let OutputCommand = class OutputCommand extends console_1.BaseCommand {
     constructor() {
         super(...arguments);
         this.name = 'ff';
     }
-    handle(suite) {
+    handle(macro, ...args) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.dir(this.config);
-            console.log({ name: this.name, suite });
-            this.cli.showHelp('log');
+            console.log({ name: this.name, macro, args });
+            const out = new console_output_1.ConsoleOutput();
+            console.log(out);
+            out.macro('foo', function (a, b) {
+                console.log('macro foo', 'this', this, { a, b });
+            });
+            out.foo();
+            if (macro) {
+                out.runMacro(macro, ...args);
+            }
         });
     }
 };
 __decorate([
     (0, console_1.option)('n', 'name'),
-    (0, console_1.coerce)(value => value + 'asdf'),
     __metadata("design:type", String)
-], TestCommand.prototype, "name", void 0);
-__decorate([
-    (0, core_1.inject)('config'),
-    __metadata("design:type", typeof (_a = typeof core_1.ConfigRepository !== "undefined" && core_1.ConfigRepository) === "function" ? _a : Object)
-], TestCommand.prototype, "config", void 0);
-TestCommand = __decorate([
-    (0, console_1.command)('test [suite]', 'Dev test stuff')
-], TestCommand);
-exports.default = TestCommand;
-//# sourceMappingURL=test.js.map
+], OutputCommand.prototype, "name", void 0);
+OutputCommand = __decorate([
+    (0, console_1.command)('output [macro] [args...]', 'Dev test stuff')
+], OutputCommand);
+exports.default = OutputCommand;
+//# sourceMappingURL=output.js.map

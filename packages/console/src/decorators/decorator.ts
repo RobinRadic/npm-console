@@ -73,12 +73,20 @@ export function decorator(type: CommandDecoratorType, options: CommandDecoratorO
                 await Promise.all(this.instance.providers.map(Provider => app.register(Provider)));
                 let params = [];
                 getParamNames(this.instance.handle).forEach(name => {
-                    if ( args[ name ] !== undefined ) {
+                    if(name.startsWith('...')){
+                        name = name.replace('...','')
+                        if ( args[ name ] !== undefined ) {
+                            params.push(...args[ name ]);
+                        }
+                    } else if ( args[ name ] !== undefined ) {
                         params.push(args[ name ]);
                     } else {
                         params.push(undefined);
                     }
                 });
+                let context = this.instance.cli.getContext();
+                let command = this.instance.cli.getCommand();
+                let a = {context,command}
                 const nonOptsArgs = args._;
                 const nodeCommand = args.$0;
                 delete args._;

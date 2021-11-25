@@ -26,18 +26,10 @@ export async function cli() {
             },
             cli: {
                 commandDir: __dirname + '/commands',
-
             }
         },
     });
     await app.boot();
     await app.start();
-    app.cache.put('a', 'n');
-    const services = await app.services.refreshAll();
-    await app.services.each(async s => {
-        let status = await s.exec('status')
-        console.log('status',s.name,s.pids,status);
-    })
-
     return app;
 }

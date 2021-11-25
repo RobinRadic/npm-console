@@ -11,6 +11,7 @@ export { Output }     from './Output';
 export { OutputUtil } from './OutputUtil';
 
 export * from 'trucolor'
+export * from './ConsoleOutput';
 
 export {
     colors,

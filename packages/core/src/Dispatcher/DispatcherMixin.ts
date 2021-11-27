@@ -1,5 +1,6 @@
-import { event, EventAndListener, EventEmitter2, eventNS, ListenerFn, OnOptions } from 'eventemitter2';
-
+import { event, EventAndListener,  eventNS, ListenerFn, OnOptions } from 'eventemitter2';
+import eventemitter2 from 'eventemitter2';
+import EventEmitter2 = eventemitter2.EventEmitter2
 
 export class DispatcherMixin {
     protected events: EventEmitter2 = new EventEmitter2({

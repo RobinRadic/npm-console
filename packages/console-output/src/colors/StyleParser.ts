@@ -1,7 +1,6 @@
-import { ColorStyle, IParser }         from '../interfaces';
-import { Options, Trucolor, trucolor } from 'trucolor';
-import { Colors }                      from './Colors';
-import { Output }                      from '../Output';
+import { IParser } from '../interfaces';
+import { Colors } from './Colors';
+import { Output } from '../Output';
 
 export interface ColorsParserParsedTag {
     colors: string[],
@@ -10,43 +9,12 @@ export interface ColorsParserParsedTag {
     replace: (text: string) => string
 }
 
-export class ColorsParser implements IParser {
-    public colors: Colors;
+export class StyleParser implements IParser {
+    get colors(): Colors {return this.output.colors;}
 
-    constructor(public output: Output) {
-        this.colors = new Colors(this);
-    }
+    constructor(protected output: Output) {
 
-    trucolorOptions: Options = { format: 'cli' };
 
-    getTrucolor(color: string, options: Options = {}): Trucolor {
-        options = { ...this.trucolorOptions, ...options };
-        return trucolor(color, options);
-    }
-
-    getColorFromStyle(style: ColorStyle): { in: string, out: string } {
-        let _color = { in: '', out: '' };
-        if ( Array.isArray(style) ) {
-            style.map(s => this.getTrucolor(s)).forEach(color => {
-                _color.in  = color.in + _color.in;
-                _color.out = _color.out + color.out;
-            });
-        } else {
-            _color = this.getTrucolor(style);
-        }
-        return _color;
-    }
-
-    getStyledColor(name: string): { in: string, out: string } {
-        let style = this.colors.getStyle(name);
-        return this.getColorFromStyle(style);
-    }
-
-    getColor(color: string, isClose: boolean = false): string {
-        if ( this.colors.hasStyle(color) ) {
-            return this.getStyledColor(color)[ isClose ? 'out' : 'in' ];
-        }
-        return this.getTrucolor(color)[ isClose ? 'out' : 'in' ];
     }
 
 
@@ -109,14 +77,14 @@ export class ColorsParser implements IParser {
                 } else if ( !isClose && type === 'f' ) {
                     this.fstack.push(_color);
                 }
-                return this.getColor(_color, isClose);
+                return this.colors.getColor(_color, isClose);
             }
             if ( isClose ) {
                 if ( type === 'f' && this.fstack.length > 0 ) {
-                    return this.getColor(this.fstack.shift(), true);
+                    return this.colors.getColor(this.fstack.shift(), true);
                 }
                 if ( type === 'b' && this.bstack.length > 0 ) {
-                    return this.getColor(this.bstack.shift(), true);
+                    return this.colors.getColor(this.bstack.shift(), true);
                 }
             }
 
@@ -129,8 +97,8 @@ export class ColorsParser implements IParser {
         }
 
         try {
-            return this.getColor(color, isClose);
-        } catch ( err ) {
+            return this.colors.getColor(color, isClose);
+        } catch (err) {
             return '';
         }
     }

@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="console-test" type="NodeJSConfigurationType" path-to-js-file="apps/cli/bin/console-test.js" working-dir="$PROJECT_DIR$">
+  <configuration default="false" name="console-test" type="NodeJSConfigurationType" path-to-js-file="$PROJECT_DIR$/apps/cli/bin/cli.js" working-dir="$PROJECT_DIR$">
     <method v="2" />
   </configuration>
 </component>

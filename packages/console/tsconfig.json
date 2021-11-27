@@ -44,6 +44,9 @@
     ],
     "exclude": [
         "node_modules",
+        "src/yargs/test",
+        "src/yargs/lib/platform-shims/deno.ts",
+        "src/yargs/deno.ts",
         "dist",
         "lib",
         "test"

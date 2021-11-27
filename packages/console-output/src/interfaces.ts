@@ -2,6 +2,16 @@ import { InspectOptions } from 'util';
 import { Output }         from './Output';
 
 
+
+
+export interface OutputOptions {
+    silent?: boolean,
+    colors?: boolean
+    inspect?: InspectOptions
+    resetOnNewline?: boolean,
+    styles?: { [ name: string ]: string },
+}
+
 export type TruncateFunction = (input: string, columns: number, options?: TruncateOptions) => string
 export type WrapFunction = (input: string, columns: number, options?: WrapOptions) => string;
 export type SliceFunction = (inputu: string, beginSlice: number, endSlice?: number) => string;
@@ -62,20 +72,6 @@ export interface ColumnsOptions {
     truncateMarker?: string
     widths?: { [ name: string ]: ColumnsOptions }
     config?: { [ name: string ]: ColumnsOptions }
-}
-
-
-export interface OutputOptions {
-    parsers?: {
-        colors?: boolean
-        figures?:boolean
-        [key:string]:boolean
-    }
-    inspect?: InspectOptions
-    quiet?: boolean,
-    resetOnNewline?: boolean,
-    styles?: { [ name: string ]: string | string[] },
-    tableStyle?: OutputOptionsTableStyles
 }
 
 
@@ -187,7 +183,6 @@ export interface IParserConstructor {
 }
 
 export interface IParser {
-    output: Output
     parse(text: string): string
 
     clean(text: string): string

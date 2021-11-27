@@ -1,6 +1,7 @@
 import { Application, CacheServiceProvider, SystemServiceProvider } from '@radic/core';
 import { CliServiceProvider } from '@radic/console';
-import { InputServiceProvider } from '@radic/console-input/InputServiceProvider';
+import { InputServiceProvider } from '@radic/console-input/InputServiceProvider.js';
+import { OutputServiceProvider } from '@radic/console-output/OutputServiceProvider.js';
 
 export async function cli() {
     const app = Application.instance;
@@ -10,23 +11,29 @@ export async function cli() {
             CacheServiceProvider,
             SystemServiceProvider,
             CliServiceProvider,
-            InputServiceProvider
+            InputServiceProvider,
+            OutputServiceProvider,
         ],
         config   : {
             startFn: async (app, ...args) => {
                 app.cli
                    .showHelpOnFail()
                    .demandCommand();
-                await app.cliStart()
+                await app.cliStart();
                 return app.cli as any;
             },
-            system: {
-                processes: ['php-fpm8.0'],
-                services: ['php8.0-fpm']
+            system : {
+                processes: [ 'php-fpm8.0' ],
+                services : [ 'php8.0-fpm' ],
             },
-            cli: {
+            cli    : {
                 commandDir: __dirname + '/commands',
-            }
+            },
+            output : {
+                colors        : true,
+                silent        : false,
+                resetOnNewline: true,
+            },
         },
     });
     await app.boot();

@@ -1,19 +1,19 @@
-import { ServiceProvider } from '../../core';
-import { Output, OutputOptions } from '@radic/console-output';
+import { ServiceProvider } from '@radic/shared';
+import { Output, OutputOptions } from './';
 
-declare module '../../types/config' {
+declare module '@radic/core/lib/types/config' {
     export interface Configuration {
         output?: OutputOptions;
     }
 }
-declare module '../../core/Foundation/Application' {
+declare module '@radic/core/lib/Foundation/Application' {
     export interface Bindings {
-        'out': Output;
-        'out.options': OutputOptions;
+        'output': Output;
+        'output.options': OutputOptions;
     }
 
     export interface Application {
-        out: Output;
+        output: Output;
     }
 }
 
@@ -34,20 +34,18 @@ export class OutputServiceProvider extends ServiceProvider {
                 parsers       : { type: 'object' },
                 quiet         : { type: 'boolean' },
                 resetOnNewline: { type: 'boolean' },
-                styles        : { type: 'object' },
-                tableStyle    : { type: 'object' },
             },
         });
     }
 
     register() {
-        this.app.instance<OutputOptions>('out.options', Output.defaultOptions);
+        this.app.instance<OutputOptions>('output.options', Output.defaultOptions);
     }
 
     boot() {
-        this.app.binding<Output>('out', app => {
-            return new Output(app.get('out.options'));
+        this.app.binding<Output>('output', app => {
+            return new Output(app.get('output.options'));
         }, true);
-        this.app.addBindingGetter('out');
+        this.app.addBindingGetter('output');
     }
 }

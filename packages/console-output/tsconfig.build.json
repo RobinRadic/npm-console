@@ -45,6 +45,7 @@
         "src/index.ts"
     ],
     "exclude": [
+        "src/_Output.ts",
         "node_modules",
         "examples",
         "dist"

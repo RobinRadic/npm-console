@@ -6,9 +6,8 @@
     },
     "private": false,
     "bin": {
-        "console-test": "bin/console-test.js"
+        "console-test": "bin/console-test.sh"
     },
-
     "scripts": {
         "start": "npm-run-all clean:build build",
         "test": "nyc mocha --opts test/mocha.opts",
@@ -19,7 +18,8 @@
         "prepare": "npm-run-all clean:build build",
         "prepublish": "npm-run-all clean:build build",
         "login": "yarn login",
-        "release": "npm-run-all clean:build build login && np --yolo --no-yarn"
+        "release": "npm-run-all clean:build build login && np --yolo --no-yarn",
+        "rename": "renamer -regex --find '\\.js^' --replace '.mjs' './lib/**/*.js'"
     },
     "dependencies": {
         "@radic/core": "^1.0.0",

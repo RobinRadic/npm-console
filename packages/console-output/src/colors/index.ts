@@ -1,6 +1,6 @@
 ///<reference path="./globals.d.ts"/>
 export * from './Colors';
-export * from './ColorsParser';
-import { Colors } from './Colors';
+export * from './FiguresParser';
+export * from './StyleManager';
+export * from './StyleParser';
 
-export const colors = new Colors();

@@ -1,4 +1,6 @@
-import { CancelablePromise, EventEmitter2, GeneralEventEmitter, Listener, OnOptions, WaitForFilter, WaitForOptions } from 'eventemitter2';
+import { CancelablePromise, GeneralEventEmitter, Listener, OnOptions, WaitForFilter, WaitForOptions } from 'eventemitter2';
+import eventemitter2 from 'eventemitter2';
+import EventEmitter2 = eventemitter2.EventEmitter2
 import { decorate, injectable, unmanaged } from 'inversify';
 
 decorate(injectable(), EventEmitter2);

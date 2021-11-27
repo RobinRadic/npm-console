@@ -10,4 +10,4 @@
  * }).reduce(utils.objectify, {});
  *
  */
-export const objectify = (obj, [ k, v ]) => ({ ...obj, [ k ]: v });
+export const objectify = <T, K extends keyof T>(obj: T, [ k, v ]: [ K, T[K] ]):T => ({ ...obj, [ k ]: v });

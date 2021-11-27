@@ -1,5 +1,5 @@
 import { ServiceProvider } from '@radic/shared';
-import { Input } from '@radic/console-input';
+import { Input } from './Input';
 
 declare module '@radic/core/lib/Foundation/Application' {
     export interface Bindings {

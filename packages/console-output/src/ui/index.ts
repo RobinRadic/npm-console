@@ -1,3 +1,7 @@
-export *           from './Ui';
-export { Erasers } from './erase';
-export { Movers }  from './move';
+export * from './Erase';
+export * from './Move';
+export * from './ProgressBar';
+export * from './Text';
+export * from './Ui';
+export * from './UiBase';
+

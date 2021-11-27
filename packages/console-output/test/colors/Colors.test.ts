@@ -2,15 +2,19 @@
 import { context, suite, test } from 'mocha-typescript';
 // import { assert, should } from 'chai'
 import { colors, Output } from '../../src';
-import { TestCase }       from '../TestCase';
+import { TestCase } from '../TestCase';
 
 @suite()
-class ParserTest extends TestCase {
+class ColorsTest extends TestCase {
     @context mocha; // Set for instenace methods such as tests and before/after
     @context static mocha; // Set for static methods such as static before/after (mocha bdd beforeEach/afterEach)
     text: string;
     parser: colors.StyleParser;
-output:Output
+    colors: colors.Colors;
+
+    makeColorsClass(){
+
+    }
 
 
     before() {

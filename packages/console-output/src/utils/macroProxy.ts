@@ -3,8 +3,8 @@
 
 export type MacroCallback<T = any> = (...args: any[]) => T
 
-export interface MacroProxy<T, CB=MacroCallback<T>, R=any> {
-    macro(name: string, macro: MacroCallback<T>): R;
+export interface MacroProxy<T, CB=MacroCallback, R=any|void> {
+    macro(name: string, macro: MacroCallback<R>): R;
 
     hasMacro(name: string): boolean;
 

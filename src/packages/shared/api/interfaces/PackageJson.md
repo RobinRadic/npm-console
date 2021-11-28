@@ -1,4 +1,4 @@
-[@radic/shared](../README.md) / [Exports](../modules.md) / PackageJson
+[@radic/shared](../README.md) / PackageJson
 
 # Interface: PackageJson
 
@@ -46,7 +46,7 @@
 
 #### Defined in
 
-[types/packageJson.ts:21](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/types/packageJson.ts#L21)
+[types/packageJson.ts:21](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/types/packageJson.ts#L21)
 
 ___
 
@@ -56,7 +56,7 @@ ___
 
 #### Defined in
 
-[types/packageJson.ts:26](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/types/packageJson.ts#L26)
+[types/packageJson.ts:26](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/types/packageJson.ts#L26)
 
 ___
 
@@ -66,7 +66,7 @@ ___
 
 #### Defined in
 
-[types/packageJson.ts:25](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/types/packageJson.ts#L25)
+[types/packageJson.ts:25](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/types/packageJson.ts#L25)
 
 ___
 
@@ -76,7 +76,7 @@ ___
 
 #### Defined in
 
-[types/packageJson.ts:19](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/types/packageJson.ts#L19)
+[types/packageJson.ts:19](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/types/packageJson.ts#L19)
 
 ___
 
@@ -86,7 +86,7 @@ ___
 
 #### Defined in
 
-[types/packageJson.ts:47](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/types/packageJson.ts#L47)
+[types/packageJson.ts:47](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/types/packageJson.ts#L47)
 
 ___
 
@@ -96,7 +96,7 @@ ___
 
 #### Defined in
 
-[types/packageJson.ts:42](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/types/packageJson.ts#L42)
+[types/packageJson.ts:42](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/types/packageJson.ts#L42)
 
 ___
 
@@ -106,7 +106,7 @@ ___
 
 #### Defined in
 
-[types/packageJson.ts:22](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/types/packageJson.ts#L22)
+[types/packageJson.ts:22](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/types/packageJson.ts#L22)
 
 ___
 
@@ -116,7 +116,7 @@ ___
 
 #### Defined in
 
-[types/packageJson.ts:50](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/types/packageJson.ts#L50)
+[types/packageJson.ts:50](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/types/packageJson.ts#L50)
 
 ___
 
@@ -126,7 +126,7 @@ ___
 
 #### Defined in
 
-[types/packageJson.ts:43](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/types/packageJson.ts#L43)
+[types/packageJson.ts:43](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/types/packageJson.ts#L43)
 
 ___
 
@@ -136,7 +136,7 @@ ___
 
 #### Defined in
 
-[types/packageJson.ts:16](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/types/packageJson.ts#L16)
+[types/packageJson.ts:16](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/types/packageJson.ts#L16)
 
 ___
 
@@ -146,7 +146,7 @@ ___
 
 #### Defined in
 
-[types/packageJson.ts:44](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/types/packageJson.ts#L44)
+[types/packageJson.ts:44](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/types/packageJson.ts#L44)
 
 ___
 
@@ -167,7 +167,7 @@ ___
 
 #### Defined in
 
-[types/packageJson.ts:28](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/types/packageJson.ts#L28)
+[types/packageJson.ts:28](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/types/packageJson.ts#L28)
 
 ___
 
@@ -177,7 +177,7 @@ ___
 
 #### Defined in
 
-[types/packageJson.ts:48](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/types/packageJson.ts#L48)
+[types/packageJson.ts:48](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/types/packageJson.ts#L48)
 
 ___
 
@@ -187,7 +187,7 @@ ___
 
 #### Defined in
 
-[types/packageJson.ts:23](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/types/packageJson.ts#L23)
+[types/packageJson.ts:23](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/types/packageJson.ts#L23)
 
 ___
 
@@ -197,7 +197,7 @@ ___
 
 #### Defined in
 
-[types/packageJson.ts:18](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/types/packageJson.ts#L18)
+[types/packageJson.ts:18](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/types/packageJson.ts#L18)
 
 ___
 
@@ -207,7 +207,7 @@ ___
 
 #### Defined in
 
-[types/packageJson.ts:17](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/types/packageJson.ts#L17)
+[types/packageJson.ts:17](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/types/packageJson.ts#L17)
 
 ___
 
@@ -217,7 +217,7 @@ ___
 
 #### Defined in
 
-[types/packageJson.ts:20](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/types/packageJson.ts#L20)
+[types/packageJson.ts:20](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/types/packageJson.ts#L20)
 
 ___
 
@@ -227,7 +227,7 @@ ___
 
 #### Defined in
 
-[types/packageJson.ts:24](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/types/packageJson.ts#L24)
+[types/packageJson.ts:24](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/types/packageJson.ts#L24)
 
 ___
 
@@ -237,7 +237,7 @@ ___
 
 #### Defined in
 
-[types/packageJson.ts:27](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/types/packageJson.ts#L27)
+[types/packageJson.ts:27](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/types/packageJson.ts#L27)
 
 ___
 
@@ -247,7 +247,7 @@ ___
 
 #### Defined in
 
-[types/packageJson.ts:14](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/types/packageJson.ts#L14)
+[types/packageJson.ts:14](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/types/packageJson.ts#L14)
 
 ___
 
@@ -257,7 +257,7 @@ ___
 
 #### Defined in
 
-[types/packageJson.ts:46](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/types/packageJson.ts#L46)
+[types/packageJson.ts:46](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/types/packageJson.ts#L46)
 
 ___
 
@@ -267,7 +267,7 @@ ___
 
 #### Defined in
 
-[types/packageJson.ts:49](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/types/packageJson.ts#L49)
+[types/packageJson.ts:49](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/types/packageJson.ts#L49)
 
 ___
 
@@ -277,7 +277,7 @@ ___
 
 #### Defined in
 
-[types/packageJson.ts:45](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/types/packageJson.ts#L45)
+[types/packageJson.ts:45](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/types/packageJson.ts#L45)
 
 ___
 
@@ -295,7 +295,7 @@ ___
 
 #### Defined in
 
-[types/packageJson.ts:36](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/types/packageJson.ts#L36)
+[types/packageJson.ts:36](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/types/packageJson.ts#L36)
 
 ___
 
@@ -305,7 +305,7 @@ ___
 
 #### Defined in
 
-[types/packageJson.ts:41](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/types/packageJson.ts#L41)
+[types/packageJson.ts:41](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/types/packageJson.ts#L41)
 
 ___
 
@@ -315,7 +315,7 @@ ___
 
 #### Defined in
 
-[types/packageJson.ts:15](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/types/packageJson.ts#L15)
+[types/packageJson.ts:15](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/types/packageJson.ts#L15)
 
 ___
 
@@ -325,4 +325,4 @@ ___
 
 #### Defined in
 
-[types/packageJson.ts:13](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/types/packageJson.ts#L13)
+[types/packageJson.ts:13](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/types/packageJson.ts#L13)

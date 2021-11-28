@@ -10,13 +10,27 @@ const config   = defineUserConfig<DefaultThemeOptions, WebpackBundlerOptions>({
     lang       : 'en-US',
     title      : 'NPM Packages',
     description: '',
-
-    head: [
+dest: root('docs'),
+    head       : [
         [ 'meta', { name: 'theme-color', content: '#3EAF7C' } ],
         [ 'meta', { name: 'apple-mobile-web-app-capable', content: 'yes' } ],
         [ 'meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' } ],
     ],
-
+    // bundlerConfig: {
+    //     vue: {
+    //         compilerOptions: {
+    //             nodeTransforms: [
+    //                 (node, context) => context.addIdentifiers
+    //             ]
+    //         }
+    //     }
+    // },
+    // markdown   : {
+    //     html:false
+    // },
+    // extendsMarkdown:(md, app) => {
+    //   md.use(require("markdown-it-html-entities"))
+    // },
     themeConfig: {
         editLinks   : false,
         docsDir     : '',
@@ -53,11 +67,11 @@ const config   = defineUserConfig<DefaultThemeOptions, WebpackBundlerOptions>({
     plugins: [
         [ resolve(__dirname, 'plugins/monorepo'), <MonorepoPluginOptions>{
             monorepo: {
-                root: root(),
+                root   : root(),
                 resolve: {
-                    exclude: ['apps/cli']
-                }
-            }
+                    exclude: [ 'apps/cli' ],
+                },
+            },
         } ],
         '@vuepress/plugin-back-to-top',
         /** @link https://v2.vuepress.vuejs.org/reference/plugin/active-header-links.html#install */

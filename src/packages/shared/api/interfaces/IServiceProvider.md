@@ -1,4 +1,4 @@
-[@radic/shared](../README.md) / [Exports](../modules.md) / IServiceProvider
+[@radic/shared](../README.md) / IServiceProvider
 
 # Interface: IServiceProvider
 
@@ -32,17 +32,17 @@
 
 #### Defined in
 
-[ServiceProvider.ts:21](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/ServiceProvider.ts#L21)
+[ServiceProvider.ts:21](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/ServiceProvider.ts#L21)
 
 ___
 
 ### bindings
 
-• `Optional` **bindings**: `Record`<`string`, [`Constructor`](../modules.md#constructor)<`any`\>\>
+• `Optional` **bindings**: `Record`<`string`, [`Constructor`](../README.md#constructor)<`any`\>\>
 
 #### Defined in
 
-[ServiceProvider.ts:24](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/ServiceProvider.ts#L24)
+[ServiceProvider.ts:24](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/ServiceProvider.ts#L24)
 
 ___
 
@@ -52,17 +52,17 @@ ___
 
 #### Defined in
 
-[ServiceProvider.ts:26](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/ServiceProvider.ts#L26)
+[ServiceProvider.ts:26](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/ServiceProvider.ts#L26)
 
 ___
 
 ### providers
 
-• `Optional` **providers**: [`IServiceProviderClass`](../modules.md#iserviceproviderclass)[]
+• `Optional` **providers**: [`IServiceProviderClass`](../README.md#iserviceproviderclass)[]
 
 #### Defined in
 
-[ServiceProvider.ts:22](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/ServiceProvider.ts#L22)
+[ServiceProvider.ts:22](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/ServiceProvider.ts#L22)
 
 ___
 
@@ -72,17 +72,17 @@ ___
 
 #### Defined in
 
-[ServiceProvider.ts:25](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/ServiceProvider.ts#L25)
+[ServiceProvider.ts:25](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/ServiceProvider.ts#L25)
 
 ___
 
 ### singletons
 
-• `Optional` **singletons**: `Record`<`string`, [`Constructor`](../modules.md#constructor)<`any`\>\>
+• `Optional` **singletons**: `Record`<`string`, [`Constructor`](../README.md#constructor)<`any`\>\>
 
 #### Defined in
 
-[ServiceProvider.ts:23](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/ServiceProvider.ts#L23)
+[ServiceProvider.ts:23](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/ServiceProvider.ts#L23)
 
 ## Methods
 
@@ -96,7 +96,7 @@ ___
 
 #### Defined in
 
-[ServiceProvider.ts:34](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/ServiceProvider.ts#L34)
+[ServiceProvider.ts:34](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/ServiceProvider.ts#L34)
 
 ___
 
@@ -123,7 +123,7 @@ ___
 
 #### Defined in
 
-[ServiceProvider.ts:28](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/ServiceProvider.ts#L28)
+[ServiceProvider.ts:28](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/ServiceProvider.ts#L28)
 
 ___
 
@@ -137,7 +137,7 @@ ___
 
 #### Defined in
 
-[ServiceProvider.ts:30](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/ServiceProvider.ts#L30)
+[ServiceProvider.ts:30](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/ServiceProvider.ts#L30)
 
 ___
 
@@ -151,4 +151,4 @@ ___
 
 #### Defined in
 
-[ServiceProvider.ts:32](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/ServiceProvider.ts#L32)
+[ServiceProvider.ts:32](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/ServiceProvider.ts#L32)

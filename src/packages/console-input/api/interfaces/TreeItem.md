@@ -20,7 +20,7 @@
 
 #### Defined in
 
-[packages/console-input/src/types.ts:54](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L54)
+[packages/console-input/src/types.ts:54](https://github.com/robinradic/npm-console/blob/10cb77f/packages/console-input/src/types.ts#L54)
 
 ___
 
@@ -30,7 +30,7 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/types.ts:50](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L50)
+[packages/console-input/src/types.ts:50](https://github.com/robinradic/npm-console/blob/10cb77f/packages/console-input/src/types.ts#L50)
 
 ___
 
@@ -40,7 +40,7 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/types.ts:53](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L53)
+[packages/console-input/src/types.ts:53](https://github.com/robinradic/npm-console/blob/10cb77f/packages/console-input/src/types.ts#L53)
 
 ___
 
@@ -50,7 +50,7 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/types.ts:52](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L52)
+[packages/console-input/src/types.ts:52](https://github.com/robinradic/npm-console/blob/10cb77f/packages/console-input/src/types.ts#L52)
 
 ___
 
@@ -60,4 +60,4 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/types.ts:51](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L51)
+[packages/console-input/src/types.ts:51](https://github.com/robinradic/npm-console/blob/10cb77f/packages/console-input/src/types.ts#L51)

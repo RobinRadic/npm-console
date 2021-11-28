@@ -1,4 +1,4 @@
-[@radic/shared](../README.md) / [Exports](../modules.md) / ServiceProvider
+[@radic/shared](../README.md) / ServiceProvider
 
 # Class: ServiceProvider
 
@@ -35,7 +35,7 @@
 
 #### Defined in
 
-[ServiceProvider.ts:11](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/ServiceProvider.ts#L11)
+[ServiceProvider.ts:11](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/ServiceProvider.ts#L11)
 
 ## Properties
 
@@ -59,7 +59,7 @@ ___
 
 #### Defined in
 
-[ServiceProvider.ts:6](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/ServiceProvider.ts#L6)
+[ServiceProvider.ts:6](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/ServiceProvider.ts#L6)
 
 ## Methods
 
@@ -90,4 +90,4 @@ ___
 
 #### Defined in
 
-[ServiceProvider.ts:7](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/ServiceProvider.ts#L7)
+[ServiceProvider.ts:7](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/ServiceProvider.ts#L7)

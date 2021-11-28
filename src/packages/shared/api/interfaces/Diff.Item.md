@@ -1,4 +1,4 @@
-[@radic/shared](../README.md) / [Exports](../modules.md) / [Diff](../modules/Diff.md) / Item
+[@radic/shared](../README.md) / [Diff](../modules/Diff.md) / Item
 
 # Interface: Item
 
@@ -22,7 +22,7 @@
 
 #### Defined in
 
-[Diff.ts:445](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/Diff.ts#L445)
+[Diff.ts:445](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/Diff.ts#L445)
 
 ___
 
@@ -32,7 +32,7 @@ ___
 
 #### Defined in
 
-[Diff.ts:447](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/Diff.ts#L447)
+[Diff.ts:447](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/Diff.ts#L447)
 
 ___
 
@@ -42,7 +42,7 @@ ___
 
 #### Defined in
 
-[Diff.ts:444](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/Diff.ts#L444)
+[Diff.ts:444](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/Diff.ts#L444)
 
 ___
 
@@ -52,7 +52,7 @@ ___
 
 #### Defined in
 
-[Diff.ts:446](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/Diff.ts#L446)
+[Diff.ts:446](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/Diff.ts#L446)
 
 ___
 
@@ -62,4 +62,4 @@ ___
 
 #### Defined in
 
-[Diff.ts:448](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/Diff.ts#L448)
+[Diff.ts:448](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/Diff.ts#L448)

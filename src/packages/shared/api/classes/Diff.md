@@ -1,4 +1,4 @@
-[@radic/shared](../README.md) / [Exports](../modules.md) / Diff
+[@radic/shared](../README.md) / Diff
 
 # Class: Diff
 
@@ -36,7 +36,7 @@
 
 #### Defined in
 
-[Diff.ts:367](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/Diff.ts#L367)
+[Diff.ts:367](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/Diff.ts#L367)
 
 ## Properties
 
@@ -46,7 +46,7 @@
 
 #### Defined in
 
-[Diff.ts:365](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/Diff.ts#L365)
+[Diff.ts:365](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/Diff.ts#L365)
 
 ___
 
@@ -72,7 +72,7 @@ ___
 
 #### Defined in
 
-[Diff.ts:375](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/Diff.ts#L375)
+[Diff.ts:375](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/Diff.ts#L375)
 
 ___
 
@@ -86,7 +86,7 @@ ___
 
 #### Defined in
 
-[Diff.ts:379](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/Diff.ts#L379)
+[Diff.ts:379](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/Diff.ts#L379)
 
 ___
 
@@ -120,7 +120,7 @@ ___
 
 #### Defined in
 
-[Diff.ts:384](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/Diff.ts#L384)
+[Diff.ts:384](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/Diff.ts#L384)
 
 ___
 
@@ -141,4 +141,4 @@ ___
 
 #### Defined in
 
-[Diff.ts:371](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/Diff.ts#L371)
+[Diff.ts:371](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/Diff.ts#L371)

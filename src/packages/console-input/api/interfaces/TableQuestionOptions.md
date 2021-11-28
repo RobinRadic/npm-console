@@ -44,7 +44,7 @@
 
 #### Defined in
 
-[packages/console-input/src/types.ts:108](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L108)
+[packages/console-input/src/types.ts:108](https://github.com/robinradic/npm-console/blob/10cb77f/packages/console-input/src/types.ts#L108)
 
 ___
 
@@ -102,7 +102,7 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/types.ts:110](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L110)
+[packages/console-input/src/types.ts:110](https://github.com/robinradic/npm-console/blob/10cb77f/packages/console-input/src/types.ts#L110)
 
 ___
 
@@ -128,7 +128,7 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/types.ts:109](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L109)
+[packages/console-input/src/types.ts:109](https://github.com/robinradic/npm-console/blob/10cb77f/packages/console-input/src/types.ts#L109)
 
 ___
 

@@ -44,7 +44,7 @@ Provides options for a question for the `InputPrompt`.
 
 #### Defined in
 
-[packages/console-input/src/types.ts:257](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L257)
+[packages/console-input/src/types.ts:257](https://github.com/robinradic/npm-console/blob/10cb77f/packages/console-input/src/types.ts#L257)
 
 ___
 

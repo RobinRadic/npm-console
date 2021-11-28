@@ -43,7 +43,7 @@ Provides options for a question for the `inquirer-file-path`.
 
 #### Defined in
 
-[packages/console-input/src/types.ts:206](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L206)
+[packages/console-input/src/types.ts:206](https://github.com/robinradic/npm-console/blob/10cb77f/packages/console-input/src/types.ts#L206)
 
 ___
 
@@ -139,7 +139,7 @@ The type of the question.
 
 #### Defined in
 
-[packages/console-input/src/types.ts:205](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L205)
+[packages/console-input/src/types.ts:205](https://github.com/robinradic/npm-console/blob/10cb77f/packages/console-input/src/types.ts#L205)
 
 ___
 
@@ -213,7 +213,7 @@ The value to display to the user.
 
 #### Defined in
 
-[packages/console-input/src/types.ts:140](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L140)
+[packages/console-input/src/types.ts:140](https://github.com/robinradic/npm-console/blob/10cb77f/packages/console-input/src/types.ts#L140)
 
 ___
 

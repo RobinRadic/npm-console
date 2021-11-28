@@ -1,4 +1,4 @@
-[@radic/shared](../README.md) / [Exports](../modules.md) / EachDeepOptions
+[@radic/shared](../README.md) / EachDeepOptions
 
 # Interface: EachDeepOptions
 
@@ -31,7 +31,7 @@
 
 #### Defined in
 
-[eachDeep.ts:10](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/eachDeep.ts#L10)
+[eachDeep.ts:10](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/eachDeep.ts#L10)
 
 ___
 
@@ -41,4 +41,4 @@ ___
 
 #### Defined in
 
-[eachDeep.ts:9](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/eachDeep.ts#L9)
+[eachDeep.ts:9](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/eachDeep.ts#L9)

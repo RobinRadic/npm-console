@@ -54,7 +54,7 @@ QuestionMap.autocomplete
 
 #### Defined in
 
-[packages/console-input/src/types.ts:6](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L6)
+[packages/console-input/src/types.ts:6](https://github.com/robinradic/npm-console/blob/10cb77f/packages/console-input/src/types.ts#L6)
 
 ___
 
@@ -84,7 +84,7 @@ QuestionMap.color
 
 #### Defined in
 
-[packages/console-input/src/types.ts:17](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L17)
+[packages/console-input/src/types.ts:17](https://github.com/robinradic/npm-console/blob/10cb77f/packages/console-input/src/types.ts#L17)
 
 ___
 
@@ -114,7 +114,7 @@ QuestionMap.datetime
 
 #### Defined in
 
-[packages/console-input/src/types.ts:15](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L15)
+[packages/console-input/src/types.ts:15](https://github.com/robinradic/npm-console/blob/10cb77f/packages/console-input/src/types.ts#L15)
 
 ___
 
@@ -128,7 +128,7 @@ QuestionMap.directory
 
 #### Defined in
 
-[packages/console-input/src/types.ts:14](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L14)
+[packages/console-input/src/types.ts:14](https://github.com/robinradic/npm-console/blob/10cb77f/packages/console-input/src/types.ts#L14)
 
 ___
 
@@ -174,7 +174,7 @@ QuestionMap.file-path
 
 #### Defined in
 
-[packages/console-input/src/types.ts:10](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L10)
+[packages/console-input/src/types.ts:10](https://github.com/robinradic/npm-console/blob/10cb77f/packages/console-input/src/types.ts#L10)
 
 ___
 
@@ -188,7 +188,7 @@ QuestionMap.file-selector
 
 #### Defined in
 
-[packages/console-input/src/types.ts:13](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L13)
+[packages/console-input/src/types.ts:13](https://github.com/robinradic/npm-console/blob/10cb77f/packages/console-input/src/types.ts#L13)
 
 ___
 
@@ -202,7 +202,7 @@ QuestionMap.file-tree-selection
 
 #### Defined in
 
-[packages/console-input/src/types.ts:12](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L12)
+[packages/console-input/src/types.ts:12](https://github.com/robinradic/npm-console/blob/10cb77f/packages/console-input/src/types.ts#L12)
 
 ___
 
@@ -216,7 +216,7 @@ QuestionMap.filefolder
 
 #### Defined in
 
-[packages/console-input/src/types.ts:11](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L11)
+[packages/console-input/src/types.ts:11](https://github.com/robinradic/npm-console/blob/10cb77f/packages/console-input/src/types.ts#L11)
 
 ___
 
@@ -230,7 +230,7 @@ QuestionMap.fuzzypath
 
 #### Defined in
 
-[packages/console-input/src/types.ts:9](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L9)
+[packages/console-input/src/types.ts:9](https://github.com/robinradic/npm-console/blob/10cb77f/packages/console-input/src/types.ts#L9)
 
 ___
 
@@ -276,7 +276,7 @@ QuestionMap.maxlength-input
 
 #### Defined in
 
-[packages/console-input/src/types.ts:16](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L16)
+[packages/console-input/src/types.ts:16](https://github.com/robinradic/npm-console/blob/10cb77f/packages/console-input/src/types.ts#L16)
 
 ___
 
@@ -322,7 +322,7 @@ QuestionMap.path
 
 #### Defined in
 
-[packages/console-input/src/types.ts:7](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L7)
+[packages/console-input/src/types.ts:7](https://github.com/robinradic/npm-console/blob/10cb77f/packages/console-input/src/types.ts#L7)
 
 ___
 
@@ -352,7 +352,7 @@ QuestionMap.suggest
 
 #### Defined in
 
-[packages/console-input/src/types.ts:18](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L18)
+[packages/console-input/src/types.ts:18](https://github.com/robinradic/npm-console/blob/10cb77f/packages/console-input/src/types.ts#L18)
 
 ___
 
@@ -366,7 +366,7 @@ QuestionMap.table
 
 #### Defined in
 
-[packages/console-input/src/types.ts:19](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L19)
+[packages/console-input/src/types.ts:19](https://github.com/robinradic/npm-console/blob/10cb77f/packages/console-input/src/types.ts#L19)
 
 ___
 
@@ -380,4 +380,4 @@ QuestionMap.tree
 
 #### Defined in
 
-[packages/console-input/src/types.ts:8](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L8)
+[packages/console-input/src/types.ts:8](https://github.com/robinradic/npm-console/blob/10cb77f/packages/console-input/src/types.ts#L8)

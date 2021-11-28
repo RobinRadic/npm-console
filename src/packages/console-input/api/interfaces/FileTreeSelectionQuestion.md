@@ -67,7 +67,7 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/types.ts:31](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L31)
+[packages/console-input/src/types.ts:31](https://github.com/robinradic/npm-console/blob/10cb77f/packages/console-input/src/types.ts#L31)
 
 ___
 
@@ -97,7 +97,7 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/types.ts:33](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L33)
+[packages/console-input/src/types.ts:33](https://github.com/robinradic/npm-console/blob/10cb77f/packages/console-input/src/types.ts#L33)
 
 ___
 
@@ -127,7 +127,7 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/types.ts:28](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L28)
+[packages/console-input/src/types.ts:28](https://github.com/robinradic/npm-console/blob/10cb77f/packages/console-input/src/types.ts#L28)
 
 ___
 
@@ -141,7 +141,7 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/types.ts:30](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L30)
+[packages/console-input/src/types.ts:30](https://github.com/robinradic/npm-console/blob/10cb77f/packages/console-input/src/types.ts#L30)
 
 ___
 
@@ -171,7 +171,7 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/types.ts:29](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L29)
+[packages/console-input/src/types.ts:29](https://github.com/robinradic/npm-console/blob/10cb77f/packages/console-input/src/types.ts#L29)
 
 ___
 
@@ -201,7 +201,7 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/types.ts:32](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L32)
+[packages/console-input/src/types.ts:32](https://github.com/robinradic/npm-console/blob/10cb77f/packages/console-input/src/types.ts#L32)
 
 ___
 
@@ -217,7 +217,7 @@ The type of the question.
 
 #### Defined in
 
-[packages/console-input/src/types.ts:46](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L46)
+[packages/console-input/src/types.ts:46](https://github.com/robinradic/npm-console/blob/10cb77f/packages/console-input/src/types.ts#L46)
 
 ___
 

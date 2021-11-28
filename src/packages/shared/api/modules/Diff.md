@@ -1,4 +1,4 @@
-[@radic/shared](../README.md) / [Exports](../modules.md) / Diff
+[@radic/shared](../README.md) / Diff
 
 # Namespace: Diff
 
@@ -28,7 +28,7 @@
 
 #### Defined in
 
-[Diff.ts:438](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/Diff.ts#L438)
+[Diff.ts:438](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/Diff.ts#L438)
 
 ___
 
@@ -38,7 +38,7 @@ ___
 
 #### Defined in
 
-[Diff.ts:432](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/Diff.ts#L432)
+[Diff.ts:432](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/Diff.ts#L432)
 
 ## Functions
 
@@ -58,7 +58,7 @@ value is Item
 
 #### Defined in
 
-[Diff.ts:427](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/Diff.ts#L427)
+[Diff.ts:427](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/Diff.ts#L427)
 
 ___
 
@@ -78,7 +78,7 @@ value is Item
 
 #### Defined in
 
-[Diff.ts:428](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/Diff.ts#L428)
+[Diff.ts:428](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/Diff.ts#L428)
 
 ___
 
@@ -98,7 +98,7 @@ value is Item
 
 #### Defined in
 
-[Diff.ts:430](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/Diff.ts#L430)
+[Diff.ts:430](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/Diff.ts#L430)
 
 ___
 
@@ -118,4 +118,4 @@ value is Item
 
 #### Defined in
 
-[Diff.ts:429](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/Diff.ts#L429)
+[Diff.ts:429](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/Diff.ts#L429)

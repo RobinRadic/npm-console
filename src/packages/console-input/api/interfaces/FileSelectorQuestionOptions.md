@@ -65,7 +65,7 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/types.ts:224](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L224)
+[packages/console-input/src/types.ts:224](https://github.com/robinradic/npm-console/blob/10cb77f/packages/console-input/src/types.ts#L224)
 
 ___
 
@@ -107,7 +107,7 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/types.ts:227](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L227)
+[packages/console-input/src/types.ts:227](https://github.com/robinradic/npm-console/blob/10cb77f/packages/console-input/src/types.ts#L227)
 
 ___
 
@@ -117,7 +117,7 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/types.ts:223](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L223)
+[packages/console-input/src/types.ts:223](https://github.com/robinradic/npm-console/blob/10cb77f/packages/console-input/src/types.ts#L223)
 
 ___
 
@@ -143,7 +143,7 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/types.ts:225](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L225)
+[packages/console-input/src/types.ts:225](https://github.com/robinradic/npm-console/blob/10cb77f/packages/console-input/src/types.ts#L225)
 
 ___
 
@@ -153,7 +153,7 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/types.ts:226](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L226)
+[packages/console-input/src/types.ts:226](https://github.com/robinradic/npm-console/blob/10cb77f/packages/console-input/src/types.ts#L226)
 
 ___
 
@@ -259,7 +259,7 @@ The value to display to the user.
 
 #### Defined in
 
-[packages/console-input/src/types.ts:140](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L140)
+[packages/console-input/src/types.ts:140](https://github.com/robinradic/npm-console/blob/10cb77f/packages/console-input/src/types.ts#L140)
 
 ___
 

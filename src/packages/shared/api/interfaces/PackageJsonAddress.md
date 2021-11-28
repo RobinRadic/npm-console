@@ -1,4 +1,4 @@
-[@radic/shared](../README.md) / [Exports](../modules.md) / PackageJsonAddress
+[@radic/shared](../README.md) / PackageJsonAddress
 
 # Interface: PackageJsonAddress
 
@@ -23,7 +23,7 @@
 
 #### Defined in
 
-[types/packageJson.ts:4](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/types/packageJson.ts#L4)
+[types/packageJson.ts:4](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/types/packageJson.ts#L4)
 
 ___
 
@@ -33,4 +33,4 @@ ___
 
 #### Defined in
 
-[types/packageJson.ts:5](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/types/packageJson.ts#L5)
+[types/packageJson.ts:5](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/types/packageJson.ts#L5)

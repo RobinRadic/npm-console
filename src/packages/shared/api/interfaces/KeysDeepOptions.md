@@ -1,4 +1,4 @@
-[@radic/shared](../README.md) / [Exports](../modules.md) / KeysDeepOptions
+[@radic/shared](../README.md) / KeysDeepOptions
 
 # Interface: KeysDeepOptions
 
@@ -25,7 +25,7 @@
 
 #### Defined in
 
-[eachDeep.ts:5](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/eachDeep.ts#L5)
+[eachDeep.ts:5](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/eachDeep.ts#L5)
 
 ___
 
@@ -35,7 +35,7 @@ ___
 
 #### Defined in
 
-[eachDeep.ts:6](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/eachDeep.ts#L6)
+[eachDeep.ts:6](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/eachDeep.ts#L6)
 
 ___
 
@@ -57,7 +57,7 @@ ___
 
 #### Defined in
 
-[eachDeep.ts:10](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/eachDeep.ts#L10)
+[eachDeep.ts:10](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/eachDeep.ts#L10)
 
 ___
 
@@ -71,4 +71,4 @@ ___
 
 #### Defined in
 
-[eachDeep.ts:9](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/eachDeep.ts#L9)
+[eachDeep.ts:9](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/eachDeep.ts#L9)

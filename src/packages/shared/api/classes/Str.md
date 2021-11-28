@@ -1,4 +1,4 @@
-[@radic/shared](../README.md) / [Exports](../modules.md) / Str
+[@radic/shared](../README.md) / Str
 
 # Class: Str
 
@@ -44,7 +44,7 @@
 
 #### Defined in
 
-[Str.ts:11](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/Str.ts#L11)
+[Str.ts:11](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/Str.ts#L11)
 
 ___
 
@@ -65,7 +65,7 @@ ___
 
 #### Defined in
 
-[Str.ts:18](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/Str.ts#L18)
+[Str.ts:18](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/Str.ts#L18)
 
 ___
 
@@ -85,7 +85,7 @@ ___
 
 #### Defined in
 
-[Str.ts:43](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/Str.ts#L43)
+[Str.ts:43](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/Str.ts#L43)
 
 ___
 
@@ -106,7 +106,7 @@ ___
 
 #### Defined in
 
-[Str.ts:47](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/Str.ts#L47)
+[Str.ts:47](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/Str.ts#L47)
 
 ___
 
@@ -126,7 +126,7 @@ ___
 
 #### Defined in
 
-[Str.ts:2](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/Str.ts#L2)
+[Str.ts:2](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/Str.ts#L2)
 
 ___
 
@@ -147,7 +147,7 @@ ___
 
 #### Defined in
 
-[Str.ts:25](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/Str.ts#L25)
+[Str.ts:25](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/Str.ts#L25)
 
 ___
 
@@ -168,7 +168,7 @@ ___
 
 #### Defined in
 
-[Str.ts:32](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/Str.ts#L32)
+[Str.ts:32](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/Str.ts#L32)
 
 ___
 
@@ -188,4 +188,4 @@ ___
 
 #### Defined in
 
-[Str.ts:39](https://github.com/robinradic/npm-console/blob/27e41ef/packages/shared/src/Str.ts#L39)
+[Str.ts:39](https://github.com/robinradic/npm-console/blob/10cb77f/packages/shared/src/Str.ts#L39)

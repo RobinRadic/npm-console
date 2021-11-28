@@ -19,6 +19,7 @@
         "before-after-hook": "1.4."
     },
     "scripts": {
+        "docs": "npm-run-all docs:api docs:build clean:docs:api",
         "docs:dev": "vuepress dev src",
         "docs:build": "vuepress build src",
         "docs:info": "vuepress info src",
@@ -33,6 +34,8 @@
         "reinstall": "yarn clean:yarn && yarn",
         "build": "npm-run-all \"shared build\" \"core build\" \"console-output build\" \"console-input build\" \"console-colors build\" \"console build\"",
         "test": "npm-run-all \"shared test\" \"core test\" \"console-output test\" \"console-input test\" \"console-colors test\" \"console test\"",
+        "docs:api": "npm-run-all \"shared docs:api\" \"core docs:api\" \"console-output docs:api\" \"console-input docs:api\" \"console-colors docs:api\" \"console docs:api\"",
+        "clean:docs:api": "npm-run-all \"shared clean:docs:api\" \"core clean:docs:api\" \"console-output clean:docs:api\" \"console-input clean:docs:api\" \"console-colors clean:docs:api\" \"console clean:docs:api\"",
         "clean:build": "rimraf **/lib **/.nyc_output",
         "clean:test": "rimraf **/.nyc_output",
         "clean:yarn": "rimraf \"**/node_modules\" \"**/yarn.lock\" \"**/.nyc_ou*\""

@@ -1,4 +1,4 @@
-[@radic/console-input](../README.md) / [Exports](../modules.md) / ColorQuestion
+[@radic/console-input](../README.md) / ColorQuestion
 
 # Interface: ColorQuestion<T\>
 
@@ -125,7 +125,7 @@ The type of the question.
 
 #### Defined in
 
-[packages/console-input/src/types.ts:94](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/types.ts#L94)
+[packages/console-input/src/types.ts:94](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L94)
 
 ___
 

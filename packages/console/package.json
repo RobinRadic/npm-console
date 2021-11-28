@@ -26,6 +26,8 @@
         "pretest": "yarn clean:test",
         "posttest": "yarn clean:test",
         "clean:test": "rm -rf .nyc-output/",
+        "docs:api": "rm -rf docs/api && node ../../typedoc.js",
+        "clean:docs:api": "rm -rf docs/api",
         "build": "yarn clean:build && tsc --project tsconfig.build.json",
         "watch": "tsc --project tsconfig.build.json --watch",
         "clean:build": "rm -rf lib && rimraf src/**/*.{js,js.map}",

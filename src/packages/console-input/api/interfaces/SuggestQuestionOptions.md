@@ -1,4 +1,4 @@
-[@radic/console-input](../README.md) / [Exports](../modules.md) / SuggestQuestionOptions
+[@radic/console-input](../README.md) / SuggestQuestionOptions
 
 # Interface: SuggestQuestionOptions<T\>
 
@@ -122,7 +122,7 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/types.ts:99](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/types.ts#L99)
+[packages/console-input/src/types.ts:99](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L99)
 
 ___
 

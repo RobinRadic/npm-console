@@ -1,4 +1,4 @@
-[@radic/console-input](../README.md) / [Exports](../modules.md) / ColorQuestionOptions
+[@radic/console-input](../README.md) / ColorQuestionOptions
 
 # Interface: ColorQuestionOptions<T\>
 

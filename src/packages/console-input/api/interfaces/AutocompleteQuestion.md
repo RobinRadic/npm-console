@@ -1,4 +1,4 @@
-[@radic/console-input](../README.md) / [Exports](../modules.md) / AutocompleteQuestion
+[@radic/console-input](../README.md) / AutocompleteQuestion
 
 # Interface: AutocompleteQuestion<T\>
 
@@ -48,7 +48,7 @@
 
 #### Defined in
 
-[packages/console-input/src/types.ts:277](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/types.ts#L277)
+[packages/console-input/src/types.ts:277](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L277)
 
 ___
 
@@ -62,7 +62,7 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/types.ts:276](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/types.ts#L276)
+[packages/console-input/src/types.ts:276](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L276)
 
 ___
 
@@ -108,7 +108,7 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/types.ts:278](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/types.ts#L278)
+[packages/console-input/src/types.ts:278](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L278)
 
 ___
 
@@ -138,7 +138,7 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/types.ts:275](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/types.ts#L275)
+[packages/console-input/src/types.ts:275](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L275)
 
 ___
 
@@ -168,7 +168,7 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/types.ts:274](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/types.ts#L274)
+[packages/console-input/src/types.ts:274](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L274)
 
 ___
 
@@ -184,7 +184,7 @@ The type of the question.
 
 #### Defined in
 
-[packages/console-input/src/types.ts:288](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/types.ts#L288)
+[packages/console-input/src/types.ts:288](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L288)
 
 ___
 
@@ -224,7 +224,7 @@ node_modules/@types/inquirer/index.d.ts:303
 
 #### Defined in
 
-[packages/console-input/src/types.ts:280](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/types.ts#L280)
+[packages/console-input/src/types.ts:280](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L280)
 
 ___
 
@@ -249,7 +249,7 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/types.ts:284](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/types.ts#L284)
+[packages/console-input/src/types.ts:284](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L284)
 
 ___
 
@@ -273,4 +273,4 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/types.ts:282](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/types.ts#L282)
+[packages/console-input/src/types.ts:282](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L282)

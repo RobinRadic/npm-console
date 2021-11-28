@@ -1,4 +1,4 @@
-[@radic/console-input](../README.md) / [Exports](../modules.md) / PathQuestion
+[@radic/console-input](../README.md) / PathQuestion
 
 # Interface: PathQuestion<T\>
 
@@ -50,7 +50,7 @@ The default value of the question.
 
 #### Defined in
 
-[packages/console-input/src/types.ts:155](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/types.ts#L155)
+[packages/console-input/src/types.ts:155](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L155)
 
 ___
 
@@ -60,7 +60,7 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/types.ts:157](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/types.ts#L157)
+[packages/console-input/src/types.ts:157](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L157)
 
 ___
 
@@ -86,7 +86,7 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/types.ts:156](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/types.ts#L156)
+[packages/console-input/src/types.ts:156](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L156)
 
 ___
 
@@ -150,7 +150,7 @@ The type of the question.
 
 #### Defined in
 
-[packages/console-input/src/types.ts:154](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/types.ts#L154)
+[packages/console-input/src/types.ts:154](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L154)
 
 ___
 
@@ -224,7 +224,7 @@ The value to display to the user.
 
 #### Defined in
 
-[packages/console-input/src/types.ts:140](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/types.ts#L140)
+[packages/console-input/src/types.ts:140](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L140)
 
 ___
 

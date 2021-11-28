@@ -1,4 +1,4 @@
-[@radic/console-input](../README.md) / [Exports](../modules.md) / FileFolderQuestion
+[@radic/console-input](../README.md) / FileFolderQuestion
 
 # Interface: FileFolderQuestion<T\>
 
@@ -67,7 +67,7 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/types.ts:241](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/types.ts#L241)
+[packages/console-input/src/types.ts:241](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L241)
 
 ___
 
@@ -147,7 +147,7 @@ The type of the question.
 
 #### Defined in
 
-[packages/console-input/src/types.ts:240](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/types.ts#L240)
+[packages/console-input/src/types.ts:240](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L240)
 
 ___
 
@@ -221,7 +221,7 @@ The value to display to the user.
 
 #### Defined in
 
-[packages/console-input/src/types.ts:140](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/types.ts#L140)
+[packages/console-input/src/types.ts:140](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L140)
 
 ___
 

@@ -1,4 +1,4 @@
-[@radic/console-input](../README.md) / [Exports](../modules.md) / DirectoryQuestionOptions
+[@radic/console-input](../README.md) / DirectoryQuestionOptions
 
 # Interface: DirectoryQuestionOptions<T\>
 
@@ -44,7 +44,7 @@ Provides options for a question for the `InputPrompt`.
 
 #### Defined in
 
-[packages/console-input/src/types.ts:257](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/types.ts#L257)
+[packages/console-input/src/types.ts:257](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L257)
 
 ___
 

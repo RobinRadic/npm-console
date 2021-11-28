@@ -1,4 +1,4 @@
-[@radic/console-input](../README.md) / [Exports](../modules.md) / MaxinputQuestion
+[@radic/console-input](../README.md) / MaxinputQuestion
 
 # Interface: MaxinputQuestion<T\>
 
@@ -62,7 +62,7 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/types.ts:365](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/types.ts#L365)
+[packages/console-input/src/types.ts:365](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L365)
 
 ___
 
@@ -142,7 +142,7 @@ The type of the question.
 
 #### Defined in
 
-[packages/console-input/src/types.ts:378](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/types.ts#L378)
+[packages/console-input/src/types.ts:378](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L378)
 
 ___
 

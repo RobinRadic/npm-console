@@ -1,4 +1,4 @@
-[@radic/console-input](../README.md) / [Exports](../modules.md) / Input
+[@radic/console-input](../README.md) / Input
 
 # Class: Input
 
@@ -62,7 +62,7 @@
 
 #### Defined in
 
-[packages/console-input/src/Input.ts:145](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/Input.ts#L145)
+[packages/console-input/src/Input.ts:145](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/Input.ts#L145)
 
 ___
 
@@ -72,7 +72,7 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/Input.ts:150](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/Input.ts#L150)
+[packages/console-input/src/Input.ts:150](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/Input.ts#L150)
 
 ## Accessors
 
@@ -86,7 +86,7 @@ typeof `Separator`
 
 #### Defined in
 
-[packages/console-input/src/Input.ts:41](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/Input.ts#L41)
+[packages/console-input/src/Input.ts:41](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/Input.ts#L41)
 
 ___
 
@@ -116,7 +116,7 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/Input.ts:35](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/Input.ts#L35)
+[packages/console-input/src/Input.ts:35](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/Input.ts#L35)
 
 ___
 
@@ -130,7 +130,7 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/Input.ts:37](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/Input.ts#L37)
+[packages/console-input/src/Input.ts:37](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/Input.ts#L37)
 
 ___
 
@@ -144,7 +144,7 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/Input.ts:39](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/Input.ts#L39)
+[packages/console-input/src/Input.ts:39](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/Input.ts#L39)
 
 ___
 
@@ -158,7 +158,7 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/Input.ts:43](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/Input.ts#L43)
+[packages/console-input/src/Input.ts:43](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/Input.ts#L43)
 
 • `Static` `set` **prompt**(`prompt`): `void`
 
@@ -174,7 +174,7 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/Input.ts:45](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/Input.ts#L45)
+[packages/console-input/src/Input.ts:45](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/Input.ts#L45)
 
 ## Methods
 
@@ -196,7 +196,7 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/Input.ts:104](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/Input.ts#L104)
+[packages/console-input/src/Input.ts:104](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/Input.ts#L104)
 
 ___
 
@@ -219,7 +219,7 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/Input.ts:96](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/Input.ts#L96)
+[packages/console-input/src/Input.ts:96](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/Input.ts#L96)
 
 ___
 
@@ -241,7 +241,7 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/Input.ts:152](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/Input.ts#L152)
+[packages/console-input/src/Input.ts:152](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/Input.ts#L152)
 
 ___
 
@@ -263,7 +263,7 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/Input.ts:80](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/Input.ts#L80)
+[packages/console-input/src/Input.ts:80](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/Input.ts#L80)
 
 ___
 
@@ -285,7 +285,7 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/Input.ts:92](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/Input.ts#L92)
+[packages/console-input/src/Input.ts:92](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/Input.ts#L92)
 
 ___
 
@@ -306,7 +306,7 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/Input.ts:108](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/Input.ts#L108)
+[packages/console-input/src/Input.ts:108](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/Input.ts#L108)
 
 ___
 
@@ -328,7 +328,7 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/Input.ts:125](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/Input.ts#L125)
+[packages/console-input/src/Input.ts:125](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/Input.ts#L125)
 
 ___
 
@@ -349,7 +349,7 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/Input.ts:166](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/Input.ts#L166)
+[packages/console-input/src/Input.ts:166](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/Input.ts#L166)
 
 ___
 
@@ -370,7 +370,7 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/Input.ts:156](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/Input.ts#L156)
+[packages/console-input/src/Input.ts:156](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/Input.ts#L156)
 
 ___
 
@@ -391,7 +391,7 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/Input.ts:49](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/Input.ts#L49)
+[packages/console-input/src/Input.ts:49](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/Input.ts#L49)
 
 ___
 
@@ -413,7 +413,7 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/Input.ts:133](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/Input.ts#L133)
+[packages/console-input/src/Input.ts:133](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/Input.ts#L133)
 
 ___
 
@@ -435,7 +435,7 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/Input.ts:141](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/Input.ts#L141)
+[packages/console-input/src/Input.ts:141](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/Input.ts#L141)
 
 ___
 
@@ -457,7 +457,7 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/Input.ts:137](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/Input.ts#L137)
+[packages/console-input/src/Input.ts:137](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/Input.ts#L137)
 
 ___
 
@@ -479,7 +479,7 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/Input.ts:129](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/Input.ts#L129)
+[packages/console-input/src/Input.ts:129](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/Input.ts#L129)
 
 ___
 
@@ -499,7 +499,7 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/Input.ts:47](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/Input.ts#L47)
+[packages/console-input/src/Input.ts:47](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/Input.ts#L47)
 
 ___
 
@@ -521,7 +521,7 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/Input.ts:76](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/Input.ts#L76)
+[packages/console-input/src/Input.ts:76](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/Input.ts#L76)
 
 ___
 
@@ -544,7 +544,7 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/Input.ts:100](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/Input.ts#L100)
+[packages/console-input/src/Input.ts:100](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/Input.ts#L100)
 
 ___
 
@@ -566,7 +566,7 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/Input.ts:112](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/Input.ts#L112)
+[packages/console-input/src/Input.ts:112](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/Input.ts#L112)
 
 ___
 
@@ -587,7 +587,7 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/Input.ts:121](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/Input.ts#L121)
+[packages/console-input/src/Input.ts:121](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/Input.ts#L121)
 
 ___
 
@@ -607,7 +607,7 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/Input.ts:70](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/Input.ts#L70)
+[packages/console-input/src/Input.ts:70](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/Input.ts#L70)
 
 ___
 
@@ -628,7 +628,7 @@ typeof [`Input`](Input.md)
 
 #### Defined in
 
-[packages/console-input/src/Input.ts:65](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/Input.ts#L65)
+[packages/console-input/src/Input.ts:65](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/Input.ts#L65)
 
 ___
 
@@ -651,7 +651,7 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/Input.ts:84](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/Input.ts#L84)
+[packages/console-input/src/Input.ts:84](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/Input.ts#L84)
 
 ___
 
@@ -675,7 +675,7 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/Input.ts:88](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/Input.ts#L88)
+[packages/console-input/src/Input.ts:88](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/Input.ts#L88)
 
 ___
 
@@ -697,4 +697,4 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/Input.ts:116](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/Input.ts#L116)
+[packages/console-input/src/Input.ts:116](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/Input.ts#L116)

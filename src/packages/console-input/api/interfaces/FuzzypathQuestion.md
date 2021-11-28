@@ -1,4 +1,4 @@
-[@radic/console-input](../README.md) / [Exports](../modules.md) / FuzzypathQuestion
+[@radic/console-input](../README.md) / FuzzypathQuestion
 
 # Interface: FuzzypathQuestion<T\>
 
@@ -54,7 +54,7 @@ The default value of the question.
 
 #### Defined in
 
-[packages/console-input/src/types.ts:185](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/types.ts#L185)
+[packages/console-input/src/types.ts:185](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L185)
 
 ___
 
@@ -64,7 +64,7 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/types.ts:189](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/types.ts#L189)
+[packages/console-input/src/types.ts:189](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L189)
 
 ___
 
@@ -74,7 +74,7 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/types.ts:177](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/types.ts#L177)
+[packages/console-input/src/types.ts:177](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L177)
 
 ___
 
@@ -132,7 +132,7 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/types.ts:182](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/types.ts#L182)
+[packages/console-input/src/types.ts:182](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L182)
 
 ___
 
@@ -158,7 +158,7 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/types.ts:186](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/types.ts#L186)
+[packages/console-input/src/types.ts:186](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L186)
 
 ___
 
@@ -174,7 +174,7 @@ The type of the question.
 
 #### Defined in
 
-[packages/console-input/src/types.ts:170](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/types.ts#L170)
+[packages/console-input/src/types.ts:170](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L170)
 
 ___
 
@@ -210,7 +210,7 @@ node_modules/@types/inquirer/index.d.ts:303
 
 #### Defined in
 
-[packages/console-input/src/types.ts:174](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/types.ts#L174)
+[packages/console-input/src/types.ts:174](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L174)
 
 ___
 
@@ -230,7 +230,7 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/types.ts:171](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/types.ts#L171)
+[packages/console-input/src/types.ts:171](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L171)
 
 ___
 
@@ -288,7 +288,7 @@ The value to display to the user.
 
 #### Defined in
 
-[packages/console-input/src/types.ts:140](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/types.ts#L140)
+[packages/console-input/src/types.ts:140](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L140)
 
 ___
 

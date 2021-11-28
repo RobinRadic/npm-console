@@ -9,3 +9,4 @@ dist
 lib
 .nyc_output
 src/yargs
+docs/api

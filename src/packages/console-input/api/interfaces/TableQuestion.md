@@ -1,4 +1,4 @@
-[@radic/console-input](../README.md) / [Exports](../modules.md) / TableQuestion
+[@radic/console-input](../README.md) / TableQuestion
 
 # Interface: TableQuestion<T\>
 
@@ -46,7 +46,7 @@
 
 #### Defined in
 
-[packages/console-input/src/types.ts:108](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/types.ts#L108)
+[packages/console-input/src/types.ts:108](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L108)
 
 ___
 
@@ -108,7 +108,7 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/types.ts:110](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/types.ts#L110)
+[packages/console-input/src/types.ts:110](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L110)
 
 ___
 
@@ -138,7 +138,7 @@ ___
 
 #### Defined in
 
-[packages/console-input/src/types.ts:109](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/types.ts#L109)
+[packages/console-input/src/types.ts:109](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L109)
 
 ___
 
@@ -170,7 +170,7 @@ The type of the question.
 
 #### Defined in
 
-[packages/console-input/src/types.ts:114](https://github.com/robinradic/npm-console/blob/27e41ef/packages/console-input/src/types.ts#L114)
+[packages/console-input/src/types.ts:114](https://github.com/robinradic/npm-console/blob/a206035/packages/console-input/src/types.ts#L114)
 
 ___
 

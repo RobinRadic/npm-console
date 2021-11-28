@@ -38,7 +38,8 @@
     "scripts": {
         "start": "npm-run-all clean:build test build",
         "test": "nyc mocha --opts test/mocha.opts",
-        "docs": "node ../../typedoc.js",
+        "docs:api": "rm -rf docs/api && node ../../typedoc.js",
+        "clean:docs:api": "rm -rf docs/api",
         "pretest": "yarn clean:test",
         "posttest": "yarn clean:test",
         "clean:test": "rm -rf .nyc-output/",

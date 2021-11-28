@@ -3,19 +3,47 @@ import inquirer, { Answers, Question,QuestionMap } from 'inquirer';
 
 
 export interface MyQuestionMap<T extends Answers = Answers> extends QuestionMap<T>{
+    autocomplete: AutocompleteQuestion<T>;
     path: PathQuestion<T>
     tree: TreeQuestion<T>
     fuzzypath: FuzzypathQuestion<T>
     'file-path': FilePathQuestion<T>
     filefolder: FileFolderQuestion<T>
+    'file-tree-selection': FileTreeSelectionQuestion<T>
+    'file-selector': FileSelectorQuestion<T>
     directory: DirectoryQuestion<T>
-    autocomplete: AutocompleteQuestion<T>;
-    'file-tree-selection': FileTreePathSelectorQuestion<T>
     datetime: DatepickerQuestion<T>
     'maxlength-input': MaxinputQuestion<T>
     color: ColorQuestion<T>
     suggest:SuggestQuestion<T>
     table:TableQuestion<T>
+}
+/**
+ * Provides options for a question for the `InputPrompt`.
+ *
+ * @template T
+ * The type of the answers.
+ */
+export interface FileTreeSelectionQuestionOptions<T extends Answers = Answers> extends Question<T> {
+    onlyShowDir?: boolean // default: false
+    root?: string //default: processs.cwd()
+    onlyShowValid?: boolean // if true, will only show valid files (if validate is provided). Default: false.
+    hideChildrenOfValid?: boolean // if true, will hide children of valid directories (if validate is provided). Default: false.
+    transformer?: Function // a hook function to transform the display of directory or file name.
+    multiple?: boolean // if true, will enable to select multiple files. Default: false.
+}
+
+/**
+ * Provides options for a question for the `InputPrompt`.
+ *
+ * @template T
+ * The type of the answers.
+ */
+export interface FileTreeSelectionQuestion<T extends Answers = Answers> extends FileTreeSelectionQuestionOptions<T> {
+    /**
+     * @inheritdoc
+     */
+    type?: 'file-tree-selection';
 }
 
 export interface TreeItem {
@@ -178,24 +206,26 @@ export interface FilePathQuestion<T extends Answers = Answers> extends PathQuest
     basePath?: string //cwd
 }
 
+export interface FileSelectorQuestion<T extends Answers = Answers> extends FileSelectorQuestionOptions<T> {
+    /**
+     * @inheritdoc
+     */
+    type?: 'file-selector';
+}
 /**
  * Provides options for a question for the `InputPrompt`.
  *
  * @template T
  * The type of the answers.
  */
-export interface FileTreePathSelectorQuestion<T extends Answers = Answers> extends PathQuestionOptions<T> {
-    /**
-     * @inheritdoc
-     */
-    type?: 'file-tree-selection';
+export interface FileSelectorQuestionOptions<T extends Answers = Answers> extends PathQuestionOptions<T> {
+
     path?: string
     extensions?: string[]
     root?:any
     selectionType?: 'file' | 'folder' | 'either',
     onlyShowMatchingExtensions?: boolean
 }
-
 
 /**
  * Provides options for a question for the `InputPrompt`.

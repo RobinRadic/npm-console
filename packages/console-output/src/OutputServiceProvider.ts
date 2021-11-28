@@ -1,5 +1,7 @@
 import { ServiceProvider } from '@radic/shared';
 import { Output, OutputOptions } from './';
+import { IconGenerator } from './utils/IconGenerator';
+import { Ui } from './ui';
 
 declare module '@radic/core/lib/types/config' {
     export interface Configuration {
@@ -9,11 +11,13 @@ declare module '@radic/core/lib/types/config' {
 declare module '@radic/core/lib/Foundation/Application' {
     export interface Bindings {
         'output': Output;
+        'output.ui': Ui;
         'output.options': OutputOptions;
     }
 
     export interface Application {
         output: Output;
+        ui:Ui
     }
 }
 
@@ -44,8 +48,13 @@ export class OutputServiceProvider extends ServiceProvider {
 
     boot() {
         this.app.binding<Output>('output', app => {
-            return new Output(app.get('output.options'));
+            const output = new Output(app.get('output.options'));
+            output.icons = new IconGenerator({
+                cacheDir: app.paths.env.cache()
+            })
+            return output;
         }, true);
         this.app.addBindingGetter('output');
+        this.app.binding('output.ui', app => app.output.ui).addBindingGetter('ui', 'output.ui')
     }
 }

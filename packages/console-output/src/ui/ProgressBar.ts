@@ -1,33 +1,49 @@
 import Progress, { ProgressBarOptions as BaseProgressBarOptions } from 'progress';
-import { OutputConfig } from '../interfaces';
-import { Output } from '../Output';
+import { Figure, OutputConfig } from '../interfaces';
 import { Ui } from './Ui';
+import { merge } from 'lodash';
+import { Output } from '../Output';
 
 
 export interface ProgressBarOptions extends Partial<BaseProgressBarOptions> {
     format?: string;
     output?: OutputConfig;
+    style?: {
+        borderColor?: string,
+        borderFigure?: Figure
+        barColor?: string
+        barFigure?: Figure
+        backgroundColor?:string
+    };
 }
 
 export class ProgressBar {
     constructor(protected ui: Ui) {}
 
+    get out(): Output {return this.ui.output;}
+
     bar(options: ProgressBarOptions = {}) {
 
-        let output;
-        if ( 'output' in options ) {
-            output = options.output;
-            delete options.output;
-        }
+        options.style                          = options.style || {};
+        let style: ProgressBarOptions['style'] = {
+            borderColor : 'cyan',
+            borderFigure: 'square',
+            barColor    : 'blue',
+            barFigure   : 'square',
+            backgroundColor: 'white',
+        };
+        merge(style, options.style);
+        delete options.style;
 
-        let border = this.ui.output.parse(`{cyan}${this.ui.output.figures.square}{/cyan}`);
-        let format = `${border}{blue}:bar{/blue}${border} :current/:total`;
-        if ( 'format' in options ) {
+        let format;
+        if ( options.format ) {
             format = options.format;
             delete options.format;
+        } else {
+            let border = `{${style.borderColor}}${this.out.figures[ style.borderFigure ]}{/${style.borderColor}}`;
+            format     = `{b(${style.backgroundColor})}${border}{${style.barColor}}:bar{/${style.barColor}}${border}{/b(${style.backgroundColor})} :current/:total`;
         }
-
-        format = this.ui.output.parse(format, output);
+        format = this.out.parse(format);
 
         const bar = new Progress(format, {
             total     : 100,

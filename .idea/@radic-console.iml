@@ -7,21 +7,26 @@
       <sourceFolder url="file://$MODULE_DIR$/apps/cli/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/packages/console-colors/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/packages/console-colors/test" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/packages/console-input/lib" isTestSource="false" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/packages/console-input/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/packages/console-input/test" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/packages/console-output/lib" isTestSource="false" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/packages/console-output/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/packages/console-output/test" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/packages/console/lib" isTestSource="false" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/packages/console/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/packages/core/lib" isTestSource="false" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/packages/core/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/packages/core/test" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/packages/shared/lib" isTestSource="false" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/packages/shared/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/packages/shared/test" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/packages/console/test" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/.vuepress/plugins/monorepo/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/packages/console/src/core" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/console-input/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/console-output/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/core/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/shared/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/console-colors/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/console/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/.tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/src/.vuepress/plugins/monorepo/lib" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

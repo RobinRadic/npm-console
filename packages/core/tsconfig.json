@@ -10,6 +10,7 @@
         "declaration": true,
         "rootDir": "src",
         "jsx": "preserve",
+        "composite": true,
         "jsxFactory": "h",
         "strict": false,
         "noImplicitAny": false,

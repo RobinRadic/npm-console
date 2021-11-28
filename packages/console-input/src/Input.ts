@@ -1,7 +1,7 @@
 import inquirer, { Answers, CheckboxChoiceMap, CheckboxQuestion, ConfirmQuestion, DistinctChoice, EditorQuestion, InputQuestion, ListChoiceMap, ListQuestion } from 'inquirer';
 
 import { editAsync, IFileOptions } from 'external-editor';
-import { AutocompleteQuestion, ColorQuestion, DatepickerQuestion, DirectoryQuestion, FilePathQuestion, FileTreePathSelectorQuestion, FuzzypathQuestion, MaxinputQuestion, MyQuestionMap, PathQuestion, SuggestQuestion, TableQuestion, TreeItem, TreeQuestion } from './types';
+import { AutocompleteQuestion, ColorQuestion, DatepickerQuestion, DirectoryQuestion, FilePathQuestion, FileSelectorQuestion, FileTreeSelectionQuestion, FuzzypathQuestion, MaxinputQuestion, MyQuestionMap, PathQuestion, SuggestQuestion, TableQuestion, TreeItem, TreeQuestion } from './types';
 import PromptConstructor = inquirer.prompts.PromptConstructor;
 
 const isModuleInstalled = (name: string) => {
@@ -134,18 +134,12 @@ export class Input {
         return await this.question({ type: 'file-path', message, basePath, ...question });
     }
 
-    public static async fsTree(message: string, root: string = process.cwd(), question: Partial<FileTreePathSelectorQuestion> = {}) {
+    public static async fileTree(message: string, root: string = process.cwd(), question: Partial<FileTreeSelectionQuestion> = {}) {
         return await this.question({ type: 'file-tree-selection', message, root, ...question });
     }
 
-    public static async fileTree(message: string, root: string = process.cwd(), question: Partial<FileTreePathSelectorQuestion> = {}) {
-        question.selectionType = 'file';
-        return await this.fsTree(message, root, question);
-    }
-
-    public static async directoryTree(message: string, root: string = process.cwd(), question: Partial<FileTreePathSelectorQuestion> = {}) {
-        question.selectionType = 'folder';
-        return await this.question({ type: 'file-tree-selection', message, root, ...question });
+    public static async fileSelector(message: string, root: string = process.cwd(), question: Partial<FileSelectorQuestion> = {}) {
+        return await this.question({ type: 'file-selector', message, root, ...question });
     }
 
     public static editorChoices: Array<{ name: string, value: string }> = [

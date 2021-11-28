@@ -1,12 +1,11 @@
 /// <reference types="chai" />
 // import {  }    from 'mocha-typescript';
-import { TestCase }       from './TestCase';
-import { Output }         from '../src';
+import { TestCase } from './TestCase';
+import { Output } from '../src';
 import { WritableStream } from 'memory-streams';
-import { Writable }       from 'stream';
 
 interface StdoutMock {
-    original: Writable,
+    original: NodeJS.WritableStream,
     mock: WritableStream,
 
     read(): string
@@ -21,7 +20,9 @@ describe('Output', () => {
         stdout: StdoutMock;
 
         before() {
-            this.output = new Output();
+            this.output = new Output({
+                resetOnNewline:false
+            });
             this.stdout = this.mockStdout();
         }
 

@@ -13,6 +13,9 @@
         "select",
         "terminal"
     ],
+    "vuepress": {
+        "name": "Console Input"
+    },
     "repository": {
         "url": "https://github.com/robinradic/npm-packages",
         "directory": "packages/console-input",
@@ -35,12 +38,15 @@
     "scripts": {
         "start": "npm-run-all clean:build test build",
         "test": "nyc mocha --opts test/mocha.opts",
+        "docs": "node ../../typedoc.js",
+        "pretest": "yarn clean:test",
+        "posttest": "yarn clean:test",
+        "clean:test": "rm -rf .nyc-output/",
         "build": "yarn clean:build && tsc --project tsconfig.build.json",
         "watch": "tsc --project tsconfig.build.json --watch",
-        "clean:build": "rm -rf lib",
+        "clean:build": "rm -rf lib && rimraf src/**/*.{js,js.map}",
         "clean:yarn": "rm yarn.lock node_modules/",
-        "clean:test": "rm -rf .nyc_output",
-        "prepublish": "npm-run-all clean:build test clean:test build",
+        "prepublish": "npm-run-all clean:build test build",
         "release": "yarn login && np --yolo --no-yarn"
     },
     "dependencies": {
@@ -73,7 +79,14 @@
         "inquirer-datepicker": "^2.0.0",
         "inquirer-directory": "^2.2.0",
         "inquirer-file-path": "^1.0.1",
-        "inquirer-tree-prompt": "^1.1.2"
+        "inquirer-tree-prompt": "^1.1.2",
+        "inquirer-file-selector-prompt": "^1.1.0",
+        "inquirer-file-tree-selection-prompt": "^1.0.7",
+        "inquirer-fuzzy-path": "^2.3.0",
+        "inquirer-path": "^1.0.0-beta5",
+        "inquirer-prompt-suggest": "^0.1.0",
+        "inquirer-select-directory": "^1.2.0",
+        "inquirer-table-prompt": "^0.2.1"
     },
     "engines": {
         "node": ">=8.0.0"

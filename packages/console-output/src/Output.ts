@@ -1,19 +1,21 @@
 import { MacroProxy, macroProxy } from './utils';
-import { Colors, FiguresParser, StyleManager, StyleParser } from './colors';
+import { Chain, Colors, FiguresParser, StyleManager, StyleName, StyleParser } from './colors';
 import { Figures, IParser, OutputOptions } from './interfaces';
-import { inspect, InspectOptions } from 'util';
+import { inspect } from 'util';
 import { figures } from './figures';
 import { Ui } from './ui';
 import { OutputUtil } from './OutputUtil';
 import { merge } from 'lodash';
+import { IconGenerator } from './utils/IconGenerator';
 
 export interface Output extends MacroProxy<Output> {
 
 }
+
 export class Output {
-    public stdin: NodeJS.ReadableStream;
-    public stdout: NodeJS.WritableStream;
-    public stderr: NodeJS.WritableStream;
+    public stdin: NodeJS.ReadableStream = process.stdin;
+    public stdout: NodeJS.WritableStream = process.stdout;
+    public stderr: NodeJS.WritableStream = process.stderr;
 
     public readonly parsers: Map<string, IParser> = new Map();
     public styles: StyleManager                   = new StyleManager();
@@ -21,6 +23,7 @@ export class Output {
     public figures: Figures                       = figures;
     public readonly ui: Ui;
     public readonly util: OutputUtil;
+    public icons: IconGenerator;
 
     static defaultOptions: OutputOptions = {
         silent        : false,
@@ -38,7 +41,6 @@ export class Output {
 
     constructor(public readonly options: OutputOptions = {}) {
         this.options = merge({}, new.target.defaultOptions, options);
-        this.setIOE(process);
         this.addDefaultParsers();
         this.ui   = new Ui(this);
         this.util = new OutputUtil(this);
@@ -51,14 +53,6 @@ export class Output {
         return this;
     }
 
-    setIOE(ioe: { stdin?: NodeJS.ReadableStream, stdout?: NodeJS.WritableStream, stderr?: NodeJS.WritableStream } = {
-        stdin : process.stdin,
-        stdout: process.stdout,
-        stderr: process.stderr,
-    }) {
-        Object.entries(ioe).filter(([ k, v ]) => [ 'stdin', 'stdout', 'stderr' ].includes(k)).forEach(([ k, v ]) => this[ k ] = v);
-        return this;
-    }
 
     addDefaultParsers() {
         this.parsers
@@ -66,8 +60,15 @@ export class Output {
             .set('figures', new FiguresParser(this));
     }
 
-
     get nl(): this { return this.write('\n'); }
+
+    get chain(): Chain {return this.colors.chain(this);}
+
+    styled(name:StyleName, text:string){
+        const {in:start,out} = this.colors.color(name as string);
+        this.line(`${start}${text}${out}`);
+        return this;
+    }
 
     parse(text: string, force?: boolean): string {
         this.parsers.forEach(parser => text = parser.parse(text));

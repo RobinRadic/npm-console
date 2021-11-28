@@ -50,7 +50,7 @@ export class Colors
 
     getTrucolorColor(color: string): Trucolor {
         //return trucolor.bulk(trucolor.simplePalette(), { color }).color
-        return trucolor(color, this.palette);
+        return trucolor(color);
         // return require('deep-assign')(this.palette, trucolor.bulk({}, { color })).color;
     }
 
@@ -60,7 +60,7 @@ export class Colors
     }
 
     styles(styles:Object) :  this{
-        this.palette = palette(this.palette, styles);
+        this.palette = palette({}, styles);
         // this.palette = require('deep-assign')(this.palette, trucolor.bulk({}, styles));
         return this;
     }

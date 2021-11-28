@@ -7,6 +7,7 @@
     "author": {
         "name": "Robin Radic"
     },
+    "vuepress": {"name": "Shared"},
     "license": "MIT",
     "main": "lib/index.js",
     "types": "lib/index.d.ts",
@@ -14,12 +15,13 @@
     "scripts": {
         "start": "npm-run-all clean:build test build",
         "test": "nyc mocha --opts test/mocha.opts",
+        "docs": "node ../../typedoc.js",
         "pretest": "yarn clean:test",
         "posttest": "yarn clean:test",
         "clean:test": "rm -rf .nyc-output/",
         "build": "yarn clean:build && tsc --project tsconfig.build.json",
         "watch": "tsc --project tsconfig.build.json --watch",
-        "clean:build": "rm -rf lib && rimraf src/**/*.{js,d.ts}",
+        "clean:build": "rm -rf lib && rimraf src/**/*.{js,js.map}",
         "clean:yarn": "rm yarn.lock node_modules/",
         "prepublish": "npm-run-all clean:build test build",
         "release": "yarn login && np --yolo --no-yarn"

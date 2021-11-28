@@ -1,23 +1,23 @@
-
-interface Ansi256Colors
-{
+interface Ansi256Colors {
     getRgb(red: number, green, blue): string
+
     codes: Array<number>
     standard: Array<string>
     bright: Array<number>
     greyscale: Array<number>
     rgb: Array<number>
 }
-declare module "ansi-256-colors"
-{
+
+declare module 'ansi-256-colors' {
     export var fg: Ansi256Colors;
     export var bg: Ansi256Colors;
     export var reset: string;
 }
-declare module "trucolor" {
+declare module 'trucolor' {
 
-    interface Palette {
-        [name:string]:Trucolor
+    export interface Palette {
+        [ name: string ]: Trucolor
+
         white: Trucolor
         black: Trucolor
         red: Trucolor
@@ -48,24 +48,40 @@ declare module "trucolor" {
         reset: Trucolor
     }
 
-    interface Trucolor {
-        name:string
-        in:string
-        out:string
-        hex:string
-        rgb:string
-        toString():string
-        toSwatch():any
+    export interface Trucolor {
+        name: string
+        in: string
+        out: string
+        hex: string
+        rgb: string
+
+        toString(): string
+
+        toSwatch(): any
     }
 
-    function trucolor(color?: string, options?: any): Trucolor
+    export interface Options {
+        format?: 'default' | 'sgr' | 'cli'
+        force?: any
+    }
 
-    function palette(options?: any, palette?: any): Palette
 
-    function chalkish(palette?: any): any
+    export interface ChalkFunction {
+        (...text: unknown[]): string;
+    }
 
-    function simple(options?: any): Palette
+    export type Chalk<PALETTE extends {}> = {
+        [P in keyof PALETTE]: ((...text: unknown[])=> string)|Chalk<PALETTE>
+    }
 
-    function simplePalette(options?: any): any
+
+    export function trucolor(color?: string, options?: Options): Trucolor
+
+    export function palette(options?: Options, palette?: any): Palette
+
+    export function chalkish<PALETTE extends {}>(palette?: PALETTE): Chalk<PALETTE>
+
+    export function simple(options?: Options): Palette
+
+    export function simplePalette(options?: any): any
 }
-

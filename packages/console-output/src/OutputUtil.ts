@@ -17,7 +17,17 @@ export class OutputUtil {
 
     slice(input: string, beginSlice: number, endSlice?: number): string { return slice(input, beginSlice, endSlice);}
 
-    widest(input: string): number { return widest(input);}
+    widestLine(input: string): number { return widest(input);}
+    widest(input: string[]): number {
+        let widest=0
+        for(const i of input){
+            let width = this.width(i);
+            if(width => widest){
+                widest = width
+            }
+        }
+        return widest
+    }
 
     width(input: string): number { return width(input);}
 

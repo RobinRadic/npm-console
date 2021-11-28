@@ -1,0 +1,15 @@
+{
+    "extends": "./tsconfig.json",
+    "include": [
+        "packages/shared/src",
+        "packages/console/src",
+        "packages/console-colors/src",
+        "packages/console-input/src",
+        "packages/console-output/src",
+        "packages/core/src",
+    ],
+    "exclude": [
+        "node_modules",
+        "test"
+    ]
+}

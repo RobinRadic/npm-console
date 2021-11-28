@@ -7,6 +7,7 @@ import { Chalk, chalkish, Options, Palette, simple, trucolor, Trucolor } from 't
 import { macroProxy, MacroProxy } from '../utils';
 import { StyleManager } from './StyleManager';
 import { ColorStyle } from '../interfaces';
+import { Output } from '../Output';
 
 // import * as _ from "lodash";
 // _.isNumber()
@@ -23,6 +24,16 @@ export type ColorMacroCb = (...args) => ColorStartEnd
 
 export interface Colors extends MacroProxy<Colors, ColorMacroCb, ColorStartEnd> {}
 
+export type Chain = {
+    [P in keyof Palette]: Chain
+} & {
+    get(str:string):string
+    write(str:string):void
+    line(str:string):void
+} & {
+    [key:string]:Chain
+}
+
 export class Colors {
     constructor(public styles: StyleManager) {
         return macroProxy(this);
@@ -38,7 +49,7 @@ export class Colors {
 
     trucolorOptions: Options = { format: 'cli' };
 
-    chain(): any {
+    chain(out?:Output): Chain {
         let stack: Trucolor[] = [];
         let self= this;
         const get  = (name) => {
@@ -46,10 +57,10 @@ export class Colors {
                 name = name.slice(2)
                 let first = name[0].toLocaleLowerCase()
                 name = 'background ' + first + name.slice(1)
-                stack.push(self.getTrucolor(name, self.trucolorOptions))
-            } else {
-                stack.push(self.getTrucolor(name, self.trucolorOptions));
+
             }
+            const color = self.color(name)
+            stack.push(color);
         }
         const color = (str:string) => {
             let open  = stack.map(s => s.in).join('');
@@ -63,13 +74,19 @@ export class Colors {
                     if(name === 'get'){
                         return (str:string) => color(str);
                     }
+                    if(name === 'write'){
+                        return (str:string) => out.write(color(str));
+                    }
+                    if(name === 'line'){
+                        return (str:string) => out.line(color(str));
+                    }
                     get(name);
                     return proxy
                 },
             });
             return proxy;
         }
-        return createProxy();
+        return createProxy() as Chain;
     }
 
     getTrucolor(color: string, options: Options = {}): Trucolor {
@@ -93,6 +110,13 @@ export class Colors {
     getStyledColor(name: string): { in: string, out: string } {
         let style = this.styles.getStyle(name);
         return this.getColorFromStyle(style);
+    }
+
+    color(color: string, options: Options = {}):Trucolor{
+        if ( this.styles.hasStyle(color) ) {
+            return this.getTrucolor(this.styles.getStyle(color),options)
+        }
+        return this.getTrucolor(color,options)
     }
 
     getColor(color: string, isClose: boolean = false): string {

@@ -5,9 +5,6 @@
         "module": "commonjs",
         "moduleResolution": "node",
         "lib": ["es5", "es6", "es7", "es2018", "es2018.promise","dom"],
-        "outDir": "lib",
-        "declarationDir": "lib",
-        "declaration": true,
         "suppressImplicitAnyIndexErrors": true,
         "jsx": "preserve",
         "jsxFactory": "h",
@@ -31,10 +28,13 @@
         "emitDecoratorMetadata": true
     },
     "include": [
+        "typedoc.ts"
     ],
     "exclude": [
+        "*",
         "node_modules",
         "examples",
+        "src",
         "packages",
         "apps",
         "dist",

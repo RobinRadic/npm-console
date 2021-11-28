@@ -6,3 +6,6 @@ export * from './ServiceProvider';
 export * from './Str';
 export * from './thenBy';
 export * from './utils';
+
+export * from './wait';
+

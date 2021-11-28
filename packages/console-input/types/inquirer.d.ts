@@ -1,18 +1,18 @@
 // noinspection ES6UnusedImports
 import inquirer, { Answers, Question } from 'inquirer';
-import { FileTreeSelectionQuestion }   from 'inquirer-file-tree-selection-prompt';
-import { AutocompleteQuestion, ColorQuestion, DatepickerQuestion, DirectoryQuestion, FileFolderQuestion, FilePathQuestion, FuzzypathQuestion, MaxinputQuestion, PathQuestion, SuggestQuestion, TableQuestion, TreeQuestion } from '../src';
+import { AutocompleteQuestion,FileTreeSelectionQuestion, ColorQuestion, DatepickerQuestion, DirectoryQuestion, FileFolderQuestion, FilePathQuestion, FileSelectorQuestion, FuzzypathQuestion, MaxinputQuestion, PathQuestion, SuggestQuestion, TableQuestion, TreeQuestion } from '../src';
 declare module 'inquirer' {
 
     export interface QuestionMap<T extends Answers = Answers> {
-        tree: TreeQuestion<T>
+        autocomplete: AutocompleteQuestion<T>;
         path: PathQuestion<T>
+        tree: TreeQuestion<T>
         fuzzypath: FuzzypathQuestion<T>
         'file-path': FilePathQuestion<T>
         filefolder: FileFolderQuestion<T>
-        directory: DirectoryQuestion<T>
-        autocomplete: AutocompleteQuestion<T>;
         'file-tree-selection': FileTreeSelectionQuestion<T>
+        'file-selector': FileSelectorQuestion<T>
+        directory: DirectoryQuestion<T>
         datetime: DatepickerQuestion<T>
         'maxlength-input': MaxinputQuestion<T>
         color: ColorQuestion<T>

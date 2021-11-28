@@ -11,6 +11,7 @@ import { UiBase } from './UiBase';
 import { macroProxy, MacroProxy } from '../utils';
 import { ProgressBar } from './ProgressBar';
 import { Constructor } from '@radic/shared';
+import { macros } from '../macros';
 
 export interface Ui extends MacroProxy<Ui> {
 
@@ -31,6 +32,14 @@ export class Ui {
             value: new Component(this),
             writable: false
         });
+        return this;
+    }
+
+    addMacros(macro: macros.MacroDefinition<any> | macros.MacroDefinition<any>[]) {
+        if ( !Array.isArray(macro) ) {
+            macro = [ macro ];
+        }
+        Array.from(macro).forEach(macro => this.macro(macro.name, macro.callback));
         return this;
     }
 

@@ -1,7 +1,7 @@
 /// <reference types="chai" />
 import { context, suite, test } from 'mocha-typescript';
 // import { assert, should } from 'chai'
-import { colors, Output } from '../../src';
+import { Colors,StyleParser, Output } from '../../src';
 import { TestCase } from '../TestCase';
 
 @suite()
@@ -9,8 +9,8 @@ class ColorsTest extends TestCase {
     @context mocha; // Set for instenace methods such as tests and before/after
     @context static mocha; // Set for static methods such as static before/after (mocha bdd beforeEach/afterEach)
     text: string;
-    parser: colors.StyleParser;
-    colors: colors.Colors;
+    parser: StyleParser;
+    colors: Colors;
 
     makeColorsClass(){
 
@@ -18,7 +18,7 @@ class ColorsTest extends TestCase {
 
 
     before() {
-        this.parser = new colors.StyleParser(null);
+        this.parser = new StyleParser(new Output());
 
         this.text = `
 {bold.red.underline}This is bold, red and underlined.{/red} But we dropped the red.{reset} And just resetted the rest.{b:blue.red}teetete

@@ -15,3 +15,5 @@ yarn.lock
 /.idea/workspace.xml
 
 /.yarn/releases/
+/package-json-updater.js
+/typedoc.js

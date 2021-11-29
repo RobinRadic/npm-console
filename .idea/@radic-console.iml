@@ -17,6 +17,8 @@
       <sourceFolder url="file://$MODULE_DIR$/packages/shared/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/packages/shared/test" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/packages/console/test" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/packages/multi-package-json-manager/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/packages/multi-package-json-manager/test" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/.vuepress/plugins/monorepo/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/packages/console/src/core" />
       <excludeFolder url="file://$MODULE_DIR$/packages/console-input/lib" />
@@ -27,6 +29,7 @@
       <excludeFolder url="file://$MODULE_DIR$/packages/console/lib" />
       <excludeFolder url="file://$MODULE_DIR$/.tmp" />
       <excludeFolder url="file://$MODULE_DIR$/src/.vuepress/plugins/monorepo/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/multi-package-json-manager/lib" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

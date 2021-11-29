@@ -4,8 +4,15 @@
         "target": "es6",
         "module": "commonjs",
         "moduleResolution": "node",
-        "lib": ["es5", "es6", "es7", "es2018", "es2018.promise","dom"],
+        "lib": ["es5","es6","es7","es2018","es2018.promise","es2015.promise"],
+        "outDir": "lib",
+        "declarationDir": "lib",
+        "declaration": true,
+        "rootDir": "src",
+        "resolveJsonModule": true,
         "suppressImplicitAnyIndexErrors": true,
+        "allowJs": false,
+        "checkJs": false,
         "jsx": "preserve",
         "jsxFactory": "h",
         "strict": false,
@@ -21,25 +28,26 @@
         "noImplicitReturns": false,
         "noFallthroughCasesInSwitch": false,
         "allowSyntheticDefaultImports": true,
+        "importHelpers": true,
         "esModuleInterop": true,
+        "skipLibCheck": true,
         "inlineSourceMap": true,
         "inlineSources": true,
+        "sourceMap": false,
         "experimentalDecorators": true,
-        "emitDecoratorMetadata": true
+        "emitDecoratorMetadata": true,
+        "typeRoots": [
+            "../../node_modules/@types"
+        ]
     },
     "include": [
-        "typedoc.ts",
-        "package-json-updater.ts",
-        "scripts"
+        "src",
+        "src/index.ts"
     ],
     "exclude": [
-        "*",
         "node_modules",
         "examples",
-        "src",
-        "packages",
-        "apps",
-        "dist",
-        "lib"
+        "lib",
+        "dist"
     ]
 }

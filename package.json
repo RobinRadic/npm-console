@@ -11,7 +11,8 @@
             "packages/console-input",
             "packages/console-output",
             "packages/core",
-            "packages/shared"
+            "packages/shared",
+            "packages/multi-package-json-manager"
         ],
         "nohoist": []
     },
@@ -29,13 +30,14 @@
         "console-colors": "cd packages/console-colors && yarn",
         "console-input": "cd packages/console-input && yarn",
         "console-output": "cd packages/console-output && yarn",
+        "json-manager": "cd packages/multi-package-json-manager && yarn",
         "app:cli": "cd apps/cli && yarn",
         "watch": "yarn build && concurrently \"yarn watch:tools\" \"yarn watch:util\"",
         "reinstall": "yarn clean:yarn && yarn",
-        "build": "npm-run-all \"shared build\" \"core build\" \"console-output build\" \"console-input build\" \"console-colors build\" \"console build\"",
-        "test": "npm-run-all \"shared test\" \"core test\" \"console-output test\" \"console-input test\" \"console-colors test\" \"console test\"",
-        "docs:api": "npm-run-all \"shared docs:api\" \"core docs:api\" \"console-output docs:api\" \"console-input docs:api\" \"console-colors docs:api\" \"console docs:api\"",
-        "clean:docs:api": "npm-run-all \"shared clean:docs:api\" \"core clean:docs:api\" \"console-output clean:docs:api\" \"console-input clean:docs:api\" \"console-colors clean:docs:api\" \"console clean:docs:api\"",
+        "build": "npm-run-all \"shared build\" \"core build\" \"console-output build\" \"console-input build\" \"console-colors build\" \"console build\" \"json-manager build\"",
+        "test": "npm-run-all \"shared test\" \"core test\" \"console-output test\" \"console-input test\" \"console-colors test\" \"console test\" \"json-manager test\"",
+        "docs:api": "npm-run-all \"shared docs:api\" \"core docs:api\" \"console-output docs:api\" \"console-input docs:api\" \"console-colors docs:api\" \"console docs:api\" \"json-manager docs:api\"",
+        "clean:docs:api": "npm-run-all \"shared clean:docs:api\" \"core clean:docs:api\" \"console-output clean:docs:api\" \"console-input clean:docs:api\" \"console-colors clean:docs:api\" \"console clean:docs:api\"  \"json-manager clean:docs:api\"",
         "clean:build": "rimraf **/lib **/.nyc_output",
         "clean:test": "rimraf **/.nyc_output",
         "clean:yarn": "rimraf \"**/node_modules\" \"**/yarn.lock\" \"**/.nyc_ou*\""
@@ -94,7 +96,9 @@
         "@vue/component-compiler-utils": "^3.3.0",
         "@vuepress/plugin-prismjs": "^2.0.0-beta.27",
         "@vuepress/plugin-toc": "^2.0.0-beta.27",
+        "fast-json-stringify": "^2.7.12",
         "markdown-it-html-entities": "^1.0.1",
+        "prettier-package-json": "^2.6.0",
         "typedoc": "^0.22.10",
         "typedoc-plugin-extras": "^2.2.1",
         "typedoc-plugin-inline-sources": "^1.0.1",

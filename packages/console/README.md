@@ -6,7 +6,7 @@ This is an slightly opinionated way of dealing with bigger cli applications in a
 fully extendable and replaceable, while keeping it possible to use yargs the same way when need to do so.
 
 ## Documentation
-A more thorough documentation can be found [here](docs) on github or the compiled [documentation website](https://radic.dev/npm-console)
+Check out the [documentation website](https://radic.dev/npm-packages/console) for in depth documentation.
 
 This package also uses `@radic/core` to provide the service container which provides dependency injection and service providers to allow a specified way of
 adding, extending and modifying existing extensions to the platform. For anyone that has used Laravel's `Application` with its `ServiceProviders`, you'll feel right at home.

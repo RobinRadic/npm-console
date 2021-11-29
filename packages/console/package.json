@@ -15,7 +15,7 @@
     "publishConfig": {
         "access": "public"
     },
-    "vuepress": {"name": "Console"},
+    "vuepress": {"name": "Console", "readme": "docs/README.md"},
     "license": "MIT",
     "main": "lib/index.js",
     "types": "lib/index.d.ts",

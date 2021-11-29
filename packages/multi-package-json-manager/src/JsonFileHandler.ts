@@ -13,7 +13,7 @@ export class JsonFileHandler {
     public indent: number                     = 4;
 
     constructor(protected updater: Manager) {
-        this.setPackageSchemaJsonFilePath(resolve(__dirname, 'package.schema.json'));
+        this.setPackageSchemaJsonFilePath(resolve(__dirname, '../package.schema.json'));
     }
 
     setPackageSchemaJsonFilePath(packageSchemaJsonFilePath: string) {

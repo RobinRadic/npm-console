@@ -35,7 +35,7 @@ export class ThemeHelper {
                 nav = this.config.navbar.find(n => n[ 'text' ] === 'Packages') as NavbarGroup;
             }
             nav.children.push({
-                text: pkg.pkg.name,
+                text: pkg?.pkg?.vuepress?.name || pkg.name,
                 link: `/${this.monorepo.options.dirName}/${pkg.options.destDir}/`,
             });
         }
@@ -90,7 +90,7 @@ export class ThemeHelper {
         })
         this.sidebar[ link ] = [
             {
-                text    : pkg.name,
+                text    : pkg?.pkg?.vuepress?.name || pkg.name,
                 link   ,
                 children,
             },

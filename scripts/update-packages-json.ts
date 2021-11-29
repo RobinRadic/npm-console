@@ -4,7 +4,7 @@ import { resolve } from 'path';
 
 let manager = new Manager(resolve(__dirname, '..'));
 manager.addPackageJsons('packages/*/package.json');
-manager.enableTestRun(true);
+// manager.enableTestRun(true);
 manager.addVariables({
     email : 'rradic@hotmail.com',
     name  : 'Robin Radic',

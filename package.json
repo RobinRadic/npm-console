@@ -31,6 +31,7 @@
         "console-input": "cd packages/console-input && yarn",
         "console-output": "cd packages/console-output && yarn",
         "json-manager": "cd packages/multi-package-json-manager && yarn",
+        "update-packages-json": "cd scripts && ts-node update-packages-json.ts",
         "app:cli": "cd apps/cli && yarn",
         "watch": "yarn build && concurrently \"yarn watch:tools\" \"yarn watch:util\"",
         "reinstall": "yarn clean:yarn && yarn",

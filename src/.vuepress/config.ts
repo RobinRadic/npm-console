@@ -4,18 +4,20 @@ import { DefaultThemeOptions } from '@vuepress/theme-default';
 import { resolve } from 'path';
 import { MonorepoPluginOptions } from './plugins/monorepo/src/interfaces';
 
+
 const root     = (...parts) => resolve(__dirname, '../..', ...parts);
 const packages = (packageName: string, ...parts) => root('packages', packageName, ...parts);
 const config   = defineUserConfig<DefaultThemeOptions, WebpackBundlerOptions>({
     lang       : 'en-US',
     title      : 'NPM Packages',
     description: '',
-dest: root('docs'),
+    dest       : root('docs'),
     head       : [
         [ 'meta', { name: 'theme-color', content: '#3EAF7C' } ],
         [ 'meta', { name: 'apple-mobile-web-app-capable', content: 'yes' } ],
         [ 'meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' } ],
     ],
+    base       : '/',
     // bundlerConfig: {
     //     vue: {
     //         compilerOptions: {
@@ -66,7 +68,8 @@ dest: root('docs'),
 
     plugins: [
         [ resolve(__dirname, 'plugins/monorepo'), <MonorepoPluginOptions>{
-            monorepo: {
+            buildBase: '/npm-packages/',
+            monorepo : {
                 root   : root(),
                 resolve: {
                     exclude: [ 'apps/cli' ],

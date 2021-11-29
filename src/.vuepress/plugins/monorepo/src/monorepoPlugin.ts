@@ -11,11 +11,15 @@ export const monorepoPlugin: Plugin<MonorepoPluginOptions> = (options, app) => {
         packages: [],
         ...options,
     };
+    if(app.env.isBuild && options.buildBase){
+        app.options.base = options.buildBase
+    }
     const monorepo: Monorepo = new Monorepo(app, options.monorepo);
     options.packages.forEach(options => monorepo.createPackage(options));
     monorepo.remakeDocDir();
     monorepo.copyPackageDocs();
     monorepo.themeHelper.addAllPackagesToTheme();
+
 
     return {
         name         : 'vuepress-monorepo-plugin',

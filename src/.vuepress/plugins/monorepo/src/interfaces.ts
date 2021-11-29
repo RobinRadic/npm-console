@@ -22,6 +22,7 @@ export interface MonorepoOptions {
 }
 
 export interface MonorepoPluginOptions{
+    buildBase?:string
     monorepo:MonorepoOptions
     packages?: Array<MonorepoPackageOptions | string>;
 }

@@ -54,7 +54,6 @@ const config   = defineUserConfig<DefaultThemeOptions, WebpackBundlerOptions>({
 
     plugins: [
         [ resolve(__dirname, 'plugins/monorepo'), <MonorepoPluginOptions>{
-            buildBase: '/npm-packages/',
             monorepo : {
                 root   : root(),
                 resolve: {

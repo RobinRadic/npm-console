@@ -30,6 +30,7 @@
       <excludeFolder url="file://$MODULE_DIR$/.tmp" />
       <excludeFolder url="file://$MODULE_DIR$/src/.vuepress/plugins/monorepo/lib" />
       <excludeFolder url="file://$MODULE_DIR$/packages/multi-package-json-manager/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/src/.vuepress/plugins/theme-radical/lib" />
     </content>
     <content url="file://$MODULE_DIR$/.tmp/vuepress-next/packages/@vuepress/theme-default" />
     <orderEntry type="inheritedJdk" />

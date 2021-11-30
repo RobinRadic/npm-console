@@ -17,22 +17,8 @@ const config   = defineUserConfig<DefaultThemeOptions, WebpackBundlerOptions>({
         [ 'meta', { name: 'apple-mobile-web-app-capable', content: 'yes' } ],
         [ 'meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' } ],
     ],
-    base       : '/',
-    // bundlerConfig: {
-    //     vue: {
-    //         compilerOptions: {
-    //             nodeTransforms: [
-    //                 (node, context) => context.addIdentifiers
-    //             ]
-    //         }
-    //     }
-    // },
-    // markdown   : {
-    //     html:false
-    // },
-    // extendsMarkdown:(md, app) => {
-    //   md.use(require("markdown-it-html-entities"))
-    // },
+    base       : '/npm-packages/',
+    debug: true,
     themeConfig: {
         editLinks   : false,
         docsDir     : '',

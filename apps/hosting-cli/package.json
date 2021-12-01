@@ -1,0 +1,60 @@
+{
+    "name": "@radic/hosting-cli",
+    "version": "1.0.0",
+    "scripts": {
+        "generate-nginx-types": "ts-node  scripts/nginx-types-generator.ts",
+        "clean": "rm -rf lib",
+        "compile": "tsc -p tsconfig.json",
+        "watch": "tsc -p tsconfig.json --watch"
+    },
+    "dependencies": {
+        "@radic/hosting": "^1.0.0",
+        "@radic/core": "^1.0.0",
+        "@radic/shared": "^1.0.0",
+        "@radic/console": "^1.0.0",
+        "@radic/console-input": "^1.7.1",
+        "@radic/console-output": "^1.5.4"
+    },
+    "devDependencies": {
+    },
+    "private": false,
+    "publishConfig": {
+        "access": "public",
+        "description": true
+    },
+    "description": "A tool to manage apache/nginx/php[7-8] virtual hosts and its comrades. Works only for specific environments. Aimed at Linux Ubuntu / Multi-php installations",
+    "license": "MIT",
+    "keywords": [
+        "apache",
+        "nginx",
+        "php",
+        "xebug",
+        "virtual hosts",
+        "linux",
+        "multi-php",
+        "host",
+        "manager",
+        "managing"
+    ],
+    "os": [
+        "linux",
+        "darwin"
+    ],
+    "cpu": [
+        "x64"
+    ],
+    "main": "dist/index.js",
+    "types": "typings/index.d.ts",
+    "author": {
+        "email": "rradic@hotmail.com",
+        "name": "Robin Radic",
+        "url": "https://github.com/RobinRadic"
+    },
+    "bugs": {
+        "url": "https://github.com/RobinRadic/npm-packages/issues"
+    },
+    "bin": {
+        "hosting": "bin/hosting.js"
+    },
+    "homepage": "https://github.com/RobinRadic/npm-packages/tree/master/packages/hosting"
+}

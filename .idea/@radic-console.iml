@@ -20,10 +20,13 @@
       <sourceFolder url="file://$MODULE_DIR$/packages/multi-package-json-manager/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/packages/multi-package-json-manager/test" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/.vuepress/plugins/monorepo/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/apps/hosting-cli/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/packages/hosting/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/packages/hosting/test" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/packages/console/src/core" />
       <excludeFolder url="file://$MODULE_DIR$/packages/console-input/lib" />
       <excludeFolder url="file://$MODULE_DIR$/packages/console-output/lib" />
-      <excludeFolder url="file://$MODULE_DIR$/packages/core/lib" />
       <excludeFolder url="file://$MODULE_DIR$/packages/shared/lib" />
       <excludeFolder url="file://$MODULE_DIR$/packages/console-colors/lib" />
       <excludeFolder url="file://$MODULE_DIR$/packages/console/lib" />
@@ -31,6 +34,11 @@
       <excludeFolder url="file://$MODULE_DIR$/src/.vuepress/plugins/monorepo/lib" />
       <excludeFolder url="file://$MODULE_DIR$/packages/multi-package-json-manager/lib" />
       <excludeFolder url="file://$MODULE_DIR$/src/.vuepress/plugins/theme-radical/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/docs" />
+      <excludeFolder url="file://$MODULE_DIR$/.jsonUpdaterTests" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/core/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/hosting/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/apps/hosting-cli/lib" />
     </content>
     <content url="file://$MODULE_DIR$/.tmp/vuepress-next/packages/@vuepress/theme-default" />
     <orderEntry type="inheritedJdk" />

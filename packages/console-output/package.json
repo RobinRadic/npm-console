@@ -70,6 +70,25 @@
         "@fortawesome/free-brands-svg-icons": "^5.15.4",
         "@fortawesome/free-regular-svg-icons": "^5.15.4",
         "@fortawesome/free-solid-svg-icons": "^5.15.4",
+        "winston": "^3.3.3",
+        "archy": "^1.0.0",
+        "beeper": "^2.1.0",
+        "chalk": "^4.1.0",
+        "cli-highlight": "^2.1.11",
+        "cli-table2": "^0.2.0",
+        "cli-table3": "^0.6.0",
+        "listr": "^0.14.3",
+        "multispinner": "^0.2.1",
+        "ora": "^5.4.0",
+        "progress": "^2.0.3",
+        "sparkly": "^5.0.0"
+    },
+    "peerDependencies": {
+        "@fortawesome/fontawesome": "^1.1.8",
+        "@fortawesome/free-brands-svg-icons": "^5.15.4",
+        "@fortawesome/free-regular-svg-icons": "^5.15.4",
+        "@fortawesome/free-solid-svg-icons": "^5.15.4",
+        "winston": "^3.3.3",
         "archy": "^1.0.0",
         "beeper": "^2.1.0",
         "chalk": "^4.1.0",
@@ -85,42 +104,12 @@
     "optionalDependencies": {
         "node-notifier": "^10.0.0"
     },
-    "peerDependencies": {
-        "@fortawesome/fontawesome": "^1.1.8",
-        "@fortawesome/free-brands-svg-icons": "^5.15.4",
-        "@fortawesome/free-regular-svg-icons": "^5.15.4",
-        "@fortawesome/free-solid-svg-icons": "^5.15.4",
-        "archy": "^1.0.0",
-        "beeper": "^2.1.0",
-        "chalk": "^4.1.0",
-        "cli-highlight": "^2.1.11",
-        "cli-table2": "^0.2.0",
-        "cli-table3": "^0.6.0",
-        "listr": "^0.14.3",
-        "multispinner": "^0.2.1",
-        "ora": "^5.4.0",
-        "progress": "^2.0.3",
-        "sparkly": "^5.0.0"
-    },
     "bugs": {
         "email": "rradic@hotmail.com",
         "url": "https://github.com/robinradic/npm-packages/issues"
     },
     "engines": {
         "node": ">=12"
-    },
-    "files": [
-        "/bin",
-        "/lib",
-        "/npm-shrinkwrap.json",
-        "/oclif.manifest.json"
-    ],
-    "oclif": {
-        "commands": "./lib/cli/commands",
-        "bin": "sites",
-        "plugins": [
-            "@oclif/plugin-help"
-        ]
     },
     "os": [
         "darwin",

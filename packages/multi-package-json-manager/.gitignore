@@ -10,4 +10,4 @@ lib
 .nyc_output
 
 docs/api
-tsconfig.build.json
+tsconfig.tsbuildinfo

@@ -6,6 +6,8 @@
     "workspaces": {
         "packages": [
             "apps/cli",
+            "apps/hosting-cli",
+            "packages/hosting",
             "packages/console",
             "packages/console-colors",
             "packages/console-input",

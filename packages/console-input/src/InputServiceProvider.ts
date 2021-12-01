@@ -1,5 +1,6 @@
 import { ServiceProvider } from '@radic/shared';
 import { Input } from './Input';
+import { Bindings, inject } from '@radic/core';
 
 declare module '@radic/core/lib/Foundation/Application' {
     export interface Bindings {
@@ -16,3 +17,7 @@ export class InputServiceProvider extends ServiceProvider {
         this.app.instance('input', Input).addBindingGetter('input');
     }
 }
+
+
+export const ask = inject('input');
+export type ask = Bindings['input']

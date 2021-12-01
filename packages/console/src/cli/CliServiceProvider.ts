@@ -1,4 +1,3 @@
-import { Application } from '@radic/core';
 import { isString, objectify, ServiceProvider } from '@radic/shared';
 import { Argv } from 'yargs';
 import { AsyncSeriesHook, AsyncSeriesWaterfallHook, SyncHook, SyncWaterfallHook } from 'tapable';

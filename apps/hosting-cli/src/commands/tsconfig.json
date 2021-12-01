@@ -1,0 +1,22 @@
+{
+    "compileOnSave": false,
+    "extends": "../../tsconfig.json",
+    "compilerOptions": {
+        "baseUrl": "../../",
+        "paths": {
+            "@core": ["src/core/index.ts"],
+            "@modules": ["src/modules/index.ts"],
+            "@types": ["src/types/index.ts"],
+            "@decorators": ["src/decorators/index.ts"]
+        }
+    },
+    "include": [
+        "*.ts",
+        "**/*.ts",
+    ],
+    "exclude": [
+        "node_modules",
+        "dist",
+        "lib"
+    ]
+}

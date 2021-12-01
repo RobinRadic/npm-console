@@ -1,5 +1,4 @@
-import { group } from '@decorators';
-import { GroupCommand } from '@modules';
+import { group, GroupCommand } from '@radic/console';
 
 
 @group('nginx', 'nginx', __dirname)

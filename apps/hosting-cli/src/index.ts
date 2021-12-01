@@ -5,13 +5,13 @@ import { HostingServiceProvider } from '@radic/hosting';
 import { InputServiceProvider } from '@radic/console-input/lib/InputServiceProvider';
 import { OutputServiceProvider } from '@radic/console-output/lib/OutputServiceProvider';
 import { LogServiceProvider } from '@radic/console-output/lib/log';
+import { macros } from '@radic/console-output';
 
 export async function bootApp() {
     let commandDir = join(__dirname, 'commands');
-
     const app      = Application.instance;
-    app.registerPaths(__dirname);
     await app.initialize({
+        dirname: __dirname,
         providers: [
             CoreServiceProvider,
             CliServiceProvider,
@@ -77,6 +77,10 @@ export async function bootApp() {
         },
     });
 
+    let epilog = `{dim}Boolean options that have true as default can be negated using --no-[option]. So for example --reload becomes --no-reload{/dim}`;
+    app.hooks.cli.command.builder.tap('MY', (command, cli) => {
+        cli.epilog(app.output.parse(epilog))
+    });
     app.hooks.cli.command.handler.tap('MY', (command, params) => {
         let verbose = 'v'.repeat(command.instance.verbose);
         if ( verbose ) {
@@ -89,7 +93,10 @@ export async function bootApp() {
         .parserConfiguration({
             'boolean-negation': true,
             'negation-prefix' : 'no-',
+            'dot-notation':false
         })
+        .help('h', 'Show Help').alias('h', 'help')
+        .option('V', { type: 'boolean', alias: 'version', global: false })
         .option('v', {
             alias : 'verbose',
             desc  : 'Increase output verbosity up to 3 times. Eg: -v -vv -vvv',
@@ -97,10 +104,20 @@ export async function bootApp() {
             global: true,
             group : app.output.parse('{bold}Global Options:{/bold}'),
         })
+        .epilog(app.output.parse(epilog))
+            .usage(app.output.parse('{bold}Hosting Manager:{/bold}\n {green}${/green} hosting <{yellow}command{/yellow}>'))
         ;
     });
 
     await app.boot();
+    app.output.ui.addMacros([
+        macros.beep,
+        macros.highlight,
+        macros.notify,
+        macros.sparkly,
+        macros.spinner,
+        macros.tree,
+    ])
     return app;
 }
 

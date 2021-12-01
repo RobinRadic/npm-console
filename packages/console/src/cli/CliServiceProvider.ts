@@ -2,10 +2,8 @@ import { isString, objectify, ServiceProvider } from '@radic/shared';
 import { Argv } from 'yargs';
 import { AsyncSeriesHook, AsyncSeriesWaterfallHook, SyncHook, SyncWaterfallHook } from 'tapable';
 import cli, { Cli } from './Cli';
-import locale from './locale.json';
 import { Command } from '../decorators/decorator';
 import { Args, OptionDefinition } from '../yargs';
-
 declare module '@radic/core/lib/Foundation/Application' {
     export interface Hooks {
         cli: {
@@ -68,7 +66,7 @@ export type CliSetup = (cli: Cli) => Promise<Cli>
 export type CliStart = <T extends CliArguments = CliArguments>() => Promise<CliStartReturn<T>>
 export type CliStartReturn<T extends CliArguments = CliArguments> = { [key in keyof Args<T>]: Args<T>[key] }
 
-function getLocaleStrings(out: any) {
+function getLocaleStrings(locale:any, out: any) {
     function transform(obj) {
         return Object.entries(obj).map(([ key, value ]) => {
             if ( isString(value) ) {
@@ -146,13 +144,14 @@ export class CliServiceProvider extends ServiceProvider {
                 .parserConfiguration({
                     'dot-notation': false,
                 })
-                .help('h', 'Show Help').alias('h', 'help')
+                // .help('h', 'Show Help').alias('h', 'help')
                 // .group('h', this.app.out.parse('{bold}Global Options:{/bold}'))
-                .option('V', { type: 'boolean', alias: 'version', global: false });
+                // .option('V', { type: 'boolean', alias: 'version', global: false });
                 // .showHelpOnFail(true)
 
-                if ( this.app.isBound('out') ) {
-                    cli.updateStrings(getLocaleStrings(this.app.get('out')));
+                if ( this.app.isBound('output') ) {
+                    const locale = require('../../yargs/locale.json');
+                    cli.updateStrings(getLocaleStrings(locale,this.app.get('output')));
                 }
 
                 if ( maxWidth !== false && cli.terminalWidth() > maxWidth ) {

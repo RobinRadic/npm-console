@@ -17,7 +17,7 @@ export default class CacheCommand extends Command {
             return;
         }
         if ( name ) {
-            let cache = this.cache.get(name);
+            let cache = this.cache.getAdapter(name);
             return this.handleCache(cache);
         }
         for ( const cache of this.cache.allAdapters() ) {

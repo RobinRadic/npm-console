@@ -16,7 +16,7 @@
         }
     },
     "files": [
-        "src/cli/locale.json",
+        "yargs/locale.json"
     ],
     "include": [
         "src"

@@ -1,8 +1,17 @@
-import { Cli, command, option } from '@radic/console';
+import { Cli, command, example, examples, option, usage } from '@radic/console';
 import { SitesCommand } from '../../SitesCommand';
 import { Site } from '@radic/hosting';
 
 @command('enable [name]', 'Enable a site')
+// @example(`enable dev2.local`, 'Enables the site dev2.local')
+@examples({
+    'enable dev2.local': 'Enables the site dev2.local',
+    'enable dev2.local --server apache': 'Enables the site dev2.local on apache',
+    'enable dev2.local --no-reload': 'Enables the site dev2.local without reloading the site server service',
+    'enable dev2.local --restart': 'Enables the site dev2.local and restarts the site server',
+
+})
+@usage(`oijoij`)
 export default class EnableCommand extends SitesCommand {
 
     @option('s', 'Specify site server', { nargs: 1, requiresArg: true }) server: string;

@@ -9,7 +9,7 @@ import { AbstractHostLine } from '../../Hosts';
 export abstract class Site<CONFIG = any, SERVER extends HTTPServer<any> = HTTPServer<any>> {
     app: Application = Application.instance;
 
-    constructor(public readonly server: SERVER, protected configFilePath: string) {
+    constructor(public readonly server: SERVER, public readonly configFilePath: string) {
 
     }
 

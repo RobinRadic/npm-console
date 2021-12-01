@@ -14,6 +14,7 @@ export interface Configuration {
 }
 
 export interface ApplicationInitOptions {
+    dirname:string,
     providers?: IServiceProviderClass[];
     config?: Configuration;
 }

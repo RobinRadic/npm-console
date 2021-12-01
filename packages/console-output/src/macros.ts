@@ -5,6 +5,8 @@ import { Options as SparklyOptions } from 'sparkly';
 import { requireModule } from './utils';
 import { HighlightOptions } from 'cli-highlight';
 import { Ui } from './ui';
+import { TreeData, TreeOptions } from './interfaces';
+import { Output } from './Output';
 
 
 export namespace macros {
@@ -38,17 +40,17 @@ export namespace macros {
 
     };
 
-    export type SparklyCallback = (numbers: Array<number | ''>, options?: SparklyOptions, ret?: boolean) => string | void
+    export type SparklyCallback = (numbers: Array<number | ''>, options?: SparklyOptions, ret?: boolean) => string | Output
     export const sparkly: MacroDefinition<SparklyCallback> = {
         name: 'sparkly',
-        callback(this: Ui, numbers: Array<number | ''>, options?: SparklyOptions, ret: boolean = false): string | void {
+        callback(this: Ui, numbers: Array<number | ''>, options?: SparklyOptions, ret: boolean = false): string | Output {
             let s = requireModule('sparkly', 'sparkly macro')(numbers, options);
             return ret ? s : this.output.writeln(s);
         },
     };
 
 
-    export type HighlightCallback = (code: string, options?: HighlightOptions, ret?: boolean) => string | void
+    export type HighlightCallback = (code: string, options?: HighlightOptions, ret?: boolean) => string | Output
     export const highlight: MacroDefinition<HighlightCallback> = {
         name: 'highlight',
         callback(this: Ui, code: string, options?: HighlightOptions, ret: boolean = false) {
@@ -57,5 +59,14 @@ export namespace macros {
         },
     };
 
-
+    export type TreeCallback = (obj: TreeData, opts?: TreeOptions, returnValue?: boolean) => string | Output
+    export const tree: MacroDefinition<TreeCallback> = {
+        name: 'tree',
+        callback(this: Ui, obj: TreeData, opts: TreeOptions = {}, returnValue: boolean = false): string | Output {
+            let prefix = opts.prefix;
+            delete opts.prefix;
+            let tree = requireModule('archy', 'tree macro')(obj, prefix, opts);
+            return returnValue ? tree : this.output.line(tree);
+        },
+    }
 }

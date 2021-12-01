@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 const {join} = require('path')
 const {readFileSync} = require('fs')
-const {addAliases} = require('module-alias');
 
 
 const dev = process.env.NODE_ENV==='development';

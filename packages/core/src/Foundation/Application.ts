@@ -237,7 +237,8 @@ export class Application extends Container {
      * @param options
      * @returns
      */
-    public async initialize(options: ApplicationInitOptions = {}) {
+    public async initialize(options: ApplicationInitOptions) {
+        this.registerPaths(options.dirname);
         this.events.emit('Application:initialize:defaultConfig', defaultConfiguration);
         options.config = merge({}, defaultConfiguration, options.config);
         this.events.emit('Application:initialize', options);

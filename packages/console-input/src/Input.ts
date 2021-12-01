@@ -163,7 +163,7 @@ export class Input {
         return await this.question({ type: 'editor', message, ...question });
     }
 
-    public static async edit(content: string, options?: IFileOptions) {
+    public static async edit(content: string, options?: IFileOptions):Promise<string> {
         return new Promise((resolve, reject) => {
             editAsync(content, (err, result) => {
                 if ( err ) return reject(err);

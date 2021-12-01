@@ -34,6 +34,8 @@ export function decorator(type: CommandDecoratorType, options: CommandDecoratorO
     const { aliases, desc, directory, name } = options;
     return (Target: new (...args: any) => any) => {
 
+        let examples:Array<{example:string,description:string}> = Reflect.getMetadata('examples', Target.prototype);
+        let usage = Reflect.getMetadata('usage', Target.prototype);
         let options: Record<string, OptionDefinition> = Reflect.getMetadata('options', Target.prototype) || {};
         options= app.hooks.cli.command.options.call(options);
 
@@ -41,6 +43,7 @@ export function decorator(type: CommandDecoratorType, options: CommandDecoratorO
             instance: ICommand;
 
             command  = name;
+            commandName = name.split(' ')[0]
             describe = desc;
             aliases  = aliases;
 
@@ -62,6 +65,25 @@ export function decorator(type: CommandDecoratorType, options: CommandDecoratorO
                 if ( type === 'group' ) {
                     cli.commandos(directory);
                 }
+                if(examples){
+                    for(const example of examples) {
+                        if ( app.isBound('output') ) {
+                            example.example = app.get('output').parse(example.example)
+                            example.description = app.get('output').parse(example.description)
+                        }
+                        cli.example(example.example, example.description);
+                    }
+                }
+
+                if(usage){
+                    usage = app.isBound('output') ? app.get('output').parse(usage) : usage;
+                } else if(app.isBound('output')){
+                    usage = `{bold}${this.describe}:{/bold}\n{green}$\{/green} ${this.command}`
+                    usage=app.get('output').parse(usage)
+                }
+                cli.usage(usage);
+
+
                 app.hooks.cli.command.builder.call(this,cli)
                 if ( typeof this.instance.builder === 'function' ) {
                     return this.instance.builder(cli);

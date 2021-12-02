@@ -1,7 +1,7 @@
 {
     "name": "@radic/console",
     "private": false,
-    "version": "1.0.2",
+    "version": "1.2.0",
     "description": "Create class based commands with Yargs using decorators",
     "author": {
         "name": "Robin Radic",

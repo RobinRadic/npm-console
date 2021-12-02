@@ -1,5 +1,5 @@
 import { Bindings, inject } from '@radic/core';
-import { HTTPServer, Site } from '@radic/hosting';
+import { hostfile, HTTPServer, Site } from '@radic/hosting';
 import { Command } from './Command';
 
 const isHTTPServer = (value: any): value is HTTPServer<any> => value instanceof HTTPServer;
@@ -7,6 +7,7 @@ const isHTTPServer = (value: any): value is HTTPServer<any> => value instanceof 
 export abstract class SitesCommand extends Command {
     @inject('servers') servers: Bindings['servers'];
     @inject('sites') sites: Bindings['sites'];
+    @hostfile hostfile:hostfile;
 
     protected async askServer() {
         const name = await this.ask.list('Choose server:', this.servers.names());
@@ -51,4 +52,18 @@ export abstract class SitesCommand extends Command {
         return sites.get(name) as any;
     }
 
+
+    protected async askRestartServer(site:Site){
+        const operation = await this.ask.list('Server operation', ['none','reload','restart'],'reload');
+        if(operation === 'none'){
+            return;
+        }
+        const output = await site.server.service[operation]()
+        this.log.info(`Server has been ${operation}`);
+        this.log.verbose(output);
+        let active = await site.server.service.isActive();
+        if(!active){
+            this.log.warn(`It seems the server is not active anymore after ${operation}`);
+        }
+    }
 }

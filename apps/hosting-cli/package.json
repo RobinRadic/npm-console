@@ -13,7 +13,11 @@
         "@radic/shared": "^1.0.0",
         "@radic/console": "^1.0.0",
         "@radic/console-input": "^1.7.1",
-        "@radic/console-output": "^1.5.4"
+        "@radic/console-output": "^1.5.4",
+        "mysql": "^2.18.1",
+        "sqlite3": "^5.0.2",
+        "dotenv": "^10.0.0",
+        "crypto": "^1.0.1"
     },
     "devDependencies": {
     },

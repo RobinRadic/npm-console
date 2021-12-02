@@ -53,6 +53,17 @@ export class HostFile {
         return line;
     }
 
+    remove(lines:Array<AbstractHostLine|CommentLine>){
+        this.lines = this.lines.filter(l => {
+            for(const line of lines){
+                if(line === l){
+                    return false;
+                }
+            }
+        });
+        return this;
+    }
+
     getAllByName(name: string): AbstractHostLine[] {
         let matcher = this.getHostMatcher(name);
         return this.hosts().filter(host => host.hosts.filter(name => matcher.test(name)).length > 0);

@@ -2,6 +2,8 @@ import { Site } from '../Sites';
 import { NginxServer } from './NginxServer';
 import { NginxParser } from 'nginx-conf';
 import { NginxParseTreeNode } from 'nginx-conf/dist/src/parser';
+import { NginxConfFile } from './parser';
+import { writeFileSync } from 'fs';
 
 
 function searchTree<T>(tree: T, childrenPropName: string, propName: string, value: string): T {
@@ -60,4 +62,11 @@ export class NginxSite extends Site<NginxParseTreeNode, NginxServer> {
             });
         });
     }
+
+    saveConfig(config: NginxParseTreeNode) {
+        let file    = new NginxConfFile(config, { tab: '    ' });
+        let content = file.toString();
+        writeFileSync(this.configFilePath, content, 'utf-8');
+    }
+
 }

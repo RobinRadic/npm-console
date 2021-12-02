@@ -6,6 +6,7 @@ import { InputServiceProvider } from '@radic/console-input/lib/InputServiceProvi
 import { OutputServiceProvider } from '@radic/console-output/lib/OutputServiceProvider';
 import { LogServiceProvider } from '@radic/console-output/lib/log';
 import { macros } from '@radic/console-output';
+import { HostingCliServiceProvider } from './HostingCliServiceProvider';
 
 export async function bootApp() {
     let commandDir = join(__dirname, 'commands');
@@ -18,7 +19,8 @@ export async function bootApp() {
             HostingServiceProvider,
             InputServiceProvider,
             OutputServiceProvider,
-            LogServiceProvider
+            LogServiceProvider,
+            HostingCliServiceProvider
         ],
         config   : {
             debug  : true,
@@ -31,6 +33,19 @@ export async function bootApp() {
                     return args;
                 } catch (e) {
                     app.error(e, true);
+                }
+            },
+            db: {
+                connections: {
+                    mysql: {
+                        type:'mysql',
+                        driver: require('mysql'),
+                        authentication: {
+                            options: {
+
+                            }
+                        }
+                    }
                 }
             },
             servers: {

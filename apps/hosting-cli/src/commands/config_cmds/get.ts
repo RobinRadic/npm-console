@@ -3,8 +3,8 @@ import { Bindings, inject } from  '@radic/core';
 import { dot } from 'dot-object';
 import { Command } from '../../Command';
 
-@command('get [key]', 'Get a config value')
-export default class GetCommand extends Command {
+@command('auth', 'Manage authentication credentials')
+export default class AuthCommand extends Command {
     @inject('log') log: Bindings['log'];
     @inject('config') config: Bindings['config'];
 

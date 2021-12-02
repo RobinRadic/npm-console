@@ -87,7 +87,8 @@ export default class EditCommand extends SitesCommand {
     protected async editApacheSite(site: ApacheSite) {
         this.log.warn(`Editing apache sites interactively is not yet available`);
         if(await this.ask.confirm('Do you want to open the config file in an external editor?', true)){
-            return this.editConfigFile(site);
+            await this.editConfigFile(site);
+            await this.askRestartServer(site)
         }
     }
 
@@ -103,10 +104,9 @@ export default class EditCommand extends SitesCommand {
                 updateNginxTreeNode(config, answer);
             }
             if ( await this.ask.confirm('Modify changes in config file?') ) {
-                let file    = new NginxConfFile(config, { tab: '    ' });
-                let content = file.nginx.toString();
-                let c       = file.toString();
-                return { content, c, file };
+                site.saveConfig(config);
+                this.log.success('Configuration saved')
+                await this.askRestartServer(site)
             }
         }
     }

@@ -1,9 +1,9 @@
 import { join, resolve } from 'path';
 import { ensureDirSync, ensureFile, readJSONSync, writeJsonSync } from 'fs-extra';
-import { existsSync, readFileSync, statSync, writeFileSync } from 'fs';
+import { existsSync, readFileSync, rmdirSync, rmSync, statSync, unlinkSync, writeFileSync } from 'fs';
 import envPaths, { EnvPaths } from '../Support/envPaths';
 import { compressToUTF16, decompressFromUTF16 } from 'lz-string';
-
+import glob, { IOptions } from 'glob';
 export interface DirectoryStorageOptions {
     basePath: string;
     encoding?: BufferEncoding;
@@ -121,6 +121,16 @@ export class DirectoryStorage {
 
     write(path: string, content: string) {
         writeFileSync(this.path(path), content, this.encoding);
+        return this;
+    }
+
+    glob(pattern:string, options:IOptions={}):string[]{
+        options.cwd = this.path()
+        return glob.sync(pattern, options);
+    }
+
+    delete(path:string){
+        rmSync(path, {force:true, recursive:true})
         return this;
     }
 

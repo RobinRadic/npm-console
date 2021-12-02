@@ -40,7 +40,6 @@ class InputTest extends TestCase {
     @test
     async 'check if dev prompts are working'() {
         expect(Input.ensureCustomPromptRegistered('autocomplete')).to.equal(true);
-        expect(Input.ensureCustomPromptRegistered('fuzzypath', true)).to.equal(false);
         // "@matti-o7/inquirer-maxlength-input-prompt": "^1.0.1",
         //     "inquirer-autocomplete-prompt": "^1.3.0",
         //     "inquirer-chalk-pipe": "^1.3.0",

@@ -37,6 +37,7 @@
         "app:cli": "cd apps/cli && yarn",
         "watch": "yarn build && concurrently \"yarn watch:tools\" \"yarn watch:util\"",
         "reinstall": "yarn clean:yarn && yarn",
+        "packages:publish": "npm-run-all \"shared publish\" \"core publish\" \"console-output publish\" \"console-input publish\" \"console-colors publish\" \"console publish\" \"json-manager publish\"",
         "build": "npm-run-all \"shared build\" \"core build\" \"console-output build\" \"console-input build\" \"console-colors build\" \"console build\" \"json-manager build\"",
         "test": "npm-run-all \"shared test\" \"core test\" \"console-output test\" \"console-input test\" \"console-colors test\" \"console test\" \"json-manager test\"",
         "docs:api": "npm-run-all \"shared docs:api\" \"core docs:api\" \"console-output docs:api\" \"console-input docs:api\" \"console-colors docs:api\" \"console docs:api\" \"json-manager docs:api\"",

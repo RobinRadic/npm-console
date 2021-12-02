@@ -1,7 +1,7 @@
 {
     "name": "@radic/console-colors",
     "private": false,
-    "version": "4.0.3",
+    "version": "4.1.0",
     "description": "Console Colors text parser. Apply colors to texts fast & easy. Use hex/rgb colors with auto (or custom) fallback for unsupported terminals.",
     "author": {
         "name": "Robin Radic",

@@ -4,7 +4,6 @@ import { Figures, IParser, OutputOptions } from './interfaces';
 import { inspect } from 'util';
 import { figures } from './figures';
 import { Ui } from './ui';
-import { OutputUtil } from './OutputUtil';
 import { merge } from 'lodash';
 import { IconGenerator } from './utils/IconGenerator';
 
@@ -22,7 +21,6 @@ export class Output {
     public colors: Colors                         = new Colors(this.styles);
     public figures: Figures                       = figures;
     public readonly ui: Ui;
-    public readonly util: OutputUtil;
     public icons: IconGenerator;
 
     static defaultOptions: OutputOptions = {
@@ -43,7 +41,6 @@ export class Output {
         this.options = merge({}, new.target.defaultOptions, options);
         this.addDefaultParsers();
         this.ui   = new Ui(this);
-        this.util = new OutputUtil(this);
         Object.entries(this.options.styles).forEach(([ k, v ]) => this.styles.setStyle(k, v));
         return macroProxy(this);
     }

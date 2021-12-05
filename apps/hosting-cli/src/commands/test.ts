@@ -1,22 +1,31 @@
 import { NginxServer, NginxSite, servers } from '@radic/hosting';
 import { command } from '@radic/console';
-import { TreeItem } from '@radic/console-input';
-import { NginxConfFile, NginxParseTreeNode } from '@radic/hosting/lib/Servers/Nginx/parser';
 import { Command } from '../Command';
-import { app } from '@radic/core';
+import { Directory, File, system, User } from '@radic/core';
 
 
 @command('test', 'Just a test command')
 export default class TestCommand extends Command {
     @servers servers: servers;
-
+    @system system: system;
 
     async handle() {
-        let server = this.servers.get<NginxServer>('nginx');
-        let site   = await server.sites.first();
-
+let users=this.system.users.collection;
+        let sites = this.app.servers.get<NginxServer>('nginx').sites.mapWithKeys(site => ([site.filename, site.getConfig()])).toArray();
+        sites = await Promise.all(sites)
+        let disks = await this.system.getDisks();
+        let partitions = disks.getAllPartitions();
+        let partition = partitions.getByMountPath('/mnt/fat');
+        let filesystem = partition.filesystem;
+        let downloads:Directory = filesystem.items.downloads;
+        await downloads.open()
+        let found = downloads.items.sorted5.children.searchName(/Missy|Luv/g);
+        let file = found.first() as File;
+        let mimeType = file.mimeType;
+        let contentType = file.contentType;
+        // await file.open()
+        return;
     }
-
     async handeele() {
         let server = this.servers.get<NginxServer>('nginx');
 

@@ -4,6 +4,7 @@ export class Collection<T> extends BaseCollection<T> {
     length:number
     [ macroFn: string ]: any;
 
+
     constructor(collection: T[] | Object) {
         super(collection);
         Object.defineProperty(this, 'length', {

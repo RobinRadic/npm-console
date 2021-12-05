@@ -6,6 +6,13 @@ import { injectable } from 'inversify';
 export abstract class Manager<T> {
     protected items: Collection<T> = new Collection<T>({});
 
+    get collection():Collection<T>{return this.items}
+
+    setItems(items:T[]|Object){
+        this.items = new Collection<T>(items)
+        return this
+    }
+
     set(key: string, item: T) {
         this.items.put(key, item);
         return this;
@@ -13,7 +20,7 @@ export abstract class Manager<T> {
 
     has(key: string) { return this.items.has(key); }
 
-    get<F=T>(key: string):F {return this.items.get(key) as any }
+    get<F=T>(key: string|number):F {return this.items.get(key) as any }
 
     keys(): string[] { return this.items.keys().toArray(); }
 

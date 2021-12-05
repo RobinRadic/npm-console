@@ -76,6 +76,7 @@
         "cli-highlight": "^2.1.11",
         "cli-table2": "^0.2.0",
         "cli-table3": "^0.6.0",
+        "cliui": "^7.0.4",
         "listr": "^0.14.3",
         "multispinner": "^0.2.1",
         "ora": "^5.4.0",

@@ -1,24 +1,30 @@
 export interface CacheAdapter {
-    getName(): string
+    getName(): string;
 
-    getType(): string
+    getType(): string;
 
-    put(key: string, value: any): this
+    put(key: string, value: any): this;
 
-    get<T>(key: string, defaultValue?: any): T
+    get<T>(key: string, defaultValue?: any): T;
 
-    has(key: string): boolean
+    getCacheItem<T>(key: string): CacheItem<T>;
 
-    merge(value: any): this
+    has(key: string): boolean;
 
-    del(key: string): this
+    del(key: string): this;
 
-    clear(): this
+    clear(): this;
 
-    size(): number
+    size(): number;
 
-    keys(): string[]
+    keys(): string[];
 
 }
 
-export const isCacheAdapter = (val:any):val is CacheAdapter => val && typeof val.getName === 'function'
+export const isCacheAdapter = (val: any): val is CacheAdapter => val && typeof val.getName === 'function';
+
+export interface CacheItem<T = any> {
+    created: number;
+    ttl?: number;
+    value: T;
+}

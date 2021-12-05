@@ -1,20 +1,26 @@
-
 import { ServiceProvider } from '@radic/shared';
 import { ServiceManager } from './ServiceManager';
 import { ProcessManager } from './ProcessManager';
 import { PATH } from './PATH';
+import { System } from './System';
+import { UserManager } from './UserManager';
+import { FilesystemServiceProvider } from './Filesystem/FilesystemServiceProvider';
 
 declare module '../Foundation/Application' {
     export interface Application {
+        system: System;
         services: ServiceManager;
         processes: ProcessManager;
         path: PATH;
+        users: UserManager;
     }
 
     export interface Bindings {
+        system: System;
         services: ServiceManager;
         processes: ProcessManager;
         path: PATH;
+        users: UserManager;
     }
 }
 declare module '../types/config' {
@@ -31,7 +37,8 @@ export interface SystemConfiguration {
 
 export class SystemServiceProvider extends ServiceProvider {
     providers = [
-    ]
+        FilesystemServiceProvider,
+    ];
 
     async load() {
         this.config({
@@ -51,9 +58,15 @@ export class SystemServiceProvider extends ServiceProvider {
     }
 
     async register() {
+        this.registerUsers();
         this.registerPATH();
         this.registerProcesses();
         this.registerServices();
+        this.registerSystem();
+    }
+
+    registerUsers() {
+        this.app.singleton('users', UserManager).addBindingGetter('users');
     }
 
     registerPATH() {
@@ -66,6 +79,10 @@ export class SystemServiceProvider extends ServiceProvider {
 
     registerServices() {
         this.app.singleton('services', ServiceManager).addBindingGetter('services');
+    }
+
+    registerSystem() {
+        this.app.singleton('system', System).addBindingGetter('system');
     }
 
     async boot() {

@@ -67,7 +67,15 @@
         "simple-hosts": "^1.2.3",
         "systeminformation": "^5.9.9",
         "tapable": "^2.2.1",
-        "which": "^2.0.2"
+        "which": "^2.0.2",
+        "mime-types": "^2.1.34",
+        "@types/mime-types": "^2.1.1",
+        "file-size": "^1.0.0",
+        "parse-passwd": "^1.0.0",
+        "@types/parse-passwd": "^1.0.0",
+        "moment": "^2.29.1",
+        "open": "^8.4.0"
+
     },
     "devDependencies": {},
     "keywords": [],

@@ -1,4 +1,4 @@
-import { CacheAdapter } from './CacheAdapter';
+import { CacheAdapter, CacheItem } from './CacheAdapter';
 import { DirectoryStorage } from '../Storage';
 import { app } from '../Foundation';
 // noinspection ES6UnusedImports
@@ -39,21 +39,42 @@ export class FileCacheAdapter implements CacheAdapter {
 
     public getName(): string {return this.name; }
 
-
-    put(key: string, value: any, dotNotation: boolean = true): this {
-        let data = this.getData();
-        if ( dotNotation ) {
-            return this.setData(set(data, key, value));
+    protected createCacheItem<T>(value:T, ttl?:number):CacheItem<T>{
+        let item:CacheItem<T> = {
+            created: Date.now(),
+            ttl,
+            value
         }
-        data[ key ] = value;
+        return item;
+    }
+
+    put(key: string, value: any, ttl?:number): this {
+        let data = this.getData();
+        data[ key ] = this.createCacheItem(value, ttl);
         return this.setData(data);
     }
 
     has(key: string): boolean {return has(this.getData(), key); }
 
-    merge(value: any): this {return this.setData(merge(this.getData(), value)); }
+    get<T>(key: string, defaultValue?: any): T {
+        if(this.has(key)){
+            return this.getCacheItem<T>(key).value
+        }
+        return defaultValue
+    }
 
-    get<T>(key: string, defaultValue?: any): T {return get(this.getData(), key, defaultValue); }
+    getCacheItem<T>(key:string):CacheItem<T>{
+        if(this.has(key)){
+            let item :CacheItem<T>= get(this.getData(), key)
+            if(item.ttl){
+                if(item.created+item.ttl < Date.now()){
+                    this.del(key);
+                    return;
+                }
+            }
+            return item;
+        }
+    }
 
     del(key: string): this {
         let data = this.getData();

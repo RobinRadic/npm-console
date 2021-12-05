@@ -1,15 +1,17 @@
 import { InspectOptions } from 'util';
 import { Output }         from './Output';
+import { DivOptions } from './ui/Div';
 
 
 
 
-export interface OutputOptions {
+export interface OutputOptions extends Partial<DivOptions>{
     silent?: boolean,
     colors?: boolean
     inspect?: InspectOptions
     resetOnNewline?: boolean,
     styles?: { [ name: string ]: string },
+
 }
 
 export type TruncateFunction = (input: string, columns: number, options?: TruncateOptions) => string

@@ -1,4 +1,4 @@
-import inquirer, { Answers, CheckboxChoiceMap, CheckboxQuestion, ConfirmQuestion, DistinctChoice, EditorQuestion, InputQuestion, ListChoiceMap, ListQuestion } from 'inquirer';
+import inquirer, { Answers, CheckboxChoiceMap, CheckboxQuestion, ConfirmQuestion, DistinctChoice, EditorQuestion, InputQuestion, ListChoiceMap, ListQuestion, PasswordQuestion } from 'inquirer';
 
 import { editAsync, IFileOptions } from 'external-editor';
 import { AutocompleteQuestion, ColorQuestion, DatepickerQuestion, DirectoryQuestion, FilePathQuestion, FileSelectorQuestion, FileTreeSelectionQuestion, FuzzypathQuestion, MaxinputQuestion, MyQuestionMap, PathQuestion, SuggestQuestion, TableQuestion, TreeItem, TreeQuestion } from './types';
@@ -75,6 +75,10 @@ export class Input {
 
     public static async input(message: string, defaultValue?: string, question: Partial<InputQuestion> = {}) {
         return await this.question({ type: 'input', message, default: defaultValue, ...question });
+    }
+
+    public static async password(message: string, question: Partial<PasswordQuestion> = {}) {
+        return await this.question({ type: 'password', message, ...question });
     }
 
     public static async color(message: string, defaultValue?: string, question: Partial<ColorQuestion> = {}) {
@@ -163,7 +167,7 @@ export class Input {
         return await this.question({ type: 'editor', message, ...question });
     }
 
-    public static async edit(content: string, options?: IFileOptions):Promise<string> {
+    public static async edit(content: string, options?: IFileOptions): Promise<string> {
         return new Promise((resolve, reject) => {
             editAsync(content, (err, result) => {
                 if ( err ) return reject(err);

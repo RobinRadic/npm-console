@@ -4,9 +4,11 @@ import { CliServiceProvider, CliStartReturn } from '@radic/console';
 import { HostingServiceProvider } from '@radic/hosting';
 import { InputServiceProvider } from '@radic/console-input/lib/InputServiceProvider';
 import { OutputServiceProvider } from '@radic/console-output/lib/OutputServiceProvider';
-import { LogServiceProvider } from '@radic/console-output/lib/log';
 import { macros } from '@radic/console-output';
 import { HostingCliServiceProvider } from './HostingCliServiceProvider';
+import { LogServiceProvider } from '@radic/console-output/lib/log';
+
+
 
 export async function bootApp() {
     let commandDir = join(__dirname, 'commands');
@@ -35,18 +37,10 @@ export async function bootApp() {
                     app.error(e, true);
                 }
             },
-            db: {
-                connections: {
-                    mysql: {
-                        type:'mysql',
-                        driver: require('mysql'),
-                        authentication: {
-                            options: {
+            log: {
 
-                            }
-                        }
-                    }
-                }
+            },
+            output: {
             },
             servers: {
                 nginx : {

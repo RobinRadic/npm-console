@@ -5,7 +5,7 @@ import crypto from 'crypto';
 import { Guard } from '../Auth/Guard';
 
 @command('auth [command] [name]', 'Login for using various parts of the app')
-export default class LoginCommand extends Command {
+export default class AuthCommand extends Command {
     @inject('log') log: Bindings['log'];
     @inject('config') config: Bindings['config'];
     @inject('guard') guard: Bindings['guard'];
@@ -22,20 +22,36 @@ export default class LoginCommand extends Command {
         if ( !name ) {
             name = await this.ask.input('name?');
         }
-        const password = await this.ask.password('Password')
-        if(command === 'register'){
-            let password2 =await this.ask.password('Confirm password')
-            if(password !== password2){
-                return this.log.error('passwords do not match')
+
+        const password = await this.ask.password('Password');
+        if ( command === 'register' ) {
+            let password2 = await this.ask.password('Confirm password');
+            if ( password !== password2 ) {
+                return this.log.error('passwords do not match');
             }
         }
-        let guard      = new Guard();
-        if(command==='login') {
-            let passport = guard.login(name, password)
-            if(!passport){
-                return this.log.error('Invalid login')
+        let guard = new Guard();
+        if ( command === 'login' ) {
+            let passport = guard.login(name, password);
+            if ( !passport ) {
+                return this.log.error('Invalid login');
             }
-            this.log.success('You are logged in')
+            this.log.success('You are logged in');
+        }
+        if ( command === 'register' ) {
+            let key = guard.createKey(name, password);
+            if ( !key ) {
+                this.log.error('Could not register');
+            }
+            this.log.success('You have been registered');
+            if ( await this.ask.confirm('Do you also want to login?') ) {
+                let passport = guard.login(name, password);
+                if ( !passport ) {
+                    return this.log.error('Invalid login');
+                }
+                this.log.success('You are logged in');
+            }
+
         }
     }
 

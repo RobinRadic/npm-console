@@ -15,7 +15,7 @@
     "homepage": "https://robinradic.github.io/npm-packages/packages/console",
     "scripts": {
         "build": "yarn clean:build && tsc --project tsconfig.build.json",
-        "clean:build": "rm -rf lib && rimraf src/**/*.{js,js.map}",
+        "clean:build": "rm -rf lib && rimraf src/{cli,decorators,types}/**/*.{js,js.map,d.ts}",
         "clean:docs:api": "rm -rf docs/api",
         "clean:test": "rm -rf .nyc-output/",
         "clean:yarn": "rm yarn.lock node_modules/",
@@ -89,6 +89,9 @@
     "engines": {
         "node": ">=12"
     },
+    "files": [
+        "lib/**/*"
+    ],
     "os": [
         "darwin",
         "linux"

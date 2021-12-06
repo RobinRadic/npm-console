@@ -1,0 +1,22 @@
+export declare type KindsOf = 'number' | 'string' | 'boolean' | 'function' | 'regexp' | 'array' | 'date' | 'error' | 'object';
+export declare function kindOf(v: any): KindsOf;
+export declare const isNumber: (v: any) => v is number;
+export declare const isString: (v: any) => v is string;
+export declare const isBoolean: (v: any) => v is boolean;
+export declare const isFunction: (v: any) => v is Function;
+export declare const isRegExp: (v: any) => v is RegExp;
+export declare const isArray: (v: any) => v is any[];
+export declare const isDate: (v: any) => v is Date;
+export declare const isError: (v: any) => v is Error;
+export declare const isObject: (v: any) => v is object;
+export declare const isNothing: (v: any) => v is null;
+export declare const isArrayable: <T>(v: any) => v is Iterable<T>;
+export declare const isIterable: (v: any) => v is any[];
+export declare const isNumericString: (v: any) => boolean;
+export declare const isStringNumber: (v: any) => v is string | number;
+export declare function isNumberObject(target: any): boolean;
+/** @see https://stackoverflow.com/questions/27746304/how-do-i-tell-if-an-object-is-a-promise */
+export declare function isES6Promise(p: any): boolean;
+export declare function isNativePromise(p: any): boolean;
+export declare function isPromise<T = any>(p: any): p is PromiseLike<T>;
+export declare function isConstructor(value: any): boolean;

@@ -86,12 +86,7 @@
         "node": ">=12"
     },
     "files": [
-        ".npmignore",
-        "InputServiceProvider.d.ts",
-        "InputServiceProvider.js",
-        "lib",
-        "tsconfig.json",
-        "types/inquirer.d.ts"
+        "lib/**/*"
     ],
     "os": [
         "darwin",

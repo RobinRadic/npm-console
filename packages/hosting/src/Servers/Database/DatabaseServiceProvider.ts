@@ -2,17 +2,12 @@ import { ServiceProvider } from '@radic/shared';
 
 import { ConnectionOptions } from 'typeorm/connection/ConnectionOptions';
 import { DatabaseManager } from './DatabaseManager';
+import { DatabasesConfiguration } from './types';
+import { decorate, injectable } from '@radic/core';
+import { ConnectionManager } from 'typeorm';
+import { ConnectionHelper } from './ConnectionHelper';
 
-export {ConnectionOptions}
-export type DatabaseConnectionConfiguration =
-    ConnectionOptions
-    & {}
-
-export interface DatabasesConfiguration {
-    connectOnBoot?: string[];
-    main?: string;
-    connections?: Record<ConnectionOptions['name'], ConnectionOptions>;
-}
+export { ConnectionOptions };
 
 
 declare module '@radic/core/lib/Foundation/Application' {
@@ -30,6 +25,7 @@ declare module '@radic/core/lib/types/config' {
         db?: DatabasesConfiguration;
     }
 }
+decorate(injectable(),ConnectionManager)
 
 export class DatabaseServiceProvider extends ServiceProvider {
 
@@ -39,16 +35,26 @@ export class DatabaseServiceProvider extends ServiceProvider {
             defaults: {
                 connectOnBoot: [],
                 main         : null,
-                connections  : {},
+                connections  : {
+                    bettersqlite3: [],
+                    mongo        : [],
+                    mysql        : [],
+                    postgres     : [],
+                    sql          : [],
+                    sqlite       : [],
+                },
             },
         });
     }
 
     register() {
         this.app.singleton('db', DatabaseManager).addBindingGetter('db');
+        this.app.singleton('db.connections', ConnectionManager)
+        this.app.singleton('db.helper',ConnectionHelper)
     }
 
     async boot() {
+        this.app.db.updateConnections()
         await Promise.all(this.app.config.db.connectOnBoot.map(name => this.app.db.connect(name)));
     }
 }

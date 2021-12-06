@@ -84,6 +84,9 @@
         "sparkly": "^5.0.0",
         "winston": "^3.3.3"
     },
+    "optionalDependencies": {
+        "node-notifier": "^10.0.0"
+    },
     "peerDependencies": {
         "@fortawesome/fontawesome": "^1.1.8",
         "@fortawesome/free-brands-svg-icons": "^5.15.4",
@@ -102,9 +105,6 @@
         "sparkly": "^5.0.0",
         "winston": "^3.3.3"
     },
-    "optionalDependencies": {
-        "node-notifier": "^10.0.0"
-    },
     "bugs": {
         "email": "rradic@hotmail.com",
         "url": "https://github.com/robinradic/npm-packages/issues"
@@ -112,6 +112,9 @@
     "engines": {
         "node": ">=12"
     },
+    "files": [
+        "lib/**/*"
+    ],
     "os": [
         "darwin",
         "linux"

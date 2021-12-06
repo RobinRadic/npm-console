@@ -179,6 +179,7 @@ export class CliServiceProvider extends ServiceProvider {
                 await setup(cli);
                 let argv = this.app.hooks.cli.argv.call(process.argv.slice(2) as any);
                 try {
+                    // let argv2 = cli.argv
                     let args = await cli.parse(argv);
                     args     = await this.app.hooks.cli.args.promise(args);
                     return args;

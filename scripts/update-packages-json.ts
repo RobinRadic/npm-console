@@ -1,8 +1,9 @@
 import { Manager } from 'multi-package-json-manager';
 import { resolve } from 'path';
+import { PackageJson } from 'multi-package-json-manager';
 
 
-let manager = new Manager(resolve(__dirname, '..'));
+let manager = new Manager<PackageJson>(resolve(__dirname, '..'));
 manager.addPackageJsons('packages/*/package.json');
 // manager.enableTestRun(true);
 manager.addVariables({
@@ -72,6 +73,10 @@ manager
     url      : '{{github.urls.organisation}}.git',
     directory: 'packages/{{dirName}}',
 });
+
+manager.setKey('files', [
+    'lib/**/*'
+])
 
 
 manager.run();

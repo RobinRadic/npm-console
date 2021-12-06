@@ -1,29 +1,13 @@
 // import { PackageJson as BasePackageJson } from '@radic/shared';
-import {PackageJson as BasePackageJson} from 'prettier-package-json/build/types'
 
-export interface PackageJson extends Partial<BasePackageJson> {
-    [ key: string ]: any;
-}
-
-export interface FilePackageDetails {
+export interface JsonFileDetails<T =object> {
     absoluteFilePath: string;
     relativeFilePath: string;
     dirName: string;
-    pkg: PackageJson;
-    names: {
-        hasScope:boolean
-        /** @example @company/my-package */
-        full:string
-        /** @example @company */
-        scope: string
-        /** @example company */
-        scopeName: string
-        /** @example my-package */
-        withoutScope: string
-    }
+    data: T,
+    [key:string]:any
 }
-
-export type FileFilterCallback = (fileDetails: FilePackageDetails) => boolean
+export type FileFilterCallback = <T>(fileDetails: JsonFileDetails<T>) => boolean
 export type SpliceCallback = (array: any[]) => number | [ number, number ]
 export type ChangeType =
     'set'

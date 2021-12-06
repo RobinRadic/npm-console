@@ -1,25 +1,44 @@
-import { Change, FileFilterCallback, PackageJson, SpliceCallback, Variables } from './interfaces';
-import { JsonFileHandler } from './JsonFileHandler';
+// noinspection ES6UnusedImports
+
+import { Change, FileFilterCallback, SpliceCallback, Variables } from './interfaces';
 import glob from 'glob';
-import { objectify } from '@radic/shared';
 import { get, merge, set, unset } from 'lodash';
+import { JsonWriterInterface } from './Writers';
+import { JsonFileReaderInterface, NodePackageJsonFileReader, TypescriptConfigFileReader } from './Readers';
+import { Adapter } from './Adapters';
+import { PackageJson, TSconfigJson } from './types'
+import { Constructor } from '@radic/shared';
+import { KeyOrder } from './sorter';
 
-export class Manager<T extends PackageJson = PackageJson> {
-    protected changes: Change[]                  = [];
-    protected files: string[]                    = [];
-    protected _dryRun: boolean                   = false;
-    protected _testRun: boolean                  = false;
-    protected _testOutputDir: string             = '.jsonUpdaterTests';
-    public readonly variables: Variables         = {};
-    protected fileHandler: JsonFileHandler;
+export class Manager<T = object> {
+    protected changes: Change[]          = [];
+    protected files: string[]            = [];
+    protected _dryRun: boolean           = false;
+    protected _testRun: boolean          = false;
+    protected _testOutputDir: string     = '.jsonUpdaterTests';
+    public readonly variables: Variables = {};
+    public keyOrder: KeyOrder<T>=[];
+    public indent: number                = 4;
 
-    setKeyOrder(keyOrder: Array<keyof PackageJson>) {
-        this.fileHandler.keyOrder = keyOrder;
+    // protected reader: JsonFileReaderInterface<T>;
+    // protected writer: JsonWriterInterface<T>;
+    protected adapter:Adapter<T>;
+
+    constructor(public readonly basePath: string) {
+    }
+
+    setAdapter(Adapter:Constructor<Adapter<T>>){
+        this.adapter = new Adapter(this);
         return this;
     }
 
-    setIndent(indent:number) {
-        this.fileHandler.indent = indent;
+    setKeyOrder(keyOrder: KeyOrder<T>) {
+        this.keyOrder = keyOrder;
+        return this;
+    }
+
+    setIndent(indent: number) {
+        this.indent = indent;
         return this;
     }
 
@@ -41,10 +60,6 @@ export class Manager<T extends PackageJson = PackageJson> {
     mergeVariables(variables: Variables): this {
         merge(this.variables, variables);
         return this;
-    }
-
-    constructor(public readonly basePath: string) {
-        this.fileHandler = new JsonFileHandler(this);
     }
 
     enableDryRun(enable: boolean = true) {
@@ -75,7 +90,7 @@ export class Manager<T extends PackageJson = PackageJson> {
     }
 
 
-    addPackageJsons(globStr: string) {
+    addJsonFiles(globStr: string) {
         let files = glob.sync(globStr, { cwd: this.basePath, absolute: true });
         for ( const file of files ) {
             if ( this.files.includes(file) ) {
@@ -87,7 +102,7 @@ export class Manager<T extends PackageJson = PackageJson> {
     }
 
     /** type safe key / value setting */
-    setKey<K extends keyof PackageJson>(key: K, value: T[K], fileFilter?: FileFilterCallback) {
+    setKey<K extends keyof T>(key: K, value: T[K], fileFilter?: FileFilterCallback) {
         return this.addChange({
             type: 'set',
             path: key as string,
@@ -106,7 +121,7 @@ export class Manager<T extends PackageJson = PackageJson> {
         });
     }
 
-    merge(value: PackageJson, fileFilter?: FileFilterCallback): this {
+    merge(value: T, fileFilter?: FileFilterCallback): this {
         return this.addChange({ type: 'merge', value, fileFilter });
     }
 
@@ -127,30 +142,30 @@ export class Manager<T extends PackageJson = PackageJson> {
     }
 
     run() {
-        const filesDetails                          = this.fileHandler.getFilesDetails(this.basePath, this.files);
-        const packages: Record<string, PackageJson> = filesDetails.map(details => [ details.absoluteFilePath, details.pkg ]).reduce(objectify, {});
+        const filesDetails = this.adapter.getReader().getParsedFilesDetails(this.basePath, this.files);
+        // const packages: Record<string, object> = filesDetails.map(details => [ details.absoluteFilePath, details.data ]).reduce(objectify, {});
         for ( const change of this.changes ) {
             let { type, value, path, splice } = change;
             let filteredFilesDetails          = filesDetails.filter(details => change.fileFilter(details));
             for ( const details of filteredFilesDetails ) {
-                let pkg = details.pkg;
+                let data = details.data as any;
                 // @formatter:off
                 switch ( type ) {
-                    case 'set': set(pkg, path, value); break;
-                    case 'merge': merge(pkg,value); break;
-                    case 'unset': unset(pkg,path); break;
+                    case 'set': set(data, path, value); break;
+                    case 'merge': merge(data,value); break;
+                    case 'unset': unset(data,path); break;
                     case 'push':
-                        let pval = get(pkg, path, []);
+                        let pval = get(data, path, []);
                         pval.push(value);
-                        set(pkg, path, value)
+                        set(data, path, value)
                         break;
                     case 'mergeAt':
-                        let mval = get(pkg, path,  {});
+                        let mval = get(data, path,  {});
                         value = merge({},mval, value)
-                        set(pkg, path, value)
+                        set(data, path, value)
                         break;
                     case 'splice':
-                        let sval = get(pkg, path,  []);
+                        let sval = get(data, path,  []);
                         let result = splice(Array.from(sval));
                         let start:number
                         let deleteCount=1
@@ -160,7 +175,7 @@ export class Manager<T extends PackageJson = PackageJson> {
                             start=result
                         }
                         sval.slice(start, deleteCount)
-                        set(pkg, path, sval);
+                        set(data, path, sval);
 
                 }
                 // @formatter:on
@@ -170,10 +185,11 @@ export class Manager<T extends PackageJson = PackageJson> {
                     continue;
                 }
                 if ( this._testRun ) {
-                    this.fileHandler.writeDetailsToTestJsonFile(details);
+                    this.adapter.getWriter()
+                    // this.fileHandler.writeDetailsToTestJsonFile(details);
                     continue;
                 }
-                this.fileHandler.writeDetailsToJsonFile(details);
+                // this.fileHandler.writeDetailsToJsonFile(details);
             }
         }
     }

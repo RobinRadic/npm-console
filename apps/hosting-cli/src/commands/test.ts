@@ -1,31 +1,26 @@
-import { NginxServer, NginxSite, servers } from '@radic/hosting';
+import { DatabaseManager, NginxServer, NginxSite, servers } from '@radic/hosting';
 import { command } from '@radic/console';
 import { Command } from '../Command';
-import { Directory, File, system, User } from '@radic/core';
+import { inject, system } from '@radic/core';
+import { arg } from '@radic/console';
 
 
 @command('test', 'Just a test command')
 export default class TestCommand extends Command {
     @servers servers: servers;
     @system system: system;
+    @inject('db') db: DatabaseManager;
 
-    async handle() {
-let users=this.system.users.collection;
-        let sites = this.app.servers.get<NginxServer>('nginx').sites.mapWithKeys(site => ([site.filename, site.getConfig()])).toArray();
-        sites = await Promise.all(sites)
-        let disks = await this.system.getDisks();
-        let partitions = disks.getAllPartitions();
-        let partition = partitions.getByMountPath('/mnt/fat');
-        let filesystem = partition.filesystem;
-        let downloads:Directory = filesystem.items.downloads;
-        await downloads.open()
-        let found = downloads.items.sorted5.children.searchName(/Missy|Luv/g);
-        let file = found.first() as File;
-        let mimeType = file.mimeType;
-        let contentType = file.contentType;
-        // await file.open()
+    async handle(
+        @arg('a required foo string',true) foo:string,
+        @arg('a optional bar string') bar?:string,
+        @arg('a optional force boolean with default ') force:boolean=false,
+        @arg('a optional number vararg ') ...args:number[]
+    ) {
+        await this.ask.confirm('are you well ?')
         return;
     }
+
     async handeele() {
         let server = this.servers.get<NginxServer>('nginx');
 

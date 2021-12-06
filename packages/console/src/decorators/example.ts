@@ -1,5 +1,5 @@
 export function example(example: string, description: string): ClassDecorator {
-    return Target => {
+    return (Target) => {
         if ( !Reflect.hasMetadata('examples', Target.prototype) ) {
             Reflect.defineMetadata('examples', [], Target.prototype);
         }

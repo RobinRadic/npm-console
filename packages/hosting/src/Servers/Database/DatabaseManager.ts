@@ -1,40 +1,59 @@
-import {injectable , config } from '@radic/core';
-import { DatabaseConnectionConfiguration, DatabasesConfiguration } from './DatabaseServiceProvider';
-import { merge } from 'lodash';
-import { createConnection } from 'typeorm';
+import { config, inject, injectable } from '@radic/core';
+import { ConnectionManager } from 'typeorm';
 import { Connection } from 'typeorm/connection/Connection';
 import { ConnectionOptions } from 'typeorm/connection/ConnectionOptions';
+import { DatabasesConfiguration } from './types';
+import { ConnectionHelper } from './ConnectionHelper';
 
 
 @injectable()
 export class DatabaseManager {
     @config protected _config: config;
-    protected connections: Record<DatabaseConnectionConfiguration['name'], Connection> = {};
+    protected connections: Record<string, Connection> = {};
+    @inject('db.connections') protected manager: ConnectionManager;
+    @inject('db.helper') protected helper: ConnectionHelper;
 
-    get config(): DatabasesConfiguration {
-        return this._config.db;
+    constructor() {}
+
+    get config(): DatabasesConfiguration {return this._config.db; }
+
+    protected getConnectionConfigurations() {return Object.values(this.config.connections); }
+
+    getDatabaseHelper(): ConnectionHelper {
+        return this.helper;
     }
 
-    getConnectionNames() {return Object.keys(this.config.connections); }
-
-    getConnectionConfig(name: string): DatabaseConnectionConfiguration {
-        return merge({ name }, this.config.connections[ name ]);
+    getConnectionNames() {
+        let names = [];
+        Object.values(this.config.connections).forEach(c => c.forEach(c => names.push(c.name)));
+        return names;
     }
 
-    async connection(name: string): Promise<Connection> {
-        return this.connect(name);
-    }
-
-    async connect(name: string): Promise<Connection> {
-        if ( this.connections[ name ] === undefined ) {
-            this.connections[ name ] = await createConnection(this.getConnectionConfig(name));
+    getConnectionConfiguration(name:string){
+        let servers = this.getConnectionConfigurations();
+        for ( const serverConfig of servers ) {
+            for ( const config of serverConfig ) {
+                if ( config.name === name ) {
+                    return config
+                }
+            }
         }
-        return this.connections[ name ];
     }
 
-    async createConnection(options:ConnectionOptions){
-        return createConnection(options);
+    updateConnections() {
+        let servers = this.getConnectionConfigurations();
+        for ( const serverConfig of servers ) {
+            for ( const config of serverConfig ) {
+                if ( !this.manager.has(config.name) ) {
+                    this.createConnection(config);
+                }
+            }
+        }
     }
 
-    exist(name:string){return this.getConnectionNames().includes(name)}
+    protected createConnection(options: ConnectionOptions) {
+        return this.connections[ options.name ] = this.manager.create(options);
+    }
+
+    exist(name: string) {return this.getConnectionNames().includes(name);}
 }

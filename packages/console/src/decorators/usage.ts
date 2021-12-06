@@ -1,6 +1,6 @@
-export function usage(usage: string): ClassDecorator {
+export function usage(text: string, append:boolean=false): ClassDecorator {
     return Target => {
-        Reflect.defineMetadata('usage', usage, Target.prototype);
+        Reflect.defineMetadata('usage', {text,append}, Target.prototype);
         return Target;
     };
 }

@@ -29,7 +29,6 @@
     },
     "include": [
         "typedoc.ts",
-        "package-json-updater.ts",
         "scripts"
     ],
     "exclude": [

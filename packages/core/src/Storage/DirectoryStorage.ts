@@ -100,19 +100,22 @@ export class DirectoryStorage {
     }
 
     stat(...parts: string[]) {
+        if(!this.exists(...parts)){
+            throw new Error(`stat on non existing "${this.path(...parts)}"`)
+        }
         return statSync(this.path(...parts));
     }
 
     isFile(...parts: string[]) {
-        return this.stat(...parts).isFile();
+        return this.exists(...parts) && this.stat(...parts).isFile();
     }
 
     isDirectory(...parts: string[]) {
-        return this.stat(...parts).isDirectory();
+        return this.exists(...parts) && this.stat(...parts).isDirectory();
     }
 
     isSymbolicLink(...parts: string[]) {
-        return this.stat(...parts).isSymbolicLink();
+        return this.exists(...parts) && this.stat(...parts).isSymbolicLink();
     }
 
     read(path: string) {

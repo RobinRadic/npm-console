@@ -1,5 +1,4 @@
 import { app, DirectoryStorage } from '@radic/core';
-import { Credential } from '../CredentialStore';
 import { Encrypter } from './Encrypter';
 import { get, has, merge, set, unset } from 'lodash';
 import { Key } from './Key';

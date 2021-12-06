@@ -9,12 +9,11 @@ import { HostingCliServiceProvider } from './HostingCliServiceProvider';
 import { LogServiceProvider } from '@radic/console-output/lib/log';
 
 
-
 export async function bootApp() {
     let commandDir = join(__dirname, 'commands');
     const app      = Application.instance;
     await app.initialize({
-        dirname: __dirname,
+        dirname  : __dirname,
         providers: [
             CoreServiceProvider,
             CliServiceProvider,
@@ -22,7 +21,7 @@ export async function bootApp() {
             InputServiceProvider,
             OutputServiceProvider,
             LogServiceProvider,
-            HostingCliServiceProvider
+            HostingCliServiceProvider,
         ],
         config   : {
             debug  : true,
@@ -30,6 +29,9 @@ export async function bootApp() {
                 commandDir,
             },
             startFn: async <T>(app, ...params: any[]) => {
+                app.events.on('Application:error', (error, exit) => {
+                    throw new Error(error)
+                })
                 try {
                     const args = await app.cliStart();
                     return args;
@@ -37,11 +39,22 @@ export async function bootApp() {
                     app.error(e, true);
                 }
             },
-            log: {
-
+            log    : {},
+            db     : {
+                main       : 'main',
+                connections: {
+                    mysql: [ {
+                        name        : 'main',
+                        type        : 'mysql',
+                        host        : '127.0.0.1',
+                        username    : 'root',
+                        // insecureAuth: true,
+                        // debug       : true,
+                        // trace       : true,
+                    } ],
+                },
             },
-            output: {
-            },
+            output : {},
             servers: {
                 nginx : {
                     servers: [
@@ -88,7 +101,7 @@ export async function bootApp() {
 
     let epilog = `{dim}Boolean options that have true as default can be negated using --no-[option]. So for example --reload becomes --no-reload{/dim}`;
     app.hooks.cli.command.builder.tap('MY', (command, cli) => {
-        cli.epilog(app.output.parse(epilog))
+        cli.epilog(app.output.parse(epilog));
     });
     app.hooks.cli.command.handler.tap('MY', (command, params) => {
         let verbose = 'v'.repeat(command.instance.verbose);
@@ -102,7 +115,7 @@ export async function bootApp() {
         .parserConfiguration({
             'boolean-negation': true,
             'negation-prefix' : 'no-',
-            'dot-notation':false
+            'dot-notation'    : false,
         })
         .help('h', 'Show Help').alias('h', 'help')
         .option('V', { type: 'boolean', alias: 'version', global: false })
@@ -114,7 +127,7 @@ export async function bootApp() {
             group : app.output.parse('{bold}Global Options:{/bold}'),
         })
         .epilog(app.output.parse(epilog))
-            .usage(app.output.parse('{bold}Hosting Manager:{/bold}\n {green}${/green} hosting <{yellow}command{/yellow}>'))
+        .usage(app.output.parse('{bold}Hosting Manager:{/bold}\n {green}${/green} hosting <{yellow}command{/yellow}>'))
         ;
     });
 
@@ -126,11 +139,11 @@ export async function bootApp() {
         macros.sparkly,
         macros.spinner,
         macros.tree,
-    ])
+    ]);
     return app;
 }
 
 export async function startCli() {
     const app  = await bootApp();
-    const args = await app.start<CliStartReturn>();
+    return await app.start<CliStartReturn>();
 }

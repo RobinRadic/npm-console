@@ -1,12 +1,12 @@
 import crypto, { CipherGCM, DecipherGCM } from 'crypto';
-import { app, DirectoryStorage, injectable } from '@radic/core';
+import { app, config, DirectoryStorage, injectable } from '@radic/core';
 import { join } from 'path';
 import { Key } from './Key';
 import { Passport } from './Passport';
 
 @injectable()
 export class Guard {
-
+    @config config: config;
     protected algorithm                         = 'sha256';
     protected initVector: Buffer;
     protected cypher: CipherGCM;
@@ -14,10 +14,37 @@ export class Guard {
     protected storage: DirectoryStorage;
     protected keyStringEncoding: BufferEncoding = 'base64';
     #keysDir                                    = 'keys';
+    #currentUser:Passport
 
     constructor() {
         this.storage = DirectoryStorage.env('data', app.pkg.name);
         this.storage.ensureDir(this.#keysDir);
+    }
+
+    isLogggedIn() {
+        let name = this.config?.auth?.currentUser;
+        if ( name && this.hasKey(name) ) {
+            return true;
+        }
+        return false;
+    }
+
+    logout(){
+        this.config.auth.currentUser = undefined;
+        this.config.save();
+        return this;
+    }
+
+    user(): Passport {
+        if(this.#currentUser !== undefined){
+            return this.#currentUser
+        }
+        if ( !this.isLogggedIn() ) {
+            throw new Error('Not logged in');
+        }
+        let name = this.config.auth.currentUser;
+        let key  = this.getKey(name);
+        return new Passport(name, key);
     }
 
     login(name: string, password: string): Passport | false {
@@ -29,7 +56,9 @@ export class Guard {
         if ( !valid ) {
             return false;
         }
-        return new Passport(name, key);
+        this.config.auth.currentUser=name;
+        this.config.save();
+        return this.#currentUser = new Passport(name, key);
     }
 
     verify(key: Key, password: string) {

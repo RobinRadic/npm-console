@@ -48,7 +48,7 @@
         "node": ">=12"
     },
     "files": [
-        "dist"
+        "lib/**/*"
     ],
     "module": "lib/index.js",
     "nyc": {

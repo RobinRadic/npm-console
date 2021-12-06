@@ -3,7 +3,7 @@ import { Bindings, inject } from '@radic/core';
 import { Command } from '../../Command';
 
 @command('set [key] [value]', 'Set a the config value')
-export default class GetCommand extends Command {
+export default class SetCommand extends Command {
     @inject('config') config: Bindings['config'];
 
     @option('r', 'Reset config data to default') reset:boolean=false

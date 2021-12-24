@@ -4,5 +4,4 @@ NODE_13=/home/radic/.nvm/versions/node/v13.7.0/bin/node
 
 export DEBUG=*
 
-shift
 $NODE_13 -r ts-node/register/transpile-only scripts/cli.ts $*

@@ -8,6 +8,7 @@ import { Constructor, IServiceProvider, IServiceProviderClass, PackageJson, Serv
 import { ApplicationInitOptions, Configuration } from '../types';
 import ServiceIdentifier = interfaces.ServiceIdentifier;
 import BindingInWhenOnSyntax = interfaces.BindingInWhenOnSyntax;
+import { JSONSchema7 } from 'json-schema';
 export declare type GetServiceIdentifier<T> = keyof Bindings | interfaces.ServiceIdentifier<T>;
 export interface Hooks {
 }
@@ -24,6 +25,8 @@ export interface Application {
     paths: Paths;
     pkg: PackageJson;
     get<T, C extends GetServiceIdentifier<T> = GetServiceIdentifier<T>>(si: C): C extends keyof Bindings ? Bindings[C] : T;
+}
+export interface App extends Application {
 }
 export interface Paths {
     node?: string;
@@ -58,8 +61,7 @@ export declare type StartFn = <T = any>(app: Application, ...args: any[]) => Pro
 export interface ConfigPart<T, K extends string = string> {
     key: K;
     defaults: T;
-    schema?:JSONSchema7 ;
-
+    schema?: JSONSchema7;
 }
 export declare enum ExitCode {
     OK = 0,

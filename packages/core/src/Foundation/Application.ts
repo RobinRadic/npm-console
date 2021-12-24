@@ -84,6 +84,7 @@ declare module '../Dispatcher/Dispatcher' {
 }
 
 
+
 export type StartFn = <T = any>(app: Application, ...args: any[]) => Promise<T>
 
 export interface ConfigPart<T, K extends string = string> {

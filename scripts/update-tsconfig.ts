@@ -66,6 +66,11 @@ const config = createTsconfigJsonManager(resolve(__dirname, '..'));
 
 config.addJsonFiles('packages/*/tsconfig.json')
       .unset('compileOnSave')
+      .setKeyOrder([
+          'extends',
+          'compileOnSave',
+          'compilerOptions'
+      ])
       .set('extends', 'tsconfig.build.json')
       .set('compilerOptions', {
           composite       : true,
@@ -74,6 +79,9 @@ config.addJsonFiles('packages/*/tsconfig.json')
           module          : 'CommonJS',
           moduleResolution: 'Node',
           lib             : [ 'ES5', 'ES6', 'ES2017', 'ES2018', 'ES2018.Promise', 'ES2015.Promise' ],
+          esModuleInterop: true,
+          experimentalDecorators: true,
+          emitDecoratorMetadata: true,
       })
       .set('include', [ 'src' ])
       .set('exclude', [

@@ -1,14 +1,15 @@
 // noinspection ES6UnusedImports
 
 import { ServiceProvider } from '@radic/shared';
-import { Output, OutputOptions } from './';
-import { IconGenerator } from './utils/IconGenerator';
+import { Output } from './Output';
+import { IconGenerator } from './utils';
 import { Ui } from './ui';
 import { Bindings, inject } from '@radic/core';
-import radicCore from '@radic/core';
+import { OutputOptions } from './interfaces';
 
 
-declare module '@radic/core' {
+
+declare module '@radic/core/types/types/config' {
     export interface Configuration {
         output?: OutputOptions;
     }

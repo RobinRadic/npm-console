@@ -8,5 +8,6 @@ export * from './figures';
 export * from './interfaces';
 export * from './macros';
 export * from './Output';
+export * from './log';
 export * from './OutputServiceProvider';
 export declare const out: Output;

@@ -1,12 +1,12 @@
-import { Application, CoreServiceProvider } from '@radic/core';
 import { join } from 'path';
-import { CliServiceProvider, CliStartReturn } from '@radic/console';
+
 import { HostingServiceProvider } from '@radic/hosting';
-import { InputServiceProvider } from '@radic/console-input/lib/InputServiceProvider';
-import { OutputServiceProvider } from '@radic/console-output/OutputServiceProvider';
+import { InputServiceProvider } from '@radic/console-input';
+import { OutputServiceProvider,LogServiceProvider } from '@radic/console-output';
 import { macros } from '@radic/console-output';
 import { HostingCliServiceProvider } from './HostingCliServiceProvider';
-import { LogServiceProvider } from '@radic/console-output/lib/log';
+import { Application, CoreServiceProvider } from '@radic/core';
+import { CliServiceProvider, CliStartReturn } from '@radic/console';
 
 
 export async function bootApp() {

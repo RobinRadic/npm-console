@@ -19,7 +19,17 @@
       <excludeFolder url="file://$MODULE_DIR$/packages/console-output/types" />
       <excludeFolder url="file://$MODULE_DIR$/packages/shared/lib" />
       <excludeFolder url="file://$MODULE_DIR$/packages/shared/types" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/hosting/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/console-input/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/console-colors/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/console/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/core/lib" />
     </content>
+    <content url="file://$MODULE_DIR$/node_modules/@radic/console-colors/types" />
+    <content url="file://$MODULE_DIR$/node_modules/@radic/console-input/types" />
+    <content url="file://$MODULE_DIR$/node_modules/@radic/console-output/types" />
+    <content url="file://$MODULE_DIR$/node_modules/@radic/console/types" />
+    <content url="file://$MODULE_DIR$/node_modules/@radic/hosting/types" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>

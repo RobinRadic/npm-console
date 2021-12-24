@@ -1,8 +1,9 @@
 import { ServiceProvider } from '@radic/shared';
-import { Output, OutputOptions } from './';
+import { Output } from './Output';
 import { Ui } from './ui';
 import { Bindings } from '@radic/core';
-declare module '@radic/core' {
+import { OutputOptions } from './interfaces';
+declare module '@radic/core/types/types/config' {
     interface Configuration {
         output?: OutputOptions;
     }

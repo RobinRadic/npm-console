@@ -6,13 +6,13 @@ import { ApacheServiceProvider } from './Apache';
 import { NginxServiceProvider } from './Nginx';
 
 
-declare module '@radic/core/lib/types/config' {
+declare module '@radic/core/types/types' {
     export interface Configuration {
         servers?: ServersConfiguration;
     }
 }
 
-declare module '@radic/core/lib/Foundation/Application' {
+declare module '@radic/core/types' {
     export interface Bindings {
         servers: ServerManager;
     }

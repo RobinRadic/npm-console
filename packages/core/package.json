@@ -10,11 +10,11 @@
     },
     "license": "MIT",
     "main": "lib/index.js",
-    "types": "lib/index.d.ts",
+    "types": "types/index.d.ts",
     "homepage": "https://robinradic.github.io/npm-packages/packages/core",
     "scripts": {
         "build": "yarn clean:build && tsc --project tsconfig.build.json",
-        "clean:build": "rm -rf lib && rimraf src/**/*.{js,js.map,d.ts}",
+        "clean:build": "rm -rf lib/ types/ && rimraf src/**/*.{js,js.map,d.ts}",
         "clean:docs:api": "rm -rf docs/api",
         "clean:test": "rm -rf .nyc-output/",
         "clean:yarn": "rm yarn.lock node_modules/",
@@ -25,7 +25,7 @@
         "pretest": "yarn clean:test",
         "test": "nyc mocha --opts test/mocha.opts",
         "posttest": "yarn clean:test",
-        "watch": "tsc --project tsconfig.build.json --watch"
+        "watch": "yarn build && tsc --project tsconfig.build.json --watch"
     },
     "dependencies": {
         "@radic/shared": "^1.0.0",

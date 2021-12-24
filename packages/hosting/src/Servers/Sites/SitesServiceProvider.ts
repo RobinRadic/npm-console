@@ -1,12 +1,12 @@
 import { ServiceProvider } from '@radic/shared';
 import { SiteManager } from './SiteManager';
 
-declare module '@radic/core/lib/types/config' {
+declare module '@radic/core/types/types/config' {
     export interface Configuration {
         sites?: SitesConfiguration;
     }
 }
-declare module '@radic/core/lib/Foundation/Application' {
+declare module '@radic/core/types/Foundation/Application' {
     export interface Bindings {
         sites: SiteManager;
     }

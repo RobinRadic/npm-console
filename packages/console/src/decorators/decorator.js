@@ -42,7 +42,7 @@ function decorator(type, options, callback) {
                 if (arg.variadic)
                     text += '...';
                 text += arg.required ? '>' : ']';
-                text += '  ';
+                text += ' ';
             }
             return text;
         }
@@ -80,19 +80,18 @@ function decorator(type, options, callback) {
                             cli.example(example.example, example.description);
                         }
                     }
-                    let cliusage;
-                    if (usage && usage.text && !usage.append) {
-                        cliusage = core_1.app.isBound('output') ? core_1.app.get('output').parse(usage.text) : usage.text;
-                    }
-                    else if (usage && usage.text && usage.append) {
-                        cliusage = `{bold}${this.describe}:{/bold}\n{green}$\{/green} ${this.command}`;
-                        cliusage = core_1.app.get('output').parse(cliusage + usage.text);
-                    }
-                    else if (core_1.app.isBound('output')) {
-                        cliusage = `{bold}${this.describe}:{/bold}\n{green}$\{/green} ${this.command}`;
-                        cliusage = core_1.app.get('output').parse(cliusage);
-                    }
-                    cli.usage(cliusage);
+                    //
+                    // let cliusage;
+                    // if ( usage && usage.text && !usage.append ) {
+                    //     cliusage = app.isBound('output') ? app.get('output').parse(usage.text) : usage.text;
+                    // } else if ( usage && usage.text && usage.append ) {
+                    //     cliusage = `{bold}${this.describe}:{/bold}\n{green}$\{/green} ${this.command}`;
+                    //     cliusage = app.get('output').parse(cliusage + usage.text);
+                    // } else if ( app.isBound('output') ) {
+                    //     cliusage = `{bold}${this.describe}:{/bold}\n{green}$\{/green} ${this.command}`;
+                    //     cliusage = app.get('output').parse(cliusage);
+                    // }
+                    // cli.usage(cliusage);
                     core_1.app.hooks.cli.command.builder.call(this, cli);
                     if (typeof this.instance.builder === 'function') {
                         return this.instance.builder(cli);

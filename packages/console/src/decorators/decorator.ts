@@ -63,7 +63,7 @@ export function decorator(type: CommandDecoratorType, options: CommandDecoratorO
                 }
                 if ( arg.variadic ) text += '...';
                 text += arg.required ? '>' : ']';
-                text += '  ';
+                text += ' ';
             }
             return text;
         }
@@ -124,19 +124,18 @@ export function decorator(type: CommandDecoratorType, options: CommandDecoratorO
                         cli.example(example.example, example.description);
                     }
                 }
-
-                let cliusage;
-                if ( usage && usage.text && !usage.append ) {
-                    cliusage = app.isBound('output') ? app.get('output').parse(usage.text) : usage.text;
-                } else if ( usage && usage.text && usage.append ) {
-                    cliusage = `{bold}${this.describe}:{/bold}\n{green}$\{/green} ${this.command}`;
-                    cliusage = app.get('output').parse(cliusage + usage.text);
-                } else if ( app.isBound('output') ) {
-                    cliusage = `{bold}${this.describe}:{/bold}\n{green}$\{/green} ${this.command}`;
-                    cliusage = app.get('output').parse(cliusage);
-                }
-                cli.usage(cliusage);
-
+                //
+                // let cliusage;
+                // if ( usage && usage.text && !usage.append ) {
+                //     cliusage = app.isBound('output') ? app.get('output').parse(usage.text) : usage.text;
+                // } else if ( usage && usage.text && usage.append ) {
+                //     cliusage = `{bold}${this.describe}:{/bold}\n{green}$\{/green} ${this.command}`;
+                //     cliusage = app.get('output').parse(cliusage + usage.text);
+                // } else if ( app.isBound('output') ) {
+                //     cliusage = `{bold}${this.describe}:{/bold}\n{green}$\{/green} ${this.command}`;
+                //     cliusage = app.get('output').parse(cliusage);
+                // }
+                // cli.usage(cliusage);
 
                 app.hooks.cli.command.builder.call(this, cli);
                 if ( typeof this.instance.builder === 'function' ) {

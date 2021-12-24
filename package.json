@@ -33,6 +33,7 @@
         "console-input": "cd packages/console-input && yarn",
         "console-output": "cd packages/console-output && yarn",
         "json-manager": "cd packages/multi-package-json-manager && yarn",
+        "update-tsconfig": "ts-node scripts/update-tsconfig.ts",
         "update-packages-json": "cd scripts && ts-node update-packages-json.ts",
         "app:cli": "cd apps/cli && yarn",
         "watch": "ts-node scripts/watch.ts",
@@ -68,6 +69,9 @@
         "@vuepress/plugin-nprogress": "^1.8.2",
         "@vuepress/plugin-register-components": "^1.8.2",
         "@vuepress/plugin-search": "^1.8.2",
+        "@radic/core": "^1.0.7",
+        "@radic/shared": "^1.0.2",
+
         "chai": "^4.3.4",
         "chai-sinon": "^2.8.1",
         "concurrently": "^6.4.0",

@@ -4,7 +4,7 @@ import { AsyncSeriesHook, AsyncSeriesWaterfallHook, SyncHook, SyncWaterfallHook 
 import cli, { Cli } from './Cli';
 import { Command } from '../decorators/decorator';
 import { Args, OptionDefinition } from '../yargs';
-declare module '@radic/core/lib/Foundation/Application' {
+declare module '@radic/core/types/Foundation/Application' {
     export interface Hooks {
         cli: {
             setup: AsyncSeriesHook<Cli>
@@ -34,7 +34,7 @@ declare module '@radic/core/lib/Foundation/Application' {
         cliCustomize: CliCustomize;
     }
 }
-declare module '@radic/core/lib/types/config' {
+declare module '@radic/core/types/types/config' {
 
     export interface Configuration {
         cli?: CliOptions;
@@ -177,10 +177,8 @@ export class CliServiceProvider extends ServiceProvider {
                 const cli   = ctx.container.get<Cli>('cli');
                 const setup = ctx.container.get<CliSetup>('cli.setup');
                 await setup(cli);
-                let argv = this.app.hooks.cli.argv.call(process.argv.slice(2) as any);
                 try {
-                    // let argv2 = cli.argv
-                    let args = await cli.parse(argv);
+                    let args = await cli.parse();
                     args     = await this.app.hooks.cli.args.promise(args);
                     return args;
                 } catch (e) {

@@ -53,7 +53,7 @@ export interface LogConfiguration extends Omit<LoggerOptions, 'level' | 'transpo
     transports?: Transport[];
 }
 
-declare module '@radic/core/lib/Foundation/Application' {
+declare module '@radic/core/types/Foundation/Application' {
     export interface Bindings {
         log: Logger;
     }
@@ -62,7 +62,7 @@ declare module '@radic/core/lib/Foundation/Application' {
         log: Logger;
     }
 }
-declare module '@radic/core/lib/types/config' {
+declare module '@radic/core/types/types/config' {
     export interface Configuration {
         log?: LogConfiguration;
     }

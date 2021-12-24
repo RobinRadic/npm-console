@@ -17,6 +17,7 @@ export type IServiceProviderClass = {
     new(app: Application): IServiceProvider
 }
 
+
 export interface IServiceProvider {
     app: Application;
     providers?: IServiceProviderClass[];

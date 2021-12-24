@@ -3,7 +3,7 @@ import { join } from 'path';
 import { CliServiceProvider, CliStartReturn } from '@radic/console';
 import { HostingServiceProvider } from '@radic/hosting';
 import { InputServiceProvider } from '@radic/console-input/lib/InputServiceProvider';
-import { OutputServiceProvider } from '@radic/console-output/lib/OutputServiceProvider';
+import { OutputServiceProvider } from '@radic/console-output/OutputServiceProvider';
 import { macros } from '@radic/console-output';
 import { HostingCliServiceProvider } from './HostingCliServiceProvider';
 import { LogServiceProvider } from '@radic/console-output/lib/log';
@@ -25,77 +25,76 @@ export async function bootApp() {
         ],
         config   : {
             debug  : true,
-            cli    : {
-                commandDir,
-            },
-            startFn: async <T>(app, ...params: any[]) => {
-                app.events.on('Application:error', (error, exit) => {
-                    throw new Error(error)
-                })
-                try {
-                    const args = await app.cliStart();
-                    return args;
-                } catch (e) {
-                    app.error(e, true);
-                }
-            },
-            log    : {},
-            db     : {
-                main       : 'main',
-                connections: {
-                    mysql: [ {
-                        name        : 'main',
-                        type        : 'mysql',
-                        host        : '127.0.0.1',
-                        username    : 'root',
-                        // insecureAuth: true,
-                        // debug       : true,
-                        // trace       : true,
-                    } ],
-                },
-            },
+            // cli    : {
+            //     commandDir,
+            // },
+            // startFn: async <T>(app, ...params: any[]) => {
+            //     app.events.on('Application:error', (error, exit) => {
+            //         throw new Error(error)
+            //     })
+            //     try {
+            //         const args = await app.cliStart();
+            //         return args;
+            //     } catch (e) {
+            //         app.error(e, true);
+            //     }
+            // },
+            // db     : {
+            //     main       : 'main',
+            //     connections: {
+            //         mysql: [ {
+            //             name        : 'main',
+            //             type        : 'mysql',
+            //             host        : '127.0.0.1',
+            //             username    : 'root',
+            //             // insecureAuth: true,
+            //             // debug       : true,
+            //             // trace       : true,
+            //         } ],
+            //     },
+            // },
             output : {},
-            servers: {
-                nginx : {
-                    servers: [
-                        {
-                            paths: {
-                                configDir           : '/etc/nginx',
-                                modsAvailable       : '{configDir}/mods-available',
-                                modsEnabled         : '{configDir}/mods-enabled',
-                                sitesAvailable      : '{configDir}/sites-available',
-                                sitesEnabled        : '{configDir}/sites-enabled',
-                                configAvailable     : '{configDir}/conf-available',
-                                configEnabled       : '{configDir}/conf-enabled',
-                                configFiles         : [ '{configDir}/nginx.ini' ],
-                                configFileExtensions: [ 'ini', 'nginx', 'conf' ],
-                                modsFileExtensions  : [ 'conf', 'nginx' ],
-                                sitesFileExtensions : [ 'conf', 'nginx' ],
-                            },
-                        },
-                    ],
-                },
-                apache: {
-                    servers: [
-                        {
-                            paths: {
-                                configDir           : '/etc/apache2',
-                                modsAvailable       : '{configDir}/mods-available',
-                                modsEnabled         : '{configDir}/mods-enabled',
-                                sitesAvailable      : '{configDir}/sites-available',
-                                sitesEnabled        : '{configDir}/sites-enabled',
-                                configAvailable     : '{configDir}/conf-available',
-                                configEnabled       : '{configDir}/conf-enabled',
-                                configFiles         : [ '{configDir}/apache2.conf' ],
-                                configFileExtensions: [ 'conf' ],
-                                modsFileExtensions  : [ 'conf' ],
-                                sitesFileExtensions : [ 'conf' ],
-                            },
-
-                        },
-                    ],
-                },
-            },
+            // servers: {
+            //     nginx : {
+            //         servers: [
+            //             {
+            //                 paths: {
+            //                     configDir           : '/etc/nginx',
+            //                     modsAvailable       : '{configDir}/mods-available',
+            //                     modsEnabled         : '{configDir}/mods-enabled',
+            //                     sitesAvailable      : '{configDir}/sites-available',
+            //                     sitesEnabled        : '{configDir}/sites-enabled',
+            //                     configAvailable     : '{configDir}/conf-available',
+            //                     configEnabled       : '{configDir}/conf-enabled',
+            //                     configFiles         : [ '{configDir}/nginx.ini' ],
+            //                     configFileExtensions: [ 'ini', 'nginx', 'conf' ],
+            //                     modsFileExtensions  : [ 'conf', 'nginx' ],
+            //                     sitesFileExtensions : [ 'conf', 'nginx' ],
+            //                 },
+            //             },
+            //         ],
+            //     },
+            //     apache: {
+            //         servers: [
+            //             {
+            //                 paths: {
+            //                     configDir           : '/etc/apache2',
+            //                     modsAvailable       : '{configDir}/mods-available',
+            //                     modsEnabled         : '{configDir}/mods-enabled',
+            //                     sitesAvailable      : '{configDir}/sites-available',
+            //                     sitesEnabled        : '{configDir}/sites-enabled',
+            //                     configAvailable     : '{configDir}/conf-available',
+            //                     configEnabled       : '{configDir}/conf-enabled',
+            //                     configFiles         : [ '{configDir}/apache2.conf' ],
+            //                     configFileExtensions: [ 'conf' ],
+            //                     modsFileExtensions  : [ 'conf' ],
+            //                     sitesFileExtensions : [ 'conf' ],
+            //                 },
+            //
+            //             },
+            //         ],
+            //     },
+            // },
         },
     });
 

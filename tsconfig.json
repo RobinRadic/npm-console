@@ -32,7 +32,6 @@
         "scripts"
     ],
     "exclude": [
-        "*",
         "node_modules",
         "examples",
         "src",

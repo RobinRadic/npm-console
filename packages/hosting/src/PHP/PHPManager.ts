@@ -137,7 +137,7 @@ export class PHPManager {
     }
 
     protected putPhpInfoInCache(path: string, info: PhpInfo) {
-        this.getPhpCache().del(path).put(path, info, false);
+        this.getPhpCache().del(path).put(path, info);
         return this;
     }
 

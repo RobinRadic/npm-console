@@ -1,13 +1,19 @@
 {
     "compileOnSave": true,
     "compilerOptions": {
-        "target": "es6",
-        "module": "commonjs",
-        "moduleResolution": "node",
-        "lib": ["es5","es6","es7","es2018","es2018.promise","es2015.promise"],
+        "target": "ES6",
+        "module": "CommonJS",
+        "moduleResolution": "Node",
+        "lib": [
+            "ES5",
+            "ES6",
+            "ES2017",
+            "ES2018",
+            "ES2018.Promise",
+            "ES2015.Promise"
+        ],
         "declaration": true,
         "jsx": "preserve",
-        "composite": true,
         "jsxFactory": "h",
         "strict": false,
         "noImplicitAny": false,
@@ -29,24 +35,16 @@
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
         "outDir": "lib",
+        "composite": true,
         "resolveJsonModule": true,
-        "declarationDir": "lib",
-        "rootDir": "src",
+        "declarationDir": "types",
         "typeRoots": [
             "../../node_modules/@types",
             "./types"
         ],
         "baseUrl": ".",
-        "paths": {
-
-        }
+        "paths": {}
     },
-    "files": [
-        "yargs/locale.json"
-    ],
-    "include": [
-        "src"
-    ],
     "exclude": [
         "node_modules",
         "src/yargs/test",
@@ -55,5 +53,11 @@
         "dist",
         "lib",
         "test"
+    ],
+    "files": [
+        "yargs/locale.json"
+    ],
+    "include": [
+        "src"
     ]
 }

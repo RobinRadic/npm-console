@@ -1,9 +1,8 @@
 import { ServiceProvider } from '@radic/shared';
 import { HostFile } from './HostFile';
-import { SiteManager } from '../Servers/Sites';
 
 
-declare module '@radic/core/lib/Foundation/Application' {
+declare module '@radic/core/types/Foundation/Application' {
     export interface Bindings {
         hostfile: HostFile;
     }

@@ -1,26 +1,57 @@
 {
-    "extends": "../tsconfig.base.json",
     "compileOnSave": true,
     "compilerOptions": {
-        "outDir": "lib",
-        "declarationDir": "lib",
-        "rootDir": "src",
-        "typeRoots": [
-            "../../node_modules/@types",
-            "./types"
+        "target": "ES6",
+        "module": "CommonJS",
+        "moduleResolution": "Node",
+        "lib": [
+            "ES5",
+            "ES6",
+            "ES2017",
+            "ES2018",
+            "ES2018.Promise",
+            "ES2015.Promise"
         ],
-        "baseUrl": ".",
-        "paths": {
-
-        }
+        "outDir": "lib",
+        "declarationDir": "types",
+        "declaration": true,
+        "resolveJsonModule": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "jsx": "preserve",
+        "jsxFactory": "h",
+        "strict": false,
+        "noImplicitAny": false,
+        "strictNullChecks": false,
+        "strictFunctionTypes": false,
+        "strictBindCallApply": false,
+        "strictPropertyInitialization": false,
+        "noImplicitThis": false,
+        "alwaysStrict": false,
+        "noUnusedLocals": false,
+        "noUnusedParameters": false,
+        "noImplicitReturns": false,
+        "noFallthroughCasesInSwitch": false,
+        "allowSyntheticDefaultImports": true,
+        "importHelpers": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "inlineSourceMap": false,
+        "inlineSources": false,
+        "sourceMap": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "typeRoots": [
+            "../../node_modules/@types"
+        ],
+        "composite": true
     },
-    "include": [
-        "src"
-    ],
     "exclude": [
         "node_modules",
-        "dist",
+        "examples",
         "lib",
-        "test"
+        "dist"
+    ],
+    "include": [
+        "src"
     ]
 }

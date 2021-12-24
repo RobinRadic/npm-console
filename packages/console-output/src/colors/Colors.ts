@@ -1,4 +1,3 @@
-///<reference path="./globals.d.ts"/>
 // import * as supports               from 'supports-color';
 // import { supportsColor }           from 'supports-color';
 import * as convert from 'color-convert';

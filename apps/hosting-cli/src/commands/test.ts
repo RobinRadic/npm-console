@@ -2,24 +2,33 @@ import { DatabaseManager, NginxServer, NginxSite, servers } from '@radic/hosting
 import { command } from '@radic/console';
 import { Command } from '../Command';
 import { inject, system } from '@radic/core';
-import { arg } from '@radic/console';
 
 
-@command('test', 'Just a test command')
+@command('test <foo> [bar] [force] [args...]', 'Just a test command')
 export default class TestCommand extends Command {
     @servers servers: servers;
     @system system: system;
     @inject('db') db: DatabaseManager;
 
     async handle(
-        @arg('a required foo string',true) foo:string,
-        @arg('a optional bar string') bar?:string,
-        @arg('a optional force boolean with default ') force:boolean=false,
-        @arg('a optional number vararg ') ...args:number[]
+        foo: string,
+        bar?: string,
+        force: boolean = false,
+        ...args: number[]
     ) {
-        await this.ask.confirm('are you well ?')
+        await this.ask.confirm('are you well ?');
         return;
     }
+
+    // async han2dle(
+    //     @arg('a required foo string',true) foo:string,
+    //     @arg('a optional bar string') bar?:string,
+    //     @arg('a optional force boolean with default ') force:boolean=false,
+    //     @arg('a optional number vararg ') ...args:number[]
+    // ) {
+    //     await this.ask.confirm('are you well ?')
+    //     return;
+    // }
 
     async handeele() {
         let server = this.servers.get<NginxServer>('nginx');

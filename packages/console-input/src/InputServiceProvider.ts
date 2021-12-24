@@ -2,7 +2,7 @@ import { ServiceProvider } from '@radic/shared';
 import { Input } from './Input';
 import { Bindings, inject } from '@radic/core';
 
-declare module '@radic/core/lib/Foundation/Application' {
+declare module '@radic/core/types/Foundation/Application' {
     export interface Bindings {
         input: typeof Input;
     }

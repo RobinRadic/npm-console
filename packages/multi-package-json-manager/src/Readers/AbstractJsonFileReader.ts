@@ -30,7 +30,11 @@ export abstract class AbstractJsonFileReader<T extends any = any> implements Jso
         const filesPackages: Record<string, T> = {};
         for ( const filePath of absoluteFilePaths ) {
             let content               = this.readFile(filePath, ignoreNotFound);
+            try {
             filesPackages[ filePath ] = this.parseJson(content) as T;
+            } catch (e) {
+                throw new Error(`Could not parse JSON for "${filePath}"`)
+            }
         }
         return filesPackages;
     }
@@ -49,7 +53,7 @@ export abstract class AbstractJsonFileReader<T extends any = any> implements Jso
         if ( content === undefined ) {
             return;
         }
-        return JSON.parse(content) as T;
+            return JSON.parse(content) as T;
     }
 
 }

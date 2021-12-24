@@ -35,10 +35,10 @@
         ],
         "baseUrl": ".",
         "paths": {
-            "@radic/hosting": ["../../packages/hosting/src/index.ts"],
-            "@radic/console": ["../../packages/console/src/index.ts"],
-            "@radic/core": ["../../packages/core/src/index.ts"],
-            "@radic/shared": ["../../packages/shared/src/index.ts"]
+            "@radic/hosting": ["../../packages/hosting"],
+            "@radic/console": ["../../packages/console"],
+            "@radic/core": ["../../packages/core"],
+            "@radic/shared": ["../../packages/shared"]
         }
     },
     "include": [

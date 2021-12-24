@@ -2,8 +2,6 @@ import { Base } from './Base';
 import { Directory } from './Directory';
 
 
-const a = 'a';
-
 export class File extends Base {
     type: 'file';
 

@@ -1,53 +1,25 @@
 {
-    "compileOnSave": true,
+    "extends": "tsconfig.build.json",
     "compilerOptions": {
-        "target": "es6",
-        "module": "commonjs",
-        "moduleResolution": "node",
-        "lib": ["es5","es6","es7","es2018","es2018.promise","es2015.promise"],
-        "declaration": true,
-        "jsx": "preserve",
-        "composite": true,
-        "jsxFactory": "h",
-        "strict": false,
-        "noImplicitAny": false,
-        "strictNullChecks": false,
-        "strictFunctionTypes": false,
-        "strictBindCallApply": false,
-        "strictPropertyInitialization": false,
-        "noImplicitThis": false,
-        "alwaysStrict": false,
-        "noUnusedLocals": false,
-        "noUnusedParameters": false,
-        "noImplicitReturns": false,
-        "noFallthroughCasesInSwitch": false,
-        "allowSyntheticDefaultImports": true,
-        "esModuleInterop": true,
-        "inlineSourceMap": false,
-        "inlineSources": false,
-        "sourceMap": true,
-        "experimentalDecorators": true,
-        "emitDecoratorMetadata": true,
-        "outDir": "lib",
-        "declarationDir": "lib",
-        "rootDir": "src",
-        "typeRoots": [
-            "../../node_modules/@types",
-            "./types"
-        ],
-        "baseUrl": ".",
-        "paths": {
-
-        }
+        "composite": true
     },
-    "include": [
-        "src",
-        "src/index.ts",
+    "references": [
+        {"path": "../console"},
+        {"path": "../console-colors"},
+        {"path": "../console-input"},
+        {"path": "../console-output"},
+        {"path": "../core"},
+        {"path": "../hosting"},
+        {"path": "../shared"}
     ],
     "exclude": [
         "node_modules",
         "dist",
         "lib",
-        "test"
+        "test",
+        "types"
+    ],
+    "include": [
+        "src"
     ]
 }

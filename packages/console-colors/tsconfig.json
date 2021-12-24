@@ -1,22 +1,53 @@
 {
-    "extends": "../tsconfig.base.json",
     "compileOnSave": true,
     "compilerOptions": {
         "outDir": "lib",
-        "declarationDir": "lib",
-        "rootDir": "src",
+        "declarationDir": "types",
         "typeRoots": [
             "../../node_modules/@types",
-            "./types"
+            "./typings"
         ],
-        "baseUrl": "."
+        "types": ["./typings/trucolor.d.ts"],
+        "baseUrl": ".",
+        "target": "ES6",
+        "module": "CommonJS",
+        "moduleResolution": "Node",
+        "lib": [
+            "ES5",
+            "ES6",
+            "ES2017",
+            "ES2018",
+            "ES2018.Promise",
+            "ES2015.Promise"
+        ],
+        "declaration": true,
+        "composite": true,
+        "strict": false,
+        "noImplicitAny": false,
+        "strictNullChecks": false,
+        "strictFunctionTypes": false,
+        "strictBindCallApply": false,
+        "strictPropertyInitialization": false,
+        "noImplicitThis": false,
+        "alwaysStrict": false,
+        "noUnusedLocals": false,
+        "noUnusedParameters": false,
+        "noImplicitReturns": false,
+        "noFallthroughCasesInSwitch": false,
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "inlineSourceMap": false,
+        "inlineSources": false,
+        "sourceMap": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true
     },
-    "include": [
-        "src"
-    ],
     "exclude": [
         "node_modules",
         "dist",
         "lib"
+    ],
+    "include": [
+        "src"
     ]
 }

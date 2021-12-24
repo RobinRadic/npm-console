@@ -11,12 +11,12 @@ export interface PhpOptions {
     versions?: PhpVersionOptions[];
 }
 
-declare module '@radic/core/lib/types/config' {
+declare module '@radic/core/types/types/config' {
     export interface Configuration {
         php?: PhpOptions;
     }
 }
-declare module '@radic/core/lib/Foundation/Application' {
+declare module '@radic/core/types/Foundation/Application' {
     export interface Bindings {
         php: PHPManager;
     }

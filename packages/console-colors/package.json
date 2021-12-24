@@ -10,11 +10,11 @@
     },
     "license": "MIT",
     "main": "lib/index.js",
-    "types": "lib/index.d.ts",
+    "types": "types/index.d.ts",
     "homepage": "https://robinradic.github.io/npm-packages/packages/console-colors",
     "scripts": {
         "build": "yarn clean:build && tsc --project tsconfig.build.json",
-        "clean:build": "rm -rf lib && rimraf src/**/*.{js,js.map}",
+        "clean:build": "rm -rf lib/ types/ && rimraf src/**/*.{js,js.map,d.ts}",
         "clean:docs:api": "rm -rf docs/api",
         "clean:test": "rm -rf .nyc-output/",
         "clean:yarn": "rm yarn.lock node_modules/",

@@ -33,13 +33,13 @@
         "emitDecoratorMetadata": true,
         "typeRoots": [
             "../../../node_modules/@types",
-            "../types"
+            "../typings"
         ],
         "baseUrl": "../"
     },
     "include": [
         "../src",
-        "../types",
+        "../typings",
         "*",
         "**/*",
         "_support"

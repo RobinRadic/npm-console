@@ -1,0 +1,5 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="update-tsconfig.ts" type="NodeJSConfigurationType" nameIsGenerated="true" node-parameters="-r ts-node/register/transpile-only" path-to-js-file="scripts/update-tsconfig.ts" working-dir="$PROJECT_DIR$">
+    <method v="2" />
+  </configuration>
+</component>

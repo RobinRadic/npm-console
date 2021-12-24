@@ -1,13 +1,13 @@
 // import { PackageJson as BasePackageJson } from '@radic/shared';
 
-export interface JsonFileDetails<T =object> {
+export interface JsonFileDetails<T =any> {
     absoluteFilePath: string;
     relativeFilePath: string;
     dirName: string;
     data: T,
     [key:string]:any
 }
-export type FileFilterCallback = <T>(fileDetails: JsonFileDetails<T>) => boolean
+export type FileFilterCallback = <T =any>(this:Change,fileDetails: JsonFileDetails<T>) => boolean
 export type SpliceCallback = (array: any[]) => number | [ number, number ]
 export type ChangeType =
     'set'
@@ -17,12 +17,12 @@ export type ChangeType =
     | 'push'
     | 'splice';
 
-export interface Change {
+export interface Change<T=any> {
     type: ChangeType;
     fileFilter?: FileFilterCallback;
     splice?: SpliceCallback;
     path?: string;
-    value?: any;
+    value?: T;
 }
 export type Variables={
     [key:string]:string|Variables

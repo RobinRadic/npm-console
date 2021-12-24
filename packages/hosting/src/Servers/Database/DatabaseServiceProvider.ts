@@ -10,7 +10,7 @@ import { ConnectionHelper } from './ConnectionHelper';
 export { ConnectionOptions };
 
 
-declare module '@radic/core/lib/Foundation/Application' {
+declare module '@radic/core/types/Foundation/Application' {
     export interface Application {
         db: DatabaseManager;
     }
@@ -20,7 +20,7 @@ declare module '@radic/core/lib/Foundation/Application' {
     }
 }
 
-declare module '@radic/core/lib/types/config' {
+declare module '@radic/core/types/types/config' {
     export interface Configuration {
         db?: DatabasesConfiguration;
     }

@@ -141,7 +141,7 @@ let PHPManager = class PHPManager {
         });
     }
     putPhpInfoInCache(path, info) {
-        this.getPhpCache().del(path).put(path, info, false);
+        this.getPhpCache().del(path).put(path, info);
         return this;
     }
     getPhpCache() { return this.cache.get('php'); }

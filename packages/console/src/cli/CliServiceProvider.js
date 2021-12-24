@@ -121,10 +121,8 @@ class CliServiceProvider extends shared_1.ServiceProvider {
                 const cli = ctx.container.get('cli');
                 const setup = ctx.container.get('cli.setup');
                 yield setup(cli);
-                let argv = this.app.hooks.cli.argv.call(process.argv.slice(2));
                 try {
-                    // let argv2 = cli.argv
-                    let args = yield cli.parse(argv);
+                    let args = yield cli.parse();
                     args = yield this.app.hooks.cli.args.promise(args);
                     return args;
                 }

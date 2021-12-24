@@ -1,10 +1,9 @@
-import { Manager } from 'multi-package-json-manager';
+import { Manager, PackageJson } from 'multi-package-json-manager';
 import { resolve } from 'path';
-import { PackageJson } from 'multi-package-json-manager';
 
 
 let manager = new Manager<PackageJson>(resolve(__dirname, '..'));
-manager.addPackageJsons('packages/*/package.json');
+manager.addJsonFiles('packages/*/package.json');
 // manager.enableTestRun(true);
 manager.addVariables({
     email : 'rradic@hotmail.com',
@@ -37,7 +36,7 @@ manager.setKeyOrder([
     'peerDependencies',
     'author',
     'keywords',
-])
+]);
 
 
 manager
@@ -75,8 +74,8 @@ manager
 });
 
 manager.setKey('files', [
-    'lib/**/*'
-])
+    'lib/**/*',
+]);
 
 
 manager.run();

@@ -17,7 +17,7 @@ export interface NginxServersConfiguration {
     servers?: NginxServerConfiguration[];
 }
 
-declare module '@radic/core/lib/Foundation/Application' {
+declare module '@radic/core/types/Foundation/Application' {
     export interface Bindings {
         'nginx.types.fetcher': Fetcher;
         'nginx.types.collector': Collector;

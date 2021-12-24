@@ -12,7 +12,7 @@ declare module '@radic/core/types/types' {
     }
 }
 
-declare module '@radic/core/types' {
+declare module '@radic/core/types/Foundation/Application' {
     export interface Bindings {
         servers: ServerManager;
     }

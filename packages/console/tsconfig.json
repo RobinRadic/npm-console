@@ -30,7 +30,8 @@
         "yargs/locale.json"
     ],
     "include": [
-        "src"
+        "src",
+        "src/index.ts"
     ],
     "references": [
         {

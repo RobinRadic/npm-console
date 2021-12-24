@@ -23,6 +23,10 @@ export class DatabaseManager {
         return this.helper;
     }
 
+    async connect(name:string){
+        return this.getDatabaseHelper().use(name).connect()
+    }
+
     getConnectionNames() {
         let names = [];
         Object.values(this.config.connections).forEach(c => c.forEach(c => names.push(c.name)));

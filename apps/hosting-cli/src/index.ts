@@ -5,13 +5,14 @@ import { InputServiceProvider } from '@radic/console-input';
 import { OutputServiceProvider,LogServiceProvider } from '@radic/console-output';
 import { macros } from '@radic/console-output';
 import { HostingCliServiceProvider } from './HostingCliServiceProvider';
-import { Application, CoreServiceProvider } from '@radic/core';
+import { Application, App, CoreServiceProvider } from '@radic/core';
 import { CliServiceProvider, CliStartReturn } from '@radic/console';
 
 
 export async function bootApp() {
     let commandDir = join(__dirname, 'commands');
     const app      = Application.instance;
+
     await app.initialize({
         dirname  : __dirname,
         providers: [
@@ -25,20 +26,20 @@ export async function bootApp() {
         ],
         config   : {
             debug  : true,
-            // cli    : {
-            //     commandDir,
-            // },
-            // startFn: async <T>(app, ...params: any[]) => {
-            //     app.events.on('Application:error', (error, exit) => {
-            //         throw new Error(error)
-            //     })
-            //     try {
-            //         const args = await app.cliStart();
-            //         return args;
-            //     } catch (e) {
-            //         app.error(e, true);
-            //     }
-            // },
+            cli    : {
+                commandDir,
+            },
+            startFn: async <T>(app:App, ...params: any[]) => {
+                app.events.on('Application:error', (error, exit) => {
+                    throw new Error(error)
+                })
+                try {
+                    const args = await app.cliStart();
+                    return args;
+                } catch (e) {
+                    app.error(e, true);
+                }
+            },
             // db     : {
             //     main       : 'main',
             //     connections: {

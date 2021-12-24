@@ -58,10 +58,15 @@ export class Builder {
     })
     build() {
         this.log('Starting build');
-        this.exec('rm -rf lib/ types/');
-        this.exec('rimraf src/**/*.{js,js.map,d.ts}');
         const output = this.exec('tsc --project tsconfig.build.json');
         this.log('Build finished', '\n', output);
+    }
+
+    clean(){
+        this.log('Cleaning up');
+        this.log('rm -rf lib/ types/',this.exec('rm -rf lib/ types/'))
+        this.log('rimraf src/**/*.{js,js.map,d.ts}', this.exec('rimraf src/**/*.{js,js.map,d.ts}'));
+        this.log('Cleaned up')
     }
 
     protected exec(command: string): string {
@@ -85,8 +90,10 @@ export namespace Builder {
     export const builderNames                      = Object.keys(builders);
     export const build                             = (name: string) => builders[ name ].build();
     export const watch                             = (name: string) => builders[ name ].watch();
+    export const clean                             = (name: string) => builders[ name ].clean();
     export const buildAll                          = () => Object.values(builders).forEach(builder => builder.build());
     export const watchAll                          = () => Object.values(builders).forEach(builder => builder.watch());
+    export const cleanAll                          = () => Object.values(builders).forEach(builder => builder.clean());
 }
 
 process.on('uncaughtException', (error, origin) => console.error('uncaughtException', 'error:', error, 'origin:', origin));
@@ -135,6 +142,25 @@ function runCli() {
             .example('builder watch --all', 'Start build on change in any package')
             .options({
                 all: { alias: 'a', type: 'boolean', description: 'Watch all' },
+            });
+        },
+    })
+    .command('clean [name]', 'Clean package(s)', {
+        handler: args => {
+            if ( args.all ) {
+                return Builder.cleanAll();
+            } else if ( args.name !== undefined && Builder.builderNames.includes(args.name.toString().trim()) ) {
+                return Builder.clean(args.name.toString().trim());
+            } else {
+                console.error('You did not supply the name or option --all');
+            }
+        },
+        builder: yargs => {
+            return yargs
+            .example('builder clean console', 'clean packages/console')
+            .example('builder clean --all', 'clean all packages')
+            .options({
+                all: { alias: 'a', type: 'boolean', description: 'Clean all' },
             });
         },
     })

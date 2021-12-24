@@ -83,7 +83,7 @@ config.addJsonFiles('packages/*/tsconfig.json')
           experimentalDecorators: true,
           emitDecoratorMetadata: true,
       })
-      .set('include', [ 'src' ])
+      .set('include', [ 'src','src/index.ts' ])
       .set('exclude', [
           'node_modules',
           'examples',

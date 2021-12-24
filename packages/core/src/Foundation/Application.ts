@@ -46,6 +46,10 @@ export interface Application {
     get<T, C extends GetServiceIdentifier<T> = GetServiceIdentifier<T>>(si: C): C extends keyof Bindings ? Bindings[C] : T;
 }
 
+export interface App extends Application {
+
+}
+
 export interface Paths {
     node?: string;
     app?: string;
@@ -106,7 +110,7 @@ export enum ExitCode {
  * The provider will still be passed to the bootProvider function wich will for the first call also prevent booting
  * but bootProvider will set deferred to false. So on the second call of this function, it will be registered and booted
  */
-export class Application extends Container {
+export class Application extends Container{
 
     /**
      * The application instance.

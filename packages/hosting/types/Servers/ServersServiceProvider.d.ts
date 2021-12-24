@@ -8,7 +8,7 @@ declare module '@radic/core/types/types' {
         servers?: ServersConfiguration;
     }
 }
-declare module '@radic/core/types' {
+declare module '@radic/core/types/Foundation/Application' {
     interface Bindings {
         servers: ServerManager;
     }

@@ -27,7 +27,8 @@
         "types/*.d.ts"
     ],
     "include": [
-        "src"
+        "src",
+        "src/index.ts"
     ],
     "references": [
         {

@@ -57,7 +57,8 @@ build.addJsonFiles('packages/*/tsconfig.build.json')
          'types',
          'types/*.d.ts',
      ])
-     .enableTestRun()
+     .enableTestRun(process.argv.includes('--test'))
+     .enableDryRun(process.argv.includes('--dry'))
      .run();
 
 
@@ -88,7 +89,8 @@ config.addJsonFiles('packages/*/tsconfig.json')
           { 'path': '../hosting' },
           { 'path': '../shared' },
       ])
-      .enableTestRun()
+      .enableTestRun(process.argv.includes('--test'))
+      .enableDryRun(process.argv.includes('--dry'))
       .run();
 
 

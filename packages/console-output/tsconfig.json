@@ -1,55 +1,41 @@
 {
-    "compileOnSave": true,
     "compilerOptions": {
-        "esModuleInterop": true,
-        "outDir": "lib",
-        "declarationDir": "types",
-        "typeRoots": [
-            "../../node_modules/@types",
-            "./typings"
-        ],
-        "baseUrl": ".",
-        "paths": {},
-        "target": "ES6",
-        "module": "CommonJS",
-        "moduleResolution": "Node",
-        "lib": [
-            "ES5",
-            "ES6",
-            "ES2017",
-            "ES2018",
-            "ES2018.Promise",
-            "ES2015.Promise"
-        ],
-        "declaration": true,
         "composite": true,
-        "strict": false,
-        "noImplicitAny": false,
-        "strictNullChecks": false,
-        "strictFunctionTypes": false,
-        "strictBindCallApply": false,
-        "strictPropertyInitialization": false,
-        "noImplicitThis": false,
-        "alwaysStrict": false,
-        "noUnusedLocals": false,
-        "noUnusedParameters": false,
-        "noImplicitReturns": false,
-        "noFallthroughCasesInSwitch": false,
-        "allowSyntheticDefaultImports": true,
-        "inlineSourceMap": false,
-        "inlineSources": false,
-        "sourceMap": true,
-        "experimentalDecorators": true,
-        "emitDecoratorMetadata": true
+        "baseUrl": "."
     },
     "exclude": [
-        "src/_Output.ts",
         "node_modules",
-        "dist",
+        "examples",
         "lib",
-        "test"
+        "tests",
+        "types",
+        "types/*.d.ts"
     ],
+    "extends": "tsconfig.build.json",
     "include": [
         "src"
+    ],
+    "references": [
+        {
+            "path": "../console"
+        },
+        {
+            "path": "../console-colors"
+        },
+        {
+            "path": "../console-input"
+        },
+        {
+            "path": "../console-output"
+        },
+        {
+            "path": "../core"
+        },
+        {
+            "path": "../hosting"
+        },
+        {
+            "path": "../shared"
+        }
     ]
 }

@@ -1,25 +1,41 @@
 {
-    "extends": "tsconfig.build.json",
     "compilerOptions": {
-        "composite": true
+        "composite": true,
+        "baseUrl": "."
     },
-    "references": [
-        {"path": "../console"},
-        {"path": "../console-colors"},
-        {"path": "../console-input"},
-        {"path": "../console-output"},
-        {"path": "../core"},
-        {"path": "../hosting"},
-        {"path": "../shared"}
-    ],
     "exclude": [
         "node_modules",
-        "dist",
+        "examples",
         "lib",
-        "test",
-        "types"
+        "tests",
+        "types",
+        "types/*.d.ts"
     ],
+    "extends": "tsconfig.build.json",
     "include": [
         "src"
+    ],
+    "references": [
+        {
+            "path": "../console"
+        },
+        {
+            "path": "../console-colors"
+        },
+        {
+            "path": "../console-input"
+        },
+        {
+            "path": "../console-output"
+        },
+        {
+            "path": "../core"
+        },
+        {
+            "path": "../hosting"
+        },
+        {
+            "path": "../shared"
+        }
     ]
 }

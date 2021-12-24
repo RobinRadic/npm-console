@@ -1,10 +1,16 @@
 {
-    "compileOnSave": false,
     "compilerOptions": {
-        "target": "es6",
-        "module": "commonjs",
-        "moduleResolution": "node",
-        "lib": ["es5","es6","es7","es2018","es2018.promise"],
+        "target": "ES6",
+        "module": "CommonJS",
+        "moduleResolution": "Node",
+        "lib": [
+            "ES5",
+            "ES6",
+            "ES2017",
+            "ES2018",
+            "ES2018.Promise",
+            "ES2015.Promise"
+        ],
         "outDir": "lib",
         "declarationDir": "types",
         "declaration": true,
@@ -38,16 +44,20 @@
         "typeRoots": [
             "../../node_modules/@types",
             "./typings"
-        ]
+        ],
+        "composite": false,
+        "baseUrl": ".",
+        "types": []
     },
-    "include": [
-        "src",
-        "src/index.ts"
-    ],
     "exclude": [
-        "src/_Output.ts",
         "node_modules",
         "examples",
-        "dist"
+        "lib",
+        "tests",
+        "types",
+        "types/*.d.ts"
+    ],
+    "include": [
+        "src"
     ]
 }

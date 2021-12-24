@@ -1,10 +1,16 @@
 {
-    "compileOnSave": false,
     "compilerOptions": {
-        "target": "es6",
-        "module": "commonjs",
-        "moduleResolution": "node",
-        "lib": ["es5","es6","es7","es2018","es2018.promise","es2015.promise"],
+        "target": "ES6",
+        "module": "CommonJS",
+        "moduleResolution": "Node",
+        "lib": [
+            "ES5",
+            "ES6",
+            "ES2017",
+            "ES2018",
+            "ES2018.Promise",
+            "ES2015.Promise"
+        ],
         "outDir": "lib",
         "declarationDir": "types",
         "declaration": true,
@@ -28,22 +34,30 @@
         "importHelpers": true,
         "esModuleInterop": true,
         "skipLibCheck": true,
-        "inlineSourceMap": true,
-        "inlineSources": true,
-        "sourceMap": false,
+        "inlineSourceMap": false,
+        "inlineSources": false,
+        "sourceMap": true,
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
         "typeRoots": [
-            "../../node_modules/@types"
-        ]
+            "../../node_modules/@types",
+            "./typings"
+        ],
+        "composite": false,
+        "allowJs": false,
+        "checkJs": false,
+        "baseUrl": ".",
+        "types": []
     },
-    "include": [
-        "src"
-    ],
     "exclude": [
         "node_modules",
         "examples",
         "lib",
-        "dist"
+        "tests",
+        "types",
+        "types/*.d.ts"
+    ],
+    "include": [
+        "src"
     ]
 }

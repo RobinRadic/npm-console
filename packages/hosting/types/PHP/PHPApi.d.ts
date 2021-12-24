@@ -4,7 +4,7 @@ export declare enum PHPApi {
     FPM = "FPM/FastCGI"
 }
 export declare namespace PHPApi {
-    const keys: any;
+    const keys: string[];
     const values: any;
     type Key = 'CLI' | 'FPM';
     const toApi: (string: any) => PHPApi;

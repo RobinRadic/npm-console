@@ -1,4 +1,4 @@
-import { Change, createTsconfigJsonManager, JsonFileDetails } from 'multi-package-json-manager';
+import { createTsconfigJsonManager } from 'multi-package-json-manager';
 import { resolve } from 'path';
 
 const build = createTsconfigJsonManager(resolve(__dirname, '..'));
@@ -68,8 +68,12 @@ config.addJsonFiles('packages/*/tsconfig.json')
       .unset('compileOnSave')
       .set('extends', 'tsconfig.build.json')
       .set('compilerOptions', {
-          composite: true,
-          baseUrl:'.',
+          composite       : true,
+          baseUrl         : '.',
+          target          : 'ES6',
+          module          : 'CommonJS',
+          moduleResolution: 'Node',
+          lib             : [ 'ES5', 'ES6', 'ES2017', 'ES2018', 'ES2018.Promise', 'ES2015.Promise' ],
       })
       .set('include', [ 'src' ])
       .set('exclude', [

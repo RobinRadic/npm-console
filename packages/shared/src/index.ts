@@ -1,4 +1,5 @@
-import 'reflect-metadata'
+import 'reflect-metadata';
+
 export * from './types';
 export * from './Diff';
 export * from './eachDeep';
@@ -9,4 +10,7 @@ export * from './Str';
 export * from './thenBy';
 export * from './utils';
 export * from './wait';
+
+
+
 

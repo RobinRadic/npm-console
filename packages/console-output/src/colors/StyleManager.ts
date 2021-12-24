@@ -3,6 +3,11 @@ import { macroProxy, MacroProxy } from '../utils';
 
 export interface Styles {
     [ key: string ]: string;
+    title   ?: string
+    subtitle?: string
+    success ?: string
+    warning ?: string
+    error   ?: string
 }
 
 export type StyleName =

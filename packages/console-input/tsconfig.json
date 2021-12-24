@@ -1,7 +1,18 @@
 {
     "compilerOptions": {
         "composite": true,
-        "baseUrl": "."
+        "baseUrl": ".",
+        "target": "ES6",
+        "module": "CommonJS",
+        "moduleResolution": "Node",
+        "lib": [
+            "ES5",
+            "ES6",
+            "ES2017",
+            "ES2018",
+            "ES2018.Promise",
+            "ES2015.Promise"
+        ]
     },
     "exclude": [
         "node_modules",

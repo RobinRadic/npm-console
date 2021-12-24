@@ -22,7 +22,7 @@ export interface ServerConfiguration {
 export interface ServersConfiguration {
 }
 export declare class ServersServiceProvider extends ServiceProvider {
-    providers: (typeof ApacheServiceProvider | typeof SitesServiceProvider)[];
+    providers: (typeof SitesServiceProvider | typeof ApacheServiceProvider)[];
     load(): any;
     register(): any;
 }

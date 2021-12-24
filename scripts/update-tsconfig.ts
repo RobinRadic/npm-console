@@ -48,7 +48,15 @@ build.addJsonFiles('packages/*/tsconfig.build.json')
              'types'                         : [],
          },
      })
-     .set('include', [ 'src' ])
+     .set('include', [ 'src', 'src/index.ts' ], d => d.dirName !== 'console')
+     .set('include', [
+         "src/cli",
+         "src/decorators",
+         "src/types",
+         "src/yargs/lib",
+         "src/yargs/index.ts",
+         "src/index.ts",
+     ], d => d.dirName === 'console')
      .set('exclude', [
          'node_modules',
          'examples',
@@ -69,21 +77,29 @@ config.addJsonFiles('packages/*/tsconfig.json')
       .setKeyOrder([
           'extends',
           'compileOnSave',
-          'compilerOptions'
+          'compilerOptions',
       ])
       .set('extends', 'tsconfig.build.json')
       .set('compilerOptions', {
-          composite       : true,
-          baseUrl         : '.',
-          target          : 'ES6',
-          module          : 'CommonJS',
-          moduleResolution: 'Node',
-          lib             : [ 'ES5', 'ES6', 'ES2017', 'ES2018', 'ES2018.Promise', 'ES2015.Promise' ],
-          esModuleInterop: true,
+          composite             : true,
+          baseUrl               : '.',
+          target                : 'ES6',
+          module                : 'CommonJS',
+          moduleResolution      : 'Node',
+          lib                   : [ 'ES5', 'ES6', 'ES2017', 'ES2018', 'ES2018.Promise', 'ES2015.Promise' ],
+          esModuleInterop       : true,
           experimentalDecorators: true,
-          emitDecoratorMetadata: true,
+          emitDecoratorMetadata : true,
       })
-      .set('include', [ 'src','src/index.ts' ])
+      .set('include', [ 'src', 'src/index.ts' ], d => d.dirName !== 'console')
+      .set('include', [
+          "src/cli",
+          "src/decorators",
+          "src/types",
+          "src/yargs/lib",
+          "src/yargs/index.ts",
+          "src/index.ts",
+      ], d => d.dirName === 'console')
       .set('exclude', [
           'node_modules',
           'examples',

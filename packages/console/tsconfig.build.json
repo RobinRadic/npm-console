@@ -58,6 +58,11 @@
         "types/*.d.ts"
     ],
     "include": [
-        "src"
+        "src/cli",
+        "src/decorators",
+        "src/types",
+        "src/yargs/lib",
+        "src/yargs/index.ts",
+        "src/index.ts"
     ]
 }

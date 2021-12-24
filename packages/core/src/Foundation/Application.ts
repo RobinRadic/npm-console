@@ -15,7 +15,7 @@ import { ApplicationInitOptions, Configuration } from '../types';
 import { defaultConfiguration } from '../consts';
 import ServiceIdentifier = interfaces.ServiceIdentifier;
 import BindingInWhenOnSyntax = interfaces.BindingInWhenOnSyntax;
-
+import {JSONSchema7} from 'json-schema'
 export type GetServiceIdentifier<T> =
     keyof Bindings
     | interfaces.ServiceIdentifier<T>
@@ -83,12 +83,13 @@ declare module '../Dispatcher/Dispatcher' {
     }
 }
 
+
 export type StartFn = <T = any>(app: Application, ...args: any[]) => Promise<T>
 
 export interface ConfigPart<T, K extends string = string> {
     key: K,
     defaults: T,
-    schema?: any
+    schema?: JSONSchema7
 }
 
 export enum ExitCode {

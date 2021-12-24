@@ -11,6 +11,12 @@
       <sourceFolder url="file://$MODULE_DIR$/packages/console/test" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/packages/multi-package-json-manager/test" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/packages/hosting/test" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/packages/console-colors/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/packages/console-input/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/packages/console-output/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/packages/console/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/packages/core/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/packages/hosting/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/packages/shared/src" isTestSource="false" packagePrefix="@radic\shared" />
       <excludeFolder url="file://$MODULE_DIR$/.tmp" />
       <excludeFolder url="file://$MODULE_DIR$/src/.vuepress/plugins/monorepo/lib" />

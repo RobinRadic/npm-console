@@ -12,6 +12,7 @@ export * from './log';
 export * from './OutputServiceProvider';
 
 
-export const out:Output = new Output()
+
+export const output:Output = new Output()
 
 

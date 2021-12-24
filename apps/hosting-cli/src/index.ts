@@ -2,10 +2,9 @@ import { join } from 'path';
 
 import { HostingServiceProvider } from '@radic/hosting';
 import { InputServiceProvider } from '@radic/console-input';
-import { OutputServiceProvider,LogServiceProvider } from '@radic/console-output';
-import { macros } from '@radic/console-output';
+import { LogServiceProvider, macros, OutputServiceProvider } from '@radic/console-output';
 import { HostingCliServiceProvider } from './HostingCliServiceProvider';
-import { Application, App, CoreServiceProvider } from '@radic/core';
+import { Application, CoreServiceProvider } from '@radic/core';
 import { CliServiceProvider, CliStartReturn } from '@radic/console';
 
 
@@ -28,74 +27,91 @@ export async function bootApp() {
             debug  : true,
             cli    : {
                 commandDir,
-            },
-            startFn: async <T>(app:App, ...params: any[]) => {
-                app.events.on('Application:error', (error, exit) => {
-                    throw new Error(error)
+                setup: cli => cli
+                .scriptName('hosting')
+                .parserConfiguration({
+                    'boolean-negation': true,
+                    'negation-prefix' : 'no-',
+                    'dot-notation'    : false,
                 })
+                .help('h', 'Show Help').alias('h', 'help')
+                .option('V', { type: 'boolean', alias: 'version', global: false })
+                .option('v', {
+                    alias : 'verbose',
+                    desc  : 'Increase output verbosity up to 3 times. Eg: -v -vv -vvv',
+                    count : true,
+                    global: true,
+                    group : app.output.parse('{bold}Global Options:{/bold}'),
+                })
+                .epilog(app.output.parse(epilog))
+                .usage(app.output.parse('{bold}Hosting Manager:{/bold}\n {green}${/green} hosting <{yellow}command{/yellow}>')),
+            },
+            startFn: (async <T>(app: Application, ...params: any[]) => {
+                app.events.on('Application:error', (error, exit) => {
+                    throw new Error(error);
+                });
                 try {
-                    const args = await app.cliStart();
-                    return args;
+                    return await app.cliStart();
                 } catch (e) {
                     app.error(e, true);
                 }
+            }) as any,
+            db     : {
+                main       : 'main',
+                connections: {
+                    mysql: [ {
+                        name    : 'main',
+                        type    : 'mysql',
+                        host    : '127.0.0.1',
+                        username: 'root',
+                        // insecureAuth: true,
+                        // debug       : true,
+                        // trace       : true,
+                    } ],
+                },
             },
-            // db     : {
-            //     main       : 'main',
-            //     connections: {
-            //         mysql: [ {
-            //             name        : 'main',
-            //             type        : 'mysql',
-            //             host        : '127.0.0.1',
-            //             username    : 'root',
-            //             // insecureAuth: true,
-            //             // debug       : true,
-            //             // trace       : true,
-            //         } ],
-            //     },
-            // },
             output : {},
-            // servers: {
-            //     nginx : {
-            //         servers: [
-            //             {
-            //                 paths: {
-            //                     configDir           : '/etc/nginx',
-            //                     modsAvailable       : '{configDir}/mods-available',
-            //                     modsEnabled         : '{configDir}/mods-enabled',
-            //                     sitesAvailable      : '{configDir}/sites-available',
-            //                     sitesEnabled        : '{configDir}/sites-enabled',
-            //                     configAvailable     : '{configDir}/conf-available',
-            //                     configEnabled       : '{configDir}/conf-enabled',
-            //                     configFiles         : [ '{configDir}/nginx.ini' ],
-            //                     configFileExtensions: [ 'ini', 'nginx', 'conf' ],
-            //                     modsFileExtensions  : [ 'conf', 'nginx' ],
-            //                     sitesFileExtensions : [ 'conf', 'nginx' ],
-            //                 },
-            //             },
-            //         ],
-            //     },
-            //     apache: {
-            //         servers: [
-            //             {
-            //                 paths: {
-            //                     configDir           : '/etc/apache2',
-            //                     modsAvailable       : '{configDir}/mods-available',
-            //                     modsEnabled         : '{configDir}/mods-enabled',
-            //                     sitesAvailable      : '{configDir}/sites-available',
-            //                     sitesEnabled        : '{configDir}/sites-enabled',
-            //                     configAvailable     : '{configDir}/conf-available',
-            //                     configEnabled       : '{configDir}/conf-enabled',
-            //                     configFiles         : [ '{configDir}/apache2.conf' ],
-            //                     configFileExtensions: [ 'conf' ],
-            //                     modsFileExtensions  : [ 'conf' ],
-            //                     sitesFileExtensions : [ 'conf' ],
-            //                 },
-            //
-            //             },
-            //         ],
-            //     },
-            // },
+            servers: {
+                nginx : {
+                    servers: [
+                        {
+                            paths: {
+                                configDir           : '/etc/nginx',
+                                modsAvailable       : '{configDir}/mods-available',
+                                modsEnabled         : '{configDir}/mods-enabled',
+                                sitesAvailable      : '{configDir}/sites-available',
+                                sitesEnabled        : '{configDir}/sites-enabled',
+                                configAvailable     : '{configDir}/conf-available',
+                                configEnabled       : '{configDir}/conf-enabled',
+                                configFiles         : [ '{configDir}/nginx.ini' ],
+                                configFileExtensions: [ 'ini', 'nginx', 'conf' ],
+                                modsFileExtensions  : [ 'conf', 'nginx' ],
+                                sitesFileExtensions : [ 'conf', 'nginx' ],
+                            },
+                        },
+                    ],
+                },
+                apache: {
+                    servers: [
+                        {
+                            paths: {
+                                configDir           : '/etc/apache2',
+                                modsAvailable       : '{configDir}/mods-available',
+                                modsEnabled         : '{configDir}/mods-enabled',
+                                sitesAvailable      : '{configDir}/sites-available',
+                                sitesEnabled        : '{configDir}/sites-enabled',
+                                configAvailable     : '{configDir}/conf-available',
+                                configEnabled       : '{configDir}/conf-enabled',
+                                configFiles         : [ '{configDir}/apache2.conf' ],
+                                configFileExtensions: [ 'conf' ],
+                                modsFileExtensions  : [ 'conf' ],
+                                sitesFileExtensions : [ 'conf' ],
+                            },
+
+                        },
+                    ],
+                },
+            },
         },
     });
 
@@ -108,27 +124,6 @@ export async function bootApp() {
         if ( verbose ) {
             app.log.level = verbose + 'erbose';
         }
-    });
-    app.hooks.cli.setup.tap('MY', async cli => {
-        cli
-        .scriptName('hosting')
-        .parserConfiguration({
-            'boolean-negation': true,
-            'negation-prefix' : 'no-',
-            'dot-notation'    : false,
-        })
-        .help('h', 'Show Help').alias('h', 'help')
-        .option('V', { type: 'boolean', alias: 'version', global: false })
-        .option('v', {
-            alias : 'verbose',
-            desc  : 'Increase output verbosity up to 3 times. Eg: -v -vv -vvv',
-            count : true,
-            global: true,
-            group : app.output.parse('{bold}Global Options:{/bold}'),
-        })
-        .epilog(app.output.parse(epilog))
-        .usage(app.output.parse('{bold}Hosting Manager:{/bold}\n {green}${/green} hosting <{yellow}command{/yellow}>'))
-        ;
     });
 
     await app.boot();
@@ -144,6 +139,6 @@ export async function bootApp() {
 }
 
 export async function startCli() {
-    const app  = await bootApp();
+    const app = await bootApp();
     return await app.start<CliStartReturn>();
 }

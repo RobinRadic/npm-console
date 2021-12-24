@@ -50,6 +50,7 @@ declare module './types' {
 export interface CliOptions {
     commandDir: string;
     maxWidth?: number | false;
+    setup?: (cli: Cli) => any;
 }
 export interface CliArguments {
 }

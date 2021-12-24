@@ -1,4 +1,4 @@
-import { isString, objectify, ServiceProvider } from '@radic/shared';
+import { isFunction, isPromise, isString, objectify, ServiceProvider } from '@radic/shared';
 import { Argv } from 'yargs';
 import { AsyncSeriesHook, AsyncSeriesWaterfallHook, SyncHook, SyncWaterfallHook } from 'tapable';
 import cli, { Cli } from './Cli';
@@ -55,6 +55,7 @@ declare module './types' {
 export interface CliOptions {
     commandDir: string;
     maxWidth?: number | false;
+    setup?:(cli:Cli) => any
 }
 
 export interface CliArguments {
@@ -94,6 +95,9 @@ export class CliServiceProvider extends ServiceProvider {
                     commandDir: {
                         type: 'string',
                     },
+                    maxWidth: {
+                        type: 'number',
+                    }
                 },
                 required  : [ 'commandDir' ],
             },
@@ -144,22 +148,28 @@ export class CliServiceProvider extends ServiceProvider {
                 .parserConfiguration({
                     'dot-notation': false,
                 })
-                // .help('h', 'Show Help').alias('h', 'help')
-                // .group('h', this.app.out.parse('{bold}Global Options:{/bold}'))
-                // .option('V', { type: 'boolean', alias: 'version', global: false });
-                // .showHelpOnFail(true)
-
                 if ( this.app.isBound('output') ) {
                     const locale = require('../../yargs/locale.json');
                     cli.updateStrings(getLocaleStrings(locale,this.app.get('output')));
                 }
-
                 if ( maxWidth !== false && cli.terminalWidth() > maxWidth ) {
                     cli.wrap(maxWidth);
                     this.app.instance('cli.wrap', maxWidth);
                 } else {
                     this.app.instance('cli.wrap', cli.terminalWidth());
                 }
+                if(this.app.config.has('cli.setup')){
+                    let cliSetup = this.app.config.get('cli.setup')
+                    if(isFunction(cliSetup)){
+                        if(isPromise(cliSetup)){
+                            await cliSetup(cli)
+                        } else {
+                            cliSetup(cli)
+                        }
+                    }
+                }
+
+
                 try {
                     await this.app.hooks.cli.setup.promise(cli);
                 } catch (e) {

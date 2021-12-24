@@ -58,7 +58,8 @@ export declare type StartFn = <T = any>(app: Application, ...args: any[]) => Pro
 export interface ConfigPart<T, K extends string = string> {
     key: K;
     defaults: T;
-    schema?: any;
+    schema?:JSONSchema7 ;
+
 }
 export declare enum ExitCode {
     OK = 0,

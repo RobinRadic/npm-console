@@ -9,6 +9,7 @@ export declare class DatabaseManager {
     protected connections: Record<string, Connection>;
     protected manager: ConnectionManager;
     protected helper: ConnectionHelper;
+    supports: string[];
     constructor();
     get config(): DatabasesConfiguration;
     protected getConnectionConfigurations(): (import("typeorm/driver/mysql/MysqlConnectionOptions").MysqlConnectionOptions[] | import("typeorm/driver/postgres/PostgresConnectionOptions").PostgresConnectionOptions[] | import("typeorm/driver/sqlite/SqliteConnectionOptions").SqliteConnectionOptions[] | import("typeorm/driver/sqlserver/SqlServerConnectionOptions").SqlServerConnectionOptions[] | import("typeorm/driver/better-sqlite3/BetterSqlite3ConnectionOptions").BetterSqlite3ConnectionOptions[] | import("typeorm/driver/mongodb/MongoConnectionOptions").MongoConnectionOptions[])[];

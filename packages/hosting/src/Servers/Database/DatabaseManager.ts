@@ -13,6 +13,8 @@ export class DatabaseManager {
     @inject('db.connections') protected manager: ConnectionManager;
     @inject('db.helper') protected helper: ConnectionHelper;
 
+    supports = [ 'bettersqlite3', 'mongo', 'mysql', 'postgres', 'sql', 'sqlite' ];
+
     constructor() {}
 
     get config(): DatabasesConfiguration {return this._config.db; }
@@ -23,8 +25,8 @@ export class DatabaseManager {
         return this.helper;
     }
 
-    async connect(name:string){
-        return this.getDatabaseHelper().use(name).connect()
+    async connect(name: string) {
+        return this.getDatabaseHelper().use(name).connect();
     }
 
     getConnectionNames() {
@@ -33,12 +35,12 @@ export class DatabaseManager {
         return names;
     }
 
-    getConnectionConfiguration(name:string){
+    getConnectionConfiguration(name: string) {
         let servers = this.getConnectionConfigurations();
         for ( const serverConfig of servers ) {
             for ( const config of serverConfig ) {
                 if ( config.name === name ) {
-                    return config
+                    return config;
                 }
             }
         }

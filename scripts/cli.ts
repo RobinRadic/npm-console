@@ -1,8 +1,12 @@
 import yargs from 'yargs';
 import { PackageBuilder } from './PackageBuilder';
+import { inspect } from 'util';
 
 process.on('uncaughtException', (error, origin) => console.error('uncaughtException', 'error:', error, 'origin:', origin));
-process.on('unhandledRejection', (reason, promise) => console.error('unhandledRejection', 'reason:', reason));
+process.on('unhandledRejection', (reason, promise) => {
+    console.error('unhandledRejection', 'reason:', reason, promise)
+    console.log(inspect(promise,true,10, true));
+});
 
 
 
@@ -11,6 +15,26 @@ const parsed = yargs
 .scriptName('cli')
 .demandCommand()
 .help('h').alias('h', 'help')
+.command('rebuild [name]', 'Build package(s)', {
+    handler: args => {
+        if ( args.all ) {
+            return PackageBuilder.rebuildAll();
+        } else if ( args.name !== undefined && PackageBuilder.builderNames.includes(args.name.toString().trim()) ) {
+            return PackageBuilder.rebuild(args.name.toString().trim());
+        } else {
+            console.error('You did not supply the name or option --all');
+
+        }
+    },
+    builder: yargs => {
+        return yargs
+        .example('builder build console', 'Start build for packages/console')
+        .example('builder build --all', 'Start build for all package')
+        .options({
+            all: { alias: 'a', type: 'boolean', description: 'Build all' },
+        });
+    },
+})
 .command('build [name]', 'Build package(s)', {
     handler: args => {
         if ( args.all ) {

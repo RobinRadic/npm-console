@@ -2,7 +2,7 @@ import { ServiceProvider } from '@radic/shared';
 import { Guard } from './Guard';
 import { SystemConfiguration } from '@radic/core';
 
-declare module '@radic/core/lib/Foundation/Application' {
+declare module '@radic/core/types/Foundation/Application' {
     export interface Bindings {
         guard: Guard;
     }
@@ -12,7 +12,7 @@ declare module '@radic/core/lib/Foundation/Application' {
     }
 }
 
-declare module '@radic/core/lib/types/config' {
+declare module '@radic/core/types/types/config' {
     export interface Configuration {
         auth?: AuthConfiguration;
     }

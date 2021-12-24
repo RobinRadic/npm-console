@@ -97,6 +97,9 @@ export class CliServiceProvider extends ServiceProvider {
                     },
                     maxWidth: {
                         type: 'number',
+                    },
+                    setup: {
+                        type: 'object'
                     }
                 },
                 required  : [ 'commandDir' ],
@@ -132,6 +135,7 @@ export class CliServiceProvider extends ServiceProvider {
             .addBindingGetter('cli');
     }
 
+
     protected setupCli() {
         this.app.bind('cli.setup').toFactory(ctx => {
             return async (cli: Cli) => {
@@ -139,7 +143,8 @@ export class CliServiceProvider extends ServiceProvider {
                 cli
                 .version(false)
                 .commandDir(this.app.config.cli.commandDir, {
-                    extensions: [ 'ts', 'js', 'tsx' ],
+                    extensions: [ 'ts', 'js' ],
+                    exclude: path => path.endsWith('d.ts'),
                     visit     : (commandObject, pathToFile, filename) => {
                         return new commandObject.default();
                     },

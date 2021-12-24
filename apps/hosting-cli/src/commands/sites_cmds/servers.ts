@@ -1,5 +1,5 @@
 import { command, option } from '@radic/console';
-import { servers } from '@radic/core';
+import { servers } from '@radic/hosting';
 import { SitesCommand } from '../../SitesCommand';
 
 @command('servers', 'Manage servers')

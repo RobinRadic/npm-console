@@ -465,9 +465,9 @@ export class Application extends Container{
         let message: string = error.toString();
         if ( error instanceof Error ) {
             message = `${error.name} - ${error.message}`;
-            // if ( this.config.debug ) {
-            //     console.log(error.stack);
-            // }
+            if ( this.config.debug ) {
+                console.log(error.stack);
+            }
         }
         exit = exit === true ? ExitCode.ERROR : exit;
         this.events.emit('Application:error', error, exit);

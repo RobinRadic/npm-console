@@ -2,13 +2,14 @@ import { existsSync, FSWatcher, readdirSync, Stats, statSync, watch } from 'fs';
 import { basename, dirname, isAbsolute, join, parse, ParsedPath, relative } from 'path';
 import assert from 'assert';
 import { readJSONSync } from 'fs-extra';
-import { objectify, PackageJson } from '@radic/shared';
-import { TSconfigJson } from 'multi-package-json-manager';
+import { objectify, PackageJson } from '../packages/shared/src';
+import { TSconfigJson } from '../packages/multi-package-json-manager/src/types/tsconfigJson';
 import { debounce } from 'lodash-decorators';
 import debug from 'debug';
 import { glob } from 'glob';
-import { exec } from 'child_process';
+import { execSync } from 'child_process';
 
+import sortObject from 'sort-object-keys';
 
 type DirectoryTree = Record<string, DirectoryTreeItem>;
 
@@ -103,6 +104,7 @@ export class PackageBuilder {
                             .filter(([ path, dirs ]) => Array.isArray(dirs) && dirs.length === 0)
                             .map(([ path, dirs ]) => path);
 
+        paths.unshift('src');
         return paths;
     }
 
@@ -110,6 +112,7 @@ export class PackageBuilder {
 
     watch() {
         this.log('Starting watch');
+
         this.getDeepestUniqueDirectories().forEach(path => {
             const watcher = this.watchers[ path ] = watch(join(this.path, path), { encoding: 'utf-8', recursive: true, persistent: true }, (event, filename) => {
                 this.log('Watched', filename, event);
@@ -127,38 +130,37 @@ export class PackageBuilder {
         return this;
     }
 
+
     @debounce(400, {
         trailing: true,
         leading : false,
     })
-    async build(callback: Function = () => null) {
+    build() {
         this.log('Starting build');
-        const output = await this.exec('tsc --project tsconfig.build.json');
+        const output = this.exec('tsc --project tsconfig.build.json');
         this.log('Build finished', '\n', output);
+        return this;
     }
 
     @debounce(400, {
         trailing: true,
         leading : false,
     })
-    async clean() {
+    clean() {
         this.log('Cleaning up');
-        this.log('rm -rf lib/ types/', await this.exec('rm -rf lib/ types/'));
-        this.log('rimraf src/**/*.{js,js.map,d.ts}', await this.exec('rimraf src/**/*.{js,js.map,d.ts}'));
+        this.log('rm -rf lib/ types/', this.exec('rm -rf lib/ types/'));
+        this.log('rimraf src/**/*.{js,js.map,d.ts}', this.exec('rimraf src/**/*.{js,js.map,d.ts}'));
         this.log('Cleaned up');
+        return this;
+
     }
 
-    protected async exec(command: string): Promise<string> {
-        return new Promise((resolve, reject) => {
-            try {
-                return exec(command, { cwd: this.path, encoding: 'utf-8' }, (error, stdout, stderr) => {
-                    if ( error ) return reject(stderr);
-                    resolve(stdout);
-                });
-            } catch (e) {
-                console.error(`Error while executing: ${command}`, e);
-            }
-        });
+    protected exec(command: string): string {
+        try {
+            return execSync(command, { cwd: this.path, encoding: 'utf-8' }).toString();
+        } catch (e) {
+            console.error(`Error while executing: ${command}`, e);
+        }
     }
 
     dirname() {return dirname(this.path); }
@@ -167,14 +169,34 @@ export class PackageBuilder {
 }
 
 export namespace PackageBuilder {
-    export const builders: Record<string, PackageBuilder> = glob.sync(root('packages/*')).map(path => {
+    let unsorted: Record<string, PackageBuilder> = glob.sync(root('{packages,apps}/*')).map(path => {
         let builder = new PackageBuilder(path);
         return [ builder.basename(), builder ];
     }).reduce(objectify, {});
+    export const builders = sortObject(unsorted, [
+        'shared',
+        'core',
+        'console-colors',
+        'console-input',
+        'console-output',
+        'console',
+        'hosting',
+        'hosting-cli',
+        'multi-package-json-manager'
+    ])
+
     export const builderNames                             = Object.keys(builders);
+    export const rebuild                                    = (name: string) => {
+        builders[ name ].clean()
+        builders[ name ].build()
+    };
     export const build                                    = (name: string) => builders[ name ].build();
-    export const watch                                    = (name: string) => builders[ name ].watch();
     export const clean                                    = (name: string) => builders[ name ].clean();
+    export const watch                                    = (name: string) => builders[ name ].watch();
+    export const rebuildAll                                 = () => Object.values(builders).forEach(builder => {
+        builder.clean();
+        builder.build();
+    });
     export const buildAll                                 = () => Object.values(builders).forEach(builder => builder.build());
     export const watchAll                                 = () => Object.values(builders).forEach(builder => builder.watch());
     export const cleanAll                                 = () => Object.values(builders).forEach(builder => builder.clean());

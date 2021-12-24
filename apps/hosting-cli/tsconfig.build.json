@@ -31,9 +31,9 @@
         "importHelpers": true,
         "esModuleInterop": true,
         "skipLibCheck": true,
-        "inlineSourceMap": true,
-        "inlineSources": true,
-        "sourceMap": false,
+        "inlineSourceMap": false,
+        "inlineSources": false,
+        "sourceMap": true,
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
         "typeRoots": [

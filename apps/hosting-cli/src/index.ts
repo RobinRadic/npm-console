@@ -46,16 +46,17 @@ export async function bootApp() {
                 .epilog(app.output.parse(epilog))
                 .usage(app.output.parse('{bold}Hosting Manager:{/bold}\n {green}${/green} hosting <{yellow}command{/yellow}>')),
             },
-            startFn: (async <T>(app: Application, ...params: any[]) => {
+            startFn: async <T>(app, ...params: any[]) => {
                 app.events.on('Application:error', (error, exit) => {
                     throw new Error(error);
                 });
                 try {
-                    return await app.cliStart();
+                    const result = await app.cliStart();
+                    return result;
                 } catch (e) {
                     app.error(e, true);
                 }
-            }) as any,
+            },
             db     : {
                 main       : 'main',
                 connections: {

@@ -25,6 +25,7 @@ export async function bootApp() {
         ],
         config   : {
             debug  : true,
+
             cli    : {
                 commandDir,
                 setup: cli => cli
@@ -50,6 +51,7 @@ export async function bootApp() {
                 app.events.on('Application:error', (error, exit) => {
                     throw new Error(error);
                 });
+
                 try {
                     const result = await app.cliStart();
                     return result;

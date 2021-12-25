@@ -6,7 +6,7 @@
         "moduleResolution": "node",
         "lib": ["es5","es6","es7","es2018","es2018.promise","es2015.promise"],
         "outDir": "lib",
-        "declarationDir": "lib",
+        "declarationDir": "types",
         "declaration": true,
         "rootDir": "src",
         "resolveJsonModule": true,

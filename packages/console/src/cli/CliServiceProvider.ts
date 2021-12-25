@@ -189,8 +189,8 @@ export class CliServiceProvider extends ServiceProvider {
     protected registerStartCli() {
         this.app.bind('cli.start').toFactory((ctx) => {
             return async () => {
-                const cli   = ctx.container.get<Cli>('cli');
-                const setup = ctx.container.get<CliSetup>('cli.setup');
+                const cli:Cli   = ctx.container.get('cli');
+                const setup:CliSetup = ctx.container.get('cli.setup');
                 await setup(cli);
                 try {
                     let args = await cli.parse();

@@ -134,7 +134,7 @@ export declare class Application extends Container {
      */
     private constructor();
     registerPaths(cwd?: string): void;
-    protected configParts: Array<ConfigPart<any, any>>;
+    protected configParts: Record<string, ConfigPart<any, any>>;
     addConfig<T, K extends string = string>(config: ConfigPart<T, K>): void;
     /**
      * Initialize the application.

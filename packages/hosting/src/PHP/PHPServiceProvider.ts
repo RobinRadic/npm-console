@@ -7,15 +7,10 @@ export interface PhpVersionOptions {
     binPath: string;
 }
 
-export interface PhpOptions {
+export interface PhpConfiguration {
     versions?: PhpVersionOptions[];
 }
 
-declare module '@radic/core/types/types/config' {
-    export interface Configuration {
-        php?: PhpOptions;
-    }
-}
 declare module '@radic/core/types/Foundation/Application' {
     export interface Bindings {
         php: PHPManager;
@@ -31,7 +26,7 @@ export class PHPServiceProvider extends ServiceProvider {
     deferred=true
     public load() {
         this.config({
-            key     : 'php',
+            key     : 'hosting.php',
             defaults: {
                 versions: [],
             },
@@ -53,7 +48,7 @@ export class PHPServiceProvider extends ServiceProvider {
                 name:'php'
             }));
         }
-        await Promise.all(this.app.config.php.versions.map(async v => {
+        await Promise.all(this.app.config.hosting.php.versions.map(async v => {
             const phpInfo = await this.app.php.getPhpInfoByPath(v.binPath);
             this.app.php.createAdd(phpInfo);
         }));

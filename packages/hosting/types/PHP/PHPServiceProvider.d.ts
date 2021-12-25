@@ -3,13 +3,8 @@ import { ServiceProvider } from '@radic/shared';
 export interface PhpVersionOptions {
     binPath: string;
 }
-export interface PhpOptions {
+export interface PhpConfiguration {
     versions?: PhpVersionOptions[];
-}
-declare module '@radic/core/types/types/config' {
-    interface Configuration {
-        php?: PhpOptions;
-    }
 }
 declare module '@radic/core/types/Foundation/Application' {
     interface Bindings {

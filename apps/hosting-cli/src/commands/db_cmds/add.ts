@@ -16,6 +16,6 @@ export default class AddCommand extends Command {
         const conf= db.getConnectionConfiguration(dbType);
 
 
-        config.db.connections;
+        config.hosting.db.connections;
     }
 }

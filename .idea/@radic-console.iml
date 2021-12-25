@@ -1,47 +1,42 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <module type="JAVA_MODULE" version="4">
   <component name="NewModuleRootManager" inherit-compiler-output="true">
-    <exclude-output/>
+    <exclude-output />
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/packages/console-colors/test" isTestSource="true"/>
-      <sourceFolder url="file://$MODULE_DIR$/packages/console-input/test" isTestSource="true"/>
-      <sourceFolder url="file://$MODULE_DIR$/packages/console-output/test" isTestSource="true"/>
-      <sourceFolder url="file://$MODULE_DIR$/packages/core/test" isTestSource="true"/>
-      <sourceFolder url="file://$MODULE_DIR$/packages/shared/test" isTestSource="true"/>
-      <sourceFolder url="file://$MODULE_DIR$/packages/console/test" isTestSource="true"/>
-      <sourceFolder url="file://$MODULE_DIR$/packages/multi-package-json-manager/test" isTestSource="true"/>
-      <sourceFolder url="file://$MODULE_DIR$/packages/hosting/test" isTestSource="true"/>
-      <sourceFolder url="file://$MODULE_DIR$/packages/console-colors/src" isTestSource="false"/>
-      <sourceFolder url="file://$MODULE_DIR$/packages/console-input/src" isTestSource="false"/>
-      <sourceFolder url="file://$MODULE_DIR$/packages/console-output/src" isTestSource="false"/>
-      <sourceFolder url="file://$MODULE_DIR$/packages/console/src" isTestSource="false"/>
-      <sourceFolder url="file://$MODULE_DIR$/packages/core/src" isTestSource="false"/>
-      <sourceFolder url="file://$MODULE_DIR$/packages/hosting/src" isTestSource="false"/>
-      <sourceFolder url="file://$MODULE_DIR$/packages/shared/src" isTestSource="false" packagePrefix="@radic\shared"/>
-      <sourceFolder url="file://$MODULE_DIR$/packages/multi-package-json-manager/src"/>
-      <sourceFolder url="file://$MODULE_DIR$/apps/hosting-cli/src"/>
-      <excludeFolder url="file://$MODULE_DIR$/.tmp"/>
-      <excludeFolder url="file://$MODULE_DIR$/src/.vuepress/plugins/monorepo/lib"/>
-      <excludeFolder url="file://$MODULE_DIR$/docs"/>
-      <excludeFolder url="file://$MODULE_DIR$/packages/console-output/lib"/>
-      <excludeFolder url="file://$MODULE_DIR$/packages/console-output/types"/>
-      <excludeFolder url="file://$MODULE_DIR$/packages/shared/lib"/>
-      <excludeFolder url="file://$MODULE_DIR$/packages/shared/types"/>
-      <excludeFolder url="file://$MODULE_DIR$/packages/hosting/lib"/>
-      <excludeFolder url="file://$MODULE_DIR$/packages/console-input/lib"/>
-      <excludeFolder url="file://$MODULE_DIR$/packages/console-colors/lib"/>
-      <excludeFolder url="file://$MODULE_DIR$/packages/console/lib"/>
-      <excludeFolder url="file://$MODULE_DIR$/packages/core/lib"/>
-      <excludeFolder url="file://$MODULE_DIR$/apps/hosting-cli/types"/>
-      <excludeFolder url="file://$MODULE_DIR$/packages/multi-package-json-manager/lib"/>
-      <excludeFolder url="file://$MODULE_DIR$/apps/hosting-cli/lib"/>
+      <sourceFolder url="file://$MODULE_DIR$/packages/console-colors/test" isTestSource="true" packagePrefix="@radic\console-colors\test" />
+      <sourceFolder url="file://$MODULE_DIR$/packages/console-input/test" isTestSource="true" packagePrefix="@radic\console-input\test" />
+      <sourceFolder url="file://$MODULE_DIR$/packages/console-output/test" isTestSource="true" packagePrefix="@radic\console-output\test" />
+      <sourceFolder url="file://$MODULE_DIR$/packages/core/test" isTestSource="true" packagePrefix="@radic\core\test" />
+      <sourceFolder url="file://$MODULE_DIR$/packages/shared/test" isTestSource="true" packagePrefix="@radic\shared\test" />
+      <sourceFolder url="file://$MODULE_DIR$/packages/console/test" isTestSource="true" packagePrefix="@radic\console\test" />
+      <sourceFolder url="file://$MODULE_DIR$/packages/multi-package-json-manager/test" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/packages/hosting/test" isTestSource="true" packagePrefix="@radic\hosting\test" />
+      <sourceFolder url="file://$MODULE_DIR$/packages/console-colors/src" isTestSource="false" packagePrefix="@radic\console-colors" />
+      <sourceFolder url="file://$MODULE_DIR$/packages/console-input/src" isTestSource="false" packagePrefix="@radic\console-input" />
+      <sourceFolder url="file://$MODULE_DIR$/packages/console-output/src" isTestSource="false" packagePrefix="@radic\console-output" />
+      <sourceFolder url="file://$MODULE_DIR$/packages/console/src" isTestSource="false" packagePrefix="@radic\console" />
+      <sourceFolder url="file://$MODULE_DIR$/packages/core/src" isTestSource="false" packagePrefix="@radic\core" />
+      <sourceFolder url="file://$MODULE_DIR$/packages/hosting/src" isTestSource="false" packagePrefix="@radic\hosting" />
+      <sourceFolder url="file://$MODULE_DIR$/packages/shared/src" isTestSource="false" packagePrefix="@radic\shared" />
+      <sourceFolder url="file://$MODULE_DIR$/packages/multi-package-json-manager/src" isTestSource="false" packagePrefix="@radic\multipackge" />
+      <sourceFolder url="file://$MODULE_DIR$/apps/hosting-cli/src" isTestSource="false" packagePrefix="@radic\hosting-cli" />
+      <excludeFolder url="file://$MODULE_DIR$/.tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/src/.vuepress/plugins/monorepo/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/docs" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/console-output/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/shared/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/hosting/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/console-input/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/console-colors/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/console/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/core/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/apps/hosting-cli/types" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/multi-package-json-manager/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/apps/hosting-cli/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/node_modules/@radic/console-output/types" />
     </content>
-    <content url="file://$MODULE_DIR$/node_modules/@radic/console-colors/types"/>
-    <content url="file://$MODULE_DIR$/node_modules/@radic/console-input/types"/>
-    <content url="file://$MODULE_DIR$/node_modules/@radic/console-output/types"/>
-    <content url="file://$MODULE_DIR$/node_modules/@radic/console/types"/>
-    <content url="file://$MODULE_DIR$/node_modules/@radic/hosting/types"/>
-    <orderEntry type="inheritedJdk"/>
-    <orderEntry type="sourceFolder" forTests="false"/>
+    <content url="file://$MODULE_DIR$/node_modules/@radic/console-output/types" />
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>

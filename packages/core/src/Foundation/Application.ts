@@ -1,7 +1,7 @@
 import 'reflect-metadata';
 import { AsyncContainerModule, Container, interfaces } from 'inversify';
 import { Dispatcher } from '../Dispatcher';
-import { camelCase, merge } from 'lodash';
+import { camelCase, get, merge, set } from 'lodash';
 import { Lookup } from 'inversify/lib/container/lookup';
 import { ConfigRepository } from '../Config/ConfigRepository';
 import { buildProviderModule } from 'inversify-binding-decorators';
@@ -227,13 +227,14 @@ export class Application extends Container{
         this.instance('paths', paths).addBindingGetter('paths');
     }
 
-    protected configParts: Array<ConfigPart<any, any>> = [];
+    // protected configParts: Array<ConfigPart<any, any>> = [];
+    protected configParts: Record<string,ConfigPart<any, any>> = {}
 
     public addConfig<T, K extends string = string>(config: ConfigPart<T, K>) {
         if ( this.isBound('config') ) {
             this.config.set(config.key, merge({}, config.defaults, this.config.get(config.key)));
         } else {
-            this.configParts.push(config);
+            this.configParts[config.key]=config;
         }
     }
 
@@ -259,12 +260,13 @@ export class Application extends Container{
         if ( this.isBound('config') ) {
             throw new Error('Cannot loadConfig, config already loaded');
         }
-        this.configParts.forEach(part => {
-            if ( config[ part.key ] === undefined ) {
-                config[ part.key ] = {};
+        for(const part of Object.values(this.configParts)){
+            if ( get(config, part.key,undefined) === undefined ) {
+                set(config, part.key, {});
             }
-            config[ part.key ] = merge({}, part.defaults, config[ part.key ]);
-        });
+
+            set(config, part.key, merge({}, part.defaults, get(config, part.key)));
+        };
         this.instance('config', ConfigRepository.asProxy<Configuration>(config)).addBindingGetter('config');
 
         this.config.markOriginal()

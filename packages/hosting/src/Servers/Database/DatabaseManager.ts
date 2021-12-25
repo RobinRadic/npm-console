@@ -17,7 +17,7 @@ export class DatabaseManager {
 
     constructor() {}
 
-    get config(): DatabasesConfiguration {return this._config.db; }
+    get config(): DatabasesConfiguration {return this._config.hosting.db; }
 
     protected getConnectionConfigurations() {return Object.values(this.config.connections); }
 

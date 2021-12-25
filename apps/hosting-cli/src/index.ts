@@ -24,7 +24,7 @@ export async function bootApp() {
             HostingCliServiceProvider,
         ],
         config   : {
-            debug  : true,
+            debug: true,
 
             cli    : {
                 commandDir,
@@ -59,62 +59,67 @@ export async function bootApp() {
                     app.error(e, true);
                 }
             },
-            db     : {
-                main       : 'main',
-                connections: {
-                    mysql: [ {
-                        name    : 'main',
-                        type    : 'mysql',
-                        host    : '127.0.0.1',
-                        username: 'root',
-                        // insecureAuth: true,
-                        // debug       : true,
-                        // trace       : true,
-                    } ],
-                },
-            },
-            output : {},
-            servers: {
-                nginx : {
-                    servers: [
-                        {
-                            paths: {
-                                configDir           : '/etc/nginx',
-                                modsAvailable       : '{configDir}/mods-available',
-                                modsEnabled         : '{configDir}/mods-enabled',
-                                sitesAvailable      : '{configDir}/sites-available',
-                                sitesEnabled        : '{configDir}/sites-enabled',
-                                configAvailable     : '{configDir}/conf-available',
-                                configEnabled       : '{configDir}/conf-enabled',
-                                configFiles         : [ '{configDir}/nginx.ini' ],
-                                configFileExtensions: [ 'ini', 'nginx', 'conf' ],
-                                modsFileExtensions  : [ 'conf', 'nginx' ],
-                                sitesFileExtensions : [ 'conf', 'nginx' ],
-                            },
-                        },
-                    ],
-                },
-                apache: {
-                    servers: [
-                        {
-                            paths: {
-                                configDir           : '/etc/apache2',
-                                modsAvailable       : '{configDir}/mods-available',
-                                modsEnabled         : '{configDir}/mods-enabled',
-                                sitesAvailable      : '{configDir}/sites-available',
-                                sitesEnabled        : '{configDir}/sites-enabled',
-                                configAvailable     : '{configDir}/conf-available',
-                                configEnabled       : '{configDir}/conf-enabled',
-                                configFiles         : [ '{configDir}/apache2.conf' ],
-                                configFileExtensions: [ 'conf' ],
-                                modsFileExtensions  : [ 'conf' ],
-                                sitesFileExtensions : [ 'conf' ],
-                            },
+            output : {
 
-                        },
-                    ],
+            },
+            hosting: {
+                db     : {
+                    main       : 'main',
+                    connections: {
+                        mysql: [ {
+                            name    : 'main',
+                            type    : 'mysql',
+                            host    : '127.0.0.1',
+                            username: 'root',
+                            // insecureAuth: true,
+                            // debug       : true,
+                            // trace       : true,
+                        } ],
+                    },
+                },
+                servers: {
+                    nginx : {
+                        servers: [
+                            {
+                                paths: {
+                                    configDir           : '/etc/nginx',
+                                    modsAvailable       : '{configDir}/mods-available',
+                                    modsEnabled         : '{configDir}/mods-enabled',
+                                    sitesAvailable      : '{configDir}/sites-available',
+                                    sitesEnabled        : '{configDir}/sites-enabled',
+                                    configAvailable     : '{configDir}/conf-available',
+                                    configEnabled       : '{configDir}/conf-enabled',
+                                    configFiles         : [ '{configDir}/nginx.ini' ],
+                                    configFileExtensions: [ 'ini', 'nginx', 'conf' ],
+                                    modsFileExtensions  : [ 'conf', 'nginx' ],
+                                    sitesFileExtensions : [ 'conf', 'nginx' ],
+                                },
+                            },
+                        ],
+                    },
+                    apache: {
+                        servers: [
+                            {
+                                paths: {
+                                    configDir           : '/etc/apache2',
+                                    modsAvailable       : '{configDir}/mods-available',
+                                    modsEnabled         : '{configDir}/mods-enabled',
+                                    sitesAvailable      : '{configDir}/sites-available',
+                                    sitesEnabled        : '{configDir}/sites-enabled',
+                                    configAvailable     : '{configDir}/conf-available',
+                                    configEnabled       : '{configDir}/conf-enabled',
+                                    configFiles         : [ '{configDir}/apache2.conf' ],
+                                    configFileExtensions: [ 'conf' ],
+                                    modsFileExtensions  : [ 'conf' ],
+                                    sitesFileExtensions : [ 'conf' ],
+                                },
+
+                            },
+                        ],
+                    },
                 },
             },
+
         },
     });
 

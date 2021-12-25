@@ -18,5 +18,5 @@ export declare function isNumberObject(target: any): boolean;
 /** @see https://stackoverflow.com/questions/27746304/how-do-i-tell-if-an-object-is-a-promise */
 export declare function isES6Promise(p: any): boolean;
 export declare function isNativePromise(p: any): boolean;
-export declare function isPromise<T = any>(p: any): p is PromiseLike<T>;
+export declare function isPromise<T = any>(p: any): p is Promise<T>;
 export declare function isConstructor(value: any): boolean;

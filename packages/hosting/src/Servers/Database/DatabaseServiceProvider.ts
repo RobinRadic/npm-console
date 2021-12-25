@@ -19,19 +19,13 @@ declare module '@radic/core/types/Foundation/Application' {
         db: DatabaseManager;
     }
 }
-
-declare module '@radic/core/types/types/config' {
-    export interface Configuration {
-        db?: DatabasesConfiguration;
-    }
-}
 decorate(injectable(),ConnectionManager)
 
 export class DatabaseServiceProvider extends ServiceProvider {
 
     load() {
         this.config<DatabasesConfiguration>({
-            key     : 'db',
+            key     : 'hosting.db',
             defaults: {
                 connectOnBoot: [],
                 main         : null,
@@ -55,6 +49,6 @@ export class DatabaseServiceProvider extends ServiceProvider {
 
     async boot() {
         this.app.db.updateConnections()
-        await Promise.all(this.app.config.db.connectOnBoot.map(name => this.app.db.connect(name)));
+        await Promise.all(this.app.config.hosting.db.connectOnBoot.map(name => this.app.db.connect(name)));
     }
 }

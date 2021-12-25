@@ -22,14 +22,15 @@ export class PHPManager {
 
     public add(php: PHP): this {
         this.phps[ php.bin ] = php;
-        if ( this.config.php.versions.find(v => v.binPath === php.bin) === undefined ) {
-            this.config.php.versions.push({
+        if ( this.config.hosting.php.versions.find(v => v.binPath === php.bin) === undefined ) {
+            this.config.hosting.php.versions.push({
                 binPath: php.bin,
             });
             this.config.save();
         }
         return this;
     }
+
 
     public async addFromPath(path: string): Promise<PHP> {
         const phpInfo = await this.getPhpInfoByPath(path);

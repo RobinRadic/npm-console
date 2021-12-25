@@ -28,7 +28,7 @@ declare module '@radic/core/types/Foundation/Application' {
 export class NginxServiceProvider extends ServiceProvider {
     public load(): any {
         this.config({
-            key     : 'servers.nginx',
+            key     : 'hosting.servers.nginx',
             defaults: {
                 servers: [],
             },
@@ -50,10 +50,12 @@ export class NginxServiceProvider extends ServiceProvider {
     }
 
     async boot() {
-        for ( const config of this.app.config.servers.nginx.servers ) {
+        for ( const config of this.app.config.hosting.servers.nginx.servers ) {
             const server = new NginxServer(config.paths, NginxSite);
             this.app.servers.set(server.name, server);
             server.sites.each(site => this.app.sites.set(site.filename, site));
         }
     }
+
+
 }

@@ -60,7 +60,7 @@ export function isNativePromise(p) {
                     .replace(/\(.*\)/, '()'); // removing possible FormalParameterList
 }
 
-export function isPromise<T = any>(p): p is PromiseLike<T> {
+export function isPromise<T = any>(p): p is Promise<T> {
     return isES6Promise(p) || isNativePromise(p);
 }
 export function isConstructor(value) {

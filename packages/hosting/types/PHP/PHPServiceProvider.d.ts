@@ -15,7 +15,6 @@ declare module '@radic/core/types/Foundation/Application' {
     }
 }
 export declare class PHPServiceProvider extends ServiceProvider {
-    deferred: boolean;
     load(): void;
     register(): void;
     protected registerPhpManager(): void;

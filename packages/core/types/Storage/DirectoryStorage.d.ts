@@ -1,5 +1,5 @@
 /// <reference types="node" />
-import { EnvPaths } from '../Support/envPaths';
+import { EnvPaths } from '../Support';
 import { IOptions } from 'glob';
 export interface DirectoryStorageOptions {
     basePath: string;

@@ -1,10 +1,10 @@
-import {BaseCommand} from '@radic/console'
-import { out } from '@radic/console-output/lib/OutputServiceProvider';
-import { ask } from '@radic/console-input/lib/InputServiceProvider';
-import { log } from '@radic/console-output/lib/log';
+import { BaseCommand } from '@radic/console';
+import { log, out } from '@radic/console-output';
+import { ask } from '@radic/console-input';
 
 export class Command extends BaseCommand {
-    @log log:log
-    @out out:out;
-    @ask ask:ask
+    @log log: log;
+    @out out: out;
+    @ask ask: ask;
 }
+

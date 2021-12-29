@@ -9,6 +9,8 @@ export interface CacheAdapter {
     clear(): this;
     size(): number;
     keys(): string[];
+    toObject<T>(): T;
+    toJson(): string;
 }
 export declare const isCacheAdapter: (val: any) => val is CacheAdapter;
 export interface CacheItem<T = any> {

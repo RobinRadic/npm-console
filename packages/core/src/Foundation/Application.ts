@@ -6,16 +6,17 @@ import { Lookup } from 'inversify/lib/container/lookup';
 import { ConfigRepository } from '../Config/ConfigRepository';
 import { buildProviderModule } from 'inversify-binding-decorators';
 import { dirname, resolve } from 'path';
-import envPaths, { EnvPaths } from '../Support/envPaths';
+import { envPaths, EnvPaths } from '../Support';
 import { DirectoryStorage } from '../Storage';
 import findupSync from 'findup-sync';
 import { readFileSync } from 'fs';
 import { Constructor, isConstructor, IServiceProvider, IServiceProviderClass, isServiceProviderClass, makeLog, PackageJson, ServiceProvider } from '@radic/shared';
 import { ApplicationInitOptions, Configuration } from '../types';
 import { defaultConfiguration } from '../consts';
+import { JSONSchema7 } from 'json-schema';
 import ServiceIdentifier = interfaces.ServiceIdentifier;
 import BindingInWhenOnSyntax = interfaces.BindingInWhenOnSyntax;
-import {JSONSchema7} from 'json-schema'
+
 export type GetServiceIdentifier<T> =
     keyof Bindings
     | interfaces.ServiceIdentifier<T>
@@ -84,7 +85,6 @@ declare module '../Dispatcher/Dispatcher' {
 }
 
 
-
 export type StartFn = <T = any>(app: Application, ...args: any[]) => Promise<T>
 
 export interface ConfigPart<T, K extends string = string> {
@@ -112,7 +112,7 @@ export enum ExitCode {
  * The provider will still be passed to the bootProvider function wich will for the first call also prevent booting
  * but bootProvider will set deferred to false. So on the second call of this function, it will be registered and booted
  */
-export class Application extends Container{
+export class Application extends Container {
 
     /**
      * The application instance.
@@ -195,6 +195,7 @@ export class Application extends Container{
             skipBaseClassChecks: true,
         });
 
+        this.instance('app', this);
         this.singleton('events', Dispatcher).addBindingGetter('events');
 
         this.events.any(
@@ -228,13 +229,13 @@ export class Application extends Container{
     }
 
     // protected configParts: Array<ConfigPart<any, any>> = [];
-    protected configParts: Record<string,ConfigPart<any, any>> = {}
+    protected configParts: Record<string, ConfigPart<any, any>> = {};
 
     public addConfig<T, K extends string = string>(config: ConfigPart<T, K>) {
         if ( this.isBound('config') ) {
             this.config.set(config.key, merge({}, config.defaults, this.config.get(config.key)));
         } else {
-            this.configParts[config.key]=config;
+            this.configParts[ config.key ] = config;
         }
     }
 
@@ -260,13 +261,14 @@ export class Application extends Container{
         if ( this.isBound('config') ) {
             throw new Error('Cannot loadConfig, config already loaded');
         }
-        for(const part of Object.values(this.configParts)){
-            if ( get(config, part.key,undefined) === undefined ) {
+        for ( const part of Object.values(this.configParts) ) {
+            if ( get(config, part.key, undefined) === undefined ) {
                 set(config, part.key, {});
             }
 
             set(config, part.key, merge({}, part.defaults, get(config, part.key)));
-        };
+        }
+        ;
         this.instance('config', ConfigRepository.asProxy<Configuration>(config)).addBindingGetter('config');
 
         this.config.markOriginal()
@@ -373,13 +375,6 @@ export class Application extends Container{
             provider = Provider;
         }
 
-        // deferred providers will for the first call of this function be prevented to register.
-        // The provider will still be passed to the bootProvider function wich will for the first call also prevent booting
-        // but bootProvider will set deferred to false. So on the second call of this function, it will be registered and booted
-        if ( provider.deferred ) {
-            return this;
-        }
-
         this.events.emit('Application:registerProvider', Provider);
 
         if ( 'register' in provider && Reflect.getMetadata('register', provider) !== true ) {
@@ -423,10 +418,7 @@ export class Application extends Container{
     };
 
     protected async bootProvider(provider: IServiceProvider) {
-        if ( provider.deferred ) {
-            provider.deferred = false;
-            return this;
-        }
+
         this.events.emit('Application:bootProvider', provider);
 
         if ( 'boot' in provider && Reflect.getMetadata('boot', provider) !== true ) {

@@ -43,6 +43,7 @@
         "@types/strip-ansi": "^3.0.0",
         "@types/supports-color": "^8.1.1",
         "@types/wrap-ansi": "^8.0.1",
+        "@types/columnify": "^1.5.1",
         "cli-truncate": "^2.1.0",
         "color-convert": "^2.0.1",
         "columnify": "^1.5.4",

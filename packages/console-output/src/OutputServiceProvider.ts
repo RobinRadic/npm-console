@@ -34,17 +34,20 @@ export class OutputServiceProvider extends ServiceProvider {
             key     : 'output',
             defaults: Output.defaultOptions,
             schema  : {
-                inspect       : {
-                    type                : 'object',
-                    properties          : {
-                        colors : { type: 'boolean' },
-                        figures: { type: 'boolean' },
+                type: 'object',
+                properties: {
+                    inspect       : {
+                        type                : 'object',
+                        properties          : {
+                            colors : { type: 'boolean' },
+                            figures: { type: 'boolean' },
+                        },
+                        additionalProperties: true,
                     },
-                    additionalProperties: true,
-                },
-                parsers       : { type: 'object' },
-                quiet         : { type: 'boolean' },
-                resetOnNewline: { type: 'boolean' },
+                    parsers       : { type: 'object' },
+                    quiet         : { type: 'boolean' },
+                    resetOnNewline: { type: 'boolean' },
+                }
             },
         });
     }

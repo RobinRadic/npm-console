@@ -6,6 +6,6 @@ export default class TypeGeneratorCommand extends Command {
     path: string;
     force: boolean;
     confirm: boolean;
-    handle(): Promise<any>;
+    handle(): Promise<import("winston").Logger>;
     getPath(): string;
 }

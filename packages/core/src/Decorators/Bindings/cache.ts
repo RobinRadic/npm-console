@@ -9,13 +9,13 @@ export const caching = (name: string, Adapter?: Constructor<CacheAdapter>) => {
         Object.defineProperty(target, key, {
             get         : () => {
                 let manager: CacheManager = app.get<CacheManager>('cache');
-                if ( !manager.has(name) ) {
+                if ( !manager.hasAdapter(name) ) {
                     if ( !Adapter ) {
                         Adapter = FileCacheAdapter;
                     }
                     manager.register(new Adapter(name));
                 }
-                return manager.get<CacheAdapter>(name);
+                return manager.getAdapter<CacheAdapter>(name);
             },
             enumerable  : true,
             configurable: true,

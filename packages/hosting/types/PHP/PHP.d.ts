@@ -1,5 +1,5 @@
 import { SemVer } from 'semver';
-import { PhpExtensionIni, PhpExtensionName, PhpInfo, PhpIni, PhpParsedInfo } from './types';
+import { PhpExtensionDetails, PhpExtensionIni, PhpExtensionInis, PhpExtensionName, PhpInfo, PhpIni, PhpParsedInfo } from './types';
 import { PHPApi } from './PHPApi';
 import { Service } from '@radic/core';
 export declare type PhpMajorMinorVersion = string;
@@ -14,6 +14,9 @@ export declare class PHP implements PhpInfo {
     getFPMService(): Promise<Service>;
     protected getSemver(version: string): SemVer;
     get extensions(): Record<PhpExtensionName, PhpExtensionIni>;
+    get enabledExtensions(): Record<PhpExtensionName, PhpExtensionIni>;
+    get availableExtensions(): Record<PhpExtensionName, PhpExtensionDetails>;
+    get disabledExtensions(): Record<PhpExtensionName, PhpExtensionDetails>;
     get config(): PhpIni;
     get parsed(): PhpParsedInfo;
     get bin(): string;
@@ -25,5 +28,10 @@ export declare class PHP implements PhpInfo {
     get apiKey(): string;
     isApi(api: PHPApi): boolean;
     hasExtension(name: string): boolean;
-    getExtension<T extends PhpExtensionIni = PhpExtensionIni, K extends keyof T | string = keyof T>(name: K): T;
+    hasEnabledExtension(name: string): boolean;
+    hasAvailableExtension(name: string): boolean;
+    getEnabledExtension<T extends PhpExtensionName>(name: T): PhpExtensionInis[T];
+    isExtensionEnabled(name: any): boolean;
+    enableExtension(name: PhpExtensionName | PhpExtensionName[], api?: PHPApi.Key | 'all' | string): string;
+    disableExtension(name: PhpExtensionName | PhpExtensionName[], api?: PHPApi.Key | 'all' | string): string;
 }

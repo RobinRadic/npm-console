@@ -94,9 +94,12 @@ export class LogServiceProvider extends ServiceProvider {
                 ),
             },
             schema  : {
-                level : { type: 'string', enum: Object.keys(levels) },
-                colors: { type: 'object' },
-                levels: { type: 'object' },
+                type:'object',
+                properties: {
+                    level : { type: 'string', enum: Object.keys(levels) },
+                    colors: { type: 'object' },
+                    levels: { type: 'object' },
+                }
             },
         });
     }

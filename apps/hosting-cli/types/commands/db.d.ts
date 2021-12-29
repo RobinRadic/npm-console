@@ -1,10 +1,12 @@
-import { DatabaseManager, servers } from '@radic/hosting';
+import { config } from '@radic/core';
 import { Command } from '../Command';
-import { system } from '@radic/core';
-export default class TestCommand extends Command {
-    servers: servers;
-    system: system;
+import { DatabaseManager } from '@radic/hosting';
+export default class ListCommand extends Command {
     db: DatabaseManager;
-    connection: string;
-    handle(name?: string, action?: string): Promise<any>;
+    config: config;
+    add: boolean;
+    create: boolean;
+    list: boolean;
+    drop: boolean;
+    handle(name?: string): Promise<import("winston").Logger>;
 }

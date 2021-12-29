@@ -18,11 +18,16 @@ if(dev){
     require('ts-node').register({
         transpileOnly: true,
     })
+    const cli = require(join(dir, 'index.ts'));
+    cli.startCli().catch(reason => {
+        console.error('startCli', reason);
+    })
+
 } else {
     // addAliases(compilerPaths.map(([key,values]) => ([key, values[0].replace('src', dir).replace('.tsx','.jsx').replace('.ts','.js')])).reduce(objectify,{}))
-}
+    const cli = require(join(dir, 'index.js'));
+    cli.startCli().catch(reason => {
+        console.error('startCli', reason);
+    })
 
-const cli = require(join(dir, 'index.js'));
-cli.startCli().catch(reason => {
-    console.error('startCli', reason);
-})
+}

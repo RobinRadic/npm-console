@@ -2,12 +2,15 @@ import { command} from '@radic/console';
 import { php} from '@radic/hosting';
 import { Command } from '../../Command';
 
-@command('add <path>', 'Add a PHP installation definition to the application to monitor')
+@command('add [path]', 'Add a PHP installation definition to the application to monitor')
 export default class AddCommand extends Command {
     @php php: php;
 
-    async handle(path: string) {
+    async handle(path?: string) {
         const { php, ask, out, log } = this;
+        if(!path){
+            path = await ask.filePath('Navigate to a PHP binary executable', '/usr/bin')
+        }
         if ( php.hasPath(path) ) {
             return this.log.warn(`${path} is already monitored`);
         }

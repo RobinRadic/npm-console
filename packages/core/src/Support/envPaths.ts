@@ -1,6 +1,6 @@
-import path from 'node:path';
-import os from 'node:os';
-import process from 'node:process';
+import path from 'path';
+import os from 'os';
+import process from 'process';
 
 const homedir = os.homedir();
 const tmpdir = os.tmpdir();
@@ -61,7 +61,7 @@ const linux = name => {
  ```
  */
 
-export default function envPaths(name, options:EnvPathsOptions ={suffix: 'nodejs'}):EnvPaths {
+export function envPaths(name, options:EnvPathsOptions ={suffix: 'nodejs'}):EnvPaths {
     const {suffix} = options
     if (typeof name !== 'string') {
         throw new TypeError(`Expected a string, got ${typeof name}`);

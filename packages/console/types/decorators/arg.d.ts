@@ -3,7 +3,7 @@ export interface ArgumentDefinition {
     index: number;
     name: string;
     variadic: boolean;
-    required?: true;
+    required: boolean;
     type: string;
     description: string;
     defaultValue: any;

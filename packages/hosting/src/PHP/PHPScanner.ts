@@ -3,9 +3,9 @@ import { objectify, Str } from '@radic/shared';
 import { promisify } from 'util';
 import { exec as _exec } from 'child_process';
 import { parse } from 'ini';
-import { existsSync, readFileSync } from 'fs';
-import { basename, join } from 'path';
-import { PhpInfo, PhpParsedInfo } from './types';
+import { existsSync, readdirSync, readFileSync } from 'fs';
+import { basename, dirname, extname, join } from 'path';
+import { PhpExtensionDetails, PhpExtensionIni, PhpExtensionName, PhpInfo, PhpParsedInfo } from './types';
 import { glob } from 'glob';
 import { merge } from 'lodash';
 
@@ -77,7 +77,7 @@ export class PHPScanner {
             return parsed;
         });
         let config       = parse(readFileSync(parsed[ 'Loaded Configuration File' ], { encoding: 'utf8' }));
-        const extensions = iniFiles.map(filePath => {
+        const enabledExtensions = iniFiles.map(filePath => {
             let name = basename(filePath).replace(/^[\d]+/g, '');
             name     = Str.stripLeft(name, '-');
             name     = Str.stripRight(name, '.ini');
@@ -89,6 +89,32 @@ export class PHPScanner {
             return [ name, ini ];
         }).reduce(objectify, {});
 
-        return { bin: path, config, extensions, iniFiles, parsed, pools } as any;
+        // mods-avilaable
+        let availableExtensions: Record<PhpExtensionName,PhpExtensionDetails> = {} as any;
+        let phpDir                                = dirname(parsed[ 'Configuration File (php.ini) Path' ]);
+        let modsAvailablePath = join(phpDir, 'mods-available');
+        if ( existsSync(modsAvailablePath) ) {
+            readdirSync(modsAvailablePath, { encoding: 'utf-8' }).forEach(path => {
+                const fullPath        = join(modsAvailablePath, path);
+                const name            = basename(fullPath, extname(fullPath));
+                const content         = readFileSync(fullPath, 'utf-8');
+                let ini               = parse(content);
+                availableExtensions[ name ] = {
+                    path:fullPath,
+                    ini,
+                    content
+                };
+            });
+        }
+
+
+        const phpInfo: PhpInfo = {
+            bin: path,
+            config,
+            enabledExtensions,
+            availableExtensions,
+            iniFiles, parsed, pools } as any;
+
+        return phpInfo;
     }
 }

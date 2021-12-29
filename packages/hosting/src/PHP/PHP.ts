@@ -1,8 +1,10 @@
 import { SemVer } from 'semver';
-import { PhpExtensionIni, PhpExtensionName, PhpInfo, PhpIni, PhpParsedInfo } from './types';
+import { PhpExtensionDetails, PhpExtensionIni, PhpExtensionInis, PhpExtensionName, PhpInfo, PhpIni, PhpParsedInfo } from './types';
 import { PHPApi } from './PHPApi';
 import { basename } from 'path';
 import { Service } from '@radic/core';
+import { phpdismod, phpenmod } from '../binaries';
+import { objectify } from '@radic/shared';
 
 export type PhpMajorMinorVersion = string; // number.number : 7.3
 
@@ -10,6 +12,7 @@ export class PHP implements PhpInfo {
     public readonly semver: SemVer;
     public readonly date: Date;
     public readonly api: PHPApi;
+
     protected fpmService: Service;
 
     constructor(protected info: PhpInfo) {
@@ -29,7 +32,16 @@ export class PHP implements PhpInfo {
         return new SemVer(version.split('+').slice(0, 2).join('+'));
     }
 
-    get extensions(): Record<PhpExtensionName, PhpExtensionIni> {return this.info.extensions;}
+    get extensions(): Record<PhpExtensionName, PhpExtensionIni> {return this.enabledExtensions;}
+
+    get enabledExtensions(): Record<PhpExtensionName, PhpExtensionIni> {return this.info.enabledExtensions;}
+
+    get availableExtensions(): Record<PhpExtensionName, PhpExtensionDetails> {return this.info.availableExtensions;}
+
+    get disabledExtensions(): Record<PhpExtensionName, PhpExtensionDetails> {
+        let enabled = Object.keys(this.enabledExtensions);
+        return Object.keys(this.availableExtensions).filter(name => enabled.includes(name) === false).map(name => [ name, this.availableExtensions[ name ] ]).reduce(objectify, {});
+    }
 
     get config(): PhpIni {return this.info.config;}
 
@@ -51,9 +63,29 @@ export class PHP implements PhpInfo {
 
     isApi(api: PHPApi): boolean {return PHPApi.is(this, api);}
 
-    hasExtension(name: string) {return this.extensions[ name ] !== undefined; }
+    hasExtension(name: string) {return this.hasEnabledExtension(name) || this.hasAvailableExtension(name);}
 
-    getExtension<T extends PhpExtensionIni = PhpExtensionIni, K extends keyof T | string = keyof T>(name: K): T {return this.extensions[ name as any ] as any;}
+    hasEnabledExtension(name: string) {return this.enabledExtensions[ name ] !== undefined; }
 
+    hasAvailableExtension(name: string) {return this.availableExtensions[ name ] !== undefined; }
 
+    getEnabledExtension<T extends PhpExtensionName>(name: T): PhpExtensionInis[T] {return this.enabledExtensions[ name as any ] as any;}
+
+    isExtensionEnabled(name) {
+        return this.hasEnabledExtension(name);
+    }
+
+    enableExtension(name: PhpExtensionName|PhpExtensionName[], api: PHPApi.Key | 'all'|string = this.apiKey) {
+        return phpenmod(Array.isArray(name) ? name : [name], {
+            v: this.shortVersion,
+            s: api.toLowerCase(),
+        });
+    }
+
+    disableExtension(name:PhpExtensionName|PhpExtensionName[], api: PHPApi.Key | 'all'|string = this.apiKey) {
+        return phpdismod(Array.isArray(name) ? name : [name], {
+            v: this.shortVersion,
+            s: api.toLowerCase(),
+        });
+    }
 }

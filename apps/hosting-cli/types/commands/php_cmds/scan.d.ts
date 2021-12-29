@@ -3,5 +3,5 @@ import { Command } from '../../Command';
 export default class ScanCommand extends Command {
     php: php;
     clear: boolean;
-    handle(value: string): Promise<any>;
+    handle(value: string): Promise<import("winston").Logger>;
 }

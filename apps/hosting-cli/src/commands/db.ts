@@ -1,36 +1,31 @@
-
-import { DatabaseManager, NginxServer, NginxSite, servers } from '@radic/hosting';
-import { arg, Cli, command, option, usage } from '@radic/console';
+import { arg, Cli, command, option } from '@radic/console';
+import { config, inject } from '@radic/core';
 import { Command } from '../Command';
-import { inject, system } from '@radic/core';
+import { DatabaseManager } from '@radic/hosting';
 
-const choices  = [ 'create', 'drop', 'list' ];
+let choices  = [ 'create', 'drop', 'list' ];
 
-@command('db', 'Manage db')
-export default class TestCommand extends Command {
-    @servers servers: servers;
-    @system system: system;
+
+@command('db', 'Manage databases')
+export default class ListCommand extends Command {
     @inject('db') db: DatabaseManager;
-    @option('c', 'Specify which connection') connection:string
-    //
-    // builder = (cli:Cli) => {
-    //     cli.positional('name', {
-    //         desc:'The name of the connection',
-    //     })
-    //     cli.positional('action', {
-    //         desc: 'The action that should be executed',
-    //         choices: this.choices
-    //     })
-    //
-    // }
+    @config config: config;
+
+    @option('a', 'Add a connection') add:boolean
+    @option('c', 'Create database') create:boolean
+    @option('l', 'List databases') list:boolean
+    @option('d', 'Drop database') drop:boolean
+
+    // builder = (cli: Cli) => cli.positional('what', { desc: 'What to do' });
 
     async handle(
-        @arg('The name of the connection') name?:string,
-        @arg('The action that should be executed', false) action?:string,
+        @arg('Database connection',false) name?: string) {
+        const { app, ask, log, out, db, config } = this;
 
-    ) {
-        const names = this.db.getConnectionNames();
-         name  = await this.ask.list('Pick database connection', names);
+        if(!name) {
+            const names = this.db.getConnectionNames();
+            name        = await this.ask.list('Pick database connection', names);
+        }
         if ( !this.db.exist(name) ) {
             return this.log.error(`Connection "${name}" does not exist`);
         }
@@ -42,7 +37,6 @@ export default class TestCommand extends Command {
         if ( !conn.isConnected ) {
             return this.log.error('Could not connect');
         }
-
         const choice = await this.ask.list('What would you like to do?', choices);
         if ( choice === 'create' ) {
             const dbname = await this.ask.input('Database name');
@@ -50,13 +44,14 @@ export default class TestCommand extends Command {
             this.out.line(`created: ${created}`);
         } else if ( choice === 'list' ) {
             const databases = await helper.listDatabases();
-            databases.forEach(database => this.out.line(` - ${database}`))
+            databases.forEach(database => this.out.line(` - ${database}`));
         } else if ( choice === 'drop' ) {
             const dbname = await this.ask.input('Database name');
             let dropped  = await helper.dropDatabase(dbname);
             this.out.line(`dropped: ${dropped}`);
         }
 
-        conn.close();
-        return;
-    }}
+        await conn.close();
+
+    }
+}

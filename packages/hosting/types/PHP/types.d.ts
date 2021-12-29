@@ -1,10 +1,15 @@
+export interface PhpExtensionDetails {
+    path: string;
+    ini: PhpExtensionIni;
+    content: string;
+}
 export interface PhpIni extends php_ini.PHPIniConfig {
 }
 export interface PhpExtensionInis extends php_inis.PhpExtensionInis {
 }
 export interface PhpExtensionIni extends php_inis.PhpExtensionIni {
 }
-export declare type PhpExtensionName = keyof PhpExtensionInis | string;
+export declare type PhpExtensionName = keyof PhpExtensionInis;
 export declare namespace php_ini {
     interface PHPIniConfig {
         PHP?: PHP;
@@ -246,5 +251,6 @@ export interface PhpInfo {
     parsed: PhpParsedInfo;
     iniFiles: string[];
     config: PhpIni;
-    extensions: Record<PhpExtensionName, PhpExtensionIni>;
+    enabledExtensions: Record<PhpExtensionName, PhpExtensionIni>;
+    availableExtensions: Record<PhpExtensionName, PhpExtensionDetails>;
 }

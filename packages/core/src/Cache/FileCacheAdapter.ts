@@ -39,17 +39,17 @@ export class FileCacheAdapter implements CacheAdapter {
 
     public getName(): string {return this.name; }
 
-    protected createCacheItem<T>(value:T, ttl?:number):CacheItem<T>{
-        let item:CacheItem<T> = {
+    protected createCacheItem<T>(value: T, ttl?: number): CacheItem<T> {
+        let item: CacheItem<T> = {
             created: Date.now(),
             ttl,
-            value
-        }
+            value,
+        };
         return item;
     }
 
-    put(key: string, value: any, ttl?:number): this {
-        let data = this.getData();
+    put(key: string, value: any, ttl?: number): this {
+        let data    = this.getData();
         data[ key ] = this.createCacheItem(value, ttl);
         return this.setData(data);
     }
@@ -57,17 +57,17 @@ export class FileCacheAdapter implements CacheAdapter {
     has(key: string): boolean {return has(this.getData(), key); }
 
     get<T>(key: string, defaultValue?: any): T {
-        if(this.has(key)){
-            return this.getCacheItem<T>(key).value
+        if ( this.has(key) ) {
+            return this.getCacheItem<T>(key).value;
         }
-        return defaultValue
+        return defaultValue;
     }
 
-    getCacheItem<T>(key:string):CacheItem<T>{
-        if(this.has(key)){
-            let item :CacheItem<T>= get(this.getData(), key)
-            if(item.ttl){
-                if(item.created+item.ttl < Date.now()){
+    getCacheItem<T>(key: string): CacheItem<T> {
+        if ( this.has(key) ) {
+            let item: CacheItem<T> = get(this.getData(), key);
+            if ( item.ttl ) {
+                if ( item.created + item.ttl < Date.now() ) {
                     this.del(key);
                     return;
                 }
@@ -88,5 +88,8 @@ export class FileCacheAdapter implements CacheAdapter {
 
     keys(): string[] { return Object.keys(this.getData()); }
 
+    toObject() {return this.getData();}
+
+    toJson() {return JSON.stringify(this.getData());}
 
 }

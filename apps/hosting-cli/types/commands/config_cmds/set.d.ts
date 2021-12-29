@@ -5,5 +5,5 @@ export default class SetCommand extends Command {
     reset: boolean;
     push: boolean;
     yes: boolean;
-    handle(key: string, value: any): Promise<any>;
+    handle(key: string, value: any): Promise<import("winston").Logger>;
 }

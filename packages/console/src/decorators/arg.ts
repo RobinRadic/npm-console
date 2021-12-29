@@ -6,7 +6,7 @@ export interface ArgumentDefinition {
     index: number,
     name: string,
     variadic: boolean,
-    required?: true,
+    required: boolean,
     type: string,
     description: string,
     defaultValue: any,
@@ -36,10 +36,8 @@ export function arg(description: string, required:boolean=false, options: Positi
             type : paramTypes[ parameterIndex ].name.toLowerCase(),
             description,
             options,
+            required,
         };
-        if(required === true){
-            definition.required = true;
-        }
         args.push(definition);
     };
 }

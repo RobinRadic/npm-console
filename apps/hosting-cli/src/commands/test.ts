@@ -1,4 +1,4 @@
-import { DatabaseManager, NginxServer, NginxSite, servers } from '@radic/hosting';
+import {  NginxServer, NginxSite, servers } from '@radic/hosting';
 import { command } from '@radic/console';
 import { Command } from '../Command';
 import { inject, system } from '@radic/core';
@@ -8,7 +8,6 @@ import { inject, system } from '@radic/core';
 export default class TestCommand extends Command {
     @servers servers: servers;
     @system system: system;
-    @inject('db') db: DatabaseManager;
 
     async handle(
         foo: string,
@@ -16,7 +15,8 @@ export default class TestCommand extends Command {
         force: boolean = false,
         ...args: number[]
     ) {
-        await this.ask.confirm('are you well ?');
+
+        let result = this.app.path.search('nginx',{root:'/'})
         return;
     }
 

@@ -1,4 +1,4 @@
-import { existsSync, FSWatcher, Stats, statSync, watch } from 'fs';
+import { existsSync, FSWatcher, readdirSync, Stats, statSync, watch } from 'fs';
 import { basename, dirname, isAbsolute, join, parse, ParsedPath, relative } from 'path';
 import assert from 'assert';
 import { readJSONSync } from 'fs-extra';
@@ -10,6 +10,8 @@ import { glob } from 'glob';
 import { execSync } from 'child_process';
 import sortObject from 'sort-object-keys';
 import chalk from 'chalk';
+import { buildOrder } from 'package-build-order';
+import deasync from 'deasync';
 
 type DirectoryTree = Record<string, DirectoryTreeItem>;
 
@@ -174,12 +176,15 @@ export class PackageBuilder {
     basename() {return basename(this.path); }
 }
 
+const border = deasync<any, any>((settings) => buildOrder(settings).then);
 export namespace PackageBuilder {
     let unsorted: Record<string, PackageBuilder> = glob.sync(root('{packages,apps}/*')).map(path => {
         let builder = new PackageBuilder(path);
         return [ builder.basename(), builder ];
     }).reduce(objectify, {});
-    export const builders                        = sortObject(unsorted, [
+
+
+    export const builders               = sortObject(unsorted, [
         'shared',
         'core',
         'console-colors',
@@ -190,20 +195,20 @@ export namespace PackageBuilder {
         'hosting-cli',
         'multi-package-json-manager',
     ]);
+    export const builderNames: string[] = Object.keys(builders);
 
-    export const builderNames = Object.keys(builders);
-    export const rebuild      = (name: string) => {
+    export const rebuild    = (name: string) => {
         builders[ name ].clean();
         builders[ name ].build();
     };
-    export const build        = (name: string) => builders[ name ].build();
-    export const clean        = (name: string) => builders[ name ].clean();
-    export const watch        = (name: string) => builders[ name ].watch();
-    export const rebuildAll   = () => Object.values(builders).forEach(builder => {
+    export const build      = (name: string) => builders[ name ].build();
+    export const clean      = (name: string) => builders[ name ].clean();
+    export const watch      = (name: string) => builders[ name ].watch();
+    export const rebuildAll = () => Object.values(builders).forEach(builder => {
         builder.clean();
         builder.build();
     });
-    export const buildAll     = () => Object.values(builders).forEach(builder => builder.build());
-    export const watchAll     = () => Object.values(builders).forEach(builder => builder.watch());
-    export const cleanAll     = () => Object.values(builders).forEach(builder => builder.clean());
+    export const buildAll   = () => Object.values(builders).forEach(builder => builder.build());
+    export const watchAll   = () => Object.values(builders).forEach(builder => builder.watch());
+    export const cleanAll   = () => Object.values(builders).forEach(builder => builder.clean());
 }

@@ -1,8 +1,8 @@
-import { php, PHP, PHPApi } from '@radic/hosting';
+import { php, PHP, PHPApi, PhpExtensionName } from '@radic/hosting';
 import { isFunction, isString } from '@radic/shared';
 import { Command } from '../../Command';
 import { Cli, command } from '@radic/console';
-import { ServiceStatus } from '@radic/core';
+import { Collection, ServiceStatus } from '@radic/core';
 
 @command('info [version] [api]', 'List PHP installations definitions that the application monitors')
 export default class ListCommand extends Command {
@@ -35,24 +35,27 @@ export default class ListCommand extends Command {
             version   : true,
             bin       : true,
             api       : true,
-            extensions: (extensions: PHP['extensions']) => Object.keys(extensions).join(', '),
+            // extensions: (extensions: PhpExtensionName[]) => Object.keys(extensions).join(', '),
+            // availableExtensions: (extensions: PhpExtensionName[]) => Object.keys(extensions).join(', '),
         };
         if ( php.isFPM ) {
+
             let service       = await php.getFPMService();
             let serviceStatus = ServiceStatus.ACTIVE;// await service.status()
             let status;
             if ( ServiceStatus.isActive(serviceStatus) ) {
-                status = out.color(serviceStatus, 'green');
+                status = out.styled('success', serviceStatus,true);
             }
             if ( ServiceStatus.isInactive(serviceStatus) ) {
-                status = out.color(serviceStatus, 'red');
+                status = out.styled('error', serviceStatus,true);
             }
             if ( !status ) {
-                status = out.color('error', 'red');
+                status = out.styled('error', 'error', true);
             }
             show.service = () => status;
+
         }
-        show.xdebug                = () => php.hasExtension('xdebug') ? out.color('enabled', 'green') : out.color('disabled', 'red');
+        show.xdebug                = () => php.hasEnabledExtension('xdebug') ? out.styled('success', 'enabled', true) : out.styled('error','disabled', true);
         let keys: Array<keyof PHP> = Object.keys(show) as any;
 
         keys.forEach(key => {
@@ -69,7 +72,13 @@ export default class ListCommand extends Command {
                 value = result;
             }
             return out.write(value.toString()).nl;
-
         });
+
+        out.write(`{bold}extensions:{/bold} `);
+        let extensions = Object.keys(php.availableExtensions).map(name => out.styled(php.hasEnabledExtension(name) ? 'success' : 'error', name, true));
+        let columns =Collection.make(extensions).split(Math.ceil(extensions.length / 10)).map((collection:Collection<string>) => {
+            return collection.toArray().join(', ')
+        }).join("\n")
+        out.line(columns)
     }
 }

@@ -23,7 +23,8 @@ export declare class Output {
     addDefaultParsers(): void;
     get nl(): this;
     get chain(): Chain;
-    styled(name: StyleName, text: string): this;
+    styled(name: StyleName, text: string, returns: true): any;
+    styled(name: StyleName, text: string): any;
     parse(text: string, force?: boolean): string;
     clean(text: string): string;
     write(text: string): this;

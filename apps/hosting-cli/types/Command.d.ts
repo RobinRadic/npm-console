@@ -1,7 +1,6 @@
 import { BaseCommand } from '@radic/console';
-import { out } from '@radic/console-output/lib/OutputServiceProvider';
-import { ask } from '@radic/console-input/lib/InputServiceProvider';
-import { log } from '@radic/console-output/lib/log';
+import { log, out } from '@radic/console-output';
+import { ask } from '@radic/console-input';
 export declare class Command extends BaseCommand {
     log: log;
     out: out;

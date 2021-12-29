@@ -46,7 +46,7 @@ export abstract class HTTPServer<SITE extends Site=Site> extends Server {
 
     getEnabledSitePaths() {return glob.sync(join(this.paths.sitesEnabled, `*.${this.sitesFileExtensionsGlob}`)); }
 
-    resolvePaths() {
+    resolvePaths():HTTPServerPaths {
         let e                      = Object.entries(this.paths);
         let paths: HTTPServerPaths = {} as any;
         for ( const [ key, value ] of e ) {

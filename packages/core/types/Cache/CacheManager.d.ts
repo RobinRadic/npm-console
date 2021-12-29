@@ -8,7 +8,7 @@ export declare class CacheManager {
     register(adapter: CacheAdapter): void;
     use<T extends CacheAdapter = CacheAdapter>(name: string): T;
     hasAdapter(name: string): boolean;
-    getAdapter(name: string): CacheAdapter;
+    getAdapter<T extends CacheAdapter = CacheAdapter>(name: string): T;
     adapterNames(): string[];
     allAdapters(): CacheAdapter[];
     clearAdapters(): void;

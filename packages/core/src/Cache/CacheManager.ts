@@ -47,7 +47,7 @@ export class CacheManager {
 
     hasAdapter(name: string): boolean {return this.adapters[ name ] !== undefined;}
 
-    getAdapter(name: string): CacheAdapter {return this.adapters[ name ] }
+    getAdapter<T extends CacheAdapter = CacheAdapter>(name: string): T {return this.adapters[ name ] as T}
 
     adapterNames() {return Object.keys(this.adapters); }
 

@@ -1,4 +1,5 @@
-export declare const makeLog: (namespace: string) => any;
+import { Debugger } from 'debug';
+export declare const makeLog: (namespace: string) => Debugger;
 export interface Param {
     name: string;
     variadic?: boolean;

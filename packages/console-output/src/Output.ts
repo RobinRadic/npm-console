@@ -57,13 +57,23 @@ export class Output {
             .set('figures', new FiguresParser(this));
     }
 
+
     get nl(): this { return this.write('\n'); }
 
     get chain(): Chain {return this.colors.chain(this);}
 
-    styled(name:StyleName, text:string){
+    styled(name:StyleName, text:string, returns:true)
+    styled(name:StyleName, text:string)
+    styled(...args)
+    {
+        const name:StyleName = args[0]
+        const text:string = args[1]
+        const returns:boolean = args[2] || false;
+
         const {in:start,out} = this.colors.color(name as string);
-        this.line(`${start}${text}${out}`);
+        const result = `${start}${text}${out}`;
+        if(returns) return result;
+        this.line(result);
         return this;
     }
 

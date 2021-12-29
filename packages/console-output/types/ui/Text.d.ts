@@ -1,5 +1,7 @@
-import { Data, Options } from 'columnify';
+import { GlobalOptions as ColumnifyGlobalOptions } from 'columnify';
 import { UiBase } from './UiBase';
+export { ColumnifyGlobalOptions };
+export declare type ColumnifyData = Record<string, any> | any[];
 export declare class Text extends UiBase {
     truncate(input: string, columns: number, position?: 'start' | 'middle' | 'end'): string;
     wrap(input: string, columns: number, options?: {
@@ -8,7 +10,7 @@ export declare class Text extends UiBase {
         wordWrap?: boolean;
     }): string;
     slice(inputu: string, beginSlice: number, endSlice?: number): string;
-    columns(data: Data, options: Options): string;
+    columns(data: ColumnifyData, options?: ColumnifyGlobalOptions): string;
     widestLine(input: string): number;
     widest(input: string[]): number;
     width(input: string): number;

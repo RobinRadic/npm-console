@@ -13,7 +13,7 @@
  //=> '/home/sindresorhus/.config/MyApp-nodejs'
  ```
  */
-export default function envPaths(name: any, options?: EnvPathsOptions): EnvPaths;
+export declare function envPaths(name: any, options?: EnvPathsOptions): EnvPaths;
 export interface EnvPathsOptions {
     /**
      __Don't use this option unless you really have to!__

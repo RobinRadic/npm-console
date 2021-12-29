@@ -19,6 +19,9 @@ export interface CacheAdapter {
 
     keys(): string[];
 
+    toObject<T>(): T;
+
+    toJson(): string;
 }
 
 export const isCacheAdapter = (val: any): val is CacheAdapter => val && typeof val.getName === 'function';

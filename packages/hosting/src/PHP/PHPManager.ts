@@ -1,7 +1,7 @@
 import { PHP } from './PHP';
 import { PHPScanner } from './PHPScanner';
 import { injectable } from 'inversify';
-import { cache, config } from '@radic/core';
+import { cache, config,caching } from '@radic/core';
 import { FileCacheAdapter } from '@radic/core';
 import { PhpInfo } from './types';
 import { PHPApi } from './PHPApi';
@@ -108,7 +108,7 @@ export class PHPManager {
     }
 
     protected hasInCache(path: string): boolean {
-        if ( this.cache.has('php') ) {
+        if ( this.cache.hasAdapter('php') ) {
             let php = this.getPhpCache();
             return php.has(path);
         }
@@ -142,5 +142,5 @@ export class PHPManager {
         return this;
     }
 
-    protected getPhpCache(): FileCacheAdapter {return this.cache.get<FileCacheAdapter>('php');}
+    protected getPhpCache(): FileCacheAdapter {return this.cache.getAdapter<FileCacheAdapter>('php');}
 }

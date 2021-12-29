@@ -1,4 +1,6 @@
-export const makeLog = (namespace: string) => require('debug')(namespace);
+import { Debugger } from 'debug';
+
+export const makeLog = (namespace: string):Debugger=> require('debug')(namespace);
 
 
 var STRIP_COMMENTS = /((\/\/.*$)|(\/\*[\s\S]*?\*\/))/mg;

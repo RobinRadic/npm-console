@@ -1,96 +1,100 @@
 import yargs from 'yargs';
 import { PackageBuilder } from './PackageBuilder';
 import { inspect } from 'util';
+import { Input } from '@radic/console-input';
+import { execSync } from 'child_process';
 
 process.on('uncaughtException', (error, origin) => console.error('uncaughtException', 'error:', error, 'origin:', origin));
 process.on('unhandledRejection', (reason, promise) => {
-    console.error('unhandledRejection', 'reason:', reason, promise)
-    console.log(inspect(promise,true,10, true));
+    console.error('unhandledRejection', 'reason:', reason, promise);
+    console.log(inspect(promise, true, 10, true));
 });
+const getPackageName = async (args: any): Promise<string> => args.name ? args.name.toString().trim() : await Input.list('Choose package', PackageBuilder.builderNames);
 
-
-
-const parsed = yargs
+yargs
 .showHelpOnFail(true)
 .scriptName('cli')
 .demandCommand()
-.help('h').alias('h', 'help')
-.command('rebuild [name]', 'Build package(s)', {
-    handler: args => {
+.help('h').alias('h', 'help');
+
+
+yargs.command({ command: 'list', describe: 'List packages', handler: args => console.log(PackageBuilder.builderNames.join('\n')) });
+
+yargs.command({
+    command: 'rebuild [name]', describe: 'Build package(s)',
+    handler: async args => {
         if ( args.all ) {
             return PackageBuilder.rebuildAll();
-        } else if ( args.name !== undefined && PackageBuilder.builderNames.includes(args.name.toString().trim()) ) {
-            return PackageBuilder.rebuild(args.name.toString().trim());
-        } else {
-            console.error('You did not supply the name or option --all');
-
         }
+        const name = await getPackageName(args);
+        PackageBuilder.rebuild(name);
     },
-    builder: yargs => {
-        return yargs
-        .example('builder build console', 'Start build for packages/console')
-        .example('builder build --all', 'Start build for all package')
-        .options({
-            all: { alias: 'a', type: 'boolean', description: 'Build all' },
-        });
-    },
-})
-.command('build [name]', 'Build package(s)', {
-    handler: args => {
+    builder: yargs => yargs
+    .example('$0 build console', 'Start build for packages/console')
+    .example('$0 build --all', 'Start build for all package')
+    .options({
+        all: { alias: 'a', type: 'boolean', description: 'Build all' },
+    }),
+});
+
+yargs.command({
+    command : 'build [name]', describe: 'Build package(s)',
+    handler : async args => {
         if ( args.all ) {
             return PackageBuilder.buildAll();
-        } else if ( args.name !== undefined && PackageBuilder.builderNames.includes(args.name.toString().trim()) ) {
-            return PackageBuilder.build(args.name.toString().trim());
-        } else {
-            console.error('You did not supply the name or option --all');
-
         }
+        const name = await getPackageName(args);
+        PackageBuilder.build(name);
     },
-    builder: yargs => {
-        return yargs
-        .example('builder build console', 'Start build for packages/console')
-        .example('builder build --all', 'Start build for all package')
-        .options({
-            all: { alias: 'a', type: 'boolean', description: 'Build all' },
-        });
-    },
-})
-.command('watch [name]', 'Watch package(s) and build them', {
-    handler: args => {
+    builder : yargs => yargs
+    .example('$0 build console', 'Start build for packages/console')
+    .example('$0 build --all', 'Start build for all package')
+    .options({
+        all: { alias: 'a', type: 'boolean', description: 'Build all' },
+    }),
+});
+
+yargs.command({
+    command : 'watch [name]',    describe: 'Watch package(s) and build them',
+    handler : async args => {
         if ( args.all ) {
             return PackageBuilder.watchAll();
-        } else if ( args.name !== undefined && PackageBuilder.builderNames.includes(args.name.toString().trim()) ) {
-            return PackageBuilder.watch(args.name.toString().trim());
-        } else {
-            console.error('You did not supply the name or option --all');
         }
+        const name = await getPackageName(args);
+        PackageBuilder.watch(name);
     },
-    builder: yargs => {
-        return yargs
-        .example('builder watch console', 'Start build on change in packages/console/src')
-        .example('builder watch --all', 'Start build on change in any package')
-        .options({
-            all: { alias: 'a', type: 'boolean', description: 'Watch all' },
-        });
-    },
-})
-.command('clean [name]', 'Clean package(s)', {
-    handler: args => {
+    builder : yargs => yargs
+    .example('$0 watch console', 'Start build on change in packages/console/src')
+    .example('$0 watch --all', 'Start build on change in any package')
+    .options({
+        all: { alias: 'a', type: 'boolean', description: 'Watch all' },
+    }),
+});
+
+yargs.command({
+    command : 'clean [name]',    describe: 'Clean package(s)',
+    handler : async args => {
         if ( args.all ) {
             return PackageBuilder.cleanAll();
-        } else if ( args.name !== undefined && PackageBuilder.builderNames.includes(args.name.toString().trim()) ) {
-            return PackageBuilder.clean(args.name.toString().trim());
-        } else {
-            console.error('You did not supply the name or option --all');
         }
+        const name = await getPackageName(args);
+        PackageBuilder.clean(name);
     },
-    builder: yargs => {
-        return yargs
-        .example('builder clean console', 'clean packages/console')
-        .example('builder clean --all', 'clean all packages')
-        .options({
-            all: { alias: 'a', type: 'boolean', description: 'Clean all' },
-        });
+    builder : yargs => yargs.options({
+        all: { alias: 'a', type: 'boolean', description: 'Clean all' },
+    }),
+});
+
+yargs.command({
+    command : 'commit [message]',
+    describe: 'Commit to git',
+    handler : async args => {
+        args.message = args.message || 'commit';
+        execSync(`git add --all`);
+        execSync(`git commit -m "${args.message}"`);
     },
-})
-.parse();
+    builder : yargs => yargs.example('$0 commit', 'add and commit').example('$0 commit "message"', 'add and commit with message'),
+});
+
+
+yargs.parse();

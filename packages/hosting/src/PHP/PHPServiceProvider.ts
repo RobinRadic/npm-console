@@ -23,7 +23,6 @@ declare module '@radic/core/types/Foundation/Application' {
 
 
 export class PHPServiceProvider extends ServiceProvider {
-    deferred=true
     public load() {
         this.config({
             key     : 'hosting.php',

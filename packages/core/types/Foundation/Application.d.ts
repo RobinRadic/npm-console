@@ -3,12 +3,12 @@ import { Container, interfaces } from 'inversify';
 import { Dispatcher } from '../Dispatcher';
 import { Lookup } from 'inversify/lib/container/lookup';
 import { ConfigRepository } from '../Config/ConfigRepository';
-import { EnvPaths } from '../Support/envPaths';
+import { EnvPaths } from '../Support';
 import { Constructor, IServiceProvider, IServiceProviderClass, PackageJson, ServiceProvider } from '@radic/shared';
 import { ApplicationInitOptions, Configuration } from '../types';
+import { JSONSchema7 } from 'json-schema';
 import ServiceIdentifier = interfaces.ServiceIdentifier;
 import BindingInWhenOnSyntax = interfaces.BindingInWhenOnSyntax;
-import { JSONSchema7 } from 'json-schema';
 export declare type GetServiceIdentifier<T> = keyof Bindings | interfaces.ServiceIdentifier<T>;
 export interface Hooks {
 }

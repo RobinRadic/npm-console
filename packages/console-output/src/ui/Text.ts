@@ -1,6 +1,10 @@
-import { Data, Options } from 'columnify';
+import { GlobalOptions as  ColumnifyGlobalOptions} from 'columnify';
 import { UiBase } from './UiBase';
 import { requireModule } from '../utils';
+
+export { ColumnifyGlobalOptions }
+
+export type ColumnifyData =  Record<string, any> | any[]
 
 export class Text extends UiBase {
 
@@ -10,7 +14,7 @@ export class Text extends UiBase {
 
     slice(inputu: string, beginSlice: number, endSlice?: number): string { return requireModule('slice-ansi')(...arguments);}
 
-    columns(data: Data, options: Options): string { return requireModule('columnify')(...arguments); }
+    columns(data: ColumnifyData, options?: ColumnifyGlobalOptions): string { return requireModule('columnify')(...arguments); }
 
     widestLine(input: string): number { return requireModule('widest-line')(input);}
 

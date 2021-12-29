@@ -3,22 +3,21 @@ import { join } from 'path';
 import { flatten } from 'lodash';
 import { exec as _exec } from 'child_process';
 import { promisify } from 'util';
-import envPaths from '../Support/envPaths';
-import { app } from '../Foundation';
 
 const exec = promisify(_exec);
 
-export interface PathSearchOptions extends  IOptions {}
+export interface PathSearchOptions extends IOptions {}
 
 export class Pathings {
     static getinPaths(): string {
         return process.env.PATH;
     }
+
     static getBinPaths(): string[] {
         return (process.env.PATH || '').split(':');
     }
 
-    static search(name: string, options:PathSearchOptions={}) {
+    static search(name: string, options: PathSearchOptions = {}) {
         if ( !name.startsWith('*') ) {
             name = '*' + name;
         }

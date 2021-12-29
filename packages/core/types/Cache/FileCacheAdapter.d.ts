@@ -23,4 +23,6 @@ export declare class FileCacheAdapter implements CacheAdapter {
     clear(): this;
     size(): number;
     keys(): string[];
+    toObject(): any;
+    toJson(): string;
 }

@@ -1,3 +1,5 @@
+// noinspection ES6UnusedImports
+
 import { basename, join } from 'path';
 import { existsSync, symlinkSync, unlinkSync } from 'fs';
 import { flatten } from 'lodash';
@@ -5,9 +7,9 @@ import { Application } from '@radic/core';
 import { HTTPServer } from '../HTTPServer';
 import { AbstractHostLine } from '../../Hosts';
 
-
 export abstract class Site<CONFIG = any, SERVER extends HTTPServer<any> = HTTPServer<any>> {
     app: Application = Application.instance;
+
 
     constructor(public readonly server: SERVER, public readonly configFilePath: string) {
 

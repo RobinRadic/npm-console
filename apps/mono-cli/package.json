@@ -1,0 +1,72 @@
+{
+    "name": "@radic/mono-cli",
+    "private": false,
+    "version": "1.0.2",
+    "description": "mono-cli",
+    "author": {
+        "name": "Robin Radic",
+        "email": "rradic@hotmail.com",
+        "url": "https://github.com/robinradic"
+    },
+    "license": "MIT",
+    "main": "lib/index.js",
+    "types": "types/index.d.ts",
+    "homepage": "https://robinradic.github.io/npm-packages/packages/mono-cli",
+    "scripts": {
+        "build": "yarn clean:build && tsc --project tsconfig.build.json",
+        "clean:build": "rm -rf lib/ types/",
+        "clean:src": "rimraf src/**/*.{js,js.map,d.ts}",
+        "clean:docs:api": "rm -rf docs/api",
+        "clean:test": "rm -rf .nyc-output/",
+        "clean:yarn": "rm yarn.lock node_modules",
+        "docs:api": "rm -rf docs/api && node ../../../typedoc.js",
+        "prepublish": "npm-run-all clean:build test build",
+        "release": "yarn login && np --yolo --no-yarn",
+        "start": "npm-run-all clean:build test build",
+        "pretest": "yarn clean:test",
+        "test": "nyc mocha --opts test/mocha.opts",
+        "posttest": "yarn clean:test",
+        "watch": "tsc --project tsconfig.build.json --watch"
+    },
+    "dependencies": {
+        "@radic/shared": "^1.0.0",
+        "@radic/core": "^1.0.0",
+        "@radic/console": "^1.0.0",
+        "@radic/console-input": "^1.0.0",
+        "@radic/console-output": "^1.0.0",
+        "@types/tapable": "^2.2.2",
+        "tapable": "^2.2.1"
+    },
+    "devDependencies": {
+        "@types/node": "^17.0.5"
+    },
+    "keywords": [],
+    "bugs": {
+        "email": "rradic@hotmail.com",
+        "url": "https://github.com/robinradic/npm-packages/issues"
+    },
+    "engines": {
+        "node": ">=12"
+    },
+    "files": [
+        "lib/**/*"
+    ],
+    "os": [
+        "darwin",
+        "linux"
+    ],
+    "publishConfig": {
+        "access": "public"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/robinradic.git",
+        "directory": "packages/shared"
+    },
+    "bin": {
+        "mono": "bin/mono.js"
+    },
+    "vuepress": {
+        "name": "MonoRepo"
+    }
+}

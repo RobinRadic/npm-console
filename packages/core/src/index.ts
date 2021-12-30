@@ -7,4 +7,5 @@ export * from './Storage';
 export * from './Support';
 export * from './System';
 export * from './CoreServiceProvider';
+export * from './types';
 

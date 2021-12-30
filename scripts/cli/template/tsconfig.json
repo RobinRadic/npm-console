@@ -1,0 +1,56 @@
+{
+    "extends": "tsconfig.build.json",
+    "compilerOptions": {
+        "composite": true,
+        "baseUrl": "./",
+        "target": "ES6",
+        "module": "CommonJS",
+        "moduleResolution": "Node",
+        "lib": [
+            "ES5",
+            "ES6",
+            "ES2017",
+            "ES2018",
+            "ES2018.Promise",
+            "ES2015.Promise"
+        ],
+        "esModuleInterop": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true
+    },
+    "exclude": [
+        "node_modules",
+        "examples",
+        "lib",
+        "tests",
+        "types",
+        "types/*.d.ts"
+    ],
+    "include": [
+        "src",
+        "src/index.ts"
+    ],
+    "references": [
+        {
+            "path": "../console"
+        },
+        {
+            "path": "../console-colors"
+        },
+        {
+            "path": "../console-input"
+        },
+        {
+            "path": "../console-output"
+        },
+        {
+            "path": "../core"
+        },
+        {
+            "path": "../hosting"
+        },
+        {
+            "path": "../shared"
+        }
+    ]
+}

@@ -1,14 +1,11 @@
-
-
-
 export type MacroCallback<T = any> = (...args: any[]) => T
 
-export interface MacroProxy<T, CB=MacroCallback, R=any|void> {
+export interface MacroProxy<T, CB = MacroCallback, R = any | void> {
     macro(name: string, macro: MacroCallback<R>): R;
 
     hasMacro(name: string): boolean;
 
-    runMacro(name: string, ...args: any[]): R
+    runMacro(name: string, ...args: any[]): R;
 }
 
 export function macroProxy<T extends object>(obj: T): MacroProxy<T> & T {
@@ -18,8 +15,8 @@ export function macroProxy<T extends object>(obj: T): MacroProxy<T> & T {
         macros[ name ] = macro;
         return this;
     };
-    const runMacro                                 =function (name: string, ...args: any[]) {
-        const result = macros[ name ].apply(this,args);
+    const runMacro                                 = function (name: string, ...args: any[]) {
+        const result = macros[ name ].apply(this, args);
         return result === undefined ? this : result;
     };
     const proxy                                    = new Proxy(obj, {
@@ -37,4 +34,17 @@ export function macroProxy<T extends object>(obj: T): MacroProxy<T> & T {
         },
     });
     return proxy as any;
+}
+
+export namespace macro {
+
+    export function proxy<T extends object>(obj: T): Proxy<T> & T {
+        return macroProxy<T>(obj);
+    }
+
+    export type Callback<T> = MacroCallback<T>
+
+    export interface Proxy<T, CB = MacroCallback, R = any | void> extends MacroProxy<T, CB, R> {
+        macro(name: string, macro: Callback<R>): R;
+    }
 }

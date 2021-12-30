@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+#NODE_BIN=/home/radic/.nvm/versions/node/v13.7.0/bin/node  -r ts-node/register/transpile-only
+NODE_BIN=ts-node
+
+#export DEBUG=*
+
+$NODE_BIN scripts/cli/mono.ts $*

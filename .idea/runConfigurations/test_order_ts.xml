@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="test-order.ts" type="NodeJSConfigurationType" node-parameters="-r ts-node/register/transpile-only" path-to-js-file="scripts/test-order.ts" working-dir="$PROJECT_DIR$">
+  <configuration default="false" name="test-order.ts" type="NodeJSConfigurationType" node-parameters="-r ts-node/register/transpile-only" path-to-js-file="$PROJECT_DIR$/scripts/cli/test-order.ts" working-dir="$PROJECT_DIR$">
     <method v="2" />
   </configuration>
 </component>

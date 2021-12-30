@@ -20,6 +20,8 @@
       <sourceFolder url="file://$MODULE_DIR$/packages/shared/src" isTestSource="false" packagePrefix="@radic\shared" />
       <sourceFolder url="file://$MODULE_DIR$/packages/multi-package-json-manager/src" isTestSource="false" packagePrefix="@radic\multipackge" />
       <sourceFolder url="file://$MODULE_DIR$/apps/hosting-cli/src" isTestSource="false" packagePrefix="@radic\hosting-cli" />
+      <sourceFolder url="file://$MODULE_DIR$/apps/mono-cli/src" isTestSource="false" packagePrefix="@radic\mono-cli" />
+      <sourceFolder url="file://$MODULE_DIR$/apps/mono-cli/test" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/.tmp" />
       <excludeFolder url="file://$MODULE_DIR$/src/.vuepress/plugins/monorepo/lib" />
       <excludeFolder url="file://$MODULE_DIR$/docs" />
@@ -34,8 +36,10 @@
       <excludeFolder url="file://$MODULE_DIR$/packages/multi-package-json-manager/lib" />
       <excludeFolder url="file://$MODULE_DIR$/apps/hosting-cli/lib" />
       <excludeFolder url="file://$MODULE_DIR$/node_modules/@radic/console-output/types" />
+      <excludeFolder url="file://$MODULE_DIR$/apps/mono-cli/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/apps/mono-cli/types" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/shared/types" />
     </content>
-    <content url="file://$MODULE_DIR$/node_modules/@radic/console-output/types" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>

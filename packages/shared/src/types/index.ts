@@ -1,4 +1,5 @@
 export * from './packageJson';
+export * from './tsconfigJson';
 
 /*
 export enum ExitCode {

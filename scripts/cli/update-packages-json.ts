@@ -2,7 +2,7 @@ import { Manager, PackageJson } from 'multi-package-json-manager';
 import { resolve } from 'path';
 
 
-let manager = new Manager<PackageJson>(resolve(__dirname, '..'));
+let manager = new Manager<PackageJson>(resolve(__dirname, '..','..'));
 manager.addJsonFiles('packages/*/package.json');
 // manager.enableTestRun(true);
 manager.addVariables({

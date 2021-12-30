@@ -2,8 +2,8 @@ import { existsSync, FSWatcher, readdirSync, Stats, statSync, watch } from 'fs';
 import { basename, dirname, isAbsolute, join, parse, ParsedPath, relative } from 'path';
 import assert from 'assert';
 import { readJSONSync } from 'fs-extra';
-import { objectify, PackageJson } from '../packages/shared/src';
-import { TSconfigJson } from '../packages/multi-package-json-manager/src/types/tsconfigJson';
+import { objectify, PackageJson } from '../../packages/shared/src';
+import { TSconfigJson } from '../../packages/multi-package-json-manager/src/types/tsconfigJson';
 import { debounce } from 'lodash-decorators';
 import debug from 'debug';
 import { glob } from 'glob';
@@ -42,7 +42,7 @@ interface FStat extends Stats, ParsedPath {
 }
 
 
-const root                    = (...parts) => join(__dirname, '..', ...parts);
+const root                    = (...parts) => join(__dirname, '..','..', ...parts);
 const resolvePath             = (path: string) => isAbsolute(path) ? path : join(process.cwd(), path);
 const hasNodePackage          = (path: string) => existsSync(join(path, 'package.json'));
 const hasTypecriptConfig      = (path: string) => existsSync(join(path, 'tsconfig.json'));
@@ -194,6 +194,7 @@ export namespace PackageBuilder {
         'hosting',
         'hosting-cli',
         'multi-package-json-manager',
+        'mono-cli',
     ]);
     export const builderNames: string[] = Object.keys(builders);
 

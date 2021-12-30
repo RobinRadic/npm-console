@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="builder build --all" type="NodeJSConfigurationType" application-parameters="build --all" path-to-node="$USER_HOME$/.nvm/versions/node/v13.7.0/bin/node" node-parameters="-r ts-node/register/transpile-only" path-to-js-file="scripts/cli.ts" working-dir="$PROJECT_DIR$">
+  <configuration default="false" name="builder build --all" type="NodeJSConfigurationType" application-parameters="build --all" path-to-node="$USER_HOME$/.nvm/versions/node/v13.7.0/bin/node" node-parameters="-r ts-node/register/transpile-only" path-to-js-file="$PROJECT_DIR$/scripts/cli/cli.ts" working-dir="$PROJECT_DIR$">
     <envs>
       <env name="DEBUG" value="*" />
     </envs>

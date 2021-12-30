@@ -17,10 +17,11 @@ export async function bootApp() {
         providers: [
             CoreServiceProvider,
             CliServiceProvider,
-            HostingServiceProvider,
             InputServiceProvider,
             OutputServiceProvider,
             LogServiceProvider,
+            HostingServiceProvider,
+
             HostingCliServiceProvider,
         ],
         config   : {

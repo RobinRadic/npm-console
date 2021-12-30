@@ -1,7 +1,7 @@
 import { createTsconfigJsonManager } from 'multi-package-json-manager';
 import { resolve } from 'path';
 
-const build = createTsconfigJsonManager(resolve(__dirname, '..'));
+const build = createTsconfigJsonManager(resolve(__dirname, '..','..'));
 
 build.addJsonFiles('packages/*/tsconfig.build.json')
      .unset('compileOnSave')

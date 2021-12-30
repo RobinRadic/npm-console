@@ -1,0 +1,62 @@
+{
+    "compilerOptions": {
+        "target": "ES6",
+        "module": "CommonJS",
+        "moduleResolution": "Node",
+        "lib": [
+            "ES5",
+            "ES6",
+            "ES2017",
+            "ES2018",
+            "ES2018.Promise",
+            "ES2015.Promise"
+        ],
+        "outDir": "lib",
+        "declarationDir": "types",
+        "declaration": true,
+        "resolveJsonModule": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "allowJs": false,
+        "checkJs": false,
+        "strict": false,
+        "noImplicitAny": false,
+        "strictNullChecks": false,
+        "strictFunctionTypes": false,
+        "strictBindCallApply": false,
+        "strictPropertyInitialization": false,
+        "noImplicitThis": false,
+        "alwaysStrict": false,
+        "noUnusedLocals": false,
+        "noUnusedParameters": false,
+        "noImplicitReturns": false,
+        "noFallthroughCasesInSwitch": false,
+        "allowSyntheticDefaultImports": true,
+        "importHelpers": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "inlineSourceMap": false,
+        "inlineSources": false,
+        "sourceMap": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "baseUrl": "./",
+        "typeRoots": [
+            "../../../node_modules/@types",
+            "./typings"
+        ],
+        "types": [],
+        "composite": false
+    },
+    "exclude": [
+        "node_modules",
+        "examples",
+        "lib",
+        "tests",
+        "types",
+        "types/*.d.ts"
+    ],
+    "include": [
+        "src",
+        "src/index.ts"
+    ]
+}

@@ -1,6 +1,5 @@
 import { ServiceProvider } from '@radic/shared';
 import { Guard } from './Guard';
-import { SystemConfiguration } from '@radic/core';
 
 declare module '@radic/core/types/Foundation/Application' {
     export interface Bindings {
@@ -17,18 +16,19 @@ declare module '@radic/core/types/types/config' {
         auth?: AuthConfiguration;
     }
 }
+
 export interface AuthConfiguration {
-    currentUser?:string
+    currentUser?: string;
 }
 
 export class AuthServiceProvider extends ServiceProvider {
     public load(): any {
         this.app.addConfig<AuthConfiguration>({
-            key:'auth',
+            key     : 'auth',
             defaults: {
-                currentUser: undefined
-            }
-        })
+                currentUser: undefined,
+            },
+        });
     }
 
     register() {

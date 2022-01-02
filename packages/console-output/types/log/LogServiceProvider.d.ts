@@ -3,6 +3,7 @@ import winston, { LogCallback, LoggerOptions } from 'winston';
 import { LogLevelColors, LogLevels } from './levels';
 import * as Transport from 'winston-transport';
 import { Bindings } from '@radic/core';
+import { Format } from 'logform';
 declare type WinstonLogLevels = 'error' | 'warn' | 'help' | 'data' | 'info' | 'debug' | 'prompt' | 'http' | 'verbose' | 'input' | 'silly' | 'emerg' | 'alert' | 'crit' | 'warning' | 'notice';
 export interface Logger extends Omit<winston.Logger, WinstonLogLevels> {
     error: winston.LeveledLogMethod;
@@ -40,8 +41,10 @@ declare module '@radic/core/types/types/config' {
         log?: LogConfiguration;
     }
 }
+export declare type FormatWrap<T = any> = (opts?: T) => Format;
 export declare class LogServiceProvider extends ServiceProvider {
     load(): void;
+    getFormat(): Format;
     register(): void;
 }
 export declare const log: (proto: any, key: string) => void;

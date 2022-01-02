@@ -29,12 +29,15 @@
         "watch": "tsc --project tsconfig.build.json --watch"
     },
     "dependencies": {
-        "@radic/shared": "^1.0.0",
-        "@radic/core": "^1.0.0",
         "@radic/console": "^1.0.0",
         "@radic/console-input": "^1.0.0",
         "@radic/console-output": "^1.0.0",
+        "@radic/core": "^1.0.0",
+        "@radic/shared": "^1.0.0",
+        "@types/npm-which": "^3.0.1",
         "@types/tapable": "^2.2.2",
+        "npm-which": "^3.0.1",
+        "simple-git": "^2.48.0",
         "tapable": "^2.2.1"
     },
     "devDependencies": {

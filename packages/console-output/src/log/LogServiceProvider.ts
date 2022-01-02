@@ -1,8 +1,11 @@
 import { ServiceProvider } from '@radic/shared';
 import winston, { LogCallback, LoggerOptions } from 'winston';
-import { colors, levels, LogLevelColors, LogLevels } from './levels';
+import { colors, levels, LogLevel, LogLevelColors, LogLevels } from './levels';
 import * as Transport from 'winston-transport';
 import { Bindings, inject } from '@radic/core';
+import { Figure } from '../interfaces';
+import { Format } from 'logform';
+import { figures } from '../figures';
 
 
 type WinstonLogLevels =
@@ -76,6 +79,35 @@ declare module '@radic/core/types/types/config' {
 //     };
 // });
 
+interface WinstonFigureFormatOptions {
+    default?: { color?: string, figure: Figure }
+    figures?: Record<LogLevel, { color?: string, figure: Figure }|null>,
+}
+
+export type FormatWrap<T = any> = (opts?: T) => Format;
+const figure: FormatWrap<WinstonFigureFormatOptions> = winston.format((info, opts: Partial<WinstonFigureFormatOptions> = {}) => {
+    info.figure = '';
+    if(opts.figures[ info.level ] === null){
+        return info;
+    }
+
+    const getFigure = (opt: { color?: string, figure: Figure }) => {
+        if ( opt.color ) {
+            return `{${opt.color}}${figures[opt.figure]}{/${opt.color}}`;
+        } else {
+            return figures[opt.figure];
+        }
+    };
+
+    if ( info.level in opts.figures ) {
+        info.figure = getFigure(opts.figures[ info.level ]);
+    } else if ( opts.default ) {
+        info.figure = getFigure(opts.default);
+    }
+    return info;
+});
+
+
 export class LogServiceProvider extends ServiceProvider {
 
     load() {
@@ -88,20 +120,61 @@ export class LogServiceProvider extends ServiceProvider {
                 transports       : [],
                 exceptionHandlers: [],
                 handleExceptions : true,
-                format           : winston.format.combine(
-                    winston.format.colorize(),
-                    winston.format.simple(),
-                ),
+                format           : this.getFormat(),
             },
             schema  : {
-                type:'object',
+                type      : 'object',
                 properties: {
                     level : { type: 'string', enum: Object.keys(levels) },
                     colors: { type: 'object' },
                     levels: { type: 'object' },
-                }
+                },
             },
         });
+    }
+
+    getFormat(): Format {
+
+        const getFigure = (level: LogLevel, figure: Figure|null = level as Figure) => {
+            if(figure === null){
+                return null;
+            }
+            let color: string = colors[ level ] as any;
+            color             = Array.isArray(color) ? color.join(' ') : color;
+            return { figure, color };
+        };
+
+        return winston.format.combine(
+            winston.format.timestamp({ format: 'HH:mm:ss' }),
+            winston.format.ms(),
+            figure({
+                default: { figure: 'bullet', color: 'dim' },
+                figures: {
+                    info     : getFigure('info','info'),
+                    warn     : getFigure('warn','warning'),
+                    success  : getFigure('success', 'tick'),
+                    error    : getFigure('error','cross'),
+                    verbose  : getFigure('verbose', null),
+                    vverbose : getFigure('vverbose', null),
+                    vvverbose: getFigure('vvverbose', null),
+                },
+            }),
+            winston.format.printf((debug) => {
+                let {
+                        figure, timestamp, level, message, ms, label, ...args
+                    } = debug;
+                let levelName=this.app.output.ui.text.strip(level)
+                let color = this.app.output.colors.getTrucolor(colors[levelName] as any).wrapper;
+                level = color(level);
+                label = label ? `{bold}${label}{/bold}` : '';
+                let ts = timestamp.slice(0, 19).replace('T', ' ');
+                let output = ` ${figure} [${level}][${ts}]: ${label} - ${message} ${Object.keys(args).length ? JSON.stringify(args, null, 2) : ''} ${ms}`
+                if(levelName === 'verbose'){
+                    output = `{dim}${message}{/dim}`
+                }
+                return this.app.output.parse(output);
+            }),
+        );
     }
 
     register() {
@@ -111,7 +184,7 @@ export class LogServiceProvider extends ServiceProvider {
             levels           : config.levels,
             transports       : config.transports.length > 0 ? config.transports : [
                 new winston.transports.Console({
-                    format: config.format,
+                    format: this.getFormat(),
                 }),
             ],
             exceptionHandlers: config.handleExceptions ? [
@@ -121,7 +194,7 @@ export class LogServiceProvider extends ServiceProvider {
                 }),
             ] : [],
             handleExceptions : config.handleExceptions,
-            format           : config.format,
+            format           : this.getFormat(),
         }) as any;
         winston.addColors(config.colors);
         this.app.instance('log', logger).addBindingGetter('log');

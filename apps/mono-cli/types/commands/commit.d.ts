@@ -1,4 +1,7 @@
 import { Command } from '../Command';
 export default class extends Command {
-    handle(): Promise<void>;
+    push: boolean;
+    tags: boolean;
+    remote: string;
+    handle(message?: string): Promise<void>;
 }

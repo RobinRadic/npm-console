@@ -30,10 +30,6 @@ export interface MonoConfiguration {
     rootDir?: string;
     options?: MonoRepoOptions;
 }
-declare module '@radic/console-output/types/colors/StyleManager' {
-    interface Styles {
-    }
-}
 declare module '@radic/console-output/types/Output' {
     interface Output {
         info(message: string): this;

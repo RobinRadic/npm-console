@@ -10,7 +10,7 @@
     "array": "{yellow}array{/yellow}",
     "required": "{bold}required{/bold}",
     "default": "default",
-    "default:": "{dim}def:{/dim",
+    "default:": "{dim}def:{/dim}",
     "choices:": "{dim}opts:{/dim}",
     "aliases:": "{dim}aka:{/dim}",
     "generated-value": "generated-value",

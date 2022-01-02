@@ -2,11 +2,11 @@ import { arg, command, option } from '@radic/console';
 import { Command } from '../Command';
 
 
-@command('rebuild', 'Rebuild package',['r'])
+@command('rebuild [name]', 'Rebuild package',['r'])
 export default class extends Command {
     @option('a', 'All') all: boolean;
 
-    async handle(@arg('Name of the package') name?: string) {
+    async handle( name?: string) {
         if ( this.all ) {
             this.monoRepo.rebuildAll();
         } else {

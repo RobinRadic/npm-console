@@ -5,7 +5,7 @@ import { Application, Configuration, CoreServiceProvider } from '@radic/core';
 import { CliServiceProvider, CliStartReturn } from '@radic/console';
 import { MonoConfiguration, MonoServiceProvider } from './MonoServiceProvider';
 import { merge } from 'lodash';
-
+import winston from 'winston'
 export const app      = Application.instance;
 
 export async function bootApp(options: MonoConfiguration) {
@@ -61,6 +61,7 @@ export async function bootApp(options: MonoConfiguration) {
                 }
             },
             mono   : options,
+
         },
 
     });

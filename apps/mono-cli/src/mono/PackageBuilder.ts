@@ -11,7 +11,7 @@ import { macro, PackageJson, TSconfigJson } from '@radic/shared';
 import EventEmitter from 'events';
 import { SyncHook, SyncWaterfallHook } from 'tapable';
 import { Package } from './Package';
-
+import which from 'npm-which'
 export type DirectoryTree = Record<string, DirectoryTreeItem>;
 
 export interface DirectoryTreeItem {
@@ -84,7 +84,7 @@ const getJsonConfigs          = (path: string): JsonConfigs => {
 };
 export interface PackageBuilder extends macro.Proxy<PackageBuilder> {}
 
-export class PackageBuilder {
+export class PackageBuilder extends EventEmitter {
     readonly hooks = {
         preWatch  : new SyncWaterfallHook<[ WatchOptions ]>([ 'watchOptions' ]),
         watch     : new SyncHook<[ string, WatchEventType, string ]>([ 'path', 'event', 'filename' ]),
@@ -102,6 +102,7 @@ export class PackageBuilder {
     protected log: (...args) => any;
 
     constructor(public readonly pkg: Package) {
+        super()
         debug.formatters.t = v => {
             let date       = new Date(Date.now());
             let timestring = [ date.getHours(), date.getMinutes(), date.getSeconds() ].join(':');
@@ -136,19 +137,21 @@ export class PackageBuilder {
             const watcher = this.watchers[ path ] = watch(join(this.pkg.path, path), options.watchOptions, (event, filename) => {
                 this.log('Watched', filename, event);
                 this.hooks.watch.call(path, event, filename);
-                // this.clean();
-                // this.build();
+                this.emit('watch',path,event,filename)
             });
             watcher.on('error', (error) => {
                 this.log('Watch error:', error);
                 this.hooks.watchError.call(path, error);
+                this.emit('watch:error',path,error)
             });
             watcher.on('close', () => {
                 this.log('Closing watch');
                 delete this.watchers[ path ];
                 this.hooks.watchClose.call(path);
+                this.emit('watch:close',path)
             });
             this.log('Watching ', path);
+            this.emit('watch:start',path)
             this.hooks.watching.call(path, watcher);
         });
 
@@ -163,13 +166,16 @@ export class PackageBuilder {
         this.log('%t Starting build');
         let commands = [ 'tsc --project tsconfig.build.json' ];
         commands     = this.hooks.preBuild.call(commands);
+        this.emit('build:before',commands)
         for ( const command of commands ) {
             this.log('%t Calling', command);
             const output = this.exec(command);
             this.log('%t Called', command, 'output', output);
             this.hooks.build.call(command, output);
+            this.emit('build',commands,output)
         }
         this.hooks.postBuild.call(commands);
+        this.emit('build:after',commands)
         this.log('%t Build finished');
         return this;
     }
@@ -182,13 +188,16 @@ export class PackageBuilder {
         this.log('%t Cleaning up');
         let commands = [ 'rm -rf lib/ types/', 'rimraf src/**/*.{js,js.map,d.ts}' ];
         commands     = this.hooks.preClean.call(commands);
+        this.emit('clean:before',commands)
         for ( const command of commands ) {
             this.log('%t Calling', command);
             const output = this.exec(command);
             this.log('%t Called', command, 'output', output);
             this.hooks.clean.call(command, output);
+            this.emit('clean',command,output)
         }
         this.hooks.postClean.call(commands);
+        this.emit('clean:after',commands)
         this.log('Cleaned up');
         return this;
 
@@ -196,10 +205,22 @@ export class PackageBuilder {
 
     protected exec(command: string): string {
         try {
-            let execOptions: ExecSyncOptionsWithStringEncoding = { cwd: this.pkg.path, encoding: 'utf-8' };
+            let silence = ' &>/dev/null';
+            let env=process.env
+            let segments=command.split(' ');
+            let  cmd = segments[0]
+            cmd = which.sync(cmd,{env,cwd:'/'})
+            segments[0] = cmd;
+            segments.push(silence)
+            command = segments.join(' ')
+            let execOptions: ExecSyncOptionsWithStringEncoding = { cwd: this.pkg.path, encoding: 'utf-8',shell:'bash',env};
             return execSync(command, execOptions).toString();
         } catch (e) {
-            console.error(`Error while executing: ${command}`, e);
+            if(!command.startsWith('npx')){
+                this.exec('npx ' + command)
+            } else {
+                console.error(`Error while executing: ${command}`, e);
+            }
         }
     }
 }

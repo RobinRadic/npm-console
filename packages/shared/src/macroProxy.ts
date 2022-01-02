@@ -21,15 +21,17 @@ export function macroProxy<T extends object>(obj: T): MacroProxy<T> & T {
     };
     const proxy                                    = new Proxy(obj, {
         get(target: T, p: string | symbol, receiver: any): any {
-            if ( Reflect.has(target, p) ) {
-                return Reflect.get(target, p, receiver);
+            if ( Reflect.has(obj, p) ) {
+                return Reflect.get(obj, p);
             }
             let n = p.toString();
-            if ( n === 'macro' ) return macro.bind(proxy);
-            if ( n === 'runMacro' ) return runMacro.bind(proxy);
-            if ( n === 'hasMacro' ) return hasMacro.bind(proxy);
+            if ( n === 'macro' ) return macro.bind(obj);
+            if ( n === 'runMacro' ) return runMacro.bind(obj);
+            if ( n === 'hasMacro' ) return hasMacro.bind(obj);
             if ( hasMacro(n) ) {
-                return macros[ n ].bind(proxy);
+                let macro = macros[ n ].bind(obj);
+
+                return macro;
             }
         },
     });

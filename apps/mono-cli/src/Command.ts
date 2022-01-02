@@ -2,13 +2,14 @@ import { BaseCommand } from '@radic/console';
 import { Input,ask } from '@radic/console-input';
 import { inject } from '@radic/core';
 import { MonoRepo } from './mono';
-import { out } from '@radic/console-output';
+import { out ,log} from '@radic/console-output';
 
 
 export class Command extends BaseCommand {
     @inject('monoRepo') monoRepo: MonoRepo;
     @out out: out;
     @ask ask: ask;
+    @log log:log
 
     async getPackageName(name?: string): Promise<string> {
         if ( name ) {

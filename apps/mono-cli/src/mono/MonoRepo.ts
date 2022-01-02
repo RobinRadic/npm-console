@@ -2,19 +2,21 @@
 
 import { dirname, isAbsolute, join } from 'path';
 import { existsSync, readJSONSync } from 'fs-extra';
-import { macroProxy, objectify, PackageJson,macro } from '@radic/shared';
+import { macro, macroProxy, objectify, PackageJson } from '@radic/shared';
 import { Package } from './Package';
 
 import { buildOrder } from 'package-build-order';
-import {  PackageBuilder } from './PackageBuilder';
+import { PackageBuilder } from './PackageBuilder';
 import { Collection } from '@radic/core';
 import { PackageCollection } from './PackageCollection';
+import simpleGit, { SimpleGit } from 'simple-git';
 
 export interface MonoRepoOptions {
     rootPackagePath?: string;
     workspaces?: boolean;
     packagePaths?: string[];
 }
+
 export interface MonoRepo extends macro.Proxy<MonoRepo> {}
 
 export class MonoRepo {
@@ -22,10 +24,12 @@ export class MonoRepo {
     pkg: PackageJson;
     packages: PackageCollection;
     readonly hooks = {};
+    git: SimpleGit;
 
     constructor(public options: MonoRepoOptions) {
         this.rootPath = dirname(options.rootPackagePath);
         this.pkg      = readJSONSync(options.rootPackagePath);
+        this.git      = simpleGit(this.rootPath);
         this.handlePackages();
         return macro.proxy(this);
     }
@@ -47,9 +51,9 @@ export class MonoRepo {
 
     path(...parts) {return join(this.rootPath, ...parts); }
 
-    getPackage(name:string):Package{return this.packages.where('name',name).first()}
+    getPackage(name: string): Package {return this.packages.where('name', name).first();}
 
-    get packagesArray():Package[]{return this.packages.toArray<Package>()}
+    get packagesArray(): Package[] {return this.packages.toArray<Package>();}
 
     async getBuilderOrder() {
         let paths = this.packagesArray.map(pkg => [ pkg.name, pkg.packageJsonPath ]).reduce(objectify, {});
@@ -60,7 +64,7 @@ export class MonoRepo {
         return this.packagesArray.map(pkg => [ pkg.name, pkg.builder ]).reduce(objectify, {});
     }
 
-    async getOrderedBuilders():Promise<PackageBuilder[]> {
+    async getOrderedBuilders(): Promise<PackageBuilder[]> {
         let order = await this.getBuilderOrder();
         return order.map(pkgName => this.getPackage(pkgName).builder);
     }

@@ -33,7 +33,9 @@ export declare class Colors {
     getChalkish(): Chalk<Palette>;
     trucolorOptions: Options;
     chain(out?: Output): Chain;
-    getTrucolor(color: string, options?: Options): Trucolor;
+    getTrucolor(color: string, options?: Options): Trucolor & {
+        wrapper(msg: string): string;
+    };
     getColorFromStyle(style: ColorStyle): {
         in: string;
         out: string;

@@ -1,7 +1,8 @@
-import { PackageJson, macro } from '@radic/shared';
+import { macro, PackageJson } from '@radic/shared';
 import { Package } from './Package';
 import { PackageBuilder } from './PackageBuilder';
 import { PackageCollection } from './PackageCollection';
+import { SimpleGit } from 'simple-git';
 export interface MonoRepoOptions {
     rootPackagePath?: string;
     workspaces?: boolean;
@@ -15,6 +16,7 @@ export declare class MonoRepo {
     pkg: PackageJson;
     packages: PackageCollection;
     readonly hooks: {};
+    git: SimpleGit;
     constructor(options: MonoRepoOptions);
     protected handlePackages(): void;
     path(...parts: any[]): string;

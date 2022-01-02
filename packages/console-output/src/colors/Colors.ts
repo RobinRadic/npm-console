@@ -86,9 +86,11 @@ export class Colors {
         return createProxy() as Chain;
     }
 
-    getTrucolor(color: string, options: Options = {}): Trucolor {
+    getTrucolor(color: string, options: Options = {}): Trucolor & {wrapper(msg:string):string} {
         options = { ...this.trucolorOptions, ...options };
-        return trucolor(color, options);
+        let result = trucolor(color, options);
+        result.wrapper = (msg:string) => result.in +msg +result.out;
+        return result;
     }
 
     getColorFromStyle(style: ColorStyle): { in: string, out: string } {

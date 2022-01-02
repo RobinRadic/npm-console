@@ -4,6 +4,7 @@ import { ParsedPath } from 'path';
 import { WatchOptions as WOptions } from 'fs-extra';
 import { ExecSyncOptionsWithStringEncoding } from 'child_process';
 import { macro, PackageJson, TSconfigJson } from '@radic/shared';
+import EventEmitter from 'events';
 import { SyncHook, SyncWaterfallHook } from 'tapable';
 import { Package } from './Package';
 export declare type DirectoryTree = Record<string, DirectoryTreeItem>;
@@ -32,7 +33,7 @@ export interface JsonConfigs {
 }
 export interface PackageBuilder extends macro.Proxy<PackageBuilder> {
 }
-export declare class PackageBuilder {
+export declare class PackageBuilder extends EventEmitter {
     readonly pkg: Package;
     readonly hooks: {
         preWatch: SyncWaterfallHook<[WatchOptions], import("tapable").UnsetAdditionalOptions>;

@@ -48,10 +48,10 @@ export const levels: LogLevels      = {
 };
 export const colors: LogLevelColors = {
     error    : 'red bold',
-    warn     : 'yellow',
-    info     : 'blue dim',
-    success  : 'green',
-    verbose  : 'cyan',
+    warn     : 'yellow bold',
+    info     : 'cyan bold',
+    success  : 'green bold',
+    verbose  : 'cyan dim',
     vverbose : 'cyan bold',
     vvverbose: 'cyan bold underline',
     debug    : 'blue dim italic blackBG',

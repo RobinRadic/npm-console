@@ -44,12 +44,6 @@ export interface MonoConfiguration {
 }
 
 
-declare module '@radic/console-output/types/colors/StyleManager' {
-    export interface Styles {
-
-    }
-}
-
 declare module '@radic/console-output/types/Output' {
     export interface Output {
         info(message: string): this;
@@ -95,31 +89,73 @@ export class MonoServiceProvider extends ServiceProvider {
         const log = this.app.log;
         const dim = (commands: string[]) => commands.map(cmd => `{dim}${cmd}{/dim}`);
         this.app.monoRepo.packagesArray.forEach(pkg => {
-            pkg.colorize = pkg.name.toColor().lighten(0.3,true).getWrapper();
-            pkg.hooks.builder.tap('mono', builder => {
-                builder.hooks.preBuild.tap('mono', (commands) => {
-                    log.info(` ${pkg.coloredName}: Starting build`);
-                    out.info(` ${pkg.coloredName}: Starting build`);
-                    out.line(' ' + dim(commands).join('\n '));
-                    return commands;
+            pkg.colorize = pkg.name.toColor().lighten(0.3, true).getWrapper();
+            pkg.builder.on('build:before', commands => {
+                log.log({
+                    level  : 'info',
+                    message: `Starting Build`,
+                    label  : pkg.coloredName,
                 });
-                builder.hooks.postBuild.tap('mono', (commands) => {
-                    log.info(` ${pkg.coloredName}: Building done`);
-                    out.info(` ${pkg.coloredName}: Building done`);
-                    return commands;
-                });
-                builder.hooks.preClean.tap('mono', (commands) => {
-                    log.info(` ${pkg.coloredName}: Starting clean`);
-                    out.info(` ${pkg.coloredName}: Starting clean`);
-                    out.line(' ' + dim(commands).join('\n '));
-                    return commands;
-                });
-                builder.hooks.postClean.tap('mono', (commands) => {
-                    log.success(` ${pkg.coloredName}: Cleaning done`);
-                    out.success(` ${pkg.coloredName}: Cleaning done`);
-                    return commands;
+                log.verbose('   ' + commands.join('\n   '));
+            });
+            pkg.builder.on('build:after', commands => {
+                log.log({
+                    level  : 'success',
+                    message: `Building done`,
+                    label  : pkg.coloredName,
                 });
             });
+
+            pkg.builder.on('clean:before', commands => {
+                log.log({
+                    level  : 'info',
+                    message: `Starting clean`,
+                    label  : pkg.coloredName,
+                });
+                log.verbose('   ' + commands.join('\n   '));
+            });
+            pkg.builder.on('clean:after', commands => {
+                log.log({
+                    level  : 'success',
+                    message: `Cleaning done`,
+                    label  : pkg.coloredName,
+                });
+            });
+            pkg.builder.on('watch:start', path => {
+                log.log({
+                    level  : 'info',
+                    message: `Watching ${path}`,
+                    label  : pkg.coloredName,
+                });
+            });
+            pkg.builder.on('watch', (path, event, filename) => {
+                log.log({
+                    level  : 'info',
+                    message: `Watched ${filename} ${event}`,
+                    label  : pkg.coloredName,
+                });
+                pkg.builder.clean();
+                pkg.builder.build();
+            });
+
+            // pkg.builder.hooks.preBuild.tap('mono', (commands) => {
+            //     log.info(`${pkg.coloredName} - Starting build`);
+            //     log.verbose(' ' + commands.join('\n '));
+            //     return commands;
+            // });
+            // pkg.builder.hooks.postBuild.tap('mono', (commands) => {
+            //     log.success(`${pkg.coloredName} - Building done`);
+            //     return commands;
+            // });
+            // pkg.builder.hooks.preClean.tap('mono', (commands) => {
+            //     log.info(`${pkg.coloredName} - Starting clean`);
+            //     log.verbose(' ' + commands.join('\n '));
+            //     return commands;
+            // });
+            // pkg.builder.hooks.postClean.tap('mono', (commands) => {
+            //     log.success(`${pkg.coloredName} - Cleaning done`);
+            //     return commands;
+            // });
         });
     }
 
@@ -151,22 +187,34 @@ export class MonoServiceProvider extends ServiceProvider {
     bootMonoRepoMacros() {
         let monoRepo = this.app.get<MonoRepo>('monoRepo');
         monoRepo.macro('build', function (this: MonoRepo, name: string) {
-            this.getPackage(name).builder.build();
+            let b = this.getPackage(name).builder;
+            b.build();
+            return this;
         });
         monoRepo.macro('rebuild', function (this: MonoRepo, name: string) {
-            this.getPackage(name).builder.clean().build();
+            let b = this.getPackage(name).builder;
+            b.clean();
+            b.build();
+            return this;
         });
         monoRepo.macro('watch', function (this: MonoRepo, name: string) {
-            this.getPackage(name).builder.watch();
+            let b = this.getPackage(name).builder;
+            b.watch();
+            return this;
         });
         monoRepo.macro('clean', function (this: MonoRepo, name: string) {
-            this.getPackage(name).builder.clean();
+            let b = this.getPackage(name).builder;
+            b.clean();
+            return this;
         });
         monoRepo.macro('buildAll', function (this: MonoRepo) {
             this.packages.each(pkg => pkg.builder.build());
         });
         monoRepo.macro('rebuildAll', function (this: MonoRepo) {
-            this.packages.each(pkg => pkg.builder.clean().build());
+            this.packages.each(pkg => {
+                pkg.builder.clean();
+                pkg.builder.build();
+            });
         });
         monoRepo.macro('watchAll', function (this: MonoRepo) {
             this.packages.each(pkg => pkg.builder.watch());

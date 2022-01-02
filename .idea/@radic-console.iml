@@ -39,7 +39,6 @@
       <excludeFolder url="file://$MODULE_DIR$/apps/mono-cli/lib" />
       <excludeFolder url="file://$MODULE_DIR$/apps/mono-cli/types" />
       <excludeFolder url="file://$MODULE_DIR$/packages/shared/types" />
-      <excludeFolder url="file://$MODULE_DIR$/packages/console-output/types" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

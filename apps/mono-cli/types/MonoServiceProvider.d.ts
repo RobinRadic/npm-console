@@ -42,7 +42,7 @@ export declare class MonoServiceProvider extends ServiceProvider {
     load(): void;
     register(): void;
     boot(): void;
-    hookPackageBuilders(): void;
+    bootLogMessages(): void;
     bootOutputMacros(): void;
     bootMonoRepoMacros(): void;
 }

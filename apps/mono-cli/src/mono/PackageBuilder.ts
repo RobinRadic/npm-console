@@ -1,5 +1,5 @@
 import { existsSync, FSWatcher, Stats, statSync, watch, WatchEventType } from 'fs';
-import { basename, dirname, isAbsolute, join, parse, ParsedPath, relative } from 'path';
+import { isAbsolute, join, parse, ParsedPath, relative } from 'path';
 import assert from 'assert';
 import { readJSONSync, WatchOptions as WOptions } from 'fs-extra';
 import { debounce } from 'lodash-decorators';
@@ -11,7 +11,8 @@ import { macro, PackageJson, TSconfigJson } from '@radic/shared';
 import EventEmitter from 'events';
 import { SyncHook, SyncWaterfallHook } from 'tapable';
 import { Package } from './Package';
-import which from 'npm-which'
+import which from 'npm-which';
+
 export type DirectoryTree = Record<string, DirectoryTreeItem>;
 
 export interface DirectoryTreeItem {
@@ -44,7 +45,8 @@ export interface FStat extends Stats, ParsedPath {
     path: string;
     type: FStatType;
 }
-const getFstatsType           = (stats: Stats): FStatType => {
+
+const getFstatsType = (stats: Stats): FStatType => {
     if ( stats.isFile() ) return 'file';
     if ( stats.isDirectory() ) return 'dir';
     if ( stats.isBlockDevice() ) return 'block';
@@ -54,12 +56,11 @@ const getFstatsType           = (stats: Stats): FStatType => {
     if ( stats.isSocket() ) return 'socket';
     throw new Error('Not a recognized filesystem type');
 };
-const toFSStats               = (path: string, stats?: Stats): FStat => {
+const toFSStats     = (path: string, stats?: Stats): FStat => {
     stats = stats || statSync(path);
     Object.assign<Stats, Partial<FStat>>(stats, { path, ...parse(path), type: getFstatsType(stats) });
     return stats as FStat;
 };
-
 
 
 export interface JsonConfigs {
@@ -67,6 +68,7 @@ export interface JsonConfigs {
     tsconfig: TSconfigJson,
     tsconfigBuild: TSconfigJson
 }
+
 const root                    = (...parts) => join(__dirname, '..', '..', ...parts);
 const resolvePath             = (path: string) => isAbsolute(path) ? path : join(process.cwd(), path);
 const hasNodePackage          = (path: string) => existsSync(join(path, 'package.json'));
@@ -82,27 +84,30 @@ const getJsonConfigs          = (path: string): JsonConfigs => {
     };
     return configs;
 };
+
 export interface PackageBuilder extends macro.Proxy<PackageBuilder> {}
 
 export class PackageBuilder extends EventEmitter {
     readonly hooks = {
-        preWatch  : new SyncWaterfallHook<[ WatchOptions ]>([ 'watchOptions' ]),
-        watch     : new SyncHook<[ string, WatchEventType, string ]>([ 'path', 'event', 'filename' ]),
-        watchClose: new SyncHook<string>([ 'path' ]),
-        watchError: new SyncHook<[ string, Error ]>([ 'path', 'error' ]),
-        watching  : new SyncHook<[ string, FSWatcher ]>([ 'path', 'watcher' ]),
-        preBuild  : new SyncWaterfallHook<[ string[] ]>([ 'commands' ]),
-        postBuild : new SyncHook<[ string[] ]>([ 'commands' ]),
-        build     : new SyncHook<[ string, string ]>([ 'command', 'output' ]),
-        preClean  : new SyncWaterfallHook<[ string[] ]>([ 'commands' ]),
-        postClean : new SyncHook<[ string[] ]>([ 'commands' ]),
-        clean     : new SyncHook<[ string, string ]>([ 'command', 'output' ]),
-        exec      : new SyncWaterfallHook<[ ExecSyncOptionsWithStringEncoding ]>([ 'options' ]),
+        preWatch   : new SyncWaterfallHook<[ WatchOptions ]>([ 'watchOptions' ]),
+        watch      : new SyncHook<[ string, WatchEventType, string ]>([ 'path', 'event', 'filename' ]),
+        watchClose : new SyncHook<string>([ 'path' ]),
+        watchError : new SyncHook<[ string, Error ]>([ 'path', 'error' ]),
+        watching   : new SyncHook<[ string, FSWatcher ]>([ 'path', 'watcher' ]),
+        preBuild   : new SyncWaterfallHook<[ string[] ]>([ 'commands' ]),
+        postBuild  : new SyncHook<[ string[] ]>([ 'commands' ]),
+        build      : new SyncHook<[ string, string ]>([ 'command', 'output' ]),
+        preClean   : new SyncWaterfallHook<[ string[] ]>([ 'commands' ]),
+        postClean  : new SyncHook<[ string[] ]>([ 'commands' ]),
+        prePublish : new SyncWaterfallHook<[ string[] ]>([ 'commands' ]),
+        postPublish: new SyncHook<[ string[] ]>([ 'commands' ]),
+        clean      : new SyncHook<[ string, string ]>([ 'command', 'output' ]),
+        exec       : new SyncWaterfallHook<[ ExecSyncOptionsWithStringEncoding ]>([ 'options' ]),
     };
     protected log: (...args) => any;
 
     constructor(public readonly pkg: Package) {
-        super()
+        super();
         debug.formatters.t = v => {
             let date       = new Date(Date.now());
             let timestring = [ date.getHours(), date.getMinutes(), date.getSeconds() ].join(':');
@@ -137,21 +142,21 @@ export class PackageBuilder extends EventEmitter {
             const watcher = this.watchers[ path ] = watch(join(this.pkg.path, path), options.watchOptions, (event, filename) => {
                 this.log('Watched', filename, event);
                 this.hooks.watch.call(path, event, filename);
-                this.emit('watch',path,event,filename)
+                this.emit('watch', path, event, filename);
             });
             watcher.on('error', (error) => {
                 this.log('Watch error:', error);
                 this.hooks.watchError.call(path, error);
-                this.emit('watch:error',path,error)
+                this.emit('watch:error', path, error);
             });
             watcher.on('close', () => {
                 this.log('Closing watch');
                 delete this.watchers[ path ];
                 this.hooks.watchClose.call(path);
-                this.emit('watch:close',path)
+                this.emit('watch:close', path);
             });
             this.log('Watching ', path);
-            this.emit('watch:start',path)
+            this.emit('watch:start', path);
             this.hooks.watching.call(path, watcher);
         });
 
@@ -166,16 +171,16 @@ export class PackageBuilder extends EventEmitter {
         this.log('%t Starting build');
         let commands = [ 'tsc --project tsconfig.build.json' ];
         commands     = this.hooks.preBuild.call(commands);
-        this.emit('build:before',commands)
+        this.emit('build:before', commands);
         for ( const command of commands ) {
             this.log('%t Calling', command);
             const output = this.exec(command);
             this.log('%t Called', command, 'output', output);
             this.hooks.build.call(command, output);
-            this.emit('build',commands,output)
+            this.emit('build', commands, output);
         }
         this.hooks.postBuild.call(commands);
-        this.emit('build:after',commands)
+        this.emit('build:after', commands);
         this.log('%t Build finished');
         return this;
     }
@@ -188,36 +193,51 @@ export class PackageBuilder extends EventEmitter {
         this.log('%t Cleaning up');
         let commands = [ 'rm -rf lib/ types/', 'rimraf src/**/*.{js,js.map,d.ts}' ];
         commands     = this.hooks.preClean.call(commands);
-        this.emit('clean:before',commands)
+        this.emit('clean:before', commands);
         for ( const command of commands ) {
             this.log('%t Calling', command);
             const output = this.exec(command);
             this.log('%t Called', command, 'output', output);
             this.hooks.clean.call(command, output);
-            this.emit('clean',command,output)
+            this.emit('clean', command, output);
         }
         this.hooks.postClean.call(commands);
-        this.emit('clean:after',commands)
+        this.emit('clean:after', commands);
         this.log('Cleaned up');
         return this;
 
     }
 
-    protected exec(command: string): string {
+    publish() {
+        let commands = [ 'npm publish' ];
+        commands     = this.hooks.prePublish.call(commands);
+        this.emit('publish:before', commands);
+        for ( const command of commands ) {
+            const output = this.exec(command, false);
+            this.emit('publish', command, output);
+        }
+        this.hooks.postPublish.call(commands);
+        this.emit('publish:after', commands);
+        return this;
+    }
+
+    protected exec(command: string, silent: boolean = true): string {
         try {
-            let silence = ' &>/dev/null';
-            let env=process.env
-            let segments=command.split(' ');
-            let  cmd = segments[0]
-            cmd = which.sync(cmd,{env,cwd:'/'})
-            segments[0] = cmd;
-            segments.push(silence)
-            command = segments.join(' ')
-            let execOptions: ExecSyncOptionsWithStringEncoding = { cwd: this.pkg.path, encoding: 'utf-8',shell:'bash',env};
+            let silence   = ' &>/dev/null';
+            let env       = process.env;
+            let segments  = command.split(' ');
+            let cmd       = segments[ 0 ];
+            cmd           = which.sync(cmd, { env, cwd: '/' });
+            segments[ 0 ] = cmd;
+            if ( silent ) {
+                segments.push(silence);
+            }
+            command                                            = segments.join(' ');
+            let execOptions: ExecSyncOptionsWithStringEncoding = { cwd: this.pkg.path, encoding: 'utf-8', shell: 'bash', env };
             return execSync(command, execOptions).toString();
         } catch (e) {
-            if(!command.startsWith('npx')){
-                this.exec('npx ' + command)
+            if ( !command.startsWith('npx') ) {
+                this.exec('npx ' + command);
             } else {
                 console.error(`Error while executing: ${command}`, e);
             }

@@ -46,6 +46,8 @@ export declare class PackageBuilder extends EventEmitter {
         build: SyncHook<[string, string], void, import("tapable").UnsetAdditionalOptions>;
         preClean: SyncWaterfallHook<[string[]], import("tapable").UnsetAdditionalOptions>;
         postClean: SyncHook<[string[]], void, import("tapable").UnsetAdditionalOptions>;
+        prePublish: SyncWaterfallHook<[string[]], import("tapable").UnsetAdditionalOptions>;
+        postPublish: SyncHook<[string[]], void, import("tapable").UnsetAdditionalOptions>;
         clean: SyncHook<[string, string], void, import("tapable").UnsetAdditionalOptions>;
         exec: SyncWaterfallHook<[ExecSyncOptionsWithStringEncoding], import("tapable").UnsetAdditionalOptions>;
     };
@@ -57,5 +59,6 @@ export declare class PackageBuilder extends EventEmitter {
     watch(): this;
     build(): this;
     clean(): this;
-    protected exec(command: string): string;
+    publish(): this;
+    protected exec(command: string, silent?: boolean): string;
 }

@@ -81,13 +81,11 @@ export class MonoServiceProvider extends ServiceProvider {
     boot() {
         this.bootOutputMacros();
         this.bootMonoRepoMacros();
-        this.hookPackageBuilders();
+        this.bootLogMessages();
     }
 
-    hookPackageBuilders() {
-        const out = this.app.output;
+    bootLogMessages() {
         const log = this.app.log;
-        const dim = (commands: string[]) => commands.map(cmd => `{dim}${cmd}{/dim}`);
         this.app.monoRepo.packagesArray.forEach(pkg => {
             pkg.colorize = pkg.name.toColor().lighten(0.3, true).getWrapper();
             pkg.builder.on('build:before', commands => {
@@ -105,7 +103,6 @@ export class MonoServiceProvider extends ServiceProvider {
                     label  : pkg.coloredName,
                 });
             });
-
             pkg.builder.on('clean:before', commands => {
                 log.log({
                     level  : 'info',
@@ -137,25 +134,21 @@ export class MonoServiceProvider extends ServiceProvider {
                 pkg.builder.clean();
                 pkg.builder.build();
             });
-
-            // pkg.builder.hooks.preBuild.tap('mono', (commands) => {
-            //     log.info(`${pkg.coloredName} - Starting build`);
-            //     log.verbose(' ' + commands.join('\n '));
-            //     return commands;
-            // });
-            // pkg.builder.hooks.postBuild.tap('mono', (commands) => {
-            //     log.success(`${pkg.coloredName} - Building done`);
-            //     return commands;
-            // });
-            // pkg.builder.hooks.preClean.tap('mono', (commands) => {
-            //     log.info(`${pkg.coloredName} - Starting clean`);
-            //     log.verbose(' ' + commands.join('\n '));
-            //     return commands;
-            // });
-            // pkg.builder.hooks.postClean.tap('mono', (commands) => {
-            //     log.success(`${pkg.coloredName} - Cleaning done`);
-            //     return commands;
-            // });
+            pkg.builder.on('publish:before', commands => {
+                log.log({
+                    level  : 'info',
+                    message: `Publishing`,
+                    label  : pkg.coloredName,
+                });
+                log.verbose('   ' + commands.join('\n   '));
+            });
+            pkg.builder.on('publish:after', commands => {
+                log.log({
+                    level  : 'success',
+                    message: `Published`,
+                    label  : pkg.coloredName,
+                });
+            });
         });
     }
 

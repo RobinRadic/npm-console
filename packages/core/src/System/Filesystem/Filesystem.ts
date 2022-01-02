@@ -130,6 +130,9 @@ export class Filesystem {
     }
 
     static ensureDirectoryExists(path: string, mode: number = 755, recursive: boolean = true) {
+        if(this.isFile(path)){
+            path = dirname(path)
+        }
         if ( this.isDirectory(path) ) {
             return true;
         }

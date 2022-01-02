@@ -35,9 +35,13 @@
         "@radic/core": "^1.0.0",
         "@radic/shared": "^1.0.0",
         "@types/npm-which": "^3.0.1",
+        "@types/semver": "^7.3.9",
+        "@types/slug": "^5.0.3",
         "@types/tapable": "^2.2.2",
         "npm-which": "^3.0.1",
+        "semver": "^7.3.5",
         "simple-git": "^2.48.0",
+        "slug": "^5.2.0",
         "tapable": "^2.2.1"
     },
     "devDependencies": {

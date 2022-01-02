@@ -1,7 +1,7 @@
 {
     "name": "multi-package-json-manager",
     "private": false,
-    "version": "1.0.3",
+    "version": "1.0.7",
     "description": "Manage and update multiple package.json files. Useful for monorepos among other things",
     "author": {
         "name": "Robin Radic",
@@ -20,7 +20,6 @@
         "clean:test": "rm -rf .nyc-output/",
         "clean:yarn": "rm yarn.lock node_modules/",
         "docs:api": "rm -rf docs/api && node ../../typedoc.js",
-        "prepublish": "npm-run-all clean:build test build",
         "release": "yarn login && np --yolo --no-yarn",
         "start": "npm-run-all clean:build test build",
         "pretest": "yarn clean:test",

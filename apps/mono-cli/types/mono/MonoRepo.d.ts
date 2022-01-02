@@ -25,4 +25,5 @@ export declare class MonoRepo {
     getBuilderOrder(): Promise<string[]>;
     get builders(): Record<string, PackageBuilder>;
     getOrderedBuilders(): Promise<PackageBuilder[]>;
+    commitAll(message?: string): Promise<boolean>;
 }

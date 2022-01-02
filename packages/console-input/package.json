@@ -19,7 +19,6 @@
         "clean:test": "rm -rf .nyc-output/",
         "clean:yarn": "rm yarn.lock node_modules/",
         "docs:api": "rm -rf docs/api && node ../../typedoc.js",
-        "prepublish": "npm-run-all clean:build build",
         "release": "yarn login && np --yolo --no-yarn",
         "start": "npm-run-all clean:build build",
         "pretest": "yarn clean:test",

@@ -1,4 +1,4 @@
-import { ServiceProvider } from '@radic/shared';
+import { ServiceProvider, wait } from '@radic/shared';
 import { MonoRepoOptions } from './mono';
 import { MonoRepo } from './mono/MonoRepo';
 import { Output } from '@radic/console-output';
@@ -125,13 +125,14 @@ export class MonoServiceProvider extends ServiceProvider {
                     label  : pkg.coloredName,
                 });
             });
-            pkg.builder.on('watch', (path, event, filename) => {
+            pkg.builder.on('watch', async(path, event, filename) => {
                 log.log({
                     level  : 'info',
                     message: `Watched ${filename} ${event}`,
                     label  : pkg.coloredName,
                 });
                 pkg.builder.clean();
+                await wait(1000)
                 pkg.builder.build();
             });
             pkg.builder.on('publish:before', commands => {

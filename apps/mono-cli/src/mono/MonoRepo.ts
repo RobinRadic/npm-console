@@ -71,7 +71,7 @@ export class MonoRepo {
 
     async commitAll(message:string='upd'){
         const status = await this.git.status();
-        const files  = [].concat(status.not_added).concat(status.created).concat(status.deleted).concat(status.modified).concat(status.staged);
+        const files  = [].concat(status.not_added).concat(status.created).concat(status.modified)
         await this.git.add(files)
         await this.git.commit(message)
         return true;

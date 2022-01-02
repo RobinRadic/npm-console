@@ -15,12 +15,11 @@
     "scripts": {
         "build": "yarn clean:build && tsc --project tsconfig.build.json",
         "clean:build": "rm -rf lib/ types/",
-        "clean:src": "rimraf src/**/*.{js,js.map,d.ts}",
         "clean:docs:api": "rm -rf docs/api",
+        "clean:src": "rimraf src/**/*.{js,js.map,d.ts}",
         "clean:test": "rm -rf .nyc-output/",
         "clean:yarn": "rm yarn.lock node_modules/",
         "docs:api": "rm -rf docs/api && node ../../typedoc.js",
-        "prepublish": "npm-run-all clean:build build",
         "release": "yarn login && np --yolo --no-yarn",
         "start": "npm-run-all clean:build test build",
         "pretest": "yarn clean:test",

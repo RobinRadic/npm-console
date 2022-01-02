@@ -208,6 +208,7 @@ export class PackageBuilder extends EventEmitter {
 
     }
 
+
     publish() {
         let commands = [ 'npm publish' ];
         commands     = this.hooks.prePublish.call(commands);

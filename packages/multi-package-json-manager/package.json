@@ -1,7 +1,7 @@
 {
     "name": "multi-package-json-manager",
     "private": false,
-    "version": "1.0.7",
+    "version": "1.0.8",
     "description": "Manage and update multiple package.json files. Useful for monorepos among other things",
     "author": {
         "name": "Robin Radic",

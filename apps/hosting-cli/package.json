@@ -1,6 +1,6 @@
 {
     "name": "@radic/hosting-cli",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "scripts": {
         "generate-nginx-types": "ts-node  scripts/nginx-types-generator.ts",
         "clean": "rm -rf lib",

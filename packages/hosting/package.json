@@ -1,7 +1,7 @@
 {
     "name": "@radic/hosting",
     "private": false,
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Manage and update multiple package.json files. Useful for monorepos among other things",
     "author": {
         "name": "Robin Radic",

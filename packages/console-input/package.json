@@ -1,7 +1,7 @@
 {
     "name": "@radic/console-input",
     "private": false,
-    "version": "1.10.0",
+    "version": "1.10.1",
     "description": "const filePath = await Ask.fileTree('A simple way to ask questions. Uses inquirer, integrates 10+ peer deps third party prompts.')",
     "author": {
         "name": "Robin Radic",

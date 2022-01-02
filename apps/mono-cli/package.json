@@ -1,7 +1,7 @@
 {
     "name": "@radic/mono-cli",
     "private": false,
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "mono-cli",
     "author": {
         "name": "Robin Radic",
@@ -20,7 +20,6 @@
         "clean:test": "rm -rf .nyc-output/",
         "clean:yarn": "rm yarn.lock node_modules",
         "docs:api": "rm -rf docs/api && node ../../../typedoc.js",
-        "prepublish": "npm-run-all clean:build test build",
         "release": "yarn login && np --yolo --no-yarn",
         "start": "npm-run-all clean:build test build",
         "pretest": "yarn clean:test",

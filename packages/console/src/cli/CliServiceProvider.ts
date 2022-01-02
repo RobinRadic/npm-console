@@ -1,45 +1,8 @@
 import { isFunction, isPromise, isString, objectify, ServiceProvider } from '@radic/shared';
-import { Argv } from 'yargs';
 import { AsyncSeriesHook, AsyncSeriesWaterfallHook, SyncHook, SyncWaterfallHook } from 'tapable';
 import cli, { Cli } from './Cli';
 import { Command } from '../decorators/decorator';
 import { Args, OptionDefinition } from '../yargs';
-declare module '@radic/core/types/Foundation/Application' {
-    export interface Hooks {
-        cli: {
-            setup: AsyncSeriesHook<Cli>
-            argv: SyncWaterfallHook<string[]>
-            args: AsyncSeriesWaterfallHook<Args>
-            command: {
-                options: SyncWaterfallHook<Record<string, OptionDefinition>>
-                handler: SyncHook<[ Command, any[] ]>
-                constructor: SyncHook<Command>
-                builder: SyncHook<[ Command, Cli ]>
-                decorator: SyncHook<any>
-                command: AsyncSeriesWaterfallHook<typeof Command>
-            }
-        };
-    }
-
-    export interface Bindings {
-        'cli': Argv,
-        'cli.start': CliStart
-        'cli.setup': CliSetup
-        'cli.customize': CliCustomize
-    }
-
-    export interface Application {
-        cli: Cli;
-        cliStart: CliStart;
-        cliCustomize: CliCustomize;
-    }
-}
-declare module '@radic/core/types/types/config' {
-
-    export interface Configuration {
-        cli?: CliOptions;
-    }
-}
 
 declare module './types' {
     export interface GlobalOptions {
@@ -55,7 +18,7 @@ declare module './types' {
 export interface CliOptions {
     commandDir: string;
     maxWidth?: number | false;
-    setup?:(cli:Cli) => any
+    setup?: (cli: Cli) => any;
 }
 
 export interface CliArguments {
@@ -67,7 +30,7 @@ export type CliSetup = (cli: Cli) => Promise<Cli>
 export type CliStart = <T extends CliArguments = CliArguments>() => Promise<CliStartReturn<T>>
 export type CliStartReturn<T extends CliArguments = CliArguments> = { [key in keyof Args<T>]: Args<T>[key] }
 
-function getLocaleStrings(locale:any, out: any) {
+function getLocaleStrings(locale: any, out: any) {
     function transform(obj) {
         return Object.entries(obj).map(([ key, value ]) => {
             if ( isString(value) ) {
@@ -95,12 +58,12 @@ export class CliServiceProvider extends ServiceProvider {
                     commandDir: {
                         type: 'string',
                     },
-                    maxWidth: {
+                    maxWidth  : {
                         type: 'number',
                     },
-                    setup: {
-                        type: 'object'
-                    }
+                    setup     : {
+                        type: 'object',
+                    },
                 },
                 required  : [ 'commandDir' ],
             },
@@ -141,21 +104,22 @@ export class CliServiceProvider extends ServiceProvider {
             return async (cli: Cli) => {
                 let { maxWidth } = this.app.config.cli;
                 cli
+                .commandos(this.app.config.cli.commandDir)
                 .version(false)
-                .commandDir(this.app.config.cli.commandDir, {
-                    extensions: [ 'ts', 'js' ],
-                    exclude: path => path.endsWith('d.ts'),
-                    visit     : (commandObject, pathToFile, filename) => {
-                        return new commandObject.default();
-                    },
-                })
+                // .commandDir(this.app.config.cli.commandDir, {
+                //     extensions: [ 'ts', 'js' ],
+                //     exclude: path => path.endsWith('d.ts'),
+                //     visit     : (commandObject, pathToFile, filename) => {
+                //         return new commandObject.default();
+                //     },
+                // })
                 .demandCommand()
                 .parserConfiguration({
                     'dot-notation': false,
-                })
+                });
                 if ( this.app.isBound('output') ) {
                     const locale = require('../../yargs/locale.json');
-                    cli.updateStrings(getLocaleStrings(locale,this.app.get('output')));
+                    cli.updateStrings(getLocaleStrings(locale, this.app.get('output')));
                 }
                 if ( maxWidth !== false && cli.terminalWidth() > maxWidth ) {
                     cli.wrap(maxWidth);
@@ -163,13 +127,13 @@ export class CliServiceProvider extends ServiceProvider {
                 } else {
                     this.app.instance('cli.wrap', cli.terminalWidth());
                 }
-                if(this.app.config.has('cli.setup')){
-                    let cliSetup = this.app.config.get('cli.setup')
-                    if(isFunction(cliSetup)){
-                        if(isPromise(cliSetup)){
-                            await cliSetup(cli)
+                if ( this.app.config.has('cli.setup') ) {
+                    let cliSetup = this.app.config.get('cli.setup');
+                    if ( isFunction(cliSetup) ) {
+                        if ( isPromise(cliSetup) ) {
+                            await cliSetup(cli);
                         } else {
-                            cliSetup(cli)
+                            cliSetup(cli);
                         }
                     }
                 }
@@ -189,11 +153,13 @@ export class CliServiceProvider extends ServiceProvider {
     protected registerStartCli() {
         this.app.bind('cli.start').toFactory((ctx) => {
             return async () => {
-                const cli:Cli   = ctx.container.get('cli');
-                const setup:CliSetup = ctx.container.get('cli.setup');
+                const cli: Cli        = ctx.container.get('cli');
+                const setup: CliSetup = ctx.container.get('cli.setup');
                 await setup(cli);
                 try {
-                    let args = await cli.parse();
+                    let args = await cli.parseAsync(process.argv.slice(2),{
+
+                    });
                     args     = await this.app.hooks.cli.args.promise(args);
                     return args;
                 } catch (e) {

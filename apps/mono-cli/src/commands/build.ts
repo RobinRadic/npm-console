@@ -2,11 +2,11 @@ import { arg, command, option } from '@radic/console';
 import { Command } from '../Command';
 
 
-@command('build', 'Build package(s)')
+@command('build [name]', 'Build package(s)',['b'])
 export default class extends Command {
     @option('a', 'All') all: boolean;
 
-    async handle(@arg('Name of the package') name?: string) {
+    async handle(name?: string) {
         if ( this.all ) {
             this.monoRepo.buildAll();
         } else {

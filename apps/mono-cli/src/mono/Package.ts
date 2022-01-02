@@ -5,6 +5,7 @@ import { JsonConfigs, PackageBuilder } from './PackageBuilder';
 import { SyncHook } from 'tapable';
 import { existsSync } from 'fs';
 import assert from 'assert';
+import { Color,ColorWrapper } from '@radic/console-output';
 
 const hasNodePackage          = (path: string) => existsSync(join(path, 'package.json'));
 const hasTypecriptConfig      = (path: string) => existsSync(join(path, 'tsconfig.json'));
@@ -25,6 +26,8 @@ export class Package {
     tsconfigBuild: TSconfigJson;
     basename: string;
     #builder: PackageBuilder;
+    colorize:ColorWrapper
+    get coloredName(){return this.colorize(this.pkg.name)  }
     readonly hooks = {
         builder: new SyncHook<[ PackageBuilder ]>([ 'builder' ]),
     };

@@ -2,7 +2,7 @@ import { arg, command, option } from '@radic/console';
 import { Command } from '../Command';
 
 
-@command('watch', 'Watch package(s)')
+@command('watch', 'Watch package(s)',['w'])
 export default class extends Command {
     @option('a', 'All') all: boolean;
 

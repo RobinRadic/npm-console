@@ -1,18 +1,21 @@
 import { MacroProxy, macroProxy } from './utils';
-import { Chain, Colors, FiguresParser, StyleManager, StyleName, StyleParser } from './colors';
+import { Chain, Color, Colors, FiguresParser, StyleManager, StyleName, StyleParser } from './colors';
 import { Figures, IParser, OutputOptions } from './interfaces';
 import { inspect } from 'util';
 import { figures } from './figures';
 import { Ui } from './ui';
 import { merge } from 'lodash';
 import { IconGenerator } from './utils/IconGenerator';
+import { color } from 'csx/lib/color';
+import { ColorProperty } from 'csstype';
+import { addToGlobalPrototypes } from './addToGlobalPrototypes';
 
 export interface Output extends MacroProxy<Output> {
 
 }
 
 export class Output {
-    public stdin: NodeJS.ReadableStream = process.stdin;
+    public stdin: NodeJS.ReadableStream  = process.stdin;
     public stdout: NodeJS.WritableStream = process.stdout;
     public stderr: NodeJS.WritableStream = process.stderr;
 
@@ -28,6 +31,7 @@ export class Output {
         colors        : true,
         resetOnNewline: true,
         inspect       : { showHidden: true, depth: 10 },
+        addToGlobalPrototypes: true,
         styles        : {
             title   : 'yellow bold',
             subtitle: 'yellow',
@@ -40,8 +44,11 @@ export class Output {
     constructor(public readonly options: OutputOptions = {}) {
         this.options = merge({}, new.target.defaultOptions, options);
         this.addDefaultParsers();
-        this.ui   = new Ui(this);
+        this.ui = new Ui(this);
         Object.entries(this.options.styles).forEach(([ k, v ]) => this.styles.setStyle(k, v));
+        if(this.options.addToGlobalPrototypes){
+            addToGlobalPrototypes(this);
+        }
         return macroProxy(this);
     }
 
@@ -62,17 +69,16 @@ export class Output {
 
     get chain(): Chain {return this.colors.chain(this);}
 
-    styled(name:StyleName, text:string, returns:true)
-    styled(name:StyleName, text:string)
-    styled(...args)
-    {
-        const name:StyleName = args[0]
-        const text:string = args[1]
-        const returns:boolean = args[2] || false;
+    styled(name: StyleName, text: string, returns: true)
+    styled(name: StyleName, text: string)
+    styled(...args) {
+        const name: StyleName  = args[ 0 ];
+        const text: string     = args[ 1 ];
+        const returns: boolean = args[ 2 ] || false;
 
-        const {in:start,out} = this.colors.color(name as string);
-        const result = `${start}${text}${out}`;
-        if(returns) return result;
+        const { in: start, out } = this.colors.color(name as string);
+        const result             = `${start}${text}${out}`;
+        if ( returns ) return result;
         this.line(result);
         return this;
     }
@@ -110,6 +116,10 @@ export class Output {
     dump(...args: any[]): this {
         args.forEach(arg => this.line(inspect(arg, { ...this.options.inspect, colors: this.options.colors })));
         return this;
+    }
+
+    color(property: ColorProperty):Color {
+        return Color.make(property);
     }
 
     // @formatter:off

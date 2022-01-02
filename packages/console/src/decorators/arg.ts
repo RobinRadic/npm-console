@@ -1,6 +1,8 @@
+///<reference types="@radic/console-output"/>
+
 import { PositionalDefinition } from '../yargs';
 import { reflectParams } from '@radic/shared';
-
+import { app } from '@radic/core';
 
 export interface ArgumentDefinition {
     index: number,

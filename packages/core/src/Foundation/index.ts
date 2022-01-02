@@ -6,7 +6,7 @@ import { Application, Bindings } from './Application';
 export { Application, Bindings, ExitCode, ConfigPart, GetServiceIdentifier, Hooks, Paths, StartFn } from './Application';
 
 
-export const app = Application.instance;
+export const app:Application = Application.instance;
 
 const { lazyInject }                                                                                   = getDecorators(app);
 export const inject: (serviceIdentifier: keyof Bindings | string) => (proto: any, key: string) => void = lazyInject as any;

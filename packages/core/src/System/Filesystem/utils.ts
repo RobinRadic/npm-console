@@ -1,4 +1,4 @@
-import { accessSync, constants, existsSync, statSync } from 'fs';
+import { accessSync, constants, existsSync, Stats, statSync } from 'fs';
 import { DiskCollection } from './DiskCollection';
 import { blockDevices, diskLayout, fsSize, Systeminformation } from 'systeminformation';
 import { Disk } from './Disk';
@@ -75,8 +75,14 @@ export async function resolveDisks() {
     return disks;
 }
 
-export const toStatType = (path: string): StatTypeName => {
-    let stat = statSync(path);
+
+export const toStatType = (pathOrStat: string|Stats): StatTypeName => {
+    let stat:Stats
+    if(typeof pathOrStat === 'string') {
+        stat = statSync(pathOrStat);
+    } else {
+        stat = pathOrStat
+    }
     if ( stat.isFile() ) return 'file';
     if ( stat.isDirectory() ) return 'dir';
     if ( stat.isBlockDevice() ) return 'block';

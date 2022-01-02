@@ -7,10 +7,20 @@ import { EnvPaths } from '../Support';
 import { Constructor, IServiceProvider, IServiceProviderClass, PackageJson, ServiceProvider } from '@radic/shared';
 import { ApplicationInitOptions, Configuration } from '../types';
 import { JSONSchema7 } from 'json-schema';
+import { SyncWaterfallHook } from 'tapable';
 import ServiceIdentifier = interfaces.ServiceIdentifier;
 import BindingInWhenOnSyntax = interfaces.BindingInWhenOnSyntax;
 export declare type GetServiceIdentifier<T> = keyof Bindings | interfaces.ServiceIdentifier<T>;
 export interface Hooks {
+    initializeDefaultConfig: SyncWaterfallHook<[Configuration]>;
+    initialize: SyncWaterfallHook<[ApplicationInitOptions]>;
+    loadProviders: SyncWaterfallHook<[IServiceProviderClass[]]>;
+    loadProvider: SyncWaterfallHook<[IServiceProviderClass, string]>;
+    provider: SyncWaterfallHook<[IServiceProvider, string]>;
+    error: SyncWaterfallHook<[Error | string]>;
+    errorMessage: SyncWaterfallHook<[string]>;
+    start: SyncWaterfallHook<[(...args: any[]) => Promise<any>]>;
+    exit: SyncWaterfallHook<[ExitCode]>;
 }
 export interface Bindings {
     events: Dispatcher;

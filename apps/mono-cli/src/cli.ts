@@ -1,24 +1,27 @@
 import { join } from 'path';
 import { InputServiceProvider } from '@radic/console-input';
-import { macros, OutputServiceProvider } from '@radic/console-output';
+import { LogServiceProvider, macros, OutputServiceProvider } from '@radic/console-output';
 import { Application, Configuration, CoreServiceProvider } from '@radic/core';
 import { CliServiceProvider, CliStartReturn } from '@radic/console';
-import { MonoServiceProvider, MonoConfiguration } from './MonoServiceProvider';
+import { MonoConfiguration, MonoServiceProvider } from './MonoServiceProvider';
 import { merge } from 'lodash';
 
+export const app      = Application.instance;
 
-export async function bootApp(options:MonoConfiguration) {
+export async function bootApp(options: MonoConfiguration) {
     let commandDir = join(__dirname, 'commands');
-    const app      = Application.instance;
-app.events.on('Application:initialize:defaultConfig',(defaultConfig:Configuration) => {
-    merge<Configuration,Configuration>(defaultConfig, {
-        mono: {
-            options: {
-                workspaces
-            }
-        }
-    })
-})
+
+
+    app.hooks.initializeDefaultConfig.tap('mono', (defaultConfig: Configuration) => {
+        return merge<Configuration, Configuration,Configuration>({}, defaultConfig, {
+            mono: {
+                options: {
+                    workspaces: true,
+                },
+            },
+        });
+    });
+
     await app.initialize({
         dirname  : process.cwd(),
         providers: [
@@ -26,26 +29,21 @@ app.events.on('Application:initialize:defaultConfig',(defaultConfig:Configuratio
             CliServiceProvider,
             InputServiceProvider,
             OutputServiceProvider,
-            MonoServiceProvider
+            MonoServiceProvider,
+            LogServiceProvider,
         ],
         config   : {
+            debug:true,
             cli    : {
                 commandDir,
                 setup: cli => cli
-                .scriptName('mono-cli')
+                .globalHelp('h', 'Show this help')
+                .useVerbosity(3)
+                .scriptName('mono')
                 .parserConfiguration({
                     'boolean-negation': true,
                     'negation-prefix' : 'no-',
                     'dot-notation'    : false,
-                })
-                .help('h', 'Show Help').alias('h', 'help')
-                .option('V', { type: 'boolean', alias: 'version', global: false })
-                .option('v', {
-                    alias : 'verbose',
-                    desc  : 'Increase output verbosity up to 3 times. Eg: -v -vv -vvv',
-                    count : true,
-                    global: true,
-                    group : app.output.parse('{bold}Global Options:{/bold}'),
                 })
                 .epilog(app.output.parse(epilog))
                 .usage(app.output.parse('{bold}Mono Manager:{/bold}\n {green}${/green} mono <{yellow}command{/yellow}>')),
@@ -62,22 +60,21 @@ app.events.on('Application:initialize:defaultConfig',(defaultConfig:Configuratio
                     app.error(e, true);
                 }
             },
-            mono: options
+            mono   : options,
         },
 
     });
 
-
     let epilog = `{dim}Boolean options that have true as default can be negated using --no-[option]. So for example --reload becomes --no-reload{/dim}`;
-    app.hooks.cli.command.builder.tap('MY', (command, cli) => {
+    app.hooks.cli.command.builder.tap('mono', (command, cli) => {
         cli.epilog(app.output.parse(epilog));
     });
-    app.hooks.cli.command.handler.tap('MY', (command, params) => {
-        let verbose = 'v'.repeat(command.instance.verbose);
-        if ( verbose ) {
-            app.log.level = verbose + 'erbose';
-        }
-    });
+    await app.hooks.cli.setup.tapPromise('mono', async(cli)=> {
+        let internal = cli.getInternalMethods();
+        let usage = internal.getUsageInstance();
+        let descs =usage.getDescriptions();
+        return ;
+    })
 
     await app.boot();
     app.output.ui.addMacros([
@@ -91,7 +88,7 @@ app.events.on('Application:initialize:defaultConfig',(defaultConfig:Configuratio
     return app;
 }
 
-export async function startCli(options:MonoConfiguration) {
+export async function startCli(options: MonoConfiguration) {
     const app = await bootApp(options);
     return await app.start<CliStartReturn>();
 }

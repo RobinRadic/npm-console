@@ -46,8 +46,7 @@
             "./typings"
         ],
         "composite": false,
-        "baseUrl": ".",
-        "types": []
+        "baseUrl": "."
     },
     "exclude": [
         "node_modules",

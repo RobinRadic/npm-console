@@ -35,6 +35,7 @@
         "src/types",
         "src/yargs/lib",
         "src/yargs/index.ts",
+        "src/utils",
         "src/index.ts"
     ],
     "references": [

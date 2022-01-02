@@ -4,6 +4,8 @@ import { MacroProxy } from '../utils';
 import { StyleManager } from './StyleManager';
 import { ColorStyle } from '../interfaces';
 import { Output } from '../Output';
+import { ColorProperty } from 'csstype';
+import { Color } from './Color';
 export interface AnsiRgbColors {
     fg: Array<number>;
     bg: Array<number>;
@@ -42,4 +44,7 @@ export declare class Colors {
     };
     color(color: string, options?: Options): Trucolor;
     getColor(color: string, isClose?: boolean): string;
+    getRandomHexColor(): string;
+    getColorHelper(clr: ColorProperty): Color;
+    getRandomColor(): Color;
 }

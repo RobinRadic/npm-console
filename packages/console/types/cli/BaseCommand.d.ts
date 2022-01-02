@@ -14,6 +14,7 @@ export declare type ICommand<T = {}> = T & GlobalOptions & {
     handle?(...args: any[]): Promise<any>;
 };
 export declare abstract class BaseCommand {
+    static type: string;
     providers: IServiceProviderClass[];
     app: Application;
     cli: Cli;

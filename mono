@@ -5,4 +5,4 @@ NODE_BIN=ts-node
 
 #export DEBUG=*
 
-$NODE_BIN scripts/cli/mono.ts $*
+NODE_ENV=production $NODE_BIN scripts/cli/mono.ts $*

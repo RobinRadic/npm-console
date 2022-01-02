@@ -2,7 +2,7 @@ import { arg, command, option } from '@radic/console';
 import { Command } from '../Command';
 
 
-@command('rebuild', 'Rebuild package')
+@command('rebuild', 'Rebuild package',['r'])
 export default class extends Command {
     @option('a', 'All') all: boolean;
 

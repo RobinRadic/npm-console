@@ -1,17 +1,12 @@
-// import * as supports               from 'supports-color';
-// import { supportsColor }           from 'supports-color';
 import * as convert from 'color-convert';
-//import {startsWith } from 'lodash'
 import { Chalk, chalkish, Options, Palette, simple, trucolor, Trucolor } from 'trucolor';
 import { macroProxy, MacroProxy } from '../utils';
 import { StyleManager } from './StyleManager';
 import { ColorStyle } from '../interfaces';
 import { Output } from '../Output';
-
-// import * as _ from "lodash";
-// _.isNumber()
-// let ansi256    = require('ansi-256-colors')
-// let ansiColors = Object.keys(ansiStyles);
+import { ColorProperty } from 'csstype';
+import { ColorHelper } from 'csx/lib/color';
+import { Color } from './Color';
 
 export interface AnsiRgbColors {
     fg: Array<number>;
@@ -23,15 +18,18 @@ export type ColorMacroCb = (...args) => ColorStartEnd
 
 export interface Colors extends MacroProxy<Colors, ColorMacroCb, ColorStartEnd> {}
 
-export type Chain = {
-    [P in keyof Palette]: Chain
-} & {
-    get(str:string):string
-    write(str:string):void
-    line(str:string):void
-} & {
-    [key:string]:Chain
-}
+export type Chain =
+    {
+        [P in keyof Palette]: Chain
+    }
+    & {
+        get(str: string): string
+        write(str: string): void
+        line(str: string): void
+    }
+    & {
+        [ key: string ]: Chain
+    }
 
 export class Colors {
     constructor(public styles: StyleManager) {
@@ -48,43 +46,43 @@ export class Colors {
 
     trucolorOptions: Options = { format: 'cli' };
 
-    chain(out?:Output): Chain {
+    chain(out?: Output): Chain {
         let stack: Trucolor[] = [];
-        let self= this;
-        const get  = (name) => {
-            if(name.startsWith('bg')){
-                name = name.slice(2)
-                let first = name[0].toLocaleLowerCase()
-                name = 'background ' + first + name.slice(1)
+        let self              = this;
+        const get             = (name) => {
+            if ( name.startsWith('bg') ) {
+                name      = name.slice(2);
+                let first = name[ 0 ].toLocaleLowerCase();
+                name      = 'background ' + first + name.slice(1);
 
             }
-            const color = self.color(name)
+            const color = self.color(name);
             stack.push(color);
-        }
-        const color = (str:string) => {
+        };
+        const color           = (str: string) => {
             let open  = stack.map(s => s.in).join('');
             let close = stack.map(s => s.out).join('');
             return open + str + close;
-        }
-        const createProxy = () => {
+        };
+        const createProxy     = () => {
             let proxy = new Proxy({}, {
                 get(target: {}, p: string | symbol, receiver: any): any {
                     let name = p.toString();
-                    if(name === 'get'){
-                        return (str:string) => color(str);
+                    if ( name === 'get' ) {
+                        return (str: string) => color(str);
                     }
-                    if(name === 'write'){
-                        return (str:string) => out.write(color(str));
+                    if ( name === 'write' ) {
+                        return (str: string) => out.write(color(str));
                     }
-                    if(name === 'line'){
-                        return (str:string) => out.line(color(str));
+                    if ( name === 'line' ) {
+                        return (str: string) => out.line(color(str));
                     }
                     get(name);
-                    return proxy
+                    return proxy;
                 },
             });
             return proxy;
-        }
+        };
         return createProxy() as Chain;
     }
 
@@ -111,11 +109,11 @@ export class Colors {
         return this.getColorFromStyle(style);
     }
 
-    color(color: string, options: Options = {}):Trucolor{
+    color(color: string, options: Options = {}): Trucolor {
         if ( this.styles.hasStyle(color) ) {
-            return this.getTrucolor(this.styles.getStyle(color),options)
+            return this.getTrucolor(this.styles.getStyle(color), options);
         }
-        return this.getTrucolor(color,options)
+        return this.getTrucolor(color, options);
     }
 
     getColor(color: string, isClose: boolean = false): string {
@@ -128,4 +126,21 @@ export class Colors {
         return this.getTrucolor(color)[ isClose ? 'out' : 'in' ];
     }
 
+    getRandomHexColor(): string {
+        var letters = '0123456789ABCDEF'.split('');
+        var color   = '#';
+        for ( var i = 0; i < 6; i ++ ) {
+            color += letters[ Math.round(Math.random() * 15) ];
+        }
+        return color;
+    }
+
+    getColorHelper(clr: ColorProperty): Color {
+        return Color.make(clr);
+    }
+
+    getRandomColor(): Color {
+        return this.getColorHelper(this.getRandomHexColor());
+    }
 }
+

@@ -83,5 +83,5 @@ declare module 'trucolor' {
 
     export function simple(options?: Options): Palette
 
-    export function simplePalette(options?: any): any
+    export function simplePalette(options?: Options): Palette
 }

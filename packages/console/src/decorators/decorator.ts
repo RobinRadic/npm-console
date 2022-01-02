@@ -2,6 +2,7 @@ import { Arguments, Cli, CommandHandlerDefinition, ICommand, OptionDefinition } 
 import { app } from '@radic/core';
 import { ArgumentDefinitions } from './arg';
 import { reflectParams } from '@radic/shared';
+import { hoistStatics } from '../utils';
 
 
 export interface CommandDecoratorOptions {
@@ -30,6 +31,24 @@ export declare class Command<T = {}> implements DecoratorCommandHandlerDefinitio
 
 }
 
+
+function buildCommandString(name, args: ArgumentDefinitions) {
+    let text = name.split(' ')[ 0 ] + ' ';
+    for ( const arg of args ) {
+        text += arg.required ? '<' : '[';
+        text += arg.name;
+        if ( arg.options.alias ) {
+            let alias = Array.isArray(arg.options.alias) ? arg.options.alias : [ arg.options.alias ];
+            text += '|' + alias;
+        }
+        if ( arg.variadic ) text += '...';
+        text += arg.required ? '>' : ']';
+        text += ' ';
+    }
+    return text;
+}
+
+
 export function decorator(type: CommandDecoratorType, options: CommandDecoratorOptions, callback?: (Target: new (...args: any) => any) => any) {
     const { aliases, desc, directory, name } = options;
     return (Target: new (...args: any) => any) => {
@@ -43,7 +62,7 @@ export function decorator(type: CommandDecoratorType, options: CommandDecoratorO
         if ( args ) {
             args = args.reverse();
             if ( args.length > 0 ) {
-                command = buildCommandString(args);
+                command = buildCommandString(command, args);
             }
         }
         let examples: Array<{ example: string, description: string }> = Reflect.getMetadata('examples', Target.prototype);
@@ -52,28 +71,16 @@ export function decorator(type: CommandDecoratorType, options: CommandDecoratorO
         options                                                       = app.hooks.cli.command.options.call(options);
 
 
-        function buildCommandString(args: ArgumentDefinitions) {
-            let text = name.split(' ')[ 0 ] + ' ';
-            for ( const arg of args ) {
-                text += arg.required ? '<' : '[';
-                text += arg.name;
-                if ( arg.options.alias ) {
-                    let alias = Array.isArray(arg.options.alias) ? arg.options.alias : [ arg.options.alias ];
-                    text += '|' + alias;
-                }
-                if ( arg.variadic ) text += '...';
-                text += arg.required ? '>' : ']';
-                text += ' ';
-            }
-            return text;
-        }
+        class Command implements DecoratorCommandHandlerDefinition {
+            static command: string     = command;
+            static commandName: string = command; //.split(' ')[ 0 ];
+            static description: string = desc;
+            static directory: string   = directory;
 
-
-        return class Command implements DecoratorCommandHandlerDefinition {
             instance: ICommand;
 
             command: string     = command;
-            commandName: string = name.split(' ')[ 0 ];
+            commandName: string =command;// name.split(' ')[ 0 ];
             describe            = desc;
             aliases             = aliases;
 
@@ -92,23 +99,23 @@ export function decorator(type: CommandDecoratorType, options: CommandDecoratorO
             builder = async (yargs) => {
                 let cli: Cli      = yargs;
                 this.instance.cli = cli;
-                if ( args ) {
-                    for ( const arg of args ) {
-                        let options = {
-                            type       : arg.type as any,
-                            description: arg.description,
-                            array      : arg.variadic,
-                            ...arg.options,
-                        };
-                        if ( arg.required === true ) {
-                            options.demand = true;
-                        }
-                        if ( arg.defaultValue ) {
-                            options.default = arg.defaultValue;
-                        }
-                        cli.positional(arg.name,options);
-                    }
-                }
+                // if ( args ) {
+                //     for ( const arg of args ) {
+                //         let options = {
+                //             type       : arg.type as any,
+                //             description: arg.description,
+                //             array      : arg.variadic,
+                //             ...arg.options,
+                //         };
+                //         if ( arg.required === true ) {
+                //             options.demand = true;
+                //         }
+                //         if ( arg.defaultValue ) {
+                //             options.default = arg.defaultValue;
+                //         }
+                //         cli.positional(arg.name, options);
+                //     }
+                // }
 
 
                 Object.entries(options).forEach(([ key, value ]) => cli.option(key, value));
@@ -146,7 +153,9 @@ export function decorator(type: CommandDecoratorType, options: CommandDecoratorO
 
             handler = async (args: Arguments) => {
                 await Promise.all(this.instance.providers.map(Provider => app.register(Provider)));
-                args=this.instance.cli.argv
+
+                let argv       = this.instance.cli.argv;
+                let parameters = argv._.slice(args._.length)
                 let params = [];
                 reflectParams(this.instance.handle, true).forEach(param => {
                     if ( param.variadic ) {
@@ -170,7 +179,11 @@ export function decorator(type: CommandDecoratorType, options: CommandDecoratorO
                 app.hooks.cli.command.handler.call(this, params);
                 return await this.instance.handle(...params);
             };
-        } as any;
+        };
+
+        let Result = hoistStatics(Command, Target) as any;
+
+        return  Result;
     };
 }
 

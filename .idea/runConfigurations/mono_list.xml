@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="mono list" type="NodeJSConfigurationType" application-parameters="list -vvv" path-to-js-file="apps/mono-cli/bin/mono.js" working-dir="$PROJECT_DIR$">
+    <envs>
+      <env name="NODE_ENV" value="development" />
+      <env name="DEBUG" value="*,-Application" />
+    </envs>
+    <method v="2" />
+  </configuration>
+</component>

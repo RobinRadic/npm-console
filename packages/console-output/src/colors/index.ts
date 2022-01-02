@@ -1,3 +1,4 @@
+export * from './Color';
 export * from './Colors';
 export * from './FiguresParser';
 export * from './StyleManager';

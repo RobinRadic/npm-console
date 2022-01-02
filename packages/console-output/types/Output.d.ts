@@ -1,9 +1,10 @@
 /// <reference types="node" />
 import { MacroProxy } from './utils';
-import { Chain, Colors, StyleManager, StyleName } from './colors';
+import { Chain, Color, Colors, StyleManager, StyleName } from './colors';
 import { Figures, IParser, OutputOptions } from './interfaces';
 import { Ui } from './ui';
 import { IconGenerator } from './utils/IconGenerator';
+import { ColorProperty } from 'csstype';
 export interface Output extends MacroProxy<Output> {
 }
 export declare class Output {
@@ -31,6 +32,7 @@ export declare class Output {
     writeln(text?: string): this;
     line(text?: string): this;
     dump(...args: any[]): this;
+    color(property: ColorProperty): Color;
     get colorsEnabled(): boolean;
     get isSilent(): boolean;
     enableColors(): this;

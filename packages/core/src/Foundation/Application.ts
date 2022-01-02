@@ -14,6 +14,7 @@ import { Constructor, isConstructor, IServiceProvider, IServiceProviderClass, is
 import { ApplicationInitOptions, Configuration } from '../types';
 import { defaultConfiguration } from '../consts';
 import { JSONSchema7 } from 'json-schema';
+import { SyncWaterfallHook } from 'tapable';
 import ServiceIdentifier = interfaces.ServiceIdentifier;
 import BindingInWhenOnSyntax = interfaces.BindingInWhenOnSyntax;
 
@@ -25,6 +26,15 @@ const log = makeLog('Application');
 
 export interface Hooks {
 
+    initializeDefaultConfig: SyncWaterfallHook<[ Configuration ]>;
+    initialize: SyncWaterfallHook<[ ApplicationInitOptions ]>;
+    loadProviders: SyncWaterfallHook<[ IServiceProviderClass[] ]>;
+    loadProvider: SyncWaterfallHook<[ IServiceProviderClass, string ]>;
+    provider: SyncWaterfallHook<[ IServiceProvider, string ]>;
+    error: SyncWaterfallHook<[ Error | string ]>;
+    errorMessage: SyncWaterfallHook<[ string ]>;
+    start: SyncWaterfallHook<[ (...args) => Promise<any> ]>;
+    exit: SyncWaterfallHook<[ ExitCode ]>;
 }
 
 export interface Bindings {
@@ -182,7 +192,19 @@ export class Application extends Container {
      */
     public isStarted() { return this.started; }
 
-    public hooks: Hooks = {} as any;
+    public hooks: Hooks = {
+        initializeDefaultConfig: new SyncWaterfallHook<[ Configuration ]>([ 'config' ]),
+        initialize             : new SyncWaterfallHook<[ ApplicationInitOptions ]>([ 'options' ]),
+        loadProviders          : new SyncWaterfallHook<[ IServiceProviderClass[] ]>([ 'Providers' ]),
+        loadProvider           : new SyncWaterfallHook<[ IServiceProviderClass, string ]>([ 'Provider', 'name' ]),
+        provider               : new SyncWaterfallHook<[ IServiceProvider, string ]>([ 'provider', 'name' ]),
+        error                  : new SyncWaterfallHook<[ Error | string ]>([ 'error' ]),
+        errorMessage           : new SyncWaterfallHook<[ string ]>([ 'errorMessage' ]),
+        start                  : new SyncWaterfallHook<[ (...args) => Promise<any> ]>([ 'startFn' ]),
+        exit                   : new SyncWaterfallHook<[ ExitCode ]>([ 'exitCode' ]),
+    }
+
+    ;
 
     /**
      * Create a new Application instance.
@@ -247,8 +269,11 @@ export class Application extends Container {
      */
     public async initialize(options: ApplicationInitOptions) {
         this.registerPaths(options.dirname);
+
         this.events.emit('Application:initialize:defaultConfig', defaultConfiguration);
-        options.config = merge({}, defaultConfiguration, options.config);
+        let defaultConfig = this.hooks.initializeDefaultConfig.call(defaultConfiguration);
+        options.config    = merge({}, defaultConfig, options.config);
+        options           = this.hooks.initialize.call(options);
         this.events.emit('Application:initialize', options);
         await this.loadProviders(options.providers);
         await this.loadConfig(options.config);
@@ -283,6 +308,7 @@ export class Application extends Container {
      * @returns
      */
     protected async loadProviders(Providers: IServiceProviderClass[]): Promise<this> {
+        Providers = this.hooks.loadProviders.call(Providers);
         await Promise.all(
             Providers.map(async Provider => this.loadProvider(Provider)),
         );
@@ -296,7 +322,6 @@ export class Application extends Container {
      * @returns
      */
     protected async loadProvider(Provider: IServiceProviderClass): Promise<IServiceProvider> {
-
         /**
          * Check if the provider has already been loaded.
          */
@@ -305,12 +330,14 @@ export class Application extends Container {
         if ( name in this.loaded ) {
             return this.loaded[ name ];
         }
+        Provider = this.hooks.loadProvider.call(Provider, name);
 
         /**
          * Instantiate the provider.
          */
         let provider = new Provider(this as any);
 
+        provider = this.hooks.provider.call(provider, name);
         /**
          * Check if the provider has
          * other providers to load
@@ -445,18 +472,21 @@ export class Application extends Container {
         } else if ( this.config.has('startFn') ) {
             startFn = this.config.startFn;
         }
-        result = await startFn(this, ...args);
+        startFn = this.hooks.start.call(startFn);
+        result  = await startFn(this, ...args);
         this.events.emit('Application:started', this);
         return result;
     };
 
     public exit(exitCode: ExitCode = ExitCode.OK) {
+        exitCode = this.hooks.exit.call(exitCode);
         this.events.emit('Application:exit', this, exitCode);
         return process.exit(exitCode);
     }
 
     public error(error: string | Error, exit?: boolean | ExitCode) {
-        let message: string = error.toString();
+        error               = this.hooks.error.call(error);
+        let message: string = this.hooks.errorMessage.call(error.toString());
         if ( error instanceof Error ) {
             message = `${error.name} - ${error.message}`;
             if ( this.config.debug ) {

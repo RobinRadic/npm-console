@@ -28,7 +28,8 @@
     ],
     "include": [
         "src",
-        "src/index.ts"
+        "src/index.ts",
+        "radic-core-shims.d.ts"
     ],
     "references": [
         {

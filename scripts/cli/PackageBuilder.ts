@@ -120,11 +120,9 @@ export class PackageBuilder {
 
     watch() {
         this.log('%t Starting watch');
-
         this.getDeepestUniqueDirectories().forEach(path => {
             const watcher = this.watchers[ path ] = watch(join(this.path, path), { encoding: 'utf-8', persistent: true }, (event, filename) => {
                 this.log('Watched', filename, event);
-                this.clean();
                 this.build();
             });
             watcher.on('error', (error) => this.log('Watch error:', error));
@@ -204,12 +202,20 @@ export namespace PackageBuilder {
     };
     export const build      = (name: string) => builders[ name ].build();
     export const clean      = (name: string) => builders[ name ].clean();
-    export const watch      = (name: string) => builders[ name ].watch();
+    export const watch      = (name: string) => {
+        clean(name);
+        build(name);
+        builders[ name ].watch()
+    };
     export const rebuildAll = () => Object.values(builders).forEach(builder => {
         builder.clean();
         builder.build();
     });
     export const buildAll   = () => Object.values(builders).forEach(builder => builder.build());
-    export const watchAll   = () => Object.values(builders).forEach(builder => builder.watch());
+    export const watchAll   = () => Object.values(builders).forEach(builder => {
+        builder.clean()
+        builder.build()
+        builder.watch()
+    });
     export const cleanAll   = () => Object.values(builders).forEach(builder => builder.clean());
 }

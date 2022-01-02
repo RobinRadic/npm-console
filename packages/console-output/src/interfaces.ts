@@ -9,6 +9,7 @@ export interface OutputOptions extends Partial<DivOptions>{
     silent?: boolean,
     colors?: boolean
     inspect?: InspectOptions
+    addToGlobalPrototypes?:boolean
     resetOnNewline?: boolean,
     styles?: { [ name: string ]: string },
 

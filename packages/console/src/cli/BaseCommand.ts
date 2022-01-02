@@ -24,6 +24,7 @@ export type ICommand<T = {}> =
 
 @injectable()
 export abstract class BaseCommand {
+    public static type='command'
     providers: IServiceProviderClass[] = [];
     app: Application                   = Application.instance;
     cli: Cli;

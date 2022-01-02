@@ -1,3 +1,4 @@
 export * from './cli';
 export * from './Command';
-export * from './mono';
+export * from './mono/index';
+export * from './MonoServiceProvider';

@@ -43,11 +43,12 @@
         "emitDecoratorMetadata": true,
         "typeRoots": [
             "../../node_modules/@types",
-            "./typings"
+            "./@types"
         ],
         "composite": false,
         "baseUrl": ".",
-        "types": []
+        "types": [
+        ]
     },
     "exclude": [
         "node_modules",
@@ -63,6 +64,7 @@
         "src/types",
         "src/yargs/lib",
         "src/yargs/index.ts",
-        "src/index.ts"
+        "src/index.ts",
+        "src/radic-core-shims.d.ts"
     ]
 }

@@ -44,28 +44,6 @@ export interface FStat extends Stats, ParsedPath {
     path: string;
     type: FStatType;
 }
-
-export interface JsonConfigs {
-    pkg: PackageJson,
-    tsconfig: TSconfigJson,
-    tsconfigBuild: TSconfigJson
-}
-
-const root                    = (...parts) => join(__dirname, '..', '..', ...parts);
-const resolvePath             = (path: string) => isAbsolute(path) ? path : join(process.cwd(), path);
-const hasNodePackage          = (path: string) => existsSync(join(path, 'package.json'));
-const hasTypecriptConfig      = (path: string) => existsSync(join(path, 'tsconfig.json'));
-const hasTypecriptBuildConfig = (path: string) => existsSync(join(path, 'tsconfig.build.json'));
-const isRadicPackage          = (path: string) => hasNodePackage(path) && hasTypecriptConfig(path) && hasTypecriptBuildConfig(path);
-const getJsonConfigs          = (path: string): JsonConfigs => {
-    assert.ok(isRadicPackage(path));
-    const configs: JsonConfigs = {
-        pkg          : readJSONSync(join(path, 'package.json'), 'utf8'),
-        tsconfig     : readJSONSync(join(path, 'tsconfig.json'), 'utf8'),
-        tsconfigBuild: readJSONSync(join(path, 'tsconfig.build.json'), 'utf8'),
-    };
-    return configs;
-};
 const getFstatsType           = (stats: Stats): FStatType => {
     if ( stats.isFile() ) return 'file';
     if ( stats.isDirectory() ) return 'dir';
@@ -82,9 +60,31 @@ const toFSStats               = (path: string, stats?: Stats): FStat => {
     return stats as FStat;
 };
 
+
+
+export interface JsonConfigs {
+    pkg: PackageJson,
+    tsconfig: TSconfigJson,
+    tsconfigBuild: TSconfigJson
+}
+const root                    = (...parts) => join(__dirname, '..', '..', ...parts);
+const resolvePath             = (path: string) => isAbsolute(path) ? path : join(process.cwd(), path);
+const hasNodePackage          = (path: string) => existsSync(join(path, 'package.json'));
+const hasTypecriptConfig      = (path: string) => existsSync(join(path, 'tsconfig.json'));
+const hasTypecriptBuildConfig = (path: string) => existsSync(join(path, 'tsconfig.build.json'));
+const isRadicPackage          = (path: string) => hasNodePackage(path) && hasTypecriptConfig(path) && hasTypecriptBuildConfig(path);
+const getJsonConfigs          = (path: string): JsonConfigs => {
+    assert.ok(isRadicPackage(path));
+    const configs: JsonConfigs = {
+        pkg          : readJSONSync(join(path, 'package.json'), 'utf8'),
+        tsconfig     : readJSONSync(join(path, 'tsconfig.json'), 'utf8'),
+        tsconfigBuild: readJSONSync(join(path, 'tsconfig.build.json'), 'utf8'),
+    };
+    return configs;
+};
 export interface PackageBuilder extends macro.Proxy<PackageBuilder> {}
 
-export class PackageBuilder extends EventEmitter {
+export class PackageBuilder {
     readonly hooks = {
         preWatch  : new SyncWaterfallHook<[ WatchOptions ]>([ 'watchOptions' ]),
         watch     : new SyncHook<[ string, WatchEventType, string ]>([ 'path', 'event', 'filename' ]),
@@ -95,14 +95,13 @@ export class PackageBuilder extends EventEmitter {
         postBuild : new SyncHook<[ string[] ]>([ 'commands' ]),
         build     : new SyncHook<[ string, string ]>([ 'command', 'output' ]),
         preClean  : new SyncWaterfallHook<[ string[] ]>([ 'commands' ]),
-        cleaned   : new SyncHook<[ string[] ]>([ 'commands' ]),
+        postClean : new SyncHook<[ string[] ]>([ 'commands' ]),
         clean     : new SyncHook<[ string, string ]>([ 'command', 'output' ]),
         exec      : new SyncWaterfallHook<[ ExecSyncOptionsWithStringEncoding ]>([ 'options' ]),
     };
     protected log: (...args) => any;
 
     constructor(public readonly pkg: Package) {
-        super();
         debug.formatters.t = v => {
             let date       = new Date(Date.now());
             let timestring = [ date.getHours(), date.getMinutes(), date.getSeconds() ].join(':');
@@ -189,7 +188,7 @@ export class PackageBuilder extends EventEmitter {
             this.log('%t Called', command, 'output', output);
             this.hooks.clean.call(command, output);
         }
-        this.hooks.cleaned.call(commands);
+        this.hooks.postClean.call(commands);
         this.log('Cleaned up');
         return this;
 

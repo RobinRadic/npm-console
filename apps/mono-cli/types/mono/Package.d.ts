@@ -1,6 +1,7 @@
 import { PackageJson, TSconfigJson } from '@radic/shared';
 import { PackageBuilder } from './PackageBuilder';
 import { SyncHook } from 'tapable';
+import { ColorWrapper } from '@radic/console-output';
 export declare class Package {
     #private;
     path: string;
@@ -8,6 +9,8 @@ export declare class Package {
     tsconfig: TSconfigJson;
     tsconfigBuild: TSconfigJson;
     basename: string;
+    colorize: ColorWrapper;
+    get coloredName(): string;
     readonly hooks: {
         builder: SyncHook<[PackageBuilder], void, import("tapable").UnsetAdditionalOptions>;
     };

@@ -1,7 +1,7 @@
-Code
+<%= get('title', name)  %>
 ==========
 
 
 
-## MIT License
+## <%= get('license','MIT') %> License
 License at [https://radic.mit-license.org](MIT License)

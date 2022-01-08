@@ -10,10 +10,13 @@ export interface IPartition extends Omit<Systeminformation.BlockDevicesData, 'si
 export interface Partition extends IPartition {
 }
 export declare class Partition {
+    #private;
     disk: Disk;
     filesystem: FSCollection & Units;
     deviceName: string;
     statType: StatTypeName;
+    set fsSize(fsSize: Systeminformation.FsSizeData);
+    get fsSize(): Systeminformation.FsSizeData;
     totalSize?: Result;
     usedSize?: Result;
     availableSize?: Result;

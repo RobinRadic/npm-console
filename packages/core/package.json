@@ -1,7 +1,7 @@
 {
     "name": "@radic/core",
     "private": false,
-    "version": "1.0.9",
+    "version": "1.0.10",
     "description": "",
     "author": {
         "name": "Robin Radic",
@@ -28,9 +28,7 @@
     },
     "dependencies": {
         "@radic/shared": "^1.0.0",
-        "@types/chalk": "^2.2.0",
         "@types/dot-object": "^2.1.2",
-        "@types/eventemitter2": "^4.1.0",
         "@types/findup-sync": "^4.0.1",
         "@types/hasbin": "^1.2.0",
         "@types/ini": "^1.3.31",
@@ -44,7 +42,6 @@
         "@types/node": "^16.11.6",
         "@types/parse-passwd": "^1.0.0",
         "@types/semver": "^7.3.9",
-        "@types/systeminformation": "^3.54.1",
         "@types/which": "^2.0.1",
         "collect.js": "^4.29.0",
         "dot-object": "^2.1.4",
@@ -86,13 +83,6 @@
     "engines": {
         "node": ">=12"
     },
-    "files": [
-        "lib/**/*"
-    ],
-    "os": [
-        "darwin",
-        "linux"
-    ],
     "publishConfig": {
         "access": "public"
     },

@@ -1,0 +1,55 @@
+{
+    "$schema": "../schema/template.schema.json",
+    "variables": {
+    },
+    "name": "default",
+    "copy": [
+        {
+            "from": "package.json.tpl",
+            "to": "package.json",
+            "templated": true
+        },
+        {
+            "from": "README.md",
+            "to": "README.md",
+            "templated": true
+        },
+        {
+            "from": "src",
+            "to": "src",
+            "templated": true
+        },
+        {
+            "from": "test",
+            "to": "test",
+            "templated": true
+        },
+        ".editorconfig",
+        ".gitignore",
+        ".npmignore",
+        "tsconfig.json",
+        "tsconfig.build.json"
+    ],
+    "generate": [
+        "src",
+        "typings"
+    ],
+    "build": [
+        "builder.js",
+        {
+            "builder": "builder.js",
+            "params": {
+                "a": true,
+                "b": 3,
+                "c": "some stuff"
+            }
+        },
+        {
+            "builder": "builder.js",
+            "params": {
+                "return": true
+            },
+            "to": "src/index.ts"
+        }
+    ]
+}

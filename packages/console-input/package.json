@@ -83,13 +83,6 @@
     "engines": {
         "node": ">=12"
     },
-    "files": [
-        "lib/**/*"
-    ],
-    "os": [
-        "darwin",
-        "linux"
-    ],
     "publishConfig": {
         "access": "public"
     },

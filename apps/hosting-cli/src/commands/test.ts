@@ -1,4 +1,4 @@
-import {  NginxServer, NginxSite, servers } from '@radic/hosting';
+import { ApacheServer, ApacheSite, NginxServer, NginxSite, servers } from '@radic/hosting';
 import { command } from '@radic/console';
 import { Command } from '../Command';
 import { inject, system } from '@radic/core';
@@ -17,7 +17,19 @@ export default class TestCommand extends Command {
     ) {
 
         let result = this.app.path.search('nginx',{root:'/'})
-        return;
+        let server = this.servers.get<ApacheServer>('apache');
+
+        let sites = server.sites.toArray<ApacheSite>()
+        let configs = await Promise.all(sites.map(async (site) => {
+            let config =await site.getConfig()
+            return {
+                configFilePath:site.configFilePath,
+                config
+            }
+        }))
+        let paths = server.resolvePaths();
+
+        return configs;
     }
 
     // async han2dle(

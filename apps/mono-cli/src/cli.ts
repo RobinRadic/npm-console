@@ -40,6 +40,7 @@ export async function bootApp(options: MonoConfiguration) {
                 .globalHelp('h', 'Show this help')
                 .useVerbosity(3)
                 .scriptName('mono')
+                .config('mono')
                 .parserConfiguration({
                     'boolean-negation': true,
                     'negation-prefix' : 'no-',

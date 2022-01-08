@@ -1,7 +1,7 @@
 {
     "name": "@radic/shared",
     "private": false,
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "shared",
     "author": {
         "name": "Robin Radic",
@@ -32,22 +32,15 @@
         "@radic/core": "^1.0.0"
     },
     "keywords": [],
-    "bugs": {
-        "email": "rradic@hotmail.com",
-        "url": "https://github.com/robinradic/npm-packages/issues"
-    },
     "engines": {
         "node": ">=12"
     },
-    "files": [
-        "lib/**/*"
-    ],
-    "os": [
-        "darwin",
-        "linux"
-    ],
     "publishConfig": {
         "access": "public"
+    },
+    "bugs": {
+        "email": "rradic@hotmail.com",
+        "url": "https://github.com/robinradic/npm-packages/issues"
     },
     "repository": {
         "type": "git",

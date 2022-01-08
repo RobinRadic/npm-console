@@ -1,0 +1,56 @@
+{
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "$id": "template",
+    "title": "Template",
+    "description": "Template definition",
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string"
+        },
+        "copy": {
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/handler"
+            }
+        },
+        "variables": {
+            "type": "object",
+            "additionalProperties": true
+        }
+    },
+    "$defs": {
+        "copyFileObject": {
+            "type": "object",
+            "properties": {
+                "from": {
+                    "type": "string",
+                    "description": "A relative path to template file. Relative to the template root path"
+                },
+                "to": {
+                    "type": "string",
+                    "description": "A relative path to wanted destination. Relative to the template root path"
+                },
+                "templated": {
+                    "type": "boolean",
+                    "description": "File is templated and should use the template parser",
+                    "default": false
+                },
+                "set": {
+                    "type": "object",
+                    "description": "Set variables",
+                    "additionalProperties": true
+                }
+            }
+        },
+        "copyFileString": {
+            "type": "string"
+        },
+        "handler": {
+            "oneOf": [
+                {"$ref":  "#/$defs/copyFileObject"},
+                {"$ref":  "#/$defs/copyFileString"}
+            ]
+        }
+    }
+}

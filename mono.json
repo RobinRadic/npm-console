@@ -1,0 +1,22 @@
+{
+    "creator": {
+        "variables": {
+            "author": {
+                "name": "Robin Radic",
+                "email": "rradic@hotmail.com",
+                "url": "https://github.com/robinradic"
+            },
+            "license": "MIT",
+            "homepage": "https://robinradic.github.io/npm-packages",
+            "bugs": {
+                "email": "rradic@hotmail.com",
+                "url": "https://github.com/robinradic/npm-packages/issues"
+            },
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/robinradic.git",
+                "directory": "packages/shared"
+            }
+        }
+    }
+}

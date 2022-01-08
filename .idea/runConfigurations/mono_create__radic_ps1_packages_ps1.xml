@@ -1,0 +1,8 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="mono create @radic/ps1 packages/ps1" type="NodeJSConfigurationType" application-parameters="create @radic/ps1 packages/ps1" path-to-js-file="apps/mono-cli/bin/mono.js" working-dir="$PROJECT_DIR$">
+    <envs>
+      <env name="NODE_ENV" value="development" />
+    </envs>
+    <method v="2" />
+  </configuration>
+</component>

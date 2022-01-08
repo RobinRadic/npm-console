@@ -1,0 +1,108 @@
+{
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "$id": "template",
+    "title": "Template",
+    "description": "Template definition",
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string"
+        },
+        "copy": {
+            "type": "array",
+            "description": "File copying with support for templates",
+            "items": {
+                "$ref": "#/$defs/copyHandler"
+            }
+        },
+        "generate": {
+            "type": "array",
+            "description": "File/Directory generation. A path ending with an extension will be generated as empty file otherwise a directory will be created. Recursively making parent directories if they dont exist.",
+            "items": {
+                "$ref": "#/$defs/path"
+            }
+        },
+        "build": {
+            "type": "array",
+            "description": "Builder scripts",
+            "items": {
+                "$ref": "#/$defs/builderHandler"
+            }
+        },
+        "variables": {
+            "type": "object",
+            "additionalProperties": true
+        }
+    },
+    "required": ["name"],
+    "$defs": {
+        "path": {
+            "type": "string",
+            "description": "A relative path"
+        },
+        "jsFilePath": {
+            "type": "string",
+            "description": "A relative path to a javascript file",
+            "pattern": "^.*?\\.js"
+        },
+        "jsonFilePath": {
+            "type": "string",
+            "description": "A relative path to a json file",
+            "pattern": "^.*?\\.json"
+        },
+        "copyFileObject": {
+            "type": "object",
+            "properties": {
+                "from": {
+                    "$ref": "#/$defs/path",
+                    "description": "A relative path to the template root path"
+                },
+                "to": {
+                    "$ref": "#/$defs/path",
+                    "description": "A relative path to the package root path"
+                },
+                "templated": {
+                    "type": "boolean",
+                    "description": "File is templated and should use the template parser",
+                    "default": false
+                },
+                "set": {
+                    "type": "object",
+                    "description": "Set variables",
+                    "additionalProperties": true
+                }
+            },
+            "required": ["from","to"]
+        },
+        "copyHandler": {
+            "oneOf": [
+                {"$ref": "#/$defs/copyFileObject"},
+                {"$ref": "#/$defs/path"}
+            ]
+        },
+        "builderObject": {
+            "type": "object",
+            "properties": {
+                "builder": {
+                    "$ref": "#/$defs/jsFilePath"
+                },
+                "to": {
+                    "$ref": "#/$defs/path",
+                    "description": "A relative file path where the (possible) return string of the builder will be written. This is not needed for every builder"
+                },
+                "params": {
+                    "type": "object",
+                    "description": "Extra parameters to pass to the builder, The builder can use them",
+                    "additionalProperties": true
+                }
+            },
+            "required": ["builder"]
+        },
+        "builderHandler": {
+            "oneOf": [
+                {"$ref": "#/$defs/builderObject"},
+                {"$ref": "#/$defs/jsFilePath"}
+            ]
+        }
+    }
+}

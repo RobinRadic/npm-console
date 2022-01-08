@@ -18,9 +18,19 @@ export default class extends Command {
             if ( await this.ask.confirm('Are you sure you want to increase version and publish for all packages??', true) ) {
 
                 if(this.commit){
+                    this.log.log({
+                    level  : 'info',
+                    message: `Comitting before bumping and publishing all`,
+                    label  : 'git',
+                });
                     await this.monoRepo.commitAll('before bumping and publishing all')
+                    this.log.log({
+                        level  : 'success',
+                        message: `Comitted before bumping and publishing all`,
+                        label  : 'git',
+                    });
                 }
-                for ( const pkg of this.monoRepo.packagesArray ) {
+                for ( const pkg of await this.monoRepo.getOrderedPackages() ) {
                     this.log.log({
                         level  : 'info',
                         message: `Bumping version ${pkg.version} to ${pkg.getBumpedVersion(this.bump)}`,
@@ -42,7 +52,29 @@ export default class extends Command {
                     await wait(1000);
                 }
                 if(this.commit){
+                    this.log.log({
+                        level  : 'info',
+                        message: `Comitting after bumping and publishing all`,
+                        label  : 'git',
+                    });
                     await this.monoRepo.commitAll('after bumping and publishing all')
+                    this.log.log({
+                        level  : 'success',
+                        message: `Comitted after bumping and publishing all`,
+                        label  : 'git',
+                    });
+                    this.log.log({
+                        level  : 'info',
+                        message: `Pushing commits and tags to remote`,
+                        label  : 'git',
+                    });
+                    await this.monoRepo.git.push();
+                    await this.monoRepo.git.pushTags();
+                    this.log.log({
+                        level  : 'success',
+                        message: `Pushed commits and tags to remote`,
+                        label  : 'git',
+                    });
                 }
             }
         } else {

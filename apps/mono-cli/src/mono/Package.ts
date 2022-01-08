@@ -11,6 +11,7 @@ import { ReleaseType, SemVer } from 'semver';
 import { Application, Filesystem, inject } from '@radic/core';
 import slug from 'slug';
 
+
 const hasNodePackage          = (path: string) => existsSync(join(path, 'package.json'));
 const hasTypecriptConfig      = (path: string) => existsSync(join(path, 'tsconfig.json'));
 const hasTypecriptBuildConfig = (path: string) => existsSync(join(path, 'tsconfig.build.json'));

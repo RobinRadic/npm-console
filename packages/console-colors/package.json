@@ -46,17 +46,10 @@
     "engines": {
         "node": ">=12"
     },
-    "files": [
-        "lib/**/*"
-    ],
     "module": "lib/index.js",
     "nyc": {
         "cache": false
     },
-    "os": [
-        "darwin",
-        "linux"
-    ],
     "publishConfig": {
         "access": "public"
     },

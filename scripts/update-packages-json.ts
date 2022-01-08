@@ -5,6 +5,8 @@ import { resolve } from 'path';
 let manager = createPackageJsonManager(resolve(__dirname, '..'));
 manager.addJsonFiles('packages/*/package.json');
 manager.unset('scripts.prepublish');
+manager.unset('files');
+manager.unset('os')
 
 manager.setKeyOrder([
     'name',

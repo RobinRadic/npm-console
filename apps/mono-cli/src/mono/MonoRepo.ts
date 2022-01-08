@@ -1,36 +1,50 @@
 // noinspection ES6UnusedImports
 
-import { dirname, isAbsolute, join } from 'path';
+import { dirname, isAbsolute, join, resolve } from 'path';
 import { existsSync, readJSONSync } from 'fs-extra';
-import { macro, macroProxy, objectify, PackageJson } from '@radic/shared';
+import { macro, macroProxy, objectify, PackageJson, ProxyRepository, Repository } from '@radic/shared';
 import { Package } from './Package';
 
 import { buildOrder } from 'package-build-order';
 import { PackageBuilder } from './PackageBuilder';
-import { Collection } from '@radic/core';
+import { Collection, DirectoryStorage } from '@radic/core';
 import { PackageCollection } from './PackageCollection';
 import simpleGit, { SimpleGit } from 'simple-git';
+import { PackageCreator } from './PackageCreator';
 
 export interface MonoRepoOptions {
     rootPackagePath?: string;
     workspaces?: boolean;
     packagePaths?: string[];
+    creator?: {
+        variables?: any
+    };
 }
 
 export interface MonoRepo extends macro.Proxy<MonoRepo> {}
+
 
 export class MonoRepo {
     rootPath?: string;
     pkg: PackageJson;
     packages: PackageCollection;
-    readonly hooks = {};
+    readonly hooks                            = {};
     git: SimpleGit;
+    dir: DirectoryStorage;
+    options: ProxyRepository<MonoRepoOptions> = Repository.asProxy<MonoRepoOptions>({});
 
-    constructor(public options: MonoRepoOptions) {
+    constructor(options: MonoRepoOptions) {
+        this.options  = Repository.asProxy(options);
         this.rootPath = dirname(options.rootPackagePath);
         this.pkg      = readJSONSync(options.rootPackagePath);
         this.git      = simpleGit(this.rootPath);
+        this.dir      = new DirectoryStorage({
+            basePath: this.rootPath,
+        });
         this.handlePackages();
+        if ( this.dir.exists('mono.json') ) {
+            this.options.merge(this.dir.readJson('mono.json'));
+        }
         return macro.proxy(this);
     }
 
@@ -49,7 +63,24 @@ export class MonoRepo {
         this.packages             = new PackageCollection(this.options.packagePaths.map(path => new Package(path)));
     }
 
-    path(...parts) {return join(this.rootPath, ...parts); }
+    createPackageCreator(packagePath: string) {
+        const creator = new PackageCreator(this);
+        creator.setPackageDirectory(this.path(packagePath));
+        creator.opts.merge(this.options.get('creator',{}));
+        return creator;
+    }
+
+    /**
+     * Accepts relative path from the @radic/mono-cli resources path and returns the absolute path
+     * @param parts
+     */
+    resourcesPath(...parts: string[]) {return resolve(__dirname, '../../resources', ...parts); }
+
+    /**
+     * Accepts relative path from the root project directory and returns the absolute path
+     * @param {string[]} parts Relative path
+     */
+    path(...parts: string[]) {return join(this.rootPath, ...parts); }
 
     getPackage(name: string): Package {return this.packages.where('name', name).first();}
 
@@ -69,11 +100,16 @@ export class MonoRepo {
         return order.map(pkgName => this.getPackage(pkgName).builder);
     }
 
-    async commitAll(message:string='upd'){
+    async getOrderedPackages(): Promise<Package[]> {
+        let order = await this.getBuilderOrder();
+        return order.map(pkgName => this.getPackage(pkgName));
+    }
+
+    async commitAll(message: string = 'upd') {
         const status = await this.git.status();
-        const files  = [].concat(status.not_added).concat(status.created).concat(status.modified)
-        await this.git.add(files)
-        await this.git.commit(message)
+        const files  = [].concat(status.not_added).concat(status.created).concat(status.modified);
+        await this.git.add(files);
+        await this.git.commit(message);
         return true;
     }
 }

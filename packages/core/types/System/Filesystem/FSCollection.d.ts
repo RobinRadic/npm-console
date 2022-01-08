@@ -11,4 +11,4 @@ export declare class FSCollection extends Collection<StatTypeValue> {
     searchName(search: string | RegExp): FSCollection;
 }
 export declare const toUnits: <T extends StatTypeValue = StatTypeValue>(u: T[]) => Units;
-export declare const fscollect: <V extends StatTypeValue = StatTypeValue, T extends Units<StatTypeValue> = Units<StatTypeValue>>(u: T | V[]) => FSCollection;
+export declare const fscollect: <V extends StatTypeValue = StatTypeValue, T extends Record<string, StatTypeValue> = Record<string, StatTypeValue>>(u: T | V[]) => FSCollection;

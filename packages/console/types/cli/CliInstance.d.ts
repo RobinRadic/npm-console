@@ -8,5 +8,5 @@ export declare class CliInstance extends YargsInstance {
     commandos(dir: any): this;
     commandos4(dir: string): this;
     commandos2(dir: string): this;
-    showTree(dir: string): import("require-directory").RequireDirectoryResult<unknown>;
+    showTree(dir: string): any;
 }

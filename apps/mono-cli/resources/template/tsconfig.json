@@ -1,5 +1,5 @@
 {
-    "extends": "apps/mono-repo/resources/template/tsconfig.build.json",
+    "extends": "./tsconfig.build.json",
     "compilerOptions": {
         "composite": true,
         "baseUrl": "./",
@@ -29,28 +29,5 @@
     "include": [
         "src",
         "src/index.ts"
-    ],
-    "references": [
-        {
-            "path": "../console"
-        },
-        {
-            "path": "../console-colors"
-        },
-        {
-            "path": "../console-input"
-        },
-        {
-            "path": "../console-output"
-        },
-        {
-            "path": "../core"
-        },
-        {
-            "path": "../hosting"
-        },
-        {
-            "path": "../shared"
-        }
     ]
 }

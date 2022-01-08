@@ -29,6 +29,7 @@
         "docs:info": "vuepress info src",
         "core": "cd packages/core && yarn",
         "mono": "cd apps/mono-cli && yarn",
+        "ps1": "cd packages/ps1 && yarn",
         "shared": "cd packages/shared && yarn",
         "console": "cd packages/console && yarn",
         "console-colors": "cd packages/console-colors && yarn",

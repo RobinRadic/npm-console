@@ -16,13 +16,11 @@
         },
         {
             "from": "src",
-            "to": "src",
-            "templated": true
+            "to": "src"
         },
         {
             "from": "test",
-            "to": "test",
-            "templated": true
+            "to": "test"
         },
         ".editorconfig",
         ".gitignore",
@@ -48,8 +46,7 @@
             "builder": "builder.js",
             "params": {
                 "return": true
-            },
-            "to": "src/index.ts"
+            }
         }
     ]
 }

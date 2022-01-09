@@ -10,6 +10,7 @@ export interface MonoRepoOptions {
     workspaces?: boolean;
     packagePaths?: string[];
     creator?: {
+        template?: string;
         variables?: any;
     };
 }
@@ -24,6 +25,8 @@ export declare class MonoRepo {
     dir: DirectoryStorage;
     options: ProxyRepository<MonoRepoOptions>;
     constructor(options: MonoRepoOptions);
+    static isMonoRepo(path: string): boolean;
+    static isPackage(path: string): boolean;
     protected handlePackages(): void;
     createPackageCreator(packagePath: string): PackageCreator;
     /**

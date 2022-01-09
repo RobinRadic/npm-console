@@ -2,6 +2,7 @@
     "name": "@radic/hosting-cli",
     "version": "1.0.1",
     "scripts": {
+        "build": "yarn clean && tsc -p tsconfig.build.json",
         "generate-nginx-types": "ts-node  scripts/nginx-types-generator.ts",
         "clean": "rm -rf lib",
         "compile": "tsc -p tsconfig.json",

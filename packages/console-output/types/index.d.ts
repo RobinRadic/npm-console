@@ -29,6 +29,7 @@ declare module '@radic/core/types/Foundation/Application' {
     }
 }
 import { Color } from './colors';
+import { CliString } from './colors/CliString';
 export {};
 declare global {
     interface String {
@@ -36,5 +37,7 @@ declare global {
         toHexColor(): string;
         toColor(): Color;
         toCliColor(): string;
+        get colors(): CliString;
+        colorize(): CliString;
     }
 }

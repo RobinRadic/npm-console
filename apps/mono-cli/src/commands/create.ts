@@ -6,7 +6,7 @@ import { readFileSync, statSync } from 'fs';
 import { isString } from '@radic/shared';
 
 
-@command('create [name] [path]', 'Create package', [ 'C' ])
+@command('create [name] [path]', 'Create package')
 export default class extends Command {
     @option('t', 'Path to a custom template', { requiresArg: true }) template: string;
     @option('v', 'Path to a json file containing variables to override the default template variables', { requiresArg: true }) variables: string;

@@ -2,7 +2,7 @@ import { command, option } from '@radic/console';
 import { Command } from '../Command';
 
 
-@command('commit [message]', 'Git add all & commit')
+@command('commit [message]', 'Git add all & commit', ['C'])
 export default class extends Command {
     @option('p', 'Push commits to remote') push: boolean = true;
     @option('t', 'Push tags to remote') tags: boolean;

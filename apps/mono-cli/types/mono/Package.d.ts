@@ -13,7 +13,7 @@ export declare class Package {
     tsconfigBuild: TSconfigJson;
     basename: string;
     colorize: ColorWrapper;
-    get coloredName(): string;
+    get coloredName(): any;
     readonly hooks: {
         builder: SyncHook<[PackageBuilder], void, import("tapable").UnsetAdditionalOptions>;
     };
@@ -21,11 +21,11 @@ export declare class Package {
     get tsconfigJsonPath(): string;
     get tsconfigBuildJsonPath(): string;
     constructor(path: string);
-    get name(): string;
+    get name(): any;
     get slug(): string;
     get builder(): PackageBuilder;
     get semver(): SemVer;
-    get version(): string;
+    get version(): any;
     bump(type: ReleaseType): string;
     getBumpedVersion(type: ReleaseType): string;
 }

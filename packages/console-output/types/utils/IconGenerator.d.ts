@@ -1,4 +1,3 @@
-/// <reference types="node" />
 import { IconDefinition, IconLookup, IconName, IconPack, IconPrefix, Library } from '@fortawesome/fontawesome';
 import { Create, OutputInfo, OverlayOptions, PngOptions, Sharp, SharpOptions } from 'sharp';
 export interface IconData extends IconLookup {

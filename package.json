@@ -1,7 +1,5 @@
 {
     "name": "@radic/mono",
-    "version": "1.0.0",
-    "description": "mono",
     "private": true,
     "workspaces": {
         "packages": [
@@ -18,9 +16,6 @@
             "packages/multi-package-json-manager"
         ],
         "nohoist": []
-    },
-    "resolutions2": {
-        "before-after-hook": "1.4."
     },
     "scripts": {
         "docs": "npm-run-all docs:api docs:build clean:docs:api",
@@ -137,6 +132,7 @@
         "unplugin-vue-components": "^0.17.2",
         "vue": "^3.2.23",
         "vuepress": "^2.0.0-beta.27",
-        "vuepress-plugin-typedoc": "^0.9.2"
+        "vuepress-plugin-typedoc": "^0.9.2",
+        "@radic/mono-cli": "^1.0.0"
     }
 }

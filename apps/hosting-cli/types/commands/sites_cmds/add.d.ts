@@ -1,4 +1,3 @@
-/// <reference types="node" />
 import { SitesCommand } from '../../SitesCommand';
 import { Url } from 'url';
 import { HTTPServer } from '@radic/hosting';

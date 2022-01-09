@@ -1,4 +1,3 @@
-/// <reference types="node" />
 import { Key } from './Key';
 import { CipherGCM, DecipherGCM } from 'crypto';
 export declare class Encrypter {

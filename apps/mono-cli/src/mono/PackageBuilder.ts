@@ -222,7 +222,7 @@ export class PackageBuilder extends EventEmitter {
         return this;
     }
 
-    protected exec(command: string, silent: boolean = true): string {
+    protected exec(command: string, silent: boolean = false): string {
         try {
             let silence   = ' &>/dev/null';
             let env       = process.env;
@@ -234,7 +234,7 @@ export class PackageBuilder extends EventEmitter {
                 segments.push(silence);
             }
             command                                            = segments.join(' ');
-            let execOptions: ExecSyncOptionsWithStringEncoding = { cwd: this.pkg.path, encoding: 'utf-8', shell: 'bash', env };
+            let execOptions: ExecSyncOptionsWithStringEncoding = { cwd: this.pkg.path, encoding: 'utf-8', shell: 'bash', env, timeout: 5000 };
             return execSync(command, execOptions).toString();
         } catch (e) {
             if ( !command.startsWith('npx') ) {

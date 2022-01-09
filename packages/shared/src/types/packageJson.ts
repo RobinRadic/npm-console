@@ -10,7 +10,7 @@ export interface PackageJsonPerson extends PackageJsonAddress {
 
 export interface PackageJson {
     [key:string]:any
-    workspaces:string[]|{packages:string[],nohoist:string[]}
+    workspaces:string[]|{packages:string[],nohoist?:string[]}
     name: string;
     version: string;
     description?: string;

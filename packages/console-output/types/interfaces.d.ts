@@ -1,4 +1,3 @@
-/// <reference types="node" />
 import { InspectOptions } from 'util';
 import { Output } from './Output';
 import { DivOptions } from './ui/Div';

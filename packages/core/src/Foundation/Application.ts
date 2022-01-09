@@ -9,7 +9,7 @@ import { dirname, resolve } from 'path';
 import { envPaths, EnvPaths } from '../Support';
 import { DirectoryStorage } from '../Storage';
 import findupSync from 'findup-sync';
-import { readFileSync } from 'fs';
+import { existsSync, readFileSync } from 'fs';
 import { Constructor, isConstructor, IServiceProvider, IServiceProviderClass, isServiceProviderClass, makeLog, PackageJson, ServiceProvider } from '@radic/shared';
 import { ApplicationInitOptions, Configuration } from '../types';
 import { defaultConfiguration } from '../consts';
@@ -227,25 +227,31 @@ export class Application extends Container {
     }
 
     public registerPaths(cwd?: string) {
-        const packageJsonPath  = findupSync('package.json', { cwd: cwd || __dirname });
-        const root             = dirname(packageJsonPath);
-        const path             = (...parts) => resolve(root, ...parts);
-        const pkg: PackageJson = JSON.parse(readFileSync(path('package.json'), 'utf-8'));
-        this.instance('pkg', pkg).addBindingGetter('pkg');
-        let env            = envPaths(pkg.name, { suffix: '' });
+        const packageJsonPath = findupSync('package.json', { cwd: cwd || __dirname });
+        const root            = packageJsonPath ? dirname(packageJsonPath) : cwd;
+        const path            = (...parts) => resolve(root, ...parts);
+
+        let env = envPaths('@radic/core', { suffix: '' });
+        if ( existsSync(path('package.json')) ) {
+            const pkg: PackageJson = JSON.parse(readFileSync(path('package.json'), 'utf-8'));
+            this.instance('pkg', pkg).addBindingGetter('pkg');
+            if(pkg?.name) {
+                env = envPaths(pkg.name, { suffix: '' });
+            }
+        }
         const paths: Paths = {
             node: process.argv[ 0 ],
             app : process.argv[ 1 ],
             pkg : path('package.json'),
             root,
             path,
-            env : {
+            env : env ? {
                 data  : (...parts) => resolve(env.data, ...parts),
                 config: (...parts) => resolve(env.config, ...parts),
                 cache : (...parts) => resolve(env.cache, ...parts),
                 log   : (...parts) => resolve(env.log, ...parts),
                 temp  : (...parts) => resolve(env.temp, ...parts),
-            },
+            } : null,
         };
         this.instance('paths', paths).addBindingGetter('paths');
     }
@@ -297,7 +303,7 @@ export class Application extends Container {
         this.instance('config', ConfigRepository.asProxy<Configuration>(config)).addBindingGetter('config');
 
         this.config.markOriginal()
-            .setStorage(DirectoryStorage.env('config', this.pkg.name))
+            .setStorage(DirectoryStorage.env('config', this?.pkg?.name ? this.pkg.name : '@radic/core'))
             .load('merge');
     }
 

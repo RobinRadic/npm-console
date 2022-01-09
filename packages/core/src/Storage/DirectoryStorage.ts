@@ -4,6 +4,7 @@ import { existsSync, readFileSync, rmSync, statSync, writeFileSync } from 'fs';
 import { envPaths, EnvPaths } from '../Support';
 import { compressToUTF16, decompressFromUTF16 } from 'lz-string';
 import glob, { IOptions } from 'glob';
+import { isString } from '@radic/shared';
 
 export interface DirectoryStorageOptions {
     basePath: string;
@@ -34,15 +35,15 @@ export class DirectoryStorage {
     protected set encoding(encoding: BufferEncoding) { this.options.encoding = encoding;}
 
     constructor(options: DirectoryStorageOptions) {
-        this.mergeOptions(options);
-        let exists = this.exists();
+        this.options = this.mergeOptions(options);
+        let exists   = this.exists();
         if ( !exists ) {
             this.ensureDir();
         }
     }
 
     mergeOptions(options: DirectoryStorageOptions) {
-        this.options = {
+        return {
             ...this.options,
             ...options,
             json: {
@@ -52,8 +53,8 @@ export class DirectoryStorage {
         };
     }
 
-    static env(type: keyof EnvPaths, name: string, suffix?: string) {
-        return new this({ basePath: envPaths(name, { suffix })[ type ] });
+    static env(type: keyof EnvPaths, name?: string, suffix?: string) {
+        return new this({ basePath: envPaths(isString(name) ? name : '@radic/core', { suffix })[ type ] });
     }
 
     withEncoding<T>(encoding: BufferEncoding, callback: (storage: DirectoryStorage) => T): T {
@@ -139,6 +140,7 @@ export class DirectoryStorage {
     }
 
     readJson<T>(path: string, options: DirectoryStorage.JsonOptions = {}): T {
+        options = { ...this.options.json, ...options };
         if ( options.compression ) {
             let data: any = this.read(path);
             data          = this.decompress(data);
@@ -149,6 +151,7 @@ export class DirectoryStorage {
     }
 
     writeJson(path: string, data: any, options: DirectoryStorage.JsonOptions = {}): this {
+        options = { ...this.options.json, ...options };
         if ( options.compression ) {
             this.withEncoding('utf8', s => s.write(path, this.compress(JSON.stringify(data))));
             return this;

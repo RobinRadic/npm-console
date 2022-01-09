@@ -6,7 +6,6 @@ import { figures } from './figures';
 import { Ui } from './ui';
 import { merge } from 'lodash';
 import { IconGenerator } from './utils/IconGenerator';
-import { color } from 'csx/lib/color';
 import { ColorProperty } from 'csstype';
 import { addToGlobalPrototypes } from './addToGlobalPrototypes';
 
@@ -15,9 +14,9 @@ export interface Output extends MacroProxy<Output> {
 }
 
 export class Output {
-    public stdin: NodeJS.ReadableStream  = process.stdin;
-    public stdout: NodeJS.WritableStream = process.stdout;
-    public stderr: NodeJS.WritableStream = process.stderr;
+    public stdin: NodeJS.ReadableStream | any  = process.stdin;
+    public stdout: NodeJS.WritableStream | any = process.stdout;
+    public stderr: NodeJS.WritableStream | any = process.stderr;
 
     public readonly parsers: Map<string, IParser> = new Map();
     public styles: StyleManager                   = new StyleManager();
@@ -27,12 +26,12 @@ export class Output {
     public icons: IconGenerator;
 
     static defaultOptions: OutputOptions = {
-        silent        : false,
-        colors        : true,
-        resetOnNewline: true,
-        inspect       : { showHidden: true, depth: 10 },
+        silent               : false,
+        colors               : true,
+        resetOnNewline       : true,
+        inspect              : { showHidden: true, depth: 10 },
         addToGlobalPrototypes: true,
-        styles        : {
+        styles               : {
             title   : 'yellow bold',
             subtitle: 'yellow',
             success : 'green lighten 20 bold',
@@ -46,7 +45,7 @@ export class Output {
         this.addDefaultParsers();
         this.ui = new Ui(this);
         Object.entries(this.options.styles).forEach(([ k, v ]) => this.styles.setStyle(k, v));
-        if(this.options.addToGlobalPrototypes){
+        if ( this.options.addToGlobalPrototypes ) {
             addToGlobalPrototypes(this);
         }
         return macroProxy(this);
@@ -118,7 +117,7 @@ export class Output {
         return this;
     }
 
-    color(property: ColorProperty):Color {
+    color(property: ColorProperty): Color {
         return Color.make(property);
     }
 

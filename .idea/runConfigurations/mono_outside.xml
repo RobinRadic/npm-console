@@ -1,0 +1,8 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="mono outside" type="NodeJSConfigurationType" path-to-js-file="projects/@radic-console/apps/mono-cli/bin/mono.js" working-dir="$USER_HOME$">
+    <envs>
+      <env name="NODE_ENV" value="development" />
+    </envs>
+    <method v="2" />
+  </configuration>
+</component>

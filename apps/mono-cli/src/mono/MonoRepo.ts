@@ -17,6 +17,7 @@ export interface MonoRepoOptions {
     workspaces?: boolean;
     packagePaths?: string[];
     creator?: {
+        template?:string
         variables?: any
     };
 }
@@ -27,7 +28,7 @@ export interface MonoRepo extends macro.Proxy<MonoRepo> {}
 export class MonoRepo {
     rootPath?: string;
     pkg: PackageJson;
-    packages: PackageCollection;
+    packages: PackageCollection               = new PackageCollection([]);
     readonly hooks                            = {};
     git: SimpleGit;
     dir: DirectoryStorage;
@@ -36,16 +37,25 @@ export class MonoRepo {
     constructor(options: MonoRepoOptions) {
         this.options  = Repository.asProxy(options);
         this.rootPath = dirname(options.rootPackagePath);
-        this.pkg      = readJSONSync(options.rootPackagePath);
-        this.git      = simpleGit(this.rootPath);
         this.dir      = new DirectoryStorage({
             basePath: this.rootPath,
         });
-        this.handlePackages();
+        this.git      = simpleGit(this.rootPath);
+        if ( this.dir.exists(options.rootPackagePath) ) {
+            this.pkg = this.dir.readJson(options.rootPackagePath);
+        }
         if ( this.dir.exists('mono.json') ) {
             this.options.merge(this.dir.readJson('mono.json'));
+            this.handlePackages();
         }
         return macro.proxy(this);
+    }
+
+    static isMonoRepo(path: string) {
+        return this.isPackage(path) && existsSync(join(path, 'mono.json'));
+    }
+    static isPackage(path: string) {
+        return existsSync(path) && existsSync(join(path, 'package.json'))
     }
 
     protected handlePackages() {
@@ -66,7 +76,7 @@ export class MonoRepo {
     createPackageCreator(packagePath: string) {
         const creator = new PackageCreator(this);
         creator.setPackageDirectory(this.path(packagePath));
-        creator.opts.merge(this.options.get('creator',{}));
+        creator.opts.merge(this.options.get('creator', {}));
         return creator;
     }
 

@@ -1,5 +1,8 @@
 {
+    "$schema": "node_modules/@radic/mono-cli/resources/schema/mono.schema.json",
+
     "creator": {
+        "template": "asdf/_template.json",
         "variables": {
             "author": {
                 "name": "Robin Radic",

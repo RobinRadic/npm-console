@@ -10,7 +10,7 @@ export interface PackageJson {
     [key: string]: any;
     workspaces: string[] | {
         packages: string[];
-        nohoist: string[];
+        nohoist?: string[];
     };
     name: string;
     version: string;

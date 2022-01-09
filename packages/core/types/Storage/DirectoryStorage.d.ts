@@ -17,8 +17,15 @@ export declare class DirectoryStorage {
     protected get encoding(): BufferEncoding;
     protected set encoding(encoding: BufferEncoding);
     constructor(options: DirectoryStorageOptions);
-    mergeOptions(options: DirectoryStorageOptions): void;
-    static env(type: keyof EnvPaths, name: string, suffix?: string): DirectoryStorage;
+    mergeOptions(options: DirectoryStorageOptions): {
+        json: {
+            compression?: boolean;
+            pretty?: boolean;
+        };
+        basePath: string;
+        encoding?: BufferEncoding;
+    };
+    static env(type: keyof EnvPaths, name?: string, suffix?: string): DirectoryStorage;
     withEncoding<T>(encoding: BufferEncoding, callback: (storage: DirectoryStorage) => T): T;
     setEncoding(_encoding?: BufferEncoding): this;
     compress(data: string): string;

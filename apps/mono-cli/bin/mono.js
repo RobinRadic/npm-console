@@ -13,6 +13,7 @@ const tsconfig = JSON.parse(readFileSync(tsConfigPath,'utf8').toString())
 let dir = dev ? join(__dirname, '..', 'src') : join(__dirname, '..', tsconfig.compilerOptions.outDir)
 global.dev = dev;
 if(dev){
+    console.log('DEVELOPMENT')
     // compilerPaths=compilerPaths.map(([key,values]) => ([key, values[0].replace('src', dir)])).reduce(objectify,{})
     // addAliases(compilerPaths)
     require('ts-node').register({

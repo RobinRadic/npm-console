@@ -1,4 +1,3 @@
-/// <reference types="node" />
 import { MacroProxy } from './utils';
 import { Chain, Color, Colors, StyleManager, StyleName } from './colors';
 import { Figures, IParser, OutputOptions } from './interfaces';
@@ -9,9 +8,9 @@ export interface Output extends MacroProxy<Output> {
 }
 export declare class Output {
     readonly options: OutputOptions;
-    stdin: NodeJS.ReadableStream;
-    stdout: NodeJS.WritableStream;
-    stderr: NodeJS.WritableStream;
+    stdin: NodeJS.ReadableStream | any;
+    stdout: NodeJS.WritableStream | any;
+    stderr: NodeJS.WritableStream | any;
     readonly parsers: Map<string, IParser>;
     styles: StyleManager;
     colors: Colors;

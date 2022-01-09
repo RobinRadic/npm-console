@@ -3,7 +3,7 @@ import { isObject, isString, ProxyRepository, Repository } from '@radic/shared';
 import { MonoRepo } from './MonoRepo';
 import { merge, template } from 'lodash';
 import { SyncWaterfallHook } from 'tapable';
-import { copySync, mkdirpSync } from 'fs-extra';
+import { copySync, existsSync, mkdirpSync } from 'fs-extra';
 import { glob } from 'glob';
 import { Stats, statSync } from 'fs';
 import { dirname, join } from 'path';

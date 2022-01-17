@@ -1,21 +1,21 @@
 {
     "name": "<%= name %>",
     "private": false,
-    "version": "1.0.2",
-    "description": "shared",
-    <% if(author){ %>
+    "version": "1.0.0",
+    "description": "<%= name %>",
+    <% if(has('author')){ %>
     "author": {
         "name": "<%= author.name %>",
         "email": "<%= author.email %>",
         "url": "<%= author.url %>"
     },
     <% } %>
-<% if(license){ %>
+<% if(has('license')){ %>
     "license": "<%= license %>",
 <% } %>
     "main": "lib/index.js",
     "types": "types/index.d.ts",
-<% if(homepage){ %>
+<% if(has('homepage')){ %>
     "homepage": "<%= homepage %>",
 <% } %>
     "scripts": {
@@ -36,7 +36,7 @@
         "@radic/core": "^1.0.0"
     },
     "keywords": [],
-<% if(bugs){ %>
+<% if(has('bugs')){ %>
     "bugs": {
         "email": "rradic@hotmail.com",
         "url": "https://github.com/robinradic/npm-packages/issues"
@@ -45,24 +45,14 @@
     "engines": {
         "node": ">=12"
     },
-    "files": [
-        "lib/**/*"
-    ],
-    "os": [
-        "darwin",
-        "linux"
-    ],
+<% if(has('repository')){ %>
+"repository": {
+"type": "git",
+"url": "https://github.com/robinradic.git",
+"directory": "packages/shared"
+},
+<% } %>
     "publishConfig": {
         "access": "public"
-    },
-<% if(repository){ %>
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/robinradic.git",
-        "directory": "packages/shared"
-    },
-<% } %>
-    "vuepress": {
-        "name": "Shared"
     }
 }

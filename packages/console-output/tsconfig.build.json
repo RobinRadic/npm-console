@@ -58,6 +58,9 @@
     ],
     "include": [
         "src",
-        "src/index.ts"
+        "src/index.ts",
+        "src/OutputServiceProvider.ts",
+        "src/log",
+        "radic-core-shims.d.ts"
     ]
 }

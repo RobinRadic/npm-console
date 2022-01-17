@@ -1,8 +1,9 @@
-import Progress, { ProgressBarOptions as BaseProgressBarOptions } from 'progress';
+import ProgressBarClass, { ProgressBarOptions as BaseProgressBarOptions } from 'progress';
 import { Figure, OutputConfig } from '../interfaces';
 import { Ui } from './Ui';
 import { merge } from 'lodash';
 import { Output } from '../Output';
+import { requireModule } from '../utils';
 
 
 export interface ProgressBarOptions extends Partial<BaseProgressBarOptions> {
@@ -22,7 +23,7 @@ export class ProgressBar {
 
     get out(): Output {return this.ui.output;}
 
-    bar(options: ProgressBarOptions = {}) {
+    bar(options: ProgressBarOptions = {}):ProgressBarClass {
 
         options.style                          = options.style || {};
         let style: ProgressBarOptions['style'] = {
@@ -45,7 +46,9 @@ export class ProgressBar {
         }
         format = this.out.parse(format);
 
-        const bar = new Progress(format, {
+        const Progress = requireModule('progress');
+
+        const bar:ProgressBarClass = new Progress(format, {
             total     : 100,
             stream    : this.ui.output.stdout,
             complete  : this.ui.output.figures.square,

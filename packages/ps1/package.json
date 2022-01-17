@@ -3,13 +3,13 @@
     "private": false,
     "version": "1.0.2",
     "description": "shared",
-    
+
     "author": {
         "name": "Robin Radic",
         "email": "rradic@hotmail.com",
         "url": "https://github.com/robinradic"
     },
-    
+
 
     "license": "MIT",
 
@@ -33,6 +33,7 @@
     },
     "dependencies": {},
     "devDependencies": {
+        "@types/node": "^16.0.8",
         "@radic/core": "^1.0.0"
     },
     "keywords": [],
@@ -45,9 +46,6 @@
     "engines": {
         "node": ">=12"
     },
-    "files": [
-        "lib/**/*"
-    ],
     "os": [
         "darwin",
         "linux"

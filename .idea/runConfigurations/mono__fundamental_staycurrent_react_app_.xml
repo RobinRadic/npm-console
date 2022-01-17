@@ -1,8 +1,0 @@
-<component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="mono /fundamental/staycurrent-react-app " type="NodeJSConfigurationType" path-to-js-file="$PROJECT_DIR$/apps/mono-cli/bin/mono.js" working-dir="$USER_HOME$/fundamental/staycurrent-react-app">
-    <envs>
-      <env name="NODE_ENV" value="development" />
-    </envs>
-    <method v="2" />
-  </configuration>
-</component>

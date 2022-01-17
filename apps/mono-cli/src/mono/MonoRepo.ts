@@ -11,6 +11,7 @@ import { Collection, DirectoryStorage } from '@radic/core';
 import { PackageCollection } from './PackageCollection';
 import simpleGit, { SimpleGit } from 'simple-git';
 import { PackageCreator } from './PackageCreator';
+import { glob } from 'glob';
 
 export interface MonoRepoOptions {
     rootPackagePath?: string;
@@ -69,7 +70,13 @@ export class MonoRepo {
         } else {
             packagePaths = this.options.packagePaths;
         }
-        this.options.packagePaths = packagePaths.map(p => isAbsolute(p) ? p : this.path(p));
+        for(let path of packagePaths){
+            if(path.includes('*')){
+                this.options.packagePaths.push(...glob.sync(path,{absolute:true}))
+                continue;
+            }
+            this.options.packagePaths.push(isAbsolute(path) ? path : this.path(path));
+        }
         this.packages             = new PackageCollection(this.options.packagePaths.map(path => new Package(path)));
     }
 

@@ -7,6 +7,24 @@ import { Ui } from './ui';
 import { Bindings, inject } from '@radic/core';
 import { OutputOptions } from './interfaces';
 
+
+declare module '@radic/core/types/types/config' {
+    export interface Configuration {
+        output?: OutputOptions;
+    }
+}
+declare module '@radic/core/types/Foundation/Application' {
+    export interface Bindings {
+        'output': Output;
+        'output.ui': Ui;
+        'output.options': OutputOptions;
+    }
+
+    export interface Application {
+        output: Output;
+        ui: Ui;
+    }
+}
 export class OutputServiceProvider extends ServiceProvider {
 
     load() {

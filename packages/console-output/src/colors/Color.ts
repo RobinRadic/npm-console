@@ -1,7 +1,5 @@
 import { ColorHelper } from 'csx/lib/color';
 import { trucolor, Trucolor } from 'trucolor';
-import { inject } from '@radic/core';
-import { Output } from '../Output';
 import { ColorProperty } from 'csstype';
 import { color } from 'csx';
 
@@ -16,23 +14,22 @@ declare module 'csx/lib/color' {
 export type ColorWrapper = (message: string) => string
 
 
-ColorHelper.prototype.toTruColor = function(){
-    return trucolor(this.toHexString(), {format:'cli'});
-}
+ColorHelper.prototype.toTruColor = function () {
+    return trucolor(this.toHexString(), { format: 'cli' });
+};
 
-ColorHelper.prototype.getWrapper = function(){
+ColorHelper.prototype.getWrapper = function () {
     const t = this.toTruColor();
     return (message: string): string => t.in + message + t.out;
-}
+};
 
 export class Color extends ColorHelper {
-    @inject('output') protected output: Output;
 
-    toTruColor(){
-        return trucolor(this.toHexString(), {format:'cli'});
+    toTruColor() {
+        return trucolor(this.toHexString(), { format: 'cli' });
     }
 
-    getWrapper(){
+    getWrapper() {
         const t = this.toTruColor();
         return (message: string): string => t.in + message + t.out;
     }

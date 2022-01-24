@@ -92,7 +92,7 @@
 
 #### Defined in
 
-[packages/core/src/Support/TypeDefinitionBuilder.ts:1](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Support/TypeDefinitionBuilder.ts#L1)
+[packages/core/src/Support/TypeDefinitionBuilder.ts:1](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Support/TypeDefinitionBuilder.ts#L1)
 
 ___
 
@@ -102,7 +102,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Dispatcher/Dispatcher.ts:60](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Dispatcher/Dispatcher.ts#L60)
+[packages/core/src/Dispatcher/Dispatcher.ts:60](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Dispatcher/Dispatcher.ts#L60)
 
 ___
 
@@ -118,7 +118,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Foundation/Application.ts:19](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Foundation/Application.ts#L19)
+[packages/core/src/Foundation/Application.ts:19](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Foundation/Application.ts#L19)
 
 ___
 
@@ -149,7 +149,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Foundation/Application.ts:82](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Foundation/Application.ts#L82)
+[packages/core/src/Foundation/Application.ts:82](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Foundation/Application.ts#L82)
 
 ## Variables
 
@@ -159,7 +159,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Foundation/index.ts:9](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Foundation/index.ts#L9)
+[packages/core/src/Foundation/index.ts:9](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Foundation/index.ts#L9)
 
 ## Functions
 
@@ -197,7 +197,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Foundation/index.ts:21](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Foundation/index.ts#L21)
+[packages/core/src/Foundation/index.ts:21](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Foundation/index.ts#L21)
 
 ___
 
@@ -266,7 +266,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Foundation/index.ts:12](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Foundation/index.ts#L12)
+[packages/core/src/Foundation/index.ts:12](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Foundation/index.ts#L12)
 
 ___
 
@@ -318,7 +318,7 @@ val is CacheAdapter
 
 #### Defined in
 
-[packages/core/src/Cache/CacheAdapter.ts:24](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Cache/CacheAdapter.ts#L24)
+[packages/core/src/Cache/CacheAdapter.ts:24](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Cache/CacheAdapter.ts#L24)
 
 ___
 
@@ -344,7 +344,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Config/Repository.ts:78](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Config/Repository.ts#L78)
+[packages/core/src/Config/Repository.ts:78](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Config/Repository.ts#L78)
 
 ___
 
@@ -485,7 +485,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Foundation/index.ts:14](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Foundation/index.ts#L14)
+[packages/core/src/Foundation/index.ts:14](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Foundation/index.ts#L14)
 
 ___
 

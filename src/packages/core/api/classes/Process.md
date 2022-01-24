@@ -34,7 +34,7 @@
 
 #### Defined in
 
-[packages/core/src/System/Process.ts:35](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/System/Process.ts#L35)
+[packages/core/src/System/Process.ts:35](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/System/Process.ts#L35)
 
 ## Properties
 
@@ -44,7 +44,7 @@
 
 #### Defined in
 
-[packages/core/src/System/Process.ts:7](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/System/Process.ts#L7)
+[packages/core/src/System/Process.ts:7](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/System/Process.ts#L7)
 
 ___
 
@@ -60,7 +60,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/System/Process.ts:6](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/System/Process.ts#L6)
+[packages/core/src/System/Process.ts:6](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/System/Process.ts#L6)
 
 ___
 
@@ -80,4 +80,4 @@ ___
 
 #### Defined in
 
-[packages/core/src/System/Process.ts:39](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/System/Process.ts#L39)
+[packages/core/src/System/Process.ts:39](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/System/Process.ts#L39)

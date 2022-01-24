@@ -1,3 +1,6 @@
+///<reference path="./OutputServiceProvider.ts"/>
+///<reference path="./log/LogServiceProvider.ts"/>
+
 import 'reflect-metadata';
 import { Color } from './colors';
 import { CliString } from './colors/CliString';
@@ -10,11 +13,6 @@ export * from './figures';
 export * from './interfaces';
 export * from './macros';
 export * from './Output';
-// export * from './log';
-// export * from './OutputServiceProvider';
-
-//
-// export const output: Output = new Output();
 
 export {};
 declare global {

@@ -69,7 +69,7 @@ EventEmitter2.constructor
 
 #### Defined in
 
-[packages/core/src/Dispatcher/Dispatcher.ts:18](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Dispatcher/Dispatcher.ts#L18)
+[packages/core/src/Dispatcher/Dispatcher.ts:18](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Dispatcher/Dispatcher.ts#L18)
 
 ## Properties
 
@@ -79,7 +79,7 @@ EventEmitter2.constructor
 
 #### Defined in
 
-[packages/core/src/Dispatcher/Dispatcher.ts:11](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Dispatcher/Dispatcher.ts#L11)
+[packages/core/src/Dispatcher/Dispatcher.ts:11](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Dispatcher/Dispatcher.ts#L11)
 
 ___
 
@@ -124,7 +124,7 @@ EventEmitter2.addListener
 
 #### Defined in
 
-[packages/core/src/Dispatcher/Dispatcher.ts:71](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Dispatcher/Dispatcher.ts#L71)
+[packages/core/src/Dispatcher/Dispatcher.ts:71](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Dispatcher/Dispatcher.ts#L71)
 
 ___
 
@@ -146,7 +146,7 @@ Register an event listener.
 
 #### Defined in
 
-[packages/core/src/Dispatcher/Dispatcher.ts:43](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Dispatcher/Dispatcher.ts#L43)
+[packages/core/src/Dispatcher/Dispatcher.ts:43](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Dispatcher/Dispatcher.ts#L43)
 
 ___
 
@@ -173,7 +173,7 @@ EventEmitter2.emit
 
 #### Defined in
 
-[packages/core/src/Dispatcher/Dispatcher.ts:32](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Dispatcher/Dispatcher.ts#L32)
+[packages/core/src/Dispatcher/Dispatcher.ts:32](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Dispatcher/Dispatcher.ts#L32)
 
 ▸ **emit**<`T`\>(`event`, ...`values`): `boolean`
 
@@ -200,7 +200,7 @@ EventEmitter2.emit
 
 #### Defined in
 
-[packages/core/src/Dispatcher/Dispatcher.ts:67](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Dispatcher/Dispatcher.ts#L67)
+[packages/core/src/Dispatcher/Dispatcher.ts:67](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Dispatcher/Dispatcher.ts#L67)
 
 ___
 
@@ -231,7 +231,7 @@ EventEmitter2.emitAsync
 
 #### Defined in
 
-[packages/core/src/Dispatcher/Dispatcher.ts:69](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Dispatcher/Dispatcher.ts#L69)
+[packages/core/src/Dispatcher/Dispatcher.ts:69](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Dispatcher/Dispatcher.ts#L69)
 
 ___
 
@@ -391,7 +391,7 @@ EventEmitter2.listenerCount
 
 #### Defined in
 
-[packages/core/src/Dispatcher/Dispatcher.ts:91](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Dispatcher/Dispatcher.ts#L91)
+[packages/core/src/Dispatcher/Dispatcher.ts:91](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Dispatcher/Dispatcher.ts#L91)
 
 ___
 
@@ -466,7 +466,7 @@ EventEmitter2.many
 
 #### Defined in
 
-[packages/core/src/Dispatcher/Dispatcher.ts:81](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Dispatcher/Dispatcher.ts#L81)
+[packages/core/src/Dispatcher/Dispatcher.ts:81](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Dispatcher/Dispatcher.ts#L81)
 
 ___
 
@@ -497,7 +497,7 @@ EventEmitter2.off
 
 #### Defined in
 
-[packages/core/src/Dispatcher/Dispatcher.ts:87](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Dispatcher/Dispatcher.ts#L87)
+[packages/core/src/Dispatcher/Dispatcher.ts:87](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Dispatcher/Dispatcher.ts#L87)
 
 ___
 
@@ -553,7 +553,7 @@ EventEmitter2.on
 
 #### Defined in
 
-[packages/core/src/Dispatcher/Dispatcher.ts:73](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Dispatcher/Dispatcher.ts#L73)
+[packages/core/src/Dispatcher/Dispatcher.ts:73](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Dispatcher/Dispatcher.ts#L73)
 
 ___
 
@@ -609,7 +609,7 @@ EventEmitter2.once
 
 #### Defined in
 
-[packages/core/src/Dispatcher/Dispatcher.ts:77](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Dispatcher/Dispatcher.ts#L77)
+[packages/core/src/Dispatcher/Dispatcher.ts:77](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Dispatcher/Dispatcher.ts#L77)
 
 ___
 
@@ -665,7 +665,7 @@ EventEmitter2.prependListener
 
 #### Defined in
 
-[packages/core/src/Dispatcher/Dispatcher.ts:75](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Dispatcher/Dispatcher.ts#L75)
+[packages/core/src/Dispatcher/Dispatcher.ts:75](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Dispatcher/Dispatcher.ts#L75)
 
 ___
 
@@ -698,7 +698,7 @@ EventEmitter2.prependMany
 
 #### Defined in
 
-[packages/core/src/Dispatcher/Dispatcher.ts:83](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Dispatcher/Dispatcher.ts#L83)
+[packages/core/src/Dispatcher/Dispatcher.ts:83](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Dispatcher/Dispatcher.ts#L83)
 
 ___
 
@@ -730,7 +730,7 @@ EventEmitter2.prependOnceListener
 
 #### Defined in
 
-[packages/core/src/Dispatcher/Dispatcher.ts:79](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Dispatcher/Dispatcher.ts#L79)
+[packages/core/src/Dispatcher/Dispatcher.ts:79](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Dispatcher/Dispatcher.ts#L79)
 
 ___
 
@@ -754,7 +754,7 @@ EventEmitter2.removeAllListeners
 
 #### Defined in
 
-[packages/core/src/Dispatcher/Dispatcher.ts:89](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Dispatcher/Dispatcher.ts#L89)
+[packages/core/src/Dispatcher/Dispatcher.ts:89](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Dispatcher/Dispatcher.ts#L89)
 
 ___
 
@@ -785,7 +785,7 @@ EventEmitter2.removeListener
 
 #### Defined in
 
-[packages/core/src/Dispatcher/Dispatcher.ts:85](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Dispatcher/Dispatcher.ts#L85)
+[packages/core/src/Dispatcher/Dispatcher.ts:85](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Dispatcher/Dispatcher.ts#L85)
 
 ___
 
@@ -834,7 +834,7 @@ EventEmitter2.stopListeningTo
 
 #### Defined in
 
-[packages/core/src/Dispatcher/Dispatcher.ts:99](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Dispatcher/Dispatcher.ts#L99)
+[packages/core/src/Dispatcher/Dispatcher.ts:99](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Dispatcher/Dispatcher.ts#L99)
 
 ___
 
@@ -865,7 +865,7 @@ EventEmitter2.waitFor
 
 #### Defined in
 
-[packages/core/src/Dispatcher/Dispatcher.ts:93](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Dispatcher/Dispatcher.ts#L93)
+[packages/core/src/Dispatcher/Dispatcher.ts:93](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Dispatcher/Dispatcher.ts#L93)
 
 ▸ **waitFor**<`T`\>(`event`, `filter?`): `CancelablePromise`<`any`[]\>
 
@@ -892,7 +892,7 @@ EventEmitter2.waitFor
 
 #### Defined in
 
-[packages/core/src/Dispatcher/Dispatcher.ts:95](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Dispatcher/Dispatcher.ts#L95)
+[packages/core/src/Dispatcher/Dispatcher.ts:95](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Dispatcher/Dispatcher.ts#L95)
 
 ▸ **waitFor**<`T`\>(`event`, `options?`): `CancelablePromise`<`any`[]\>
 
@@ -919,7 +919,7 @@ EventEmitter2.waitFor
 
 #### Defined in
 
-[packages/core/src/Dispatcher/Dispatcher.ts:97](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Dispatcher/Dispatcher.ts#L97)
+[packages/core/src/Dispatcher/Dispatcher.ts:97](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Dispatcher/Dispatcher.ts#L97)
 
 ___
 

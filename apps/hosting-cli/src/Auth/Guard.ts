@@ -3,10 +3,11 @@ import { app, config, DirectoryStorage, injectable } from '@radic/core';
 import { join } from 'path';
 import { Key } from './Key';
 import { Passport } from './Passport';
+import { AuthConfiguration } from './AuthServiceProvider';
 
 @injectable()
 export class Guard {
-    @config config: config;
+    @config config: config & { auth: AuthConfiguration };
     protected algorithm                         = 'sha256';
     protected initVector: Buffer;
     protected cypher: CipherGCM;
@@ -14,7 +15,7 @@ export class Guard {
     protected storage: DirectoryStorage;
     protected keyStringEncoding: BufferEncoding = 'base64';
     #keysDir                                    = 'keys';
-    #currentUser:Passport
+    #currentUser: Passport;
 
     constructor() {
         this.storage = DirectoryStorage.env('data', app.pkg.name);
@@ -29,15 +30,15 @@ export class Guard {
         return false;
     }
 
-    logout(){
+    logout() {
         this.config.auth.currentUser = undefined;
         this.config.save();
         return this;
     }
 
     user(): Passport {
-        if(this.#currentUser !== undefined){
-            return this.#currentUser
+        if ( this.#currentUser !== undefined ) {
+            return this.#currentUser;
         }
         if ( !this.isLogggedIn() ) {
             throw new Error('Not logged in');
@@ -56,7 +57,7 @@ export class Guard {
         if ( !valid ) {
             return false;
         }
-        this.config.auth.currentUser=name;
+        this.config.auth.currentUser = name;
         this.config.save();
         return this.#currentUser = new Passport(name, key);
     }

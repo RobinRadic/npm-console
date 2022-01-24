@@ -117,7 +117,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Cache/CacheServiceProvider.ts:29](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Cache/CacheServiceProvider.ts#L29)
+[packages/core/src/Cache/CacheServiceProvider.ts:29](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Cache/CacheServiceProvider.ts#L29)
 
 ___
 
@@ -131,7 +131,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Cache/CacheServiceProvider.ts:41](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Cache/CacheServiceProvider.ts#L41)
+[packages/core/src/Cache/CacheServiceProvider.ts:41](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Cache/CacheServiceProvider.ts#L41)
 
 ___
 
@@ -145,4 +145,4 @@ ___
 
 #### Defined in
 
-[packages/core/src/Cache/CacheServiceProvider.ts:45](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Cache/CacheServiceProvider.ts#L45)
+[packages/core/src/Cache/CacheServiceProvider.ts:45](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Cache/CacheServiceProvider.ts#L45)

@@ -74,6 +74,8 @@ export class PHPManager {
 
     public clean() {
         this.phps = {};
+        this.config.hosting.php.versions=[];
+        this.config.save();
         this.getPhpCache().clear();
         return this;
     }
@@ -86,7 +88,7 @@ export class PHPManager {
     }
 
     public async getPhpInfoByPath(path: string, cache: boolean = true): Promise<PhpInfo> {
-        if ( this.hasInCache(path) ) {
+        if ( cache && this.hasInCache(path) ) {
             return this.getPhpInfoByBinPathFromCache(path);
         }
         let info = await this.getPhpInfoByBinPathFromFile(path);
@@ -115,10 +117,10 @@ export class PHPManager {
         return false;
     }
 
-    protected async refreshCached(php: PHP)
-    protected async refreshCached(path: string)
-    protected async refreshCached()
-    protected async refreshCached(...args: any[]) {
+    public async refreshCached(php: PHP)
+    public async refreshCached(path: string)
+    public async refreshCached()
+    public async refreshCached(...args: any[]) {
         if ( args.length === 0 ) {
             for ( const php of this.toArray() ) {
                 await this.refreshCached(php);
@@ -142,5 +144,5 @@ export class PHPManager {
         return this;
     }
 
-    protected getPhpCache(): FileCacheAdapter {return this.cache.getAdapter<FileCacheAdapter>('php');}
+    public getPhpCache(): FileCacheAdapter {return this.cache.getAdapter<FileCacheAdapter>('php');}
 }

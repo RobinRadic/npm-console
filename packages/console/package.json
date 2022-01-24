@@ -13,8 +13,11 @@
     "types": "types/index.d.ts",
     "homepage": "https://robinradic.github.io/npm-packages/packages/console",
     "scripts": {
-        "build": "yarn clean:build && tsc --project tsconfig.build.json",
-        "clean:build": "rm -rf lib/ types/ && rimraf src/{cli,decorators,types}/**/*.{js,js.map,d.ts}",
+        "build": "npm-run-all clean:build compile tasks:dts",
+        "compile": "tsc --project tsconfig.build.json",
+        "tasks:dts": "node ./tasks.js run dts",
+        "clean:src": "rimraf src/{cli,decorators,types,yargs/lib,utils}/**/*.{js,js.map,d.ts}",
+        "clean:build": "rm -rf lib/ types/ ",
         "clean:docs:api": "rm -rf docs/api",
         "clean:test": "rm -rf .nyc-output/",
         "clean:yarn": "rm yarn.lock node_modules/",

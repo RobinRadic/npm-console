@@ -7,6 +7,8 @@ import { MonoConfiguration, MonoServiceProvider } from './MonoServiceProvider';
 import { merge } from 'lodash';
 import { MonoRepo } from './mono/MonoRepo';
 
+import { OutputServiceProvider } from '@radic/console-output/lib/OutputServiceProvider';
+
 export const app = Application.instance;
 
 export async function bootApp(options: MonoConfiguration) {

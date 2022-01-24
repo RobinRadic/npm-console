@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="hosting test asdf" type="NodeJSConfigurationType" application-parameters="test  asdf -vvv" path-to-js-file="apps/hosting-cli/bin/hosting.js" working-dir="$PROJECT_DIR$">
+    <envs>
+      <env name="NODE_ENV" value="development" />
+      <env name="DEBUG" value="*,-Application" />
+    </envs>
+    <method v="2" />
+  </configuration>
+</component>

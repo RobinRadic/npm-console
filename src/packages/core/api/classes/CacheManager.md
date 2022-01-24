@@ -50,7 +50,7 @@ CacheAdapter.constructor
 
 #### Defined in
 
-[packages/core/src/Cache/CacheManager.ts:15](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Cache/CacheManager.ts#L15)
+[packages/core/src/Cache/CacheManager.ts:15](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Cache/CacheManager.ts#L15)
 
 ## Properties
 
@@ -60,7 +60,7 @@ CacheAdapter.constructor
 
 #### Defined in
 
-[packages/core/src/Cache/CacheManager.ts:12](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Cache/CacheManager.ts#L12)
+[packages/core/src/Cache/CacheManager.ts:12](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Cache/CacheManager.ts#L12)
 
 ___
 
@@ -70,7 +70,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Cache/CacheManager.ts:13](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Cache/CacheManager.ts#L13)
+[packages/core/src/Cache/CacheManager.ts:13](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Cache/CacheManager.ts#L13)
 
 ## Methods
 
@@ -84,7 +84,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Cache/CacheManager.ts:50](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Cache/CacheManager.ts#L50)
+[packages/core/src/Cache/CacheManager.ts:50](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Cache/CacheManager.ts#L50)
 
 ___
 
@@ -98,7 +98,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Cache/CacheManager.ts:52](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Cache/CacheManager.ts#L52)
+[packages/core/src/Cache/CacheManager.ts:52](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Cache/CacheManager.ts#L52)
 
 ___
 
@@ -116,7 +116,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Cache/CacheAdapter.ts:16](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Cache/CacheAdapter.ts#L16)
+[packages/core/src/Cache/CacheAdapter.ts:16](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Cache/CacheAdapter.ts#L16)
 
 ___
 
@@ -130,7 +130,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Cache/CacheManager.ts:54](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Cache/CacheManager.ts#L54)
+[packages/core/src/Cache/CacheManager.ts:54](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Cache/CacheManager.ts#L54)
 
 ___
 
@@ -154,7 +154,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Cache/CacheAdapter.ts:14](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Cache/CacheAdapter.ts#L14)
+[packages/core/src/Cache/CacheAdapter.ts:14](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Cache/CacheAdapter.ts#L14)
 
 ___
 
@@ -185,7 +185,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Cache/CacheAdapter.ts:8](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Cache/CacheAdapter.ts#L8)
+[packages/core/src/Cache/CacheAdapter.ts:8](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Cache/CacheAdapter.ts#L8)
 
 ___
 
@@ -203,7 +203,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Cache/CacheAdapter.ts:2](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Cache/CacheAdapter.ts#L2)
+[packages/core/src/Cache/CacheAdapter.ts:2](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Cache/CacheAdapter.ts#L2)
 
 ___
 
@@ -221,7 +221,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Cache/CacheAdapter.ts:4](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Cache/CacheAdapter.ts#L4)
+[packages/core/src/Cache/CacheAdapter.ts:4](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Cache/CacheAdapter.ts#L4)
 
 ___
 
@@ -245,7 +245,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Cache/CacheAdapter.ts:10](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Cache/CacheAdapter.ts#L10)
+[packages/core/src/Cache/CacheAdapter.ts:10](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Cache/CacheAdapter.ts#L10)
 
 ___
 
@@ -265,7 +265,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Cache/CacheManager.ts:48](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Cache/CacheManager.ts#L48)
+[packages/core/src/Cache/CacheManager.ts:48](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Cache/CacheManager.ts#L48)
 
 ___
 
@@ -283,7 +283,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Cache/CacheAdapter.ts:20](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Cache/CacheAdapter.ts#L20)
+[packages/core/src/Cache/CacheAdapter.ts:20](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Cache/CacheAdapter.ts#L20)
 
 ___
 
@@ -307,7 +307,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Cache/CacheAdapter.ts:12](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Cache/CacheAdapter.ts#L12)
+[packages/core/src/Cache/CacheAdapter.ts:12](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Cache/CacheAdapter.ts#L12)
 
 ___
 
@@ -332,7 +332,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Cache/CacheAdapter.ts:6](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Cache/CacheAdapter.ts#L6)
+[packages/core/src/Cache/CacheAdapter.ts:6](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Cache/CacheAdapter.ts#L6)
 
 ___
 
@@ -352,7 +352,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Cache/CacheManager.ts:36](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Cache/CacheManager.ts#L36)
+[packages/core/src/Cache/CacheManager.ts:36](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Cache/CacheManager.ts#L36)
 
 ___
 
@@ -370,7 +370,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Cache/CacheAdapter.ts:18](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Cache/CacheAdapter.ts#L18)
+[packages/core/src/Cache/CacheAdapter.ts:18](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Cache/CacheAdapter.ts#L18)
 
 ___
 
@@ -396,4 +396,4 @@ ___
 
 #### Defined in
 
-[packages/core/src/Cache/CacheManager.ts:43](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Cache/CacheManager.ts#L43)
+[packages/core/src/Cache/CacheManager.ts:43](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Cache/CacheManager.ts#L43)

@@ -1,6 +1,26 @@
+import { Args, Cli } from '../cli';
+import { AsyncSeriesHook } from 'tapable';
 
 export * from './packageJson';
 export * from './options';
+
+
+export interface CliOptions {
+    commandDir: string;
+    maxWidth?: number | false;
+    setup?: (cli: Cli) => any;
+}
+
+export interface CliArguments {
+
+}
+
+export type CliCustomize = AsyncSeriesHook<Cli>
+export type CliSetup = (cli: Cli) => Promise<Cli>
+export type CliStart = <T extends CliArguments = CliArguments>() => Promise<CliStartReturn<T>>
+export type CliStartReturn<T extends CliArguments = CliArguments> = { [key in keyof Args<T>]: Args<T>[key] }
+
+
 
 /*
 export enum ExitCode {

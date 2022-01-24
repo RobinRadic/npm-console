@@ -1,11 +1,15 @@
 import { join } from 'path';
 
-import { HostingServiceProvider } from '@radic/hosting';
-import { InputServiceProvider } from '@radic/console-input';
-import { LogServiceProvider, macros, OutputServiceProvider } from '@radic/console-output';
+import { HostingServiceProvider } from '@radic/hosting/lib/HostingServiceProvider';
+import { InputServiceProvider } from '@radic/console-input/lib/InputServiceProvider';
+import { macros } from '@radic/console-output';
+import { OutputServiceProvider } from '@radic/console-output/lib/OutputServiceProvider';
+import { LogServiceProvider } from '@radic/console-output/lib/log/LogServiceProvider';
 import { HostingCliServiceProvider } from './HostingCliServiceProvider';
-import { Application, CoreServiceProvider } from '@radic/core';
-import { CliServiceProvider, CliStartReturn } from '@radic/console';
+import { Application } from '@radic/core';
+import { CoreServiceProvider } from '@radic/core/lib/CoreServiceProvider';
+import { CliStartReturn } from '@radic/console';
+import { ConsoleServiceProvider } from '@radic/console/lib/ConsoleServiceProvider';
 
 
 export async function bootApp() {
@@ -16,7 +20,7 @@ export async function bootApp() {
         dirname  : __dirname,
         providers: [
             CoreServiceProvider,
-            CliServiceProvider,
+            ConsoleServiceProvider,
             InputServiceProvider,
             OutputServiceProvider,
             LogServiceProvider,
@@ -60,8 +64,9 @@ export async function bootApp() {
                     app.error(e, true);
                 }
             },
-            output : {
-
+            output : {},
+            system: {
+                services: []
             },
             hosting: {
                 db     : {
@@ -78,6 +83,7 @@ export async function bootApp() {
                         } ],
                     },
                 },
+
                 servers: {
                     nginx : {
                         servers: [

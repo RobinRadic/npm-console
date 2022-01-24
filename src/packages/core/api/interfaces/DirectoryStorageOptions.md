@@ -18,7 +18,7 @@
 
 #### Defined in
 
-[packages/core/src/Storage/DirectoryStorage.ts:8](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Storage/DirectoryStorage.ts#L8)
+[packages/core/src/Storage/DirectoryStorage.ts:8](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Storage/DirectoryStorage.ts#L8)
 
 ___
 
@@ -28,7 +28,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Storage/DirectoryStorage.ts:9](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Storage/DirectoryStorage.ts#L9)
+[packages/core/src/Storage/DirectoryStorage.ts:9](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Storage/DirectoryStorage.ts#L9)
 
 ___
 
@@ -38,4 +38,4 @@ ___
 
 #### Defined in
 
-[packages/core/src/Storage/DirectoryStorage.ts:10](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Storage/DirectoryStorage.ts#L10)
+[packages/core/src/Storage/DirectoryStorage.ts:10](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Storage/DirectoryStorage.ts#L10)

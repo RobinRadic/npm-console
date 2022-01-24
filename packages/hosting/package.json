@@ -14,8 +14,12 @@
     "types": "types/index.d.ts",
     "homepage": "https://robinradic.github.io/npm-packages/packages/hosting",
     "scripts": {
-        "build": "yarn clean:build && tsc --project tsconfig.build.json",
-        "clean:build": "rm -rf lib/ types/ && rimraf src/**/*.{js,js.map,d.ts}",
+        "build": "npm-run-all clean:build compile tasks:dts",
+        "compile": "tsc --project tsconfig.build.json",
+        "tasks:dts": "node ./tasks.js run dts",
+        "clean": "npm-run-all clean:build clean:test",
+        "clean:src": "rm -rf src/**/*.js src/**/*.js.map src/**/*.d.ts",
+        "clean:build": "rm -rf lib/ types/",
         "clean:docs:api": "rm -rf docs/api",
         "clean:test": "rm -rf .nyc-output/",
         "clean:yarn": "rm yarn.lock node_modules/",
@@ -76,7 +80,8 @@
         "which": "^2.0.2"
     },
     "devDependencies": {
-        "@radic/core": "^1.0.0"
+        "@radic/core": "^1.0.0",
+        "@radic/build-tools": "^1.0.0"
     },
     "peerDependencies": {
         "@radic/core": "^1.0.0"

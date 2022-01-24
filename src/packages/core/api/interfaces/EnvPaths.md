@@ -26,7 +26,7 @@ Example locations (with the default `nodejs` suffix):
 
 #### Defined in
 
-[packages/core/src/Support/envPaths.ts:121](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Support/envPaths.ts#L121)
+[packages/core/src/Support/envPaths.ts:121](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Support/envPaths.ts#L121)
 
 ___
 
@@ -42,7 +42,7 @@ Example locations (with the default `nodejs` suffix):
 
 #### Defined in
 
-[packages/core/src/Support/envPaths.ts:112](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Support/envPaths.ts#L112)
+[packages/core/src/Support/envPaths.ts:112](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Support/envPaths.ts#L112)
 
 ___
 
@@ -58,7 +58,7 @@ Example locations (with the default `nodejs` suffix):
 
 #### Defined in
 
-[packages/core/src/Support/envPaths.ts:103](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Support/envPaths.ts#L103)
+[packages/core/src/Support/envPaths.ts:103](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Support/envPaths.ts#L103)
 
 ___
 
@@ -74,7 +74,7 @@ Example locations (with the default `nodejs` suffix):
 
 #### Defined in
 
-[packages/core/src/Support/envPaths.ts:130](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Support/envPaths.ts#L130)
+[packages/core/src/Support/envPaths.ts:130](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Support/envPaths.ts#L130)
 
 ___
 
@@ -90,4 +90,4 @@ Example locations (with the default `nodejs` suffix):
 
 #### Defined in
 
-[packages/core/src/Support/envPaths.ts:139](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Support/envPaths.ts#L139)
+[packages/core/src/Support/envPaths.ts:139](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Support/envPaths.ts#L139)

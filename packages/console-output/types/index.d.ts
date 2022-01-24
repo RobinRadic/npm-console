@@ -1,3 +1,5 @@
+/// <reference path="./OutputServiceProvider.d.ts" />
+/// <reference path="./log/LogServiceProvider.d.ts" />
 import 'reflect-metadata';
 import { Color } from './colors';
 import { CliString } from './colors/CliString';

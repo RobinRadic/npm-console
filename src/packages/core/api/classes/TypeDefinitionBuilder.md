@@ -55,7 +55,7 @@
 
 #### Defined in
 
-[packages/core/src/Support/TypeDefinitionBuilder.ts:12](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Support/TypeDefinitionBuilder.ts#L12)
+[packages/core/src/Support/TypeDefinitionBuilder.ts:12](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Support/TypeDefinitionBuilder.ts#L12)
 
 ## Properties
 
@@ -71,7 +71,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Support/TypeDefinitionBuilder.ts:10](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Support/TypeDefinitionBuilder.ts#L10)
+[packages/core/src/Support/TypeDefinitionBuilder.ts:10](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Support/TypeDefinitionBuilder.ts#L10)
 
 ___
 
@@ -81,7 +81,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Support/TypeDefinitionBuilder.ts:9](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Support/TypeDefinitionBuilder.ts#L9)
+[packages/core/src/Support/TypeDefinitionBuilder.ts:9](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Support/TypeDefinitionBuilder.ts#L9)
 
 ___
 
@@ -97,7 +97,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Support/TypeDefinitionBuilder.ts:8](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Support/TypeDefinitionBuilder.ts#L8)
+[packages/core/src/Support/TypeDefinitionBuilder.ts:8](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Support/TypeDefinitionBuilder.ts#L8)
 
 ___
 
@@ -131,7 +131,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Support/TypeDefinitionBuilder.ts:19](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Support/TypeDefinitionBuilder.ts#L19)
+[packages/core/src/Support/TypeDefinitionBuilder.ts:19](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Support/TypeDefinitionBuilder.ts#L19)
 
 ___
 
@@ -145,7 +145,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Support/TypeDefinitionBuilder.ts:17](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Support/TypeDefinitionBuilder.ts#L17)
+[packages/core/src/Support/TypeDefinitionBuilder.ts:17](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Support/TypeDefinitionBuilder.ts#L17)
 
 ___
 
@@ -159,7 +159,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Support/TypeDefinitionBuilder.ts:35](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Support/TypeDefinitionBuilder.ts#L35)
+[packages/core/src/Support/TypeDefinitionBuilder.ts:35](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Support/TypeDefinitionBuilder.ts#L35)
 
 ___
 
@@ -173,7 +173,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Support/TypeDefinitionBuilder.ts:86](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Support/TypeDefinitionBuilder.ts#L86)
+[packages/core/src/Support/TypeDefinitionBuilder.ts:86](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Support/TypeDefinitionBuilder.ts#L86)
 
 ## Methods
 
@@ -194,7 +194,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Support/TypeDefinitionBuilder.ts:49](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Support/TypeDefinitionBuilder.ts#L49)
+[packages/core/src/Support/TypeDefinitionBuilder.ts:49](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Support/TypeDefinitionBuilder.ts#L49)
 
 ▸ **add**(`name`, `type`, `required?`): [`TypeDefinitionBuilder`](TypeDefinitionBuilder.md)
 
@@ -212,7 +212,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Support/TypeDefinitionBuilder.ts:50](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Support/TypeDefinitionBuilder.ts#L50)
+[packages/core/src/Support/TypeDefinitionBuilder.ts:50](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Support/TypeDefinitionBuilder.ts#L50)
 
 ___
 
@@ -233,7 +233,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Support/TypeDefinitionBuilder.ts:69](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Support/TypeDefinitionBuilder.ts#L69)
+[packages/core/src/Support/TypeDefinitionBuilder.ts:69](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Support/TypeDefinitionBuilder.ts#L69)
 
 ___
 
@@ -255,7 +255,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Support/TypeDefinitionBuilder.ts:74](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Support/TypeDefinitionBuilder.ts#L74)
+[packages/core/src/Support/TypeDefinitionBuilder.ts:74](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Support/TypeDefinitionBuilder.ts#L74)
 
 ___
 
@@ -269,7 +269,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Support/TypeDefinitionBuilder.ts:14](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Support/TypeDefinitionBuilder.ts#L14)
+[packages/core/src/Support/TypeDefinitionBuilder.ts:14](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Support/TypeDefinitionBuilder.ts#L14)
 
 ___
 
@@ -289,7 +289,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Support/TypeDefinitionBuilder.ts:29](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Support/TypeDefinitionBuilder.ts#L29)
+[packages/core/src/Support/TypeDefinitionBuilder.ts:29](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Support/TypeDefinitionBuilder.ts#L29)
 
 ___
 
@@ -303,7 +303,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Support/TypeDefinitionBuilder.ts:101](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Support/TypeDefinitionBuilder.ts#L101)
+[packages/core/src/Support/TypeDefinitionBuilder.ts:101](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Support/TypeDefinitionBuilder.ts#L101)
 
 ___
 
@@ -323,7 +323,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Support/TypeDefinitionBuilder.ts:60](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Support/TypeDefinitionBuilder.ts#L60)
+[packages/core/src/Support/TypeDefinitionBuilder.ts:60](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Support/TypeDefinitionBuilder.ts#L60)
 
 ___
 
@@ -344,7 +344,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Support/TypeDefinitionBuilder.ts:21](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Support/TypeDefinitionBuilder.ts#L21)
+[packages/core/src/Support/TypeDefinitionBuilder.ts:21](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Support/TypeDefinitionBuilder.ts#L21)
 
 ___
 
@@ -365,7 +365,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Support/TypeDefinitionBuilder.ts:44](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Support/TypeDefinitionBuilder.ts#L44)
+[packages/core/src/Support/TypeDefinitionBuilder.ts:44](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Support/TypeDefinitionBuilder.ts#L44)
 
 ___
 
@@ -385,7 +385,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Support/TypeDefinitionBuilder.ts:39](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Support/TypeDefinitionBuilder.ts#L39)
+[packages/core/src/Support/TypeDefinitionBuilder.ts:39](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Support/TypeDefinitionBuilder.ts#L39)
 
 ___
 
@@ -399,7 +399,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Support/TypeDefinitionBuilder.ts:106](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Support/TypeDefinitionBuilder.ts#L106)
+[packages/core/src/Support/TypeDefinitionBuilder.ts:106](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Support/TypeDefinitionBuilder.ts#L106)
 
 ___
 
@@ -420,4 +420,4 @@ ___
 
 #### Defined in
 
-[packages/core/src/Support/TypeDefinitionBuilder.ts:81](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Support/TypeDefinitionBuilder.ts#L81)
+[packages/core/src/Support/TypeDefinitionBuilder.ts:81](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Support/TypeDefinitionBuilder.ts#L81)

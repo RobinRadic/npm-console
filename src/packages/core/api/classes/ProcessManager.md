@@ -52,7 +52,7 @@
 
 #### Defined in
 
-[packages/core/src/System/ProcessManager.ts:12](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/System/ProcessManager.ts#L12)
+[packages/core/src/System/ProcessManager.ts:12](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/System/ProcessManager.ts#L12)
 
 ___
 
@@ -66,7 +66,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Support/Manager.ts:7](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Support/Manager.ts#L7)
+[packages/core/src/Support/Manager.ts:7](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Support/Manager.ts#L7)
 
 ___
 
@@ -76,7 +76,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/System/ProcessManager.ts:13](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/System/ProcessManager.ts#L13)
+[packages/core/src/System/ProcessManager.ts:13](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/System/ProcessManager.ts#L13)
 
 ## Methods
 
@@ -100,7 +100,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Support/Manager.ts:24](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Support/Manager.ts#L24)
+[packages/core/src/Support/Manager.ts:24](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Support/Manager.ts#L24)
 
 ___
 
@@ -130,7 +130,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Support/Manager.ts:16](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Support/Manager.ts#L16)
+[packages/core/src/Support/Manager.ts:16](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Support/Manager.ts#L16)
 
 ___
 
@@ -154,7 +154,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Support/Manager.ts:14](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Support/Manager.ts#L14)
+[packages/core/src/Support/Manager.ts:14](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Support/Manager.ts#L14)
 
 ___
 
@@ -172,7 +172,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Support/Manager.ts:18](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Support/Manager.ts#L18)
+[packages/core/src/Support/Manager.ts:18](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Support/Manager.ts#L18)
 
 ___
 
@@ -186,7 +186,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/System/ProcessManager.ts:15](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/System/ProcessManager.ts#L15)
+[packages/core/src/System/ProcessManager.ts:15](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/System/ProcessManager.ts#L15)
 
 ___
 
@@ -204,7 +204,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Support/Manager.ts:20](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Support/Manager.ts#L20)
+[packages/core/src/Support/Manager.ts:20](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Support/Manager.ts#L20)
 
 ___
 
@@ -224,7 +224,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/System/ProcessManager.ts:31](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/System/ProcessManager.ts#L31)
+[packages/core/src/System/ProcessManager.ts:31](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/System/ProcessManager.ts#L31)
 
 ___
 
@@ -249,7 +249,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Support/Manager.ts:9](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Support/Manager.ts#L9)
+[packages/core/src/Support/Manager.ts:9](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Support/Manager.ts#L9)
 
 ___
 
@@ -267,7 +267,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Support/Manager.ts:28](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Support/Manager.ts#L28)
+[packages/core/src/Support/Manager.ts:28](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Support/Manager.ts#L28)
 
 ___
 
@@ -285,7 +285,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Support/Manager.ts:26](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Support/Manager.ts#L26)
+[packages/core/src/Support/Manager.ts:26](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Support/Manager.ts#L26)
 
 ___
 
@@ -309,4 +309,4 @@ ___
 
 #### Defined in
 
-[packages/core/src/Support/Manager.ts:22](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Support/Manager.ts#L22)
+[packages/core/src/Support/Manager.ts:22](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Support/Manager.ts#L22)

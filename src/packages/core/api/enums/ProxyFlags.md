@@ -17,7 +17,7 @@
 
 #### Defined in
 
-[packages/core/src/Config/Repository.ts:73](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Config/Repository.ts#L73)
+[packages/core/src/Config/Repository.ts:73](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Config/Repository.ts#L73)
 
 ___
 
@@ -27,4 +27,4 @@ ___
 
 #### Defined in
 
-[packages/core/src/Config/Repository.ts:74](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Config/Repository.ts#L74)
+[packages/core/src/Config/Repository.ts:74](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Config/Repository.ts#L74)

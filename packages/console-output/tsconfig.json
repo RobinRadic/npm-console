@@ -1,5 +1,6 @@
 {
-    "extends": "tsconfig.build.json",
+    "compileOnSave": false,
+    "extends": "./tsconfig.build.json",
     "compilerOptions": {
         "composite": true,
         "baseUrl": ".",
@@ -25,6 +26,9 @@
         "tests",
         "types",
         "types/*.d.ts"
+    ],
+    "files": [
+        "src/OutputServiceProvider.ts"
     ],
     "include": [
         "src",

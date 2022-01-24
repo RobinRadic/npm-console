@@ -1,4 +1,6 @@
+import { Application } from '@radic/core';
+import { CliStartReturn } from '@radic/console';
 import { MonoConfiguration } from './MonoServiceProvider';
-export declare const app: any;
-export declare function bootApp(options: MonoConfiguration): Promise<any>;
-export declare function startCli(options: MonoConfiguration): Promise<any>;
+export declare const app: Application;
+export declare function bootApp(options: MonoConfiguration): Promise<Application>;
+export declare function startCli(options: MonoConfiguration): Promise<CliStartReturn<import("@radic/console").CliArguments>>;

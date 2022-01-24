@@ -88,7 +88,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/System/SystemServiceProvider.ts:33](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/System/SystemServiceProvider.ts#L33)
+[packages/core/src/System/SystemServiceProvider.ts:33](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/System/SystemServiceProvider.ts#L33)
 
 ## Methods
 
@@ -102,7 +102,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/System/SystemServiceProvider.ts:71](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/System/SystemServiceProvider.ts#L71)
+[packages/core/src/System/SystemServiceProvider.ts:71](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/System/SystemServiceProvider.ts#L71)
 
 ___
 
@@ -116,7 +116,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/System/SystemServiceProvider.ts:75](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/System/SystemServiceProvider.ts#L75)
+[packages/core/src/System/SystemServiceProvider.ts:75](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/System/SystemServiceProvider.ts#L75)
 
 ___
 
@@ -130,7 +130,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/System/SystemServiceProvider.ts:84](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/System/SystemServiceProvider.ts#L84)
+[packages/core/src/System/SystemServiceProvider.ts:84](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/System/SystemServiceProvider.ts#L84)
 
 ___
 
@@ -175,7 +175,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/System/SystemServiceProvider.ts:36](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/System/SystemServiceProvider.ts#L36)
+[packages/core/src/System/SystemServiceProvider.ts:36](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/System/SystemServiceProvider.ts#L36)
 
 ___
 
@@ -189,7 +189,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/System/SystemServiceProvider.ts:53](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/System/SystemServiceProvider.ts#L53)
+[packages/core/src/System/SystemServiceProvider.ts:53](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/System/SystemServiceProvider.ts#L53)
 
 ___
 
@@ -203,7 +203,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/System/SystemServiceProvider.ts:59](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/System/SystemServiceProvider.ts#L59)
+[packages/core/src/System/SystemServiceProvider.ts:59](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/System/SystemServiceProvider.ts#L59)
 
 ___
 
@@ -217,7 +217,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/System/SystemServiceProvider.ts:63](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/System/SystemServiceProvider.ts#L63)
+[packages/core/src/System/SystemServiceProvider.ts:63](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/System/SystemServiceProvider.ts#L63)
 
 ___
 
@@ -231,4 +231,4 @@ ___
 
 #### Defined in
 
-[packages/core/src/System/SystemServiceProvider.ts:67](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/System/SystemServiceProvider.ts#L67)
+[packages/core/src/System/SystemServiceProvider.ts:67](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/System/SystemServiceProvider.ts#L67)

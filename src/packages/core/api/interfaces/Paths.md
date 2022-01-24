@@ -24,7 +24,7 @@
 
 #### Defined in
 
-[packages/core/src/Foundation/Application.ts:51](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Foundation/Application.ts#L51)
+[packages/core/src/Foundation/Application.ts:51](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Foundation/Application.ts#L51)
 
 ___
 
@@ -34,7 +34,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Foundation/Application.ts:56](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Foundation/Application.ts#L56)
+[packages/core/src/Foundation/Application.ts:56](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Foundation/Application.ts#L56)
 
 ___
 
@@ -44,7 +44,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Foundation/Application.ts:50](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Foundation/Application.ts#L50)
+[packages/core/src/Foundation/Application.ts:50](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Foundation/Application.ts#L50)
 
 ___
 
@@ -54,7 +54,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Foundation/Application.ts:52](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Foundation/Application.ts#L52)
+[packages/core/src/Foundation/Application.ts:52](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Foundation/Application.ts#L52)
 
 ___
 
@@ -64,7 +64,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Foundation/Application.ts:53](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Foundation/Application.ts#L53)
+[packages/core/src/Foundation/Application.ts:53](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Foundation/Application.ts#L53)
 
 ## Methods
 
@@ -86,4 +86,4 @@ resolves from root path
 
 #### Defined in
 
-[packages/core/src/Foundation/Application.ts:55](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Foundation/Application.ts#L55)
+[packages/core/src/Foundation/Application.ts:55](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Foundation/Application.ts#L55)

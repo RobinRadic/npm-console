@@ -37,7 +37,7 @@ eventname -> listener parameters
 
 #### Defined in
 
-[packages/core/src/Foundation/Application.ts:68](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Foundation/Application.ts#L68)
+[packages/core/src/Foundation/Application.ts:68](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Foundation/Application.ts#L68)
 
 ___
 
@@ -47,7 +47,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Foundation/Application.ts:69](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Foundation/Application.ts#L69)
+[packages/core/src/Foundation/Application.ts:69](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Foundation/Application.ts#L69)
 
 ___
 
@@ -57,7 +57,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Foundation/Application.ts:71](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Foundation/Application.ts#L71)
+[packages/core/src/Foundation/Application.ts:71](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Foundation/Application.ts#L71)
 
 ___
 
@@ -67,7 +67,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Foundation/Application.ts:70](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Foundation/Application.ts#L70)
+[packages/core/src/Foundation/Application.ts:70](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Foundation/Application.ts#L70)
 
 ___
 
@@ -77,7 +77,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Foundation/Application.ts:67](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Foundation/Application.ts#L67)
+[packages/core/src/Foundation/Application.ts:67](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Foundation/Application.ts#L67)
 
 ___
 
@@ -87,7 +87,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Foundation/Application.ts:66](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Foundation/Application.ts#L66)
+[packages/core/src/Foundation/Application.ts:66](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Foundation/Application.ts#L66)
 
 ___
 
@@ -97,7 +97,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Foundation/Application.ts:64](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Foundation/Application.ts#L64)
+[packages/core/src/Foundation/Application.ts:64](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Foundation/Application.ts#L64)
 
 ___
 
@@ -107,7 +107,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Foundation/Application.ts:63](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Foundation/Application.ts#L63)
+[packages/core/src/Foundation/Application.ts:63](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Foundation/Application.ts#L63)
 
 ___
 
@@ -117,7 +117,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Foundation/Application.ts:65](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Foundation/Application.ts#L65)
+[packages/core/src/Foundation/Application.ts:65](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Foundation/Application.ts#L65)
 
 ___
 
@@ -127,7 +127,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Foundation/Application.ts:74](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Foundation/Application.ts#L74)
+[packages/core/src/Foundation/Application.ts:74](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Foundation/Application.ts#L74)
 
 ___
 
@@ -137,7 +137,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Foundation/Application.ts:75](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Foundation/Application.ts#L75)
+[packages/core/src/Foundation/Application.ts:75](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Foundation/Application.ts#L75)
 
 ___
 
@@ -147,7 +147,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Foundation/Application.ts:77](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Foundation/Application.ts#L77)
+[packages/core/src/Foundation/Application.ts:77](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Foundation/Application.ts#L77)
 
 ___
 
@@ -157,7 +157,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Foundation/Application.ts:76](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Foundation/Application.ts#L76)
+[packages/core/src/Foundation/Application.ts:76](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Foundation/Application.ts#L76)
 
 ___
 
@@ -167,7 +167,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Foundation/Application.ts:78](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Foundation/Application.ts#L78)
+[packages/core/src/Foundation/Application.ts:78](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Foundation/Application.ts#L78)
 
 ___
 
@@ -177,7 +177,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Foundation/Application.ts:72](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Foundation/Application.ts#L72)
+[packages/core/src/Foundation/Application.ts:72](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Foundation/Application.ts#L72)
 
 ___
 
@@ -187,4 +187,4 @@ ___
 
 #### Defined in
 
-[packages/core/src/Foundation/Application.ts:73](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Foundation/Application.ts#L73)
+[packages/core/src/Foundation/Application.ts:73](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Foundation/Application.ts#L73)

@@ -9,7 +9,7 @@ export default class ExtCommand extends Command {
     Enable: boolean;
     Disable: boolean;
     builder: (cli: Cli) => Cli;
-    handle(phpversion?: string): Promise<void | import("@radic/console-output").Output>;
+    handle(phpversion?: string): Promise<void | import("@radic/console-output/lib/Output").Output>;
     handleList(php: PHP): Promise<void>;
     get phpchoices(): string[];
     getPHP(phpversion?: string): Promise<PHP>;

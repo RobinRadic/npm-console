@@ -2,29 +2,35 @@ import { SemVer } from 'semver';
 import { PhpExtensionDetails, PhpExtensionIni, PhpExtensionInis, PhpExtensionName, PhpInfo, PhpIni, PhpParsedInfo } from './types';
 import { PHPApi } from './PHPApi';
 import { basename } from 'path';
-import { Service } from '@radic/core';
+import { Service, services } from '@radic/core';
 import { phpdismod, phpenmod } from '../binaries';
 import { objectify } from '@radic/shared';
 
 export type PhpMajorMinorVersion = string; // number.number : 7.3
 
 export class PHP implements PhpInfo {
+    @services services:services
     public readonly semver: SemVer;
     public readonly date: Date;
     public readonly api: PHPApi;
 
     protected fpmService: Service;
 
-    constructor(protected info: PhpInfo) {
+    constructor(public readonly info: PhpInfo) {
         this.semver = this.getSemver(this.info[ 'parsed' ][ 'PHP Version' ]);
         this.date   = new Date(this.info.parsed[ 'Build Date' ]);
         this.api    = PHPApi.toApi(this.info.parsed[ 'Server API' ]);
         if ( this.isFPM ) {
-            this.fpmService = new Service(this.fpmServiceName);
+            this.services.register(this.fpmServiceName)
+            this.fpmService = this.services.get(this.fpmServiceName)
         }
     }
 
-    get fpmServiceName(): string { return basename(this.bin); }
+    equals(php:PHP):boolean{
+        return this.info.bin === php.info.bin && this.api === php.api && this.semver.compare(php.semver) === 0
+    }
+
+    get fpmServiceName(): string { return `php${this.shortVersion}-fpm` }
 
     async getFPMService(): Promise<Service> {return this.fpmService.refresh(); }
 

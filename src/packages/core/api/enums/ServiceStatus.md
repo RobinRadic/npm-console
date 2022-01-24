@@ -18,7 +18,7 @@
 
 #### Defined in
 
-[packages/core/src/System/Service.ts:7](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/System/Service.ts#L7)
+[packages/core/src/System/Service.ts:7](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/System/Service.ts#L7)
 
 ___
 
@@ -28,7 +28,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/System/Service.ts:6](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/System/Service.ts#L6)
+[packages/core/src/System/Service.ts:6](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/System/Service.ts#L6)
 
 ___
 
@@ -38,4 +38,4 @@ ___
 
 #### Defined in
 
-[packages/core/src/System/Service.ts:8](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/System/Service.ts#L8)
+[packages/core/src/System/Service.ts:8](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/System/Service.ts#L8)

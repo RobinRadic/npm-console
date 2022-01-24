@@ -36,7 +36,7 @@
 
 #### Defined in
 
-[packages/core/src/Dispatcher/DispatcherMixin.ts:6](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Dispatcher/DispatcherMixin.ts#L6)
+[packages/core/src/Dispatcher/DispatcherMixin.ts:6](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Dispatcher/DispatcherMixin.ts#L6)
 
 ## Methods
 
@@ -57,7 +57,7 @@
 
 #### Defined in
 
-[packages/core/src/Dispatcher/DispatcherMixin.ts:11](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Dispatcher/DispatcherMixin.ts#L11)
+[packages/core/src/Dispatcher/DispatcherMixin.ts:11](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Dispatcher/DispatcherMixin.ts#L11)
 
 ___
 
@@ -78,7 +78,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Dispatcher/DispatcherMixin.ts:13](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Dispatcher/DispatcherMixin.ts#L13)
+[packages/core/src/Dispatcher/DispatcherMixin.ts:13](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Dispatcher/DispatcherMixin.ts#L13)
 
 ___
 
@@ -99,7 +99,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Dispatcher/DispatcherMixin.ts:35](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Dispatcher/DispatcherMixin.ts#L35)
+[packages/core/src/Dispatcher/DispatcherMixin.ts:35](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Dispatcher/DispatcherMixin.ts#L35)
 
 ___
 
@@ -119,7 +119,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Dispatcher/DispatcherMixin.ts:30](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Dispatcher/DispatcherMixin.ts#L30)
+[packages/core/src/Dispatcher/DispatcherMixin.ts:30](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Dispatcher/DispatcherMixin.ts#L30)
 
 ___
 
@@ -141,7 +141,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Dispatcher/DispatcherMixin.ts:15](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Dispatcher/DispatcherMixin.ts#L15)
+[packages/core/src/Dispatcher/DispatcherMixin.ts:15](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Dispatcher/DispatcherMixin.ts#L15)
 
 ___
 
@@ -161,7 +161,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Dispatcher/DispatcherMixin.ts:25](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Dispatcher/DispatcherMixin.ts#L25)
+[packages/core/src/Dispatcher/DispatcherMixin.ts:25](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Dispatcher/DispatcherMixin.ts#L25)
 
 ___
 
@@ -183,4 +183,4 @@ ___
 
 #### Defined in
 
-[packages/core/src/Dispatcher/DispatcherMixin.ts:20](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Dispatcher/DispatcherMixin.ts#L20)
+[packages/core/src/Dispatcher/DispatcherMixin.ts:20](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Dispatcher/DispatcherMixin.ts#L20)

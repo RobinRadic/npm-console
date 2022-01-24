@@ -13,7 +13,7 @@ declare class TemplateStorage extends DirectoryStorage {
     compile(str: string, variables?: any): string;
 }
 declare class PackageStorage extends DirectoryStorage {
-    generate(path: string): any;
+    generate(path: string): string;
 }
 export declare const isITemplateCopyObject: (val: any) => val is ITemplateCopyObject;
 export interface ITemplateCopyObject {

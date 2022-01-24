@@ -1,0 +1,12 @@
+.idea
+node_modules
+.tmp
+package-lock.json
+yarn-error.log
+yarn.lock
+.nyc_output
+docs/api
+
+*.js
+*.d.ts
+*.js.map

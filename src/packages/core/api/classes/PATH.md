@@ -41,7 +41,7 @@
 
 #### Defined in
 
-[packages/core/src/System/PATH.ts:30](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/System/PATH.ts#L30)
+[packages/core/src/System/PATH.ts:30](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/System/PATH.ts#L30)
 
 ___
 
@@ -55,7 +55,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/System/PATH.ts:16](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/System/PATH.ts#L16)
+[packages/core/src/System/PATH.ts:16](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/System/PATH.ts#L16)
 
 ___
 
@@ -69,7 +69,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/System/PATH.ts:12](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/System/PATH.ts#L12)
+[packages/core/src/System/PATH.ts:12](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/System/PATH.ts#L12)
 
 ___
 
@@ -90,4 +90,4 @@ ___
 
 #### Defined in
 
-[packages/core/src/System/PATH.ts:20](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/System/PATH.ts#L20)
+[packages/core/src/System/PATH.ts:20](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/System/PATH.ts#L20)

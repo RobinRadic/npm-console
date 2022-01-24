@@ -1,3 +1,6 @@
+///<reference types="@radic/console-output"/>
+
+
 import { YargsInstance } from '../yargs';
 import { makeTree } from './makeTree';
 import { glob } from 'glob';

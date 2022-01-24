@@ -82,7 +82,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/CoreServiceProvider.ts:6](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/CoreServiceProvider.ts#L6)
+[packages/core/src/CoreServiceProvider.ts:6](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/CoreServiceProvider.ts#L6)
 
 ## Methods
 
@@ -96,7 +96,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/CoreServiceProvider.ts:16](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/CoreServiceProvider.ts#L16)
+[packages/core/src/CoreServiceProvider.ts:16](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/CoreServiceProvider.ts#L16)
 
 ___
 
@@ -141,4 +141,4 @@ ___
 
 #### Defined in
 
-[packages/core/src/CoreServiceProvider.ts:12](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/CoreServiceProvider.ts#L12)
+[packages/core/src/CoreServiceProvider.ts:12](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/CoreServiceProvider.ts#L12)

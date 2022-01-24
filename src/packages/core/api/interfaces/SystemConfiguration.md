@@ -17,7 +17,7 @@
 
 #### Defined in
 
-[packages/core/src/System/SystemServiceProvider.ts:28](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/System/SystemServiceProvider.ts#L28)
+[packages/core/src/System/SystemServiceProvider.ts:28](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/System/SystemServiceProvider.ts#L28)
 
 ___
 
@@ -27,4 +27,4 @@ ___
 
 #### Defined in
 
-[packages/core/src/System/SystemServiceProvider.ts:27](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/System/SystemServiceProvider.ts#L27)
+[packages/core/src/System/SystemServiceProvider.ts:27](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/System/SystemServiceProvider.ts#L27)

@@ -1,5 +1,4 @@
-import { CacheServiceProvider } from './Cache';
-import { SystemServiceProvider } from './System';
+import { FilesystemServiceProvider } from './Providers/FilesystemServiceProvider';
 import { ServiceProvider } from '@radic/shared';
 import { Debugger } from 'debug';
 declare module './Foundation/Application' {
@@ -11,7 +10,7 @@ declare module './Foundation/Application' {
     }
 }
 export declare class CoreServiceProvider extends ServiceProvider {
-    providers: (typeof CacheServiceProvider | typeof SystemServiceProvider)[];
+    providers: (typeof FilesystemServiceProvider)[];
     register(): any;
     boot(): Promise<void>;
 }

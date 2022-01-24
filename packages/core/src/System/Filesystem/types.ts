@@ -6,6 +6,7 @@ import { File } from './File';
 import { Symlink } from './Symlink';
 import { Disk } from './Disk';
 import { Partition } from './Partition';
+import { DiskCollection } from './DiskCollection';
 
 export type FS = typeof Filesystem
 export type StatConstructors = Partial<StatTypeConstructorsMap>
@@ -38,3 +39,5 @@ export type BlockTypeValue = ValueOf<BlockTypeMap>
 
 
 export type Units<T extends StatTypeValue = StatTypeValue> = Record<string, T>
+
+export type ResolveDiskFn = (refresh?: boolean) => Promise<DiskCollection>

@@ -13,7 +13,9 @@
     "types": "types/index.d.ts",
     "homepage": "https://robinradic.github.io/npm-packages/packages/console-input",
     "scripts": {
-        "build": "yarn clean:build && tsc --project tsconfig.build.json",
+        "build": "npm-run-all clean:build compile tasks:dts",
+        "compile": "tsc --project tsconfig.build.json",
+        "tasks:dts": "node ./tasks.js run dts",
         "clean:build": "rm -rf lib/ types/ && rimraf src/**/*.{js,js.map,d.ts}",
         "clean:docs:api": "rm -rf docs/api",
         "clean:test": "rm -rf .nyc-output/",

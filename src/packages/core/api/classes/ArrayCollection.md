@@ -95,7 +95,7 @@ Array&lt;Type\&gt;.constructor
 
 #### Defined in
 
-[packages/core/src/Support/ArrayCollection.ts:8](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Support/ArrayCollection.ts#L8)
+[packages/core/src/Support/ArrayCollection.ts:8](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Support/ArrayCollection.ts#L8)
 
 ## Properties
 

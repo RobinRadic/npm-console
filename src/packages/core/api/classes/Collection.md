@@ -144,7 +144,7 @@ BaseCollection&lt;T\&gt;.constructor
 
 #### Defined in
 
-[packages/core/src/Support/Collection.ts:7](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Support/Collection.ts#L7)
+[packages/core/src/Support/Collection.ts:7](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Support/Collection.ts#L7)
 
 ## Properties
 
@@ -176,7 +176,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Support/Collection.ts:4](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Support/Collection.ts#L4)
+[packages/core/src/Support/Collection.ts:4](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Support/Collection.ts#L4)
 
 ## Methods
 
@@ -2828,4 +2828,4 @@ ___
 
 #### Defined in
 
-[packages/core/src/Support/Collection.ts:16](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Support/Collection.ts#L16)
+[packages/core/src/Support/Collection.ts:16](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Support/Collection.ts#L16)

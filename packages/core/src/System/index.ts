@@ -5,6 +5,5 @@ export * from './ProcessManager';
 export * from './Service';
 export * from './ServiceManager';
 export * from './System';
-export * from './SystemServiceProvider';
 export * from './User';
 export * from './UserManager';

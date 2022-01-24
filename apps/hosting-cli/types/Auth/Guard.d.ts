@@ -3,9 +3,12 @@ import { CipherGCM, DecipherGCM } from 'crypto';
 import { config, DirectoryStorage } from '@radic/core';
 import { Key } from './Key';
 import { Passport } from './Passport';
+import { AuthConfiguration } from './AuthServiceProvider';
 export declare class Guard {
     #private;
-    config: config;
+    config: config & {
+        auth: AuthConfiguration;
+    };
     protected algorithm: string;
     protected initVector: Buffer;
     protected cypher: CipherGCM;

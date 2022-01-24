@@ -26,4 +26,4 @@
 
 #### Defined in
 
-[packages/core/src/Dispatcher/Dispatcher.ts:63](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Dispatcher/Dispatcher.ts#L63)
+[packages/core/src/Dispatcher/Dispatcher.ts:63](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Dispatcher/Dispatcher.ts#L63)

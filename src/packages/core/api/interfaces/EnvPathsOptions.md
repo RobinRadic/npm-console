@@ -21,4 +21,4 @@ Suffix appended to the project name to avoid name conflicts with native apps. Pa
 
 #### Defined in
 
-[packages/core/src/Support/envPaths.ts:92](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Support/envPaths.ts#L92)
+[packages/core/src/Support/envPaths.ts:92](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Support/envPaths.ts#L92)

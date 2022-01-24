@@ -48,7 +48,7 @@
 
 #### Defined in
 
-[packages/core/src/System/Service.ts:24](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/System/Service.ts#L24)
+[packages/core/src/System/Service.ts:24](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/System/Service.ts#L24)
 
 ## Properties
 
@@ -62,7 +62,7 @@ Systeminformation.ServicesData.cpu
 
 #### Defined in
 
-[packages/core/src/System/Service.ts:18](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/System/Service.ts#L18)
+[packages/core/src/System/Service.ts:18](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/System/Service.ts#L18)
 
 ___
 
@@ -76,7 +76,7 @@ Systeminformation.ServicesData.mem
 
 #### Defined in
 
-[packages/core/src/System/Service.ts:19](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/System/Service.ts#L19)
+[packages/core/src/System/Service.ts:19](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/System/Service.ts#L19)
 
 ___
 
@@ -100,7 +100,7 @@ Systeminformation.ServicesData.pids
 
 #### Defined in
 
-[packages/core/src/System/Service.ts:20](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/System/Service.ts#L20)
+[packages/core/src/System/Service.ts:20](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/System/Service.ts#L20)
 
 ___
 
@@ -114,7 +114,7 @@ Systeminformation.ServicesData.running
 
 #### Defined in
 
-[packages/core/src/System/Service.ts:21](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/System/Service.ts#L21)
+[packages/core/src/System/Service.ts:21](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/System/Service.ts#L21)
 
 ___
 
@@ -128,7 +128,7 @@ Systeminformation.ServicesData.startmode
 
 #### Defined in
 
-[packages/core/src/System/Service.ts:22](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/System/Service.ts#L22)
+[packages/core/src/System/Service.ts:22](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/System/Service.ts#L22)
 
 ## Methods
 
@@ -148,7 +148,7 @@ Systeminformation.ServicesData.startmode
 
 #### Defined in
 
-[packages/core/src/System/Service.ts:78](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/System/Service.ts#L78)
+[packages/core/src/System/Service.ts:78](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/System/Service.ts#L78)
 
 ___
 
@@ -162,7 +162,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/System/Service.ts:55](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/System/Service.ts#L55)
+[packages/core/src/System/Service.ts:55](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/System/Service.ts#L55)
 
 ___
 
@@ -176,7 +176,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/System/Service.ts:70](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/System/Service.ts#L70)
+[packages/core/src/System/Service.ts:70](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/System/Service.ts#L70)
 
 ___
 
@@ -190,7 +190,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/System/Service.ts:74](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/System/Service.ts#L74)
+[packages/core/src/System/Service.ts:74](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/System/Service.ts#L74)
 
 ___
 
@@ -204,7 +204,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/System/Service.ts:26](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/System/Service.ts#L26)
+[packages/core/src/System/Service.ts:26](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/System/Service.ts#L26)
 
 ___
 
@@ -218,7 +218,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/System/Service.ts:51](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/System/Service.ts#L51)
+[packages/core/src/System/Service.ts:51](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/System/Service.ts#L51)
 
 ___
 
@@ -232,7 +232,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/System/Service.ts:44](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/System/Service.ts#L44)
+[packages/core/src/System/Service.ts:44](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/System/Service.ts#L44)
 
 ___
 
@@ -246,7 +246,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/System/Service.ts:32](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/System/Service.ts#L32)
+[packages/core/src/System/Service.ts:32](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/System/Service.ts#L32)
 
 ___
 
@@ -260,7 +260,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/System/Service.ts:59](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/System/Service.ts#L59)
+[packages/core/src/System/Service.ts:59](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/System/Service.ts#L59)
 
 ___
 
@@ -274,4 +274,4 @@ ___
 
 #### Defined in
 
-[packages/core/src/System/Service.ts:38](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/System/Service.ts#L38)
+[packages/core/src/System/Service.ts:38](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/System/Service.ts#L38)

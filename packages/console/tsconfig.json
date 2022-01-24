@@ -1,5 +1,6 @@
 {
-    "extends": "tsconfig.build.json",
+    "compileOnSave": false,
+    "extends": "./tsconfig.build.json",
     "compilerOptions": {
         "composite": true,
         "baseUrl": ".",
@@ -27,7 +28,8 @@
         "types/*.d.ts"
     ],
     "files": [
-        "yargs/locale.json"
+        "yargs/locale.json",
+        "src/ConsoleServiceProvider.ts"
     ],
     "include": [
         "src/cli",
@@ -36,6 +38,7 @@
         "src/yargs/lib",
         "src/yargs/index.ts",
         "src/utils",
+        "src/ConsoleServiceProvider.ts",
         "src/index.ts"
     ],
     "references": [

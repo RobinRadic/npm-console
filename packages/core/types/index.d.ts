@@ -1,3 +1,7 @@
+/// <reference path="./CoreServiceProvider.d.ts" />
+/// <reference path="./Providers/SystemServiceProvider.d.ts" />
+/// <reference path="./Providers/CacheServiceProvider.d.ts" />
+/// <reference path="./Providers/FilesystemServiceProvider.d.ts" />
 export * from './Foundation';
 export * from './Cache';
 export * from './Config';
@@ -6,5 +10,4 @@ export * from './Dispatcher';
 export * from './Storage';
 export * from './Support';
 export * from './System';
-export * from './CoreServiceProvider';
 export * from './types';

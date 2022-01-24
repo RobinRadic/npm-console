@@ -25,7 +25,7 @@
 
 #### Defined in
 
-[packages/core/src/Foundation/Application.ts:86](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Foundation/Application.ts#L86)
+[packages/core/src/Foundation/Application.ts:86](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Foundation/Application.ts#L86)
 
 ___
 
@@ -35,7 +35,7 @@ ___
 
 #### Defined in
 
-[packages/core/src/Foundation/Application.ts:85](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Foundation/Application.ts#L85)
+[packages/core/src/Foundation/Application.ts:85](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Foundation/Application.ts#L85)
 
 ___
 
@@ -45,4 +45,4 @@ ___
 
 #### Defined in
 
-[packages/core/src/Foundation/Application.ts:87](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Foundation/Application.ts#L87)
+[packages/core/src/Foundation/Application.ts:87](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Foundation/Application.ts#L87)

@@ -17,7 +17,7 @@
 
 #### Defined in
 
-[packages/core/src/Cache/CacheServiceProvider.ts:25](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Cache/CacheServiceProvider.ts#L25)
+[packages/core/src/Cache/CacheServiceProvider.ts:25](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Cache/CacheServiceProvider.ts#L25)
 
 ___
 
@@ -27,4 +27,4 @@ ___
 
 #### Defined in
 
-[packages/core/src/Cache/CacheServiceProvider.ts:24](https://github.com/robinradic/npm-console/blob/10cb77f/packages/core/src/Cache/CacheServiceProvider.ts#L24)
+[packages/core/src/Cache/CacheServiceProvider.ts:24](https://github.com/robinradic/npm-packages/blob/81c68f6/packages/core/src/Cache/CacheServiceProvider.ts#L24)

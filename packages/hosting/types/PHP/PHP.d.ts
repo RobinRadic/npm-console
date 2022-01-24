@@ -4,12 +4,13 @@ import { PHPApi } from './PHPApi';
 import { Service } from '@radic/core';
 export declare type PhpMajorMinorVersion = string;
 export declare class PHP implements PhpInfo {
-    protected info: PhpInfo;
+    readonly info: PhpInfo;
     readonly semver: SemVer;
     readonly date: Date;
     readonly api: PHPApi;
     protected fpmService: Service;
     constructor(info: PhpInfo);
+    equals(php: PHP): boolean;
     get fpmServiceName(): string;
     getFPMService(): Promise<Service>;
     protected getSemver(version: string): SemVer;

@@ -28,9 +28,9 @@ export declare class PHPManager {
     protected getPhpInfoByBinPathFromFile(path: string): Promise<PhpInfo>;
     protected getPhpInfoByBinPathFromCache(path: string): PhpInfo;
     protected hasInCache(path: string): boolean;
-    protected refreshCached(php: PHP): any;
-    protected refreshCached(path: string): any;
-    protected refreshCached(): any;
+    refreshCached(php: PHP): any;
+    refreshCached(path: string): any;
+    refreshCached(): any;
     protected putPhpInfoInCache(path: string, info: PhpInfo): this;
-    protected getPhpCache(): FileCacheAdapter;
+    getPhpCache(): FileCacheAdapter;
 }

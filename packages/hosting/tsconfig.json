@@ -1,5 +1,6 @@
 {
-    "extends": "tsconfig.build.json",
+    "compileOnSave": false,
+    "extends": "./tsconfig.build.json",
     "compilerOptions": {
         "composite": true,
         "baseUrl": ".",
@@ -26,8 +27,12 @@
         "types",
         "types/*.d.ts"
     ],
+    "files": [
+        "src/HostingServiceProvider"
+    ],
     "include": [
         "src",
+        "src/HostingServiceProvider.ts",
         "src/index.ts"
     ],
     "references": [
